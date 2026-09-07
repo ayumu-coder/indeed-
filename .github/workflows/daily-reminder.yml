@@ -1,0 +1,59 @@
+name: Daily reminder mail
+
+on:
+  schedule:
+    # 00:00 UTC = 09:00 JST, every day. GitHub's scheduler can lag by several minutes.
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Log what would be sent without sending it'
+        type: boolean
+        default: true
+      offset_days:
+        description: 'Interviews this many days ahead (1 = tomorrow)'
+        type: string
+        default: '1'
+
+concurrency:
+  # Never let a manual run and the scheduled run send at the same time.
+  group: daily-reminder
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - name: Send reminders
+        env:
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          TARGET_SHEET_IDS: ${{ vars.TARGET_SHEET_IDS }}
+          SENDER_ADDRESS: ${{ secrets.SENDER_ADDRESS }}
+          SENDER_NAME: ${{ vars.SENDER_NAME }}
+          BCC_ADDRESSES: ${{ vars.BCC_ADDRESSES }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          REMIND_OFFSET_DAYS: ${{ inputs.offset_days || vars.REMIND_OFFSET_DAYS || '1' }}
+          REMIND_FLAG_MODE: ${{ vars.REMIND_FLAG_MODE }}
+          INTERVIEW_SCHEDULED_VALUES: ${{ vars.INTERVIEW_SCHEDULED_VALUES }}
+          WRITE_BACK_REMIND_FLAG: ${{ vars.WRITE_BACK_REMIND_FLAG }}
+          MAX_SENDS_PER_RUN: ${{ vars.MAX_SENDS_PER_RUN }}
+          # Scheduled runs send for real; a manual run is a dry run unless unticked.
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+        run: node --experimental-strip-types src/main.ts

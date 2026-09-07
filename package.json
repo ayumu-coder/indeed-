@@ -1,0 +1,22 @@
+{
+  "name": "indeed-reminder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "tsc -p tsconfig.json --noEmit && node --test --experimental-strip-types test/*.test.ts",
+    "authorize": "node --experimental-strip-types scripts/authorize.ts",
+    "start": "node --experimental-strip-types src/main.ts",
+    "dry-run": "DRY_RUN=true node --experimental-strip-types src/main.ts"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -2,12 +2,13 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { chromium, type Browser, type Page } from 'playwright';
-import { mixNarration, openEncoder } from './ffmpeg.ts';
+import { numberFromEnv, stringFromEnv } from './env.ts';
+import { mixNarration, openEncoder, type BackgroundMusic } from './ffmpeg.ts';
 import { buildPage } from './page.ts';
 import { toNarrationText, toSrt } from './srt.ts';
 import { buildTimeline, frameCount, type SectionDurations } from './timeline.ts';
 import { NOMINAL_SECTION_MS, type RenderOptions, type SectionName, type ShortScript, type Timeline } from './types.ts';
-import { synthesizeNarration, ttsConfigFromEnv } from './tts.ts';
+import { resolveTtsEngine, synthesizeNarration } from './tts.ts';
 
 export interface RenderResult {
   readonly id: string;
@@ -15,7 +16,7 @@ export interface RenderResult {
   readonly srtPath: string;
   readonly timeline: Timeline;
   readonly frames: number;
-  readonly withNarration: boolean;
+  readonly narrationEngine: string | null;
   readonly elapsedMs: number;
 }
 
@@ -47,8 +48,8 @@ export async function renderScript(context: RenderContext, script: ShortScript):
   const workDir = await mkdtemp(join(tmpdir(), `short-${script.id}-`));
 
   try {
-    const ttsConfig = ttsConfigFromEnv();
-    const clips = ttsConfig === null ? null : await synthesizeNarration(script, ttsConfig, workDir);
+    const engine = resolveTtsEngine();
+    const clips = engine === null ? null : await synthesizeNarration(script, engine, workDir);
     const timeline = buildTimeline(script, options.fps, clips === null ? NOMINAL_SECTION_MS : durationsFrom(clips));
 
     const pagePath = join(workDir, 'page.html');
@@ -57,11 +58,14 @@ export async function renderScript(context: RenderContext, script: ShortScript):
     let audioPath: string | null = null;
     if (clips !== null) {
       audioPath = join(workDir, 'narration.m4a');
-      const offsets = timeline.sections.map((section) => ({
-        path: clips.find((clip) => clip.section === section.name)?.path ?? '',
-        offsetMs: Math.round(section.startMs),
-      }));
-      await mixNarration(offsets, timeline.totalMs, audioPath);
+      const offsets = timeline.sections.map((section) => {
+        const clip = clips.find((candidate) => candidate.section === section.name);
+        // 合成済みクリップは全セクション分そろっている前提。欠けたまま ffmpeg に渡すと
+        // 原因の分かりにくい失敗になるため、ここで落とす。
+        if (clip === undefined) throw new Error(`${section.name} の音声クリップがありません`);
+        return { path: clip.path, offsetMs: Math.round(section.startMs) };
+      });
+      await mixNarration(offsets, timeline.totalMs, audioPath, backgroundMusicFromEnv());
     }
 
     const videoPath = join(outDir, `${script.id}.mp4`);
@@ -100,7 +104,7 @@ export async function renderScript(context: RenderContext, script: ShortScript):
         srtPath,
         timeline,
         frames,
-        withNarration: clips !== null,
+        narrationEngine: clips === null ? null : engine?.name ?? null,
         elapsedMs: Date.now() - startedAt,
       };
     } finally {
@@ -109,6 +113,13 @@ export async function renderScript(context: RenderContext, script: ShortScript):
   } finally {
     await rm(workDir, { recursive: true, force: true });
   }
+}
+
+/** BGM は任意。素材は利用者が用意する前提で、パスとゲインだけ受け取る。 */
+function backgroundMusicFromEnv(): BackgroundMusic | null {
+  const path = stringFromEnv('BGM_PATH');
+  if (path === null) return null;
+  return { path, gainDb: numberFromEnv('BGM_GAIN_DB', -22) };
 }
 
 function sizeOf(options: RenderOptions): { width: number; height: number } {

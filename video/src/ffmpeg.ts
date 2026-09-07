@@ -91,20 +91,38 @@ export function openEncoder(options: EncodeOptions): FrameSink {
   };
 }
 
-/** 複数の WAV を指定オフセットに配置して 1 本の AAC 音声へまとめる。 */
+export interface BackgroundMusic {
+  readonly path: string;
+  /** ナレーションに対する相対ゲイン。-26〜-18dB あたりが定番。 */
+  readonly gainDb: number;
+}
+
+/**
+ * 複数の WAV を指定オフセットに配置して 1 本の AAC 音声へまとめる。
+ * 最後に loudnorm を通し、配信面のラウドネス（およそ -14 LUFS）に揃える。
+ */
 export async function mixNarration(
   clips: readonly { readonly path: string; readonly offsetMs: number }[],
   totalMs: number,
   outputPath: string,
+  bgm: BackgroundMusic | null = null,
 ): Promise<void> {
   const args: string[] = ['-hide_banner', '-loglevel', 'error', '-y'];
   for (const clip of clips) args.push('-i', clip.path);
+  // BGM は尺が足りなければループさせる。
+  if (bgm !== null) args.push('-stream_loop', '-1', '-i', bgm.path);
 
   const delays = clips
     .map((clip, index) => `[${index}:a]adelay=${clip.offsetMs}|${clip.offsetMs},apad[a${index}]`)
     .join(';');
   const merge = clips.map((_, index) => `[a${index}]`).join('');
-  const filter = `${delays};${merge}amix=inputs=${clips.length}:normalize=0:duration=longest[out]`;
+  const voice = `${delays};${merge}amix=inputs=${clips.length}:normalize=0:duration=longest[voice]`;
+  const filter =
+    bgm === null
+      ? `${voice};[voice]loudnorm=I=-14:TP=-1.5:LRA=11[out]`
+      : `${voice};[${clips.length}:a]volume=${bgm.gainDb}dB[bgm];`
+        + `[voice][bgm]amix=inputs=2:normalize=0:duration=first[mixed];`
+        + `[mixed]loudnorm=I=-14:TP=-1.5:LRA=11[out]`;
 
   args.push(
     '-filter_complex', filter, '-map', '[out]',

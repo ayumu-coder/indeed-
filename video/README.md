@@ -70,17 +70,60 @@ video/
 
 CI に組み込む場合は `npm run video:check` だけでよい（ブラウザ不要・1 秒未満）。
 
-## ナレーション音声（任意）
+## ナレーション音声
 
-`VOICEVOX_URL` を設定すると、セクションごとに音声を合成し、**実測の尺でタイムラインを組み直す**。
-未設定の場合は無音の AAC トラックを載せる（音声トラックが無い MP4 を弾く配信面があるため）。
+音声を合成した場合、**実測の尺でタイムラインを組み直す**。字幕・アニメーション・動画尺は
+すべて音声に追従するため、話速を変えるとその分だけ動画が伸び縮みする。
+合成できない場合は無音の AAC トラックを載せる（音声トラックが無い MP4 を弾く配信面があるため）。
+
+エンジンは `TTS_ENGINE` で選ぶ。既定は `auto`（VOICEVOX → Open JTalk → 無音 の順）。
+
+### VOICEVOX（推奨）
+
+品質が高く、キャラクターごとに規約の範囲で商用利用できる。
 
 ```bash
 docker run --rm -p 50021:50021 voicevox/voicevox_engine:cpu-ubuntu20.04-latest
 VOICEVOX_URL=http://127.0.0.1:50021 VOICEVOX_SPEAKER=3 VOICEVOX_SPEED=1.15 npm run video:render
 ```
 
-商用利用の可否は各音声ライブラリの利用規約に従うこと。
+| 環境変数 | 既定 | 内容 |
+| --- | --- | --- |
+| `VOICEVOX_URL` | — | ENGINE の URL。設定すると VOICEVOX が選ばれる |
+| `VOICEVOX_SPEAKER` | `3` | 話者 ID |
+| `VOICEVOX_SPEED` | `1.15` | 話速 |
+
+**クレジット表記**が必要な話者が多い。投稿前に利用規約を確認すること。
+
+### Open JTalk（オフライン・プレビュー用）
+
+依存が軽く、CI やローカル確認向き。**音声の質と商用利用可否は音声ファイル次第**。
+Ubuntu の `hts-voice-nitech-jp-atr503-m001` は multiverse（non-free）で、
+商用配信に使ってよいとは限らない。本番投稿は VOICEVOX か商用 TTS に差し替えること。
+
+```bash
+apt-get install -y open-jtalk open-jtalk-mecab-naist-jdic hts-voice-nitech-jp-atr503-m001
+TTS_ENGINE=openjtalk npm run video:render
+```
+
+| 環境変数 | 既定 | 内容 |
+| --- | --- | --- |
+| `OPENJTALK_BIN` | `open_jtalk` | 実行ファイル |
+| `OPENJTALK_DIC` | 自動検出 | 辞書ディレクトリ |
+| `OPENJTALK_VOICE` | 自動検出 | `.htsvoice` ファイル |
+| `OPENJTALK_RATE` | `1.8` | 話速。ショートは 1.7〜1.9 が読みやすい |
+| `OPENJTALK_ALPHA` | `0.5` | 声質 |
+| `OPENJTALK_PITCH` | `0` | ピッチシフト |
+| `OPENJTALK_VOLUME` | `3` | 音量 (dB) |
+
+### BGM（任意）
+
+```bash
+BGM_PATH=assets/bgm.mp3 BGM_GAIN_DB=-22 npm run video:render
+```
+
+BGM は尺が足りなければループする。最終段で `loudnorm` を通し、およそ -14 LUFS に揃える。
+素材のライセンスは利用者が担保すること（リポジトリには同梱しない）。
 
 ## 依存
 

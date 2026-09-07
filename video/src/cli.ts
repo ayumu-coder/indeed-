@@ -64,7 +64,7 @@ async function main(): Promise<void> {
       results.push(result);
       process.stdout.write(
         `  ${result.videoPath} (${(result.timeline.totalMs / 1000).toFixed(1)}秒 / ${result.frames}f / `
-          + `${result.withNarration ? 'ナレーションあり' : '無音'} / ${(result.elapsedMs / 1000).toFixed(1)}秒)\n`,
+          + `${result.narrationEngine ?? '無音'} / ${(result.elapsedMs / 1000).toFixed(1)}秒)\n`,
       );
     }
   } finally {

@@ -22,6 +22,12 @@ export interface SelectionOptions {
   readonly interviewScheduledValues: readonly string[];
   /** Dedupe keys already recorded as sent by a previous run. */
   readonly alreadySent: ReadonlySet<string>;
+  /**
+   * Rows whose 面接詳細 starts with this text were already reminded — this is the marker
+   * the previous Apps Script wrote, so migrating cannot re-mail anyone it already handled.
+   * Empty disables the check.
+   */
+  readonly sentMarkerPrefix: string;
 }
 
 /**
@@ -107,6 +113,12 @@ export function selectTargets(
         }
       }
 
+      const interviewDetail = cell(row, columns, 'interviewDetail');
+      if (options.sentMarkerPrefix !== '' && interviewDetail.startsWith(options.sentMarkerPrefix)) {
+        skip(table.title, rowNumber, candidateName, 'already-sent-marker');
+        continue;
+      }
+
       const remindFlag = cell(row, columns, 'remindFlag');
       const blockedByFlag =
         options.remindFlagMode === 'skipIfMarked'
@@ -142,6 +154,8 @@ export function selectTargets(
         interviewDay: interview.day,
         interviewTime: interview.timeOfDay,
         remindFlagColumnIndex: columns.remindFlag ?? null,
+        interviewDetailColumnIndex: columns.interviewDetail ?? null,
+        interviewDetail,
         dedupeKey,
       });
     }

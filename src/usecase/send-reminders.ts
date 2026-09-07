@@ -10,6 +10,8 @@ import type {
   MailSender,
   RemindFlagWriter,
   SendLog,
+  SentMarkerEntry,
+  SentMarkerWriter,
   SentRecord,
 } from '../ports.ts';
 
@@ -18,6 +20,12 @@ export interface SendRemindersDeps {
   readonly sender: MailSender;
   readonly sendLog: SendLog;
   readonly flagWriter: RemindFlagWriter | null;
+  readonly markerWriter: SentMarkerWriter | null;
+  /**
+   * Addresses the account may actually send as. Null skips the check — the send itself
+   * still fails loudly on an unverified alias.
+   */
+  readonly allowedFromAddresses: ReadonlySet<string> | null;
   readonly clock: Clock;
   readonly logger: Logger;
 }
@@ -29,6 +37,7 @@ export interface SendRemindersOptions {
   readonly interviewScheduledValues: readonly string[];
   readonly remindFlagWriteValue: string;
   readonly senderPolicy: SenderPolicy;
+  readonly sentMarkerPrefix: string;
   readonly templates: { readonly subject: string; readonly body: string };
   readonly dryRun: boolean;
   /** Hard ceiling on messages per run; guards against a bad column map fanning out. */
@@ -42,8 +51,25 @@ export interface SendRemindersReport {
   readonly failed: number;
   /** 担当者 names present in the sheet with no address configured for them. */
   readonly unmappedOwners: readonly string[];
+  /** From addresses that are not verified send-as aliases on the sending account. */
+  readonly unverifiedSenders: readonly string[];
   readonly skipped: readonly SkippedRow[];
   readonly dryRun: boolean;
+}
+
+/** "送信済 2026/09/08 19:03" in JST, matching the stamp the Apps Script wrote. */
+export function formatSentStamp(prefix: string, now: Date): string {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).formatToParts(now);
+  const get = (type: string): string => parts.find((part) => part.type === type)?.value ?? '';
+  return `${prefix} ${get('year')}/${get('month')}/${get('day')} ${get('hour')}:${get('minute')}`;
 }
 
 function summariseSkips(skipped: readonly SkippedRow[]): Record<string, number> {
@@ -70,6 +96,7 @@ export async function sendReminders(
     remindFlagMode: options.remindFlagMode,
     remindFlagAllowValues: options.remindFlagAllowValues,
     interviewScheduledValues: options.interviewScheduledValues,
+    sentMarkerPrefix: options.sentMarkerPrefix,
     alreadySent,
   });
 
@@ -90,6 +117,8 @@ export async function sendReminders(
   const records: SentRecord[] = [];
   const delivered: ReminderTarget[] = [];
   const unmappedOwners = new Set<string>();
+  const unverifiedSenders = new Set<string>();
+  const markerEntries: SentMarkerEntry[] = [];
   const senderSkips: SkippedRow[] = [];
   let failed = 0;
 
@@ -109,6 +138,24 @@ export async function sendReminders(
         owner: sender.owner,
         row: target.rowNumber,
         candidate: target.candidateName,
+      });
+      continue;
+    }
+
+    if (deps.allowedFromAddresses !== null && !deps.allowedFromAddresses.has(sender.address)) {
+      // The Apps Script skipped these silently, which is why a mis-set alias looked
+      // like "the script does nothing". Make it loud instead.
+      unverifiedSenders.add(sender.address);
+      senderSkips.push({
+        sheetTitle: target.sheetTitle,
+        rowNumber: target.rowNumber,
+        candidateName: target.candidateName,
+        reason: 'owner-not-mapped',
+      });
+      deps.logger.error('From address is not a verified send-as alias', {
+        from: sender.address,
+        owner: target.owner,
+        row: target.rowNumber,
       });
       continue;
     }
@@ -140,6 +187,7 @@ export async function sendReminders(
         body: mail.body,
       });
       delivered.push(target);
+      markerEntries.push({ target, stamp: formatSentStamp(options.sentMarkerPrefix, now) });
       records.push({ ...base, status: 'sent', detail: mail.subject });
       deps.logger.info('sent', { from: sender.address, to: target.email, row: target.rowNumber });
     } catch (error) {
@@ -153,6 +201,17 @@ export async function sendReminders(
   // The log is appended even for dry runs and failures so every run leaves an audit
   // trail; only 'sent' rows are replayed as dedupe keys on the next run.
   if (records.length > 0) await deps.sendLog.append(records);
+
+  if (deps.markerWriter !== null && markerEntries.length > 0) {
+    try {
+      await deps.markerWriter.writeSentMarkers(markerEntries);
+    } catch (error) {
+      // Bookkeeping, not delivery: the log sheet already prevents a duplicate send.
+      deps.logger.warn('送信済 marker write-back failed', {
+        detail: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
 
   if (deps.flagWriter !== null && delivered.length > 0) {
     try {
@@ -172,6 +231,7 @@ export async function sendReminders(
     sent: delivered.length,
     failed,
     unmappedOwners: [...unmappedOwners],
+    unverifiedSenders: [...unverifiedSenders],
     skipped: [...skipped, ...senderSkips],
     dryRun: options.dryRun,
   };

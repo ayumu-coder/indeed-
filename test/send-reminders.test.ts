@@ -1,7 +1,16 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { sendReminders, type SendRemindersOptions } from '../src/usecase/send-reminders.ts';
-import type { CandidateSource, MailSender, OutgoingMail, RemindFlagWriter, SendLog, SentRecord } from '../src/ports.ts';
+import type {
+  CandidateSource,
+  MailSender,
+  OutgoingMail,
+  RemindFlagWriter,
+  SendLog,
+  SentMarkerEntry,
+  SentMarkerWriter,
+  SentRecord,
+} from '../src/ports.ts';
 import { buildOwnerEmailMap } from '../src/domain/sender.ts';
 import type { ReminderTarget, SheetTable } from '../src/domain/types.ts';
 
@@ -33,6 +42,7 @@ const OPTIONS: SendRemindersOptions = {
   remindFlagAllowValues: ['実施'],
   interviewScheduledValues: ['設定済み'],
   remindFlagWriteValue: '実施',
+  sentMarkerPrefix: '送信済',
   senderPolicy: SENDER_POLICY,
   templates: { subject: '{{interviewDate}}', body: '{{candidateName}} 様' },
   dryRun: false,
@@ -62,6 +72,14 @@ class MemoryLog implements SendLog {
   append(records: readonly SentRecord[]): Promise<void> { this.appended.push(...records); return Promise.resolve(); }
 }
 
+class MemoryMarkerWriter implements SentMarkerWriter {
+  readonly written: SentMarkerEntry[] = [];
+  writeSentMarkers(entries: readonly SentMarkerEntry[]): Promise<void> {
+    this.written.push(...entries);
+    return Promise.resolve();
+  }
+}
+
 class MemoryFlagWriter implements RemindFlagWriter {
   marked: ReminderTarget[] = [];
   readonly #shouldThrow: boolean;
@@ -84,7 +102,7 @@ test('sends to every eligible row and marks the flag', async () => {
   const flags = new MemoryFlagWriter();
 
   const report = await sendReminders(
-    { source, sender, sendLog: log, flagWriter: flags, clock, logger: SILENT },
+    { source, sender, sendLog: log, flagWriter: flags, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     OPTIONS,
   );
 
@@ -105,7 +123,7 @@ test('dry run sends nothing, writes no flags, but still logs', async () => {
   const log = new MemoryLog();
 
   const report = await sendReminders(
-    { source, sender, sendLog: log, flagWriter: null, clock, logger: SILENT },
+    { source, sender, sendLog: log, flagWriter: null, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     { ...OPTIONS, dryRun: true },
   );
 
@@ -121,7 +139,7 @@ test('a failed send is reported, logged as failed, and not marked as reminded', 
   const flags = new MemoryFlagWriter();
 
   const report = await sendReminders(
-    { source, sender, sendLog: log, flagWriter: flags, clock, logger: SILENT },
+    { source, sender, sendLog: log, flagWriter: flags, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     OPTIONS,
   );
 
@@ -136,7 +154,7 @@ test('a failed send is retried on the next run because only sent keys dedupe', a
   const sender = new RecordingSender();
 
   const report = await sendReminders(
-    { source, sender, sendLog: log, flagWriter: null, clock, logger: SILENT },
+    { source, sender, sendLog: log, flagWriter: null, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     OPTIONS,
   );
 
@@ -146,7 +164,7 @@ test('a failed send is retried on the next run because only sent keys dedupe', a
 
 test('write-back failure does not fail the run', async () => {
   const report = await sendReminders(
-    { source, sender: new RecordingSender(), sendLog: new MemoryLog(), flagWriter: new MemoryFlagWriter(true), clock, logger: SILENT },
+    { source, sender: new RecordingSender(), sendLog: new MemoryLog(), flagWriter: new MemoryFlagWriter(true), markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     OPTIONS,
   );
   assert.equal(report.sent, 2);
@@ -157,7 +175,7 @@ test('the per-run ceiling aborts before a single message goes out', async () => 
   const sender = new RecordingSender();
   await assert.rejects(
     sendReminders(
-      { source, sender, sendLog: new MemoryLog(), flagWriter: null, clock, logger: SILENT },
+      { source, sender, sendLog: new MemoryLog(), flagWriter: null, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
       { ...OPTIONS, maxSendsPerRun: 1 },
     ),
     /exceeds MAX_SENDS_PER_RUN=1/,
@@ -179,7 +197,7 @@ test('an unmapped 担当者 blocks that row, sends the rest, and fails the run',
   const log = new MemoryLog();
 
   const report = await sendReminders(
-    { source: { loadTables: () => Promise.resolve([table]) }, sender, sendLog: log, flagWriter: null, clock, logger: SILENT },
+    { source: { loadTables: () => Promise.resolve([table]) }, sender, sendLog: log, flagWriter: null, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     OPTIONS,
   );
 
@@ -200,7 +218,7 @@ test('the fallback address is used only when explicitly enabled', async () => {
   const sender = new RecordingSender();
 
   await sendReminders(
-    { source, sender, sendLog: new MemoryLog(), flagWriter: null, clock, logger: SILENT },
+    { source, sender, sendLog: new MemoryLog(), flagWriter: null, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     { ...OPTIONS, senderPolicy: { ...SENDER_POLICY, defaultAddress: 'info@quad-4.co.jp', fallbackToDefault: true } },
   );
 
@@ -220,9 +238,66 @@ test('requireMarked skips rows whose リマインド可否 is blank', async () =
   const sender = new RecordingSender();
 
   await sendReminders(
-    { source: { loadTables: () => Promise.resolve([table]) }, sender, sendLog: new MemoryLog(), flagWriter: null, clock, logger: SILENT },
+    { source: { loadTables: () => Promise.resolve([table]) }, sender, sendLog: new MemoryLog(), flagWriter: null, markerWriter: null, allowedFromAddresses: null, clock, logger: SILENT },
     OPTIONS,
   );
 
   assert.deepEqual(sender.sent.map((mail) => mail.to), ['ok@example.com']);
+});
+
+test('the 送信済 marker is prepended to 面接詳細 without losing existing notes', async () => {
+  const header = [...HEADER, '面接詳細'];
+  const table: SheetTable = {
+    sheetId: 1,
+    title: '応募振り分け',
+    rows: [
+      header,
+      ['山田 太郎', 'taro@example.com', '新田', '設定済み', '2026/09/08', '実施', '既存の面談メモ'],
+    ],
+  };
+  const markers = new MemoryMarkerWriter();
+
+  await sendReminders(
+    {
+      source: { loadTables: () => Promise.resolve([table]) },
+      sender: new RecordingSender(),
+      sendLog: new MemoryLog(),
+      flagWriter: null,
+      markerWriter: markers,
+      allowedFromAddresses: null,
+      clock,
+      logger: SILENT,
+    },
+    OPTIONS,
+  );
+
+  assert.equal(markers.written.length, 1);
+  assert.match(markers.written[0]?.stamp ?? '', /^送信済 \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}$/);
+  assert.equal(markers.written[0]?.target.interviewDetail, '既存の面談メモ');
+});
+
+test('an unverified send-as alias blocks the row loudly instead of silently', async () => {
+  const sender = new RecordingSender();
+  const log = new MemoryLog();
+
+  const report = await sendReminders(
+    {
+      source,
+      sender,
+      sendLog: log,
+      flagWriter: null,
+      markerWriter: null,
+      // 針山's alias is verified on the account; 新田's is not.
+      allowedFromAddresses: new Set(['hariyama@quad-4.co.jp']),
+      clock,
+      logger: SILENT,
+    },
+    OPTIONS,
+  );
+
+  assert.deepEqual(sender.sent.map((mail) => mail.to), ['hanako@example.com']);
+  assert.deepEqual(report.unverifiedSenders, ['nitta@quad-4.co.jp']);
+  assert.equal(report.sent, 1);
+  // The blocked row is not logged as sent, so it goes out once the alias is verified.
+  assert.deepEqual(log.appended.map((record) => record.email), ['hanako@example.com']);
 });

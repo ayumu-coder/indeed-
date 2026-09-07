@@ -2,8 +2,9 @@ name: Daily reminder mail
 
 on:
   schedule:
-    # 00:00 UTC = 09:00 JST, every day. GitHub's scheduler can lag by several minutes.
-    - cron: '0 0 * * *'
+    # 10:00 UTC = 19:00 JST, matching the Apps Script trigger it replaces (the reminder
+    # goes out the evening before the interview). GitHub's scheduler can lag a few minutes.
+    - cron: '0 10 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -42,6 +43,9 @@ jobs:
       - name: Send reminders
         env:
           SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
           OWNER_EMAIL_MAP: ${{ secrets.OWNER_EMAIL_MAP }}
           TARGET_SHEET_IDS: ${{ vars.TARGET_SHEET_IDS }}
@@ -52,6 +56,9 @@ jobs:
           REMIND_OFFSET_DAYS: ${{ inputs.offset_days || vars.REMIND_OFFSET_DAYS || '1' }}
           REMIND_FLAG_MODE: ${{ vars.REMIND_FLAG_MODE }}
           REMIND_FLAG_ALLOW_VALUES: ${{ vars.REMIND_FLAG_ALLOW_VALUES }}
+          SENT_MARKER_PREFIX: ${{ vars.SENT_MARKER_PREFIX }}
+          WRITE_SENT_MARKER: ${{ vars.WRITE_SENT_MARKER }}
+          VERIFY_SEND_AS_ALIASES: ${{ vars.VERIFY_SEND_AS_ALIASES }}
           INTERVIEW_SCHEDULED_VALUES: ${{ vars.INTERVIEW_SCHEDULED_VALUES }}
           WRITE_BACK_REMIND_FLAG: ${{ vars.WRITE_BACK_REMIND_FLAG }}
           MAX_SENDS_PER_RUN: ${{ vars.MAX_SENDS_PER_RUN }}

@@ -14,6 +14,7 @@ export const COLUMN_KEYS = [
   'interviewAt',
   'remindFlag',
   'interviewResult',
+  'interviewDetail',
 ] as const;
 
 export type ColumnKey = (typeof COLUMN_KEYS)[number];
@@ -31,6 +32,7 @@ const HEADER_ALIASES: Readonly<Record<ColumnKey, readonly string[]>> = {
   interviewAt: ['初回面接予定日', '面接予定日', '面接日'],
   remindFlag: ['リマインド可否', 'リマインド'],
   interviewResult: ['面接実施可否'],
+  interviewDetail: ['面接詳細'],
 };
 
 /** Columns without which a row cannot be turned into a reminder at all. */

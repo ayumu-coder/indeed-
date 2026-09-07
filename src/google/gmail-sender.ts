@@ -98,3 +98,18 @@ export class ConsoleMailSender implements MailSender {
     return Promise.resolve();
   }
 }
+
+/**
+ * Lists the addresses the authorised account may send as: its own, plus every verified
+ * "Send mail as" alias. This mirrors the Apps Script's `getUsableFromAddresses_`, whose
+ * silent skip on an unverified alias is the most likely reason the old script sent
+ * nothing at all.
+ */
+export async function listVerifiedSendAsAddresses(auth: OAuth2Client): Promise<readonly string[]> {
+  const api = google.gmail({ version: 'v1', auth });
+  const response = await api.users.settings.sendAs.list({ userId: 'me' });
+  return (response.data.sendAs ?? [])
+    .filter((alias) => alias.isPrimary === true || alias.verificationStatus === 'accepted')
+    .map((alias) => alias.sendAsEmail)
+    .filter((address): address is string => typeof address === 'string' && address !== '');
+}

@@ -29,6 +29,16 @@ export interface RemindFlagWriter {
   markReminded(targets: readonly ReminderTarget[], value: string): Promise<void>;
 }
 
+/** Prepends the 送信済 stamp to 面接詳細, preserving whatever the column already held. */
+export interface SentMarkerWriter {
+  writeSentMarkers(entries: readonly SentMarkerEntry[]): Promise<void>;
+}
+
+export interface SentMarkerEntry {
+  readonly target: ReminderTarget;
+  readonly stamp: string;
+}
+
 export interface OutgoingMail {
   /** The 担当者's own address; the message is sent as this user. */
   readonly from: string;

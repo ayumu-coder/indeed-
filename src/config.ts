@@ -32,6 +32,12 @@ export interface AppConfig {
   readonly remindFlagWriteValue: string;
   readonly writeBackRemindFlag: boolean;
   readonly interviewScheduledValues: readonly string[];
+  /** 面接詳細 starting with this text means "already reminded". Empty disables the check. */
+  readonly sentMarkerPrefix: string;
+  /** Prepend the 送信済 stamp to 面接詳細 after sending, as the Apps Script did. */
+  readonly writeSentMarker: boolean;
+  /** Check each From address against the account's verified send-as aliases before sending. */
+  readonly verifySendAsAliases: boolean;
   readonly maxSendsPerRun: number;
   readonly dryRun: boolean;
   readonly auth: GoogleAuthConfig;
@@ -140,19 +146,6 @@ export function loadConfig(env: Env = process.env): AppConfig {
     throw new ConfigError('Set OWNER_EMAIL_MAP (担当者名:address,...) and/or DEFAULT_SENDER_ADDRESS.');
   }
 
-  // Per-担当者 senders need domain-wide delegation; a single OAuth token can only ever
-  // send as the account that granted it. Failing here beats silently sending every
-  // reminder from the wrong person.
-  if (auth.mode === 'oauth' && ownerEmails.size > 0) {
-    const distinct = new Set(ownerEmails.values());
-    if (distinct.size > 1 || (defaultSender !== '' && !distinct.has(defaultSender))) {
-      throw new ConfigError(
-        'OAuth mode can only send as the authorised account. Per-担当者 senders require ' +
-          'GOOGLE_SERVICE_ACCOUNT_KEY with Workspace domain-wide delegation.',
-      );
-    }
-  }
-
   return {
     spreadsheetId: required(env, 'SPREADSHEET_ID'),
     targetSheetIds: sheetIds,
@@ -170,6 +163,9 @@ export function loadConfig(env: Env = process.env): AppConfig {
     // リマインド可否 is an operator input, not an output — do not overwrite it by default.
     writeBackRemindFlag: bool(env, 'WRITE_BACK_REMIND_FLAG', false),
     interviewScheduledValues: list(env, 'INTERVIEW_SCHEDULED_VALUES', ['設定済み']),
+    sentMarkerPrefix: optional(env, 'SENT_MARKER_PREFIX', '送信済'),
+    writeSentMarker: bool(env, 'WRITE_SENT_MARKER', true),
+    verifySendAsAliases: bool(env, 'VERIFY_SEND_AS_ALIASES', true),
     maxSendsPerRun,
     dryRun: bool(env, 'DRY_RUN', true),
     auth,

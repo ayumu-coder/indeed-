@@ -23,6 +23,10 @@ export interface ReminderTarget {
   readonly interviewTime: string | null;
   /** 0-based index of the リマインド可否 column, when the sheet has one. */
   readonly remindFlagColumnIndex: number | null;
+  /** 0-based index of the 面接詳細 column, where the 送信済 marker lives. */
+  readonly interviewDetailColumnIndex: number | null;
+  /** Existing 面接詳細 content, so the marker can be prepended without losing it. */
+  readonly interviewDetail: string;
   /** Stable identity used to suppress duplicate sends across runs. */
   readonly dedupeKey: string;
 }
@@ -37,6 +41,7 @@ export type SkipReason =
   | 'interview-not-scheduled'
   | 'remind-flag-blocked'
   | 'already-sent'
+  | 'already-sent-marker'
   | 'duplicate-in-batch'
   | 'owner-not-mapped';
 

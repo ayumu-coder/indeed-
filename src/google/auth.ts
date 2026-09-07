@@ -6,6 +6,10 @@ import type { GoogleAuthConfig } from '../config.ts';
 export const SCOPES = [
   'https://www.googleapis.com/auth/spreadsheets',
   'https://www.googleapis.com/auth/gmail.send',
+  // Read-only access to "Send mail as" settings, so a From address can be checked
+  // against the account's verified aliases before anything is sent. Grants no
+  // access to message content.
+  'https://www.googleapis.com/auth/gmail.settings.basic',
 ] as const;
 
 export const GMAIL_SEND_SCOPE = 'https://www.googleapis.com/auth/gmail.send';

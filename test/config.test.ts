@@ -51,21 +51,27 @@ test('requires at least one way to determine a sender', () => {
   );
 });
 
-test('OAuth mode is rejected when it would send as the wrong 担当者', () => {
-  const oauth = {
+test('OAuth mode accepts several 担当者 — they are verified send-as aliases', () => {
+  // The 担当者 addresses are consumer @gmail.com accounts, which domain-wide delegation
+  // cannot impersonate. They are registered as "Send mail as" aliases instead, so one
+  // authorised account legitimately sends as all three.
+  const config = loadConfig({
     SPREADSHEET_ID: 'x',
     GOOGLE_CLIENT_ID: 'id',
     GOOGLE_CLIENT_SECRET: 'secret',
     GOOGLE_REFRESH_TOKEN: 'token',
-  } as const;
-  assert.throws(
-    () => loadConfig({ ...oauth, OWNER_EMAIL_MAP: '新田:nitta@quad-4.co.jp,針山:hariyama@quad-4.co.jp' }),
-    /domain-wide delegation/,
-  );
-  // A single 担当者 mapping to the authorised address is fine.
-  assert.doesNotThrow(() =>
-    loadConfig({ ...oauth, OWNER_EMAIL_MAP: '新田:nitta@quad-4.co.jp', DEFAULT_SENDER_ADDRESS: 'nitta@quad-4.co.jp' }),
-  );
+    OWNER_EMAIL_MAP: '新田:sakaguchi.saiyou@gmail.com,大津:bangtangsaiyo695@gmail.com,針山:seiyaquad202510@gmail.com',
+  });
+  assert.equal(config.auth.mode, 'oauth');
+  assert.equal(config.ownerEmails.size, 3);
+  assert.equal(config.ownerEmails.get('大津'), 'bangtangsaiyo695@gmail.com');
+});
+
+test('送信済 marker handling defaults match the Apps Script it replaces', () => {
+  const config = loadConfig(MINIMAL);
+  assert.equal(config.sentMarkerPrefix, '送信済');
+  assert.equal(config.writeSentMarker, true);
+  assert.equal(config.verifySendAsAliases, true);
 });
 
 test('rejects a malformed service account key', () => {

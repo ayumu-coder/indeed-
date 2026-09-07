@@ -1,7 +1,14 @@
 import { google, type sheets_v4 } from 'googleapis';
 import type { OAuth2Client } from 'google-auth-library';
 import type { ReminderTarget, SheetTable } from '../domain/types.ts';
-import type { CandidateSource, RemindFlagWriter, SendLog, SentRecord } from '../ports.ts';
+import type {
+  CandidateSource,
+  RemindFlagWriter,
+  SendLog,
+  SentMarkerEntry,
+  SentMarkerWriter,
+  SentRecord,
+} from '../ports.ts';
 
 const LOG_HEADER = [
   'sent_at_iso',
@@ -26,7 +33,7 @@ export interface SheetsRepositoryOptions {
 }
 
 /** Sheets-backed implementation of every spreadsheet-facing port. */
-export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWriter {
+export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWriter, SentMarkerWriter {
   readonly #api: sheets_v4.Sheets;
   readonly #options: SheetsRepositoryOptions;
   #logSheetIdCache: number | null = null;
@@ -143,6 +150,49 @@ export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWri
             fields: 'userEnteredValue',
           },
         })),
+      },
+    });
+  }
+
+  /**
+   * Prepends "送信済 <timestamp>" to 面接詳細, keeping the existing notes below it. The
+   * previous Apps Script overwrote this column; losing an interviewer's notes to a
+   * bookkeeping stamp is not an acceptable trade.
+   */
+  async writeSentMarkers(entries: readonly SentMarkerEntry[]): Promise<void> {
+    const writable = entries.filter((entry) => entry.target.interviewDetailColumnIndex !== null);
+    if (writable.length === 0) return;
+
+    await this.#api.spreadsheets.batchUpdate({
+      spreadsheetId: this.#options.spreadsheetId,
+      requestBody: {
+        requests: writable.map(({ target, stamp }) => {
+          const existing = target.interviewDetail.trim();
+          const column = target.interviewDetailColumnIndex as number;
+          return {
+            updateCells: {
+              range: {
+                sheetId: target.sheetId,
+                startRowIndex: target.rowNumber - 1,
+                endRowIndex: target.rowNumber,
+                startColumnIndex: column,
+                endColumnIndex: column + 1,
+              },
+              rows: [
+                {
+                  values: [
+                    {
+                      userEnteredValue: {
+                        stringValue: existing === '' ? stamp : `${stamp}\n${existing}`,
+                      },
+                    },
+                  ],
+                },
+              ],
+              fields: 'userEnteredValue',
+            },
+          };
+        }),
       },
     });
   }

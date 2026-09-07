@@ -17,6 +17,8 @@ const TARGET: ReminderTarget = {
   interviewDay: '2026-09-08' as JstDay,
   interviewTime: '14:30',
   remindFlagColumnIndex: 12,
+  interviewDetailColumnIndex: 14,
+  interviewDetail: '',
   dedupeKey: 'izumi@example.com|2026-09-08|d-1',
 };
 

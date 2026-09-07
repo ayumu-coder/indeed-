@@ -25,6 +25,7 @@ const BASE: SelectionOptions = {
   remindFlagMode: 'skipIfMarked',
   remindFlagAllowValues: ['実施'],
   interviewScheduledValues: ['設定済み'],
+  sentMarkerPrefix: '送信済',
   alreadySent: new Set(),
 };
 
@@ -154,4 +155,41 @@ test('short rows do not throw when trailing cells are absent', () => {
   const result = selectTargets([sparse], { ...BASE, interviewScheduledValues: [] });
   assert.equal(result.targets.length, 0);
   assert.equal(result.skipped[0]?.reason, 'unparsable-interview-date');
+});
+
+test('a 面接詳細 starting with 送信済 means the old Apps Script already sent it', () => {
+  const HEADER_WITH_DETAIL = [...HEADER, '面接詳細'];
+  const build = (detail: string): SheetTable => ({
+    sheetId: 9,
+    title: 'marker',
+    rows: [
+      HEADER_WITH_DETAIL,
+      [...HEADER.map((h) => (ELIGIBLE as Record<string, string>)[h] ?? ''), detail],
+    ],
+  });
+
+  assert.equal(selectTargets([build('送信済 2026/09/07 19:03\n面談メモ')], BASE).targets.length, 0);
+  assert.equal(selectTargets([build('送信済 2026/09/07 19:03')], BASE).skipped[0]?.reason, 'already-sent-marker');
+  // Ordinary notes must not be mistaken for a marker.
+  assert.equal(selectTargets([build('面談メモ: 送信済という単語を含む')], BASE).targets.length, 1);
+  assert.equal(selectTargets([build('')], BASE).targets.length, 1);
+  // The marker check is disabled by an empty prefix.
+  assert.equal(
+    selectTargets([build('送信済 2026/09/07 19:03')], { ...BASE, sentMarkerPrefix: '' }).targets.length,
+    1,
+  );
+});
+
+test('the 面接詳細 column index and content are carried for the write-back', () => {
+  const table: SheetTable = {
+    sheetId: 9,
+    title: 'marker',
+    rows: [
+      [...HEADER, '面接詳細'],
+      [...HEADER.map((h) => (ELIGIBLE as Record<string, string>)[h] ?? ''), '既存のメモ'],
+    ],
+  };
+  const target = selectTargets([table], BASE).targets[0];
+  assert.equal(target?.interviewDetailColumnIndex, HEADER.length);
+  assert.equal(target?.interviewDetail, '既存のメモ');
 });

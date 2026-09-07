@@ -46,3 +46,10 @@ export function daysBetween(a: JstDay, b: JstDay): number {
   };
   return Math.round((toUtc(b) - toUtc(a)) / DAY_MS);
 }
+
+/** "14:05" — wall-clock time of `instant` in JST. */
+export function formatJstTime(instant: Date): string {
+  const shifted = new Date(instant.getTime() + JST_OFFSET_MINUTES * 60_000);
+  const pad = (n: number): string => String(n).padStart(2, '0');
+  return `${pad(shifted.getUTCHours())}:${pad(shifted.getUTCMinutes())}`;
+}

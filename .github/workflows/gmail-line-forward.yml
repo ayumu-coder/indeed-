@@ -1,0 +1,55 @@
+name: Forward mail to LINE
+
+on:
+  schedule:
+    # Every 10 minutes. GitHub's scheduler is best-effort and commonly lags by
+    # several minutes, so treat the notification as "within ~15 min", not instant.
+    # Cost: ~144 runs/day. On a private repo that is billed Actions time — see
+    # README「遅延とコスト」before shortening this interval.
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Log what would be pushed without pushing it'
+        type: boolean
+        default: true
+
+concurrency:
+  # Two overlapping runs would both see the same unlabelled mail and double-push.
+  group: gmail-line-forward
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  forward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci --omit=dev
+
+      - name: Forward new mail
+        env:
+          WATCH_SENDERS: ${{ vars.WATCH_SENDERS }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO: ${{ secrets.LINE_TO }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GMAIL_FORWARD_REFRESH_TOKEN }}
+          FORWARDED_LABEL: ${{ vars.FORWARDED_LABEL }}
+          FORWARD_LOOKBACK_MINUTES: ${{ vars.FORWARD_LOOKBACK_MINUTES }}
+          BODY_MAX_CHARS: ${{ vars.BODY_MAX_CHARS }}
+          MAX_PUSHES_PER_RUN: ${{ vars.MAX_PUSHES_PER_RUN }}
+          INCLUDE_GMAIL_LINK: ${{ vars.INCLUDE_GMAIL_LINK }}
+          GMAIL_USER_INDEX: ${{ vars.GMAIL_USER_INDEX }}
+          # Scheduled runs push for real; a manual run is a dry run unless unticked.
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+        run: node --experimental-strip-types src/forward-main.ts

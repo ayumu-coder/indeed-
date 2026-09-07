@@ -1,14 +1,17 @@
 /**
  * One-time local setup: exchanges a Google OAuth consent for a refresh token.
  *
- *   GOOGLE_CLIENT_ID=... GOOGLE_CLIENT_SECRET=... npm run authorize
+ *   GOOGLE_CLIENT_ID=... GOOGLE_CLIENT_SECRET=... npm run authorize [reminder|forward|all]
+ *
+ * The scope set defaults to `reminder`. Use `forward` for the LINE forwarder
+ * (mailbox read + label), or `all` for one token that serves both jobs.
  *
  * Prints the refresh token to stdout. Store it as the GOOGLE_REFRESH_TOKEN secret;
  * never commit it.
  */
 import { createServer } from 'node:http';
 import { once } from 'node:events';
-import { createOAuthClient, SCOPES } from '../src/google/auth.ts';
+import { createOAuthClient, isScopeSetName, SCOPE_SETS } from '../src/google/auth.ts';
 
 const PORT = Number(process.env['OAUTH_PORT'] ?? 53_682);
 const REDIRECT_URI = `http://localhost:${PORT}`;
@@ -42,7 +45,16 @@ async function waitForCode(): Promise<string> {
   }
 }
 
+function resolveScopes(): readonly string[] {
+  const requested = process.argv[2] ?? 'reminder';
+  if (!isScopeSetName(requested)) {
+    throw new Error(`Unknown scope set: ${requested} (expected reminder | forward | all)`);
+  }
+  return SCOPE_SETS[requested];
+}
+
 async function main(): Promise<void> {
+  const scopes = resolveScopes();
   const client = createOAuthClient(
     { clientId: requireEnv('GOOGLE_CLIENT_ID'), clientSecret: requireEnv('GOOGLE_CLIENT_SECRET'), refreshToken: '' },
     REDIRECT_URI,
@@ -51,9 +63,10 @@ async function main(): Promise<void> {
   const url = client.generateAuthUrl({
     access_type: 'offline',
     prompt: 'consent',
-    scope: [...SCOPES],
+    scope: [...scopes],
   });
 
+  process.stdout.write(`\n要求スコープ:\n${scopes.map((scope) => `  - ${scope}`).join('\n')}\n`);
   process.stdout.write(`\nブラウザで次の URL を開いて許可してください:\n\n${url}\n\n`);
 
   const code = await waitForCode();

@@ -1,3 +1,4 @@
+import type { ReceivedMail } from './domain/mail.ts';
 import type { ReminderTarget, SheetTable } from './domain/types.ts';
 
 /** Reads the candidate sheets. */
@@ -46,4 +47,17 @@ export interface Logger {
   info(message: string, fields?: Readonly<Record<string, unknown>>): void;
   warn(message: string, fields?: Readonly<Record<string, unknown>>): void;
   error(message: string, fields?: Readonly<Record<string, unknown>>): void;
+}
+
+/** The watched mailbox, as seen by the LINE forwarder. */
+export interface MailInbox {
+  /** Mail from the watched senders that has not been forwarded yet, oldest first. */
+  fetchPending(): Promise<readonly ReceivedMail[]>;
+  /** Records a message as forwarded. Must be durable: it is the only dedupe store. */
+  markForwarded(mailId: string): Promise<void>;
+}
+
+/** Push channel (LINE). `idempotencyKey` lets the transport dedupe its own retries. */
+export interface Notifier {
+  push(text: string, idempotencyKey: string): Promise<void>;
 }

@@ -1,0 +1,60 @@
+# ショート動画の書き出しと Instagram への投稿。
+# 定期実行は入れていない（機械的な連投はアカウント停止の要因になるため）。
+# 投稿は dry_run のチェックを外したときだけ行われる。
+name: short video publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'カンマ区切りの台本 id（空なら全件）'
+        required: false
+        default: ''
+      dry_run:
+        description: 'アップロードと投稿を行わない'
+        type: boolean
+        required: false
+        default: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      # 動画生成には optional 依存 (playwright / ffmpeg-static) が必要。
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - run: npm run video:test
+
+      - name: Render
+        run: npm run video:render -- --only=${{ inputs.only }}
+
+      - name: Publish to Instagram
+        env:
+          DRY_RUN: ${{ inputs.dry_run }}
+          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          S3_REGION: ${{ vars.S3_REGION }}
+          S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          S3_PATH_STYLE: ${{ vars.S3_PATH_STYLE }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_GRAPH_VERSION: ${{ vars.IG_GRAPH_VERSION }}
+          IG_SHARE_TO_FEED: ${{ vars.IG_SHARE_TO_FEED }}
+        run: npm run video:publish -- --only=${{ inputs.only }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shorts
+          path: video/out/
+          retention-days: 7

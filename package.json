@@ -17,6 +17,8 @@
     "test": "tsc -p tsconfig.json --noEmit && node --test --experimental-strip-types test/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "video:check": "node --experimental-strip-types video/src/cli.ts --validate-only",
+    "video:publish": "node --experimental-strip-types video/src/publish/publish-cli.ts",
+    "video:publish:dry-run": "DRY_RUN=true node --experimental-strip-types video/src/publish/publish-cli.ts",
     "video:render": "node --experimental-strip-types video/src/cli.ts",
     "video:test": "tsc -p video/tsconfig.json --noEmit && node --test --experimental-strip-types video/test/*.test.ts"
   },

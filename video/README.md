@@ -9,6 +9,7 @@ npm run video:test                      # 動画サブシステムの型チェ�
 npm run video:render                    # 全 5 本を video/out へ書き出す
 npm run video:render -- --only=s03-deduction
 npm run video:render -- --fps=30 --crf=19 --out=dist/shorts
+npm run video:publish:dry-run           # Instagram へ投げる内容の確認
 ```
 
 ## 出力
@@ -142,3 +143,68 @@ BGM は尺が足りなければループする。最終段で `loudnorm` を通�
 - 動画は完全にコード生成で、実写・ストック映像の合成は範囲外。B ロールを重ねる場合は
   出力 MP4 を素材として編集ソフト側で合成する前提。
 - `data/users` のような外部データは読まない。台本の数値（試算値など）の正しさは人間が担保すること。
+
+
+---
+
+# Instagram リールへの投稿
+
+`npm run video:publish` で「書き出し済み MP4 をストレージへ上げる → 期限付き URL を
+Instagram Graph API に渡す → 公開」までを行う。**送信は `DRY_RUN=false` のときだけ**で、
+既定はドライラン（リポジトリ全体の方針に合わせている）。
+
+```bash
+npm run video:render                    # 先に MP4 と <id>.txt を作る
+npm run video:publish:dry-run           # 何をどこへ上げるかの確認
+DRY_RUN=false npm run video:publish -- --only=s03-deduction
+```
+
+キャプションは `video/out/<id>.txt` をそのまま使う。投稿前に手で直せる。
+
+## 事前準備（人手でしかできない作業）
+
+| # | 作業 | 場所 |
+| --- | --- | --- |
+| 1 | Instagram をプロアカウント（ビジネス or クリエイター）に切り替える | Instagram アプリ |
+| 2 | Facebook ページを作り、Instagram と連携する | Facebook |
+| 3 | Meta 開発者登録してアプリを作成する | developers.facebook.com |
+| 4 | アプリに Instagram Graph API 製品を追加し、`instagram_business_content_publish` の審査を通す | 同上 |
+| 5 | 長期アクセストークンを取得する（短期は 1 時間で切れる） | Graph API Explorer |
+| 6 | Instagram ユーザー ID を控える（`me/accounts` から辿れる） | 同上 |
+| 7 | R2 か S3 でバケットを作り、アクセスキーを発行する | Cloudflare / AWS |
+
+取得した値を `.env`（ローカル）と GitHub Actions の Secrets（CI）に入れる。
+
+## 設計
+
+```
+video/src/publish/
+├── ports.ts          ObjectStorage / ReelsPublisher のインターフェース
+├── sigv4.ts          AWS Signature Version 4（依存なしの自前実装）
+├── s3-storage.ts     S3 互換ストレージ（AWS S3 / Cloudflare R2 / MinIO）
+├── instagram.ts      Graph API: コンテナ作成 → 完了待ち → 公開
+├── config.ts         環境変数 → 設定。不足はまとめて報告する
+├── object-key.ts     保存キー（日付 + 内容ハッシュ）
+└── publish-cli.ts    エントリポイント
+```
+
+- **バケットは公開しない。** 取得は期限付きのプリサイン URL 経由にする。
+  署名は AWS SDK を足さずに `node:crypto` だけで実装し、**botocore の署名結果と
+  一致することをゴールデンテストで固定**している（`video/test/sigv4.test.ts`）。
+- **アクセストークンは URL に載せない。** POST はボディに入れ、例外メッセージからも伏せる。
+  URL はログや中間装置に残りやすいため。
+- **投稿枠の上限をハードコードしない。** `content_publishing_limit` で実測値を取ってから投稿する。
+  上限は配信面側の都合で変わり、公開情報も 25 / 50 / 100 と食い違っている。
+- ネットワークと時刻はすべて注入できる。テストは実際の通信をしない。
+
+## 制約と注意
+
+- **動画は公開 URL から取得される。** ローカルファイルを直接アップロードする API は無い。
+  ストレージが必須なのはこのため。
+- **長期トークンはおよそ 60 日で失効する。** `exchangeLongLivedToken()` で更新できるが、
+  更新の実行と保管先の書き換えは運用側で回す必要がある。
+- **TikTok は対象外。** Content Posting API は監査を通すまで投稿が `SELF_ONLY` に強制され、
+  未監査クライアントは 24 時間あたり 5 ユーザーまで。個人チャンネル 1 本のために
+  監査を通す価値が出るまでは手動投稿か、審査済みのスケジューラ SaaS を使う。
+- **機械的な連投は BAN 要因。** cron で自動投稿する場合も時間を散らすこと。
+  同梱のワークフローに定期実行を入れていないのはこのため。

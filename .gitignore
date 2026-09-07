@@ -4,3 +4,7 @@ dist/
 .env.*
 !.env.example
 *.log
+
+# short video renderer
+video/out/
+video/.cache/

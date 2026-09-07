@@ -6,6 +6,9 @@
 | --- | --- | --- | --- |
 | リマインド送信 | 翌日面接の求職者へメールを毎日送る | `npm start` | `.github/workflows/daily-reminder.yml` |
 | LINE 転送 | 特定の差出人からのメールを LINE へ通知する | `npm run forward` | `.github/workflows/gmail-line-forward.yml` |
+| ショート動画生成 | 台本 JSON から縦型ショート動画 (MP4) を書き出す | `npm run video:render` | — |
+
+ショート動画ジェネレーターは独立したサブシステム。詳細は [`video/README.md`](video/README.md)。
 
 以下は **リマインド送信**。LINE 転送は [メール → LINE 自動転送](#メール--line-自動転送) を参照。
 

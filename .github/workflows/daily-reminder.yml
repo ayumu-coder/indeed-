@@ -35,7 +35,8 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - run: npm ci
+      # 動画生成用の optional 依存 (playwright / ffmpeg-static) は本番ジョブでは不要。
+      - run: npm ci --omit=optional
 
       - run: npm test
 

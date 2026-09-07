@@ -34,7 +34,7 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - run: npm ci --omit=dev
+      - run: npm ci --omit=dev --omit=optional
 
       - name: Forward new mail
         env:

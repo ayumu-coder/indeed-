@@ -7,15 +7,18 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "tsc -p tsconfig.json --noEmit && node --test --experimental-strip-types test/*.test.ts",
     "authorize": "node --experimental-strip-types scripts/authorize.ts",
-    "start": "node --experimental-strip-types src/main.ts",
+    "build": "tsc -p tsconfig.json",
     "dry-run": "DRY_RUN=true node --experimental-strip-types src/main.ts",
     "forward": "node --experimental-strip-types src/forward-main.ts",
     "forward:dry-run": "DRY_RUN=true node --experimental-strip-types src/forward-main.ts",
-    "line:verify": "node --experimental-strip-types scripts/line-verify.ts"
+    "line:verify": "node --experimental-strip-types scripts/line-verify.ts",
+    "start": "node --experimental-strip-types src/main.ts",
+    "test": "tsc -p tsconfig.json --noEmit && node --test --experimental-strip-types test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "video:check": "node --experimental-strip-types video/src/cli.ts --validate-only",
+    "video:render": "node --experimental-strip-types video/src/cli.ts",
+    "video:test": "tsc -p video/tsconfig.json --noEmit && node --test --experimental-strip-types video/test/*.test.ts"
   },
   "dependencies": {
     "googleapis": "^144.0.0"
@@ -23,5 +26,9 @@
   "devDependencies": {
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
+  },
+  "optionalDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright": "^1.56.1"
   }
 }

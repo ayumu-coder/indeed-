@@ -1,6 +1,7 @@
 import { addDays, toJstDay } from '../domain/jst.ts';
 import { selectTargets, type RemindFlagMode } from '../domain/selector.ts';
 import { renderMail } from '../domain/template.ts';
+import { resolveSender, type SenderPolicy } from '../domain/sender.ts';
 import type { ReminderTarget, SkippedRow } from '../domain/types.ts';
 import type {
   CandidateSource,
@@ -27,6 +28,7 @@ export interface SendRemindersOptions {
   readonly remindFlagAllowValues: readonly string[];
   readonly interviewScheduledValues: readonly string[];
   readonly remindFlagWriteValue: string;
+  readonly senderPolicy: SenderPolicy;
   readonly templates: { readonly subject: string; readonly body: string };
   readonly dryRun: boolean;
   /** Hard ceiling on messages per run; guards against a bad column map fanning out. */
@@ -38,6 +40,8 @@ export interface SendRemindersReport {
   readonly considered: number;
   readonly sent: number;
   readonly failed: number;
+  /** 担当者 names present in the sheet with no address configured for them. */
+  readonly unmappedOwners: readonly string[];
   readonly skipped: readonly SkippedRow[];
   readonly dryRun: boolean;
 }
@@ -85,9 +89,30 @@ export async function sendReminders(
 
   const records: SentRecord[] = [];
   const delivered: ReminderTarget[] = [];
+  const unmappedOwners = new Set<string>();
+  const senderSkips: SkippedRow[] = [];
   let failed = 0;
 
   for (const target of targets) {
+    const sender = resolveSender(target.owner, options.senderPolicy);
+    if (sender.kind === 'unmapped') {
+      // Never fall back to somebody else's address: a reminder that appears to come
+      // from the wrong 担当者 is worse than one that is not sent.
+      unmappedOwners.add(sender.owner);
+      senderSkips.push({
+        sheetTitle: target.sheetTitle,
+        rowNumber: target.rowNumber,
+        candidateName: target.candidateName,
+        reason: 'owner-not-mapped',
+      });
+      deps.logger.error('no sender address for 担当者', {
+        owner: sender.owner,
+        row: target.rowNumber,
+        candidate: target.candidateName,
+      });
+      continue;
+    }
+
     const mail = renderMail(options.templates, target);
     const base = {
       sentAtIso: new Date().toISOString(),
@@ -97,19 +122,26 @@ export async function sendReminders(
       sheetTitle: target.sheetTitle,
       rowNumber: target.rowNumber,
       interviewDay: target.interviewDay,
+      from: sender.address,
     } as const;
 
     if (options.dryRun) {
-      deps.logger.info('dry-run', { to: target.email, subject: mail.subject });
+      deps.logger.info('dry-run', { from: sender.address, to: target.email, subject: mail.subject });
       records.push({ ...base, status: 'dry-run', detail: mail.subject });
       continue;
     }
 
     try {
-      await deps.sender.send({ to: target.email, subject: mail.subject, body: mail.body });
+      await deps.sender.send({
+        from: sender.address,
+        fromDisplayName: sender.displayName,
+        to: target.email,
+        subject: mail.subject,
+        body: mail.body,
+      });
       delivered.push(target);
       records.push({ ...base, status: 'sent', detail: mail.subject });
-      deps.logger.info('sent', { to: target.email, row: target.rowNumber });
+      deps.logger.info('sent', { from: sender.address, to: target.email, row: target.rowNumber });
     } catch (error) {
       failed += 1;
       const detail = error instanceof Error ? error.message : String(error);
@@ -139,7 +171,8 @@ export async function sendReminders(
     considered: targets.length,
     sent: delivered.length,
     failed,
-    skipped,
+    unmappedOwners: [...unmappedOwners],
+    skipped: [...skipped, ...senderSkips],
     dryRun: options.dryRun,
   };
 }

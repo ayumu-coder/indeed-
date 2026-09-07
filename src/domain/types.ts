@@ -37,7 +37,8 @@ export type SkipReason =
   | 'interview-not-scheduled'
   | 'remind-flag-blocked'
   | 'already-sent'
-  | 'duplicate-in-batch';
+  | 'duplicate-in-batch'
+  | 'owner-not-mapped';
 
 export interface SkippedRow {
   readonly sheetTitle: string;

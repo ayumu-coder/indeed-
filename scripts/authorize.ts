@@ -44,7 +44,12 @@ async function waitForCode(): Promise<string> {
 
 async function main(): Promise<void> {
   const client = createOAuthClient(
-    { clientId: requireEnv('GOOGLE_CLIENT_ID'), clientSecret: requireEnv('GOOGLE_CLIENT_SECRET'), refreshToken: '' },
+    {
+      mode: 'oauth',
+      clientId: requireEnv('GOOGLE_CLIENT_ID'),
+      clientSecret: requireEnv('GOOGLE_CLIENT_SECRET'),
+      refreshToken: '',
+    },
     REDIRECT_URI,
   );
 

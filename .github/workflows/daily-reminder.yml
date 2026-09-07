@@ -42,15 +42,16 @@ jobs:
       - name: Send reminders
         env:
           SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          OWNER_EMAIL_MAP: ${{ secrets.OWNER_EMAIL_MAP }}
           TARGET_SHEET_IDS: ${{ vars.TARGET_SHEET_IDS }}
-          SENDER_ADDRESS: ${{ secrets.SENDER_ADDRESS }}
-          SENDER_NAME: ${{ vars.SENDER_NAME }}
+          DEFAULT_SENDER_ADDRESS: ${{ vars.DEFAULT_SENDER_ADDRESS }}
+          FALLBACK_TO_DEFAULT_SENDER: ${{ vars.FALLBACK_TO_DEFAULT_SENDER }}
+          SENDER_NAME_SUFFIX: ${{ vars.SENDER_NAME_SUFFIX }}
           BCC_ADDRESSES: ${{ vars.BCC_ADDRESSES }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           REMIND_OFFSET_DAYS: ${{ inputs.offset_days || vars.REMIND_OFFSET_DAYS || '1' }}
           REMIND_FLAG_MODE: ${{ vars.REMIND_FLAG_MODE }}
+          REMIND_FLAG_ALLOW_VALUES: ${{ vars.REMIND_FLAG_ALLOW_VALUES }}
           INTERVIEW_SCHEDULED_VALUES: ${{ vars.INTERVIEW_SCHEDULED_VALUES }}
           WRITE_BACK_REMIND_FLAG: ${{ vars.WRITE_BACK_REMIND_FLAG }}
           MAX_SENDS_PER_RUN: ${{ vars.MAX_SENDS_PER_RUN }}

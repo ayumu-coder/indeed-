@@ -1,18 +1,30 @@
 import type { RemindFlagMode } from './domain/selector.ts';
+import { buildOwnerEmailMap } from './domain/sender.ts';
 
-export interface GoogleCredentials {
-  readonly clientId: string;
-  readonly clientSecret: string;
-  readonly refreshToken: string;
+export interface ServiceAccountKey {
+  readonly client_email: string;
+  readonly private_key: string;
 }
+
+export type GoogleAuthConfig =
+  | { readonly mode: 'serviceAccount'; readonly key: ServiceAccountKey }
+  | {
+      readonly mode: 'oauth';
+      readonly clientId: string;
+      readonly clientSecret: string;
+      readonly refreshToken: string;
+    };
 
 export interface AppConfig {
   readonly spreadsheetId: string;
-  /** Sheet gids to scan. Empty means "every sheet that has a recognisable header". */
   readonly targetSheetIds: readonly number[];
   readonly logSheetTitle: string;
-  readonly senderAddress: string;
-  readonly senderName: string;
+  /** 担当者名 → 送信元アドレス. */
+  readonly ownerEmails: ReadonlyMap<string, string>;
+  /** Used for a blank 担当者, and for unmapped ones when the fallback is enabled. */
+  readonly defaultSenderAddress: string | null;
+  readonly fallbackToDefaultSender: boolean;
+  readonly senderNameSuffix: string;
   readonly bccAddresses: readonly string[];
   readonly offsetDays: number;
   readonly remindFlagMode: RemindFlagMode;
@@ -22,10 +34,10 @@ export interface AppConfig {
   readonly interviewScheduledValues: readonly string[];
   readonly maxSendsPerRun: number;
   readonly dryRun: boolean;
-  readonly credentials: GoogleCredentials;
+  readonly auth: GoogleAuthConfig;
 }
 
-class ConfigError extends Error {}
+export class ConfigError extends Error {}
 
 type Env = Readonly<Record<string, string | undefined>>;
 
@@ -64,11 +76,45 @@ function list(env: Env, key: string, fallback: readonly string[]): readonly stri
 }
 
 function remindFlagMode(env: Env): RemindFlagMode {
-  const raw = optional(env, 'REMIND_FLAG_MODE', 'skipIfMarked');
+  const raw = optional(env, 'REMIND_FLAG_MODE', 'requireMarked');
   if (raw === 'skipIfMarked' || raw === 'requireMarked' || raw === 'ignore') return raw;
   throw new ConfigError(
     `Invalid REMIND_FLAG_MODE: ${raw} (expected skipIfMarked | requireMarked | ignore)`,
   );
+}
+
+function parseServiceAccountKey(raw: string): ServiceAccountKey {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new ConfigError('GOOGLE_SERVICE_ACCOUNT_KEY is not valid JSON.');
+  }
+  if (typeof parsed !== 'object' || parsed === null) {
+    throw new ConfigError('GOOGLE_SERVICE_ACCOUNT_KEY must be a JSON object.');
+  }
+  const { client_email: email, private_key: key } = parsed as Record<string, unknown>;
+  if (typeof email !== 'string' || email === '') {
+    throw new ConfigError('GOOGLE_SERVICE_ACCOUNT_KEY is missing client_email.');
+  }
+  if (typeof key !== 'string' || key === '') {
+    throw new ConfigError('GOOGLE_SERVICE_ACCOUNT_KEY is missing private_key.');
+  }
+  // GitHub Actions secrets frequently arrive with literal \n instead of real newlines.
+  return { client_email: email, private_key: key.replace(/\\n/g, '\n') };
+}
+
+function loadAuth(env: Env): GoogleAuthConfig {
+  const serviceAccount = env['GOOGLE_SERVICE_ACCOUNT_KEY']?.trim();
+  if (serviceAccount !== undefined && serviceAccount !== '') {
+    return { mode: 'serviceAccount', key: parseServiceAccountKey(serviceAccount) };
+  }
+  return {
+    mode: 'oauth',
+    clientId: required(env, 'GOOGLE_CLIENT_ID'),
+    clientSecret: required(env, 'GOOGLE_CLIENT_SECRET'),
+    refreshToken: required(env, 'GOOGLE_REFRESH_TOKEN'),
+  };
 }
 
 export function loadConfig(env: Env = process.env): AppConfig {
@@ -86,26 +132,46 @@ export function loadConfig(env: Env = process.env): AppConfig {
   const maxSendsPerRun = integer(env, 'MAX_SENDS_PER_RUN', 50);
   if (maxSendsPerRun < 1) throw new ConfigError(`MAX_SENDS_PER_RUN must be >= 1: ${maxSendsPerRun}`);
 
+  const auth = loadAuth(env);
+  const ownerEmails = buildOwnerEmailMap(list(env, 'OWNER_EMAIL_MAP', []));
+  const defaultSender = optional(env, 'DEFAULT_SENDER_ADDRESS', '');
+
+  if (ownerEmails.size === 0 && defaultSender === '') {
+    throw new ConfigError('Set OWNER_EMAIL_MAP (担当者名:address,...) and/or DEFAULT_SENDER_ADDRESS.');
+  }
+
+  // Per-担当者 senders need domain-wide delegation; a single OAuth token can only ever
+  // send as the account that granted it. Failing here beats silently sending every
+  // reminder from the wrong person.
+  if (auth.mode === 'oauth' && ownerEmails.size > 0) {
+    const distinct = new Set(ownerEmails.values());
+    if (distinct.size > 1 || (defaultSender !== '' && !distinct.has(defaultSender))) {
+      throw new ConfigError(
+        'OAuth mode can only send as the authorised account. Per-担当者 senders require ' +
+          'GOOGLE_SERVICE_ACCOUNT_KEY with Workspace domain-wide delegation.',
+      );
+    }
+  }
+
   return {
     spreadsheetId: required(env, 'SPREADSHEET_ID'),
     targetSheetIds: sheetIds,
     logSheetTitle: optional(env, 'LOG_SHEET_TITLE', '_reminder_log'),
-    senderAddress: required(env, 'SENDER_ADDRESS'),
-    senderName: optional(env, 'SENDER_NAME', ''),
+    ownerEmails,
+    defaultSenderAddress: defaultSender === '' ? null : defaultSender,
+    // Off by default: a reminder from the wrong 担当者 is worse than one not sent.
+    fallbackToDefaultSender: bool(env, 'FALLBACK_TO_DEFAULT_SENDER', false),
+    senderNameSuffix: optional(env, 'SENDER_NAME_SUFFIX', '株式会社Quad'),
     bccAddresses: list(env, 'BCC_ADDRESSES', []),
     offsetDays,
     remindFlagMode: remindFlagMode(env),
     remindFlagAllowValues: list(env, 'REMIND_FLAG_ALLOW_VALUES', ['実施', '可', 'TRUE']),
     remindFlagWriteValue: optional(env, 'REMIND_FLAG_WRITE_VALUE', '実施'),
-    writeBackRemindFlag: bool(env, 'WRITE_BACK_REMIND_FLAG', true),
+    // リマインド可否 is an operator input, not an output — do not overwrite it by default.
+    writeBackRemindFlag: bool(env, 'WRITE_BACK_REMIND_FLAG', false),
     interviewScheduledValues: list(env, 'INTERVIEW_SCHEDULED_VALUES', ['設定済み']),
     maxSendsPerRun,
-    // Sending is opt-in: an unset or mis-set DRY_RUN can never mail real candidates.
     dryRun: bool(env, 'DRY_RUN', true),
-    credentials: {
-      clientId: required(env, 'GOOGLE_CLIENT_ID'),
-      clientSecret: required(env, 'GOOGLE_CLIENT_SECRET'),
-      refreshToken: required(env, 'GOOGLE_REFRESH_TOKEN'),
-    },
+    auth,
   };
 }

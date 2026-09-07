@@ -11,12 +11,13 @@ const LOG_HEADER = [
   'sheet_title',
   'row_number',
   'interview_day',
+  'sent_from',
   'status',
   'detail',
 ] as const;
 
 const DEDUPE_KEY_COLUMN = 1;
-const STATUS_COLUMN = 7;
+const STATUS_COLUMN = 8;
 
 export interface SheetsRepositoryOptions {
   readonly spreadsheetId: string;
@@ -78,7 +79,7 @@ export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWri
     try {
       const response = await this.#api.spreadsheets.values.get({
         spreadsheetId: this.#options.spreadsheetId,
-        range: `'${title}'!A:I`,
+        range: `'${title}'!A:J`,
         valueRenderOption: 'UNFORMATTED_VALUE',
       });
       rows = (response.data.values ?? []) as string[][];
@@ -101,7 +102,7 @@ export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWri
     await this.#ensureLogSheet();
     await this.#api.spreadsheets.values.append({
       spreadsheetId: this.#options.spreadsheetId,
-      range: `'${this.#options.logSheetTitle}'!A:I`,
+      range: `'${this.#options.logSheetTitle}'!A:J`,
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       requestBody: {
@@ -113,6 +114,7 @@ export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWri
           record.sheetTitle,
           String(record.rowNumber),
           record.interviewDay,
+          record.from,
           record.status,
           record.detail.slice(0, 500),
         ]),
@@ -171,7 +173,7 @@ export class SheetsRepository implements CandidateSource, SendLog, RemindFlagWri
 
     await this.#api.spreadsheets.values.update({
       spreadsheetId: this.#options.spreadsheetId,
-      range: `'${this.#options.logSheetTitle}'!A1:I1`,
+      range: `'${this.#options.logSheetTitle}'!A1:J1`,
       valueInputOption: 'RAW',
       requestBody: { values: [[...LOG_HEADER]] },
     });

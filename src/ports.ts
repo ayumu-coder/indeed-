@@ -13,6 +13,7 @@ export interface SentRecord {
   readonly sheetTitle: string;
   readonly rowNumber: number;
   readonly interviewDay: string;
+  readonly from: string;
   readonly status: 'sent' | 'failed' | 'dry-run';
   readonly detail: string;
 }
@@ -29,6 +30,9 @@ export interface RemindFlagWriter {
 }
 
 export interface OutgoingMail {
+  /** The 担当者's own address; the message is sent as this user. */
+  readonly from: string;
+  readonly fromDisplayName: string;
   readonly to: string;
   readonly subject: string;
   readonly body: string;

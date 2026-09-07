@@ -46,8 +46,8 @@ test('a newline in the subject template cannot split the header', () => {
 
 test('header injection via a sheet value cannot add headers to the raw message', () => {
   const raw = buildRawMessage(
-    { to: 'victim@example.com', subject: 'X\r\nBcc: attacker@example.com', body: 'hello' },
-    { senderAddress: 'noreply@quad-4.co.jp', senderName: '', bccAddresses: [] },
+    { from: 'nitta@quad-4.co.jp', fromDisplayName: '新田', to: 'victim@example.com', subject: 'X\r\nBcc: attacker@example.com', body: 'hello' },
+    { bccAddresses: [], senderNameSuffix: '' },
   );
   const decoded = Buffer.from(raw, 'base64url').toString('utf8');
   const headerBlock = decoded.split('\r\n\r\n')[0] ?? '';
@@ -56,12 +56,15 @@ test('header injection via a sheet value cannot add headers to the raw message',
 
 test('encodes a Japanese subject and display name as RFC 2047 words', () => {
   const raw = buildRawMessage(
-    { to: 'a@b.com', subject: '【面接日程のご確認】', body: '本文' },
-    { senderAddress: 'noreply@quad-4.co.jp', senderName: '株式会社Quad', bccAddresses: ['ops@quad-4.co.jp'] },
+    { from: 'nitta@quad-4.co.jp', fromDisplayName: '新田', to: 'a@b.com', subject: '【面接日程のご確認】', body: '本文' },
+    { bccAddresses: ['ops@quad-4.co.jp'], senderNameSuffix: '株式会社Quad' },
   );
   const decoded = Buffer.from(raw, 'base64url').toString('utf8');
   assert.match(decoded, /^Subject: =\?UTF-8\?B\?[A-Za-z0-9+/=]+\?=$/m);
-  assert.match(decoded, /^From: =\?UTF-8\?B\?[A-Za-z0-9+/=]+\?= <noreply@quad-4\.co\.jp>$/m);
+  // From must be the 担当者's own address, displayed as 新田（株式会社Quad）.
+  assert.match(decoded, /^From: =\?UTF-8\?B\?[A-Za-z0-9+/=]+\?= <nitta@quad-4\.co\.jp>$/m);
+  const fromName = /^From: =\?UTF-8\?B\?([A-Za-z0-9+/=]+)\?=/m.exec(decoded)?.[1] ?? '';
+  assert.equal(Buffer.from(fromName, 'base64').toString('utf8'), '新田（株式会社Quad）');
   assert.match(decoded, /^Bcc: ops@quad-4\.co\.jp$/m);
 
   const body = decoded.split('\r\n\r\n').slice(1).join('\r\n\r\n');
@@ -70,8 +73,8 @@ test('encodes a Japanese subject and display name as RFC 2047 words', () => {
 
 test('an ASCII-only subject is left unencoded', () => {
   const raw = buildRawMessage(
-    { to: 'a@b.com', subject: 'Interview reminder', body: 'hi' },
-    { senderAddress: 'noreply@quad-4.co.jp', senderName: '', bccAddresses: [] },
+    { from: 'a@quad-4.co.jp', fromDisplayName: '', to: 'a@b.com', subject: 'Interview reminder', body: 'hi' },
+    { bccAddresses: [], senderNameSuffix: '' },
   );
   assert.match(Buffer.from(raw, 'base64url').toString('utf8'), /^Subject: Interview reminder$/m);
 });

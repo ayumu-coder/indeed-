@@ -2,30 +2,38 @@ import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { sendReminders, type SendRemindersOptions } from '../src/usecase/send-reminders.ts';
 import type { CandidateSource, MailSender, OutgoingMail, RemindFlagWriter, SendLog, SentRecord } from '../src/ports.ts';
+import { buildOwnerEmailMap } from '../src/domain/sender.ts';
 import type { ReminderTarget, SheetTable } from '../src/domain/types.ts';
 
 const NOW = new Date('2026-09-07T02:00:00Z');
 
-const HEADER = ['求職者名', 'メールアドレス', '面接設定可否', '初回面接予定日', 'リマインド可否'];
+const HEADER = ['求職者名', 'メールアドレス', '担当者', '面接設定可否', '初回面接予定日', 'リマインド可否'];
 const TABLE: SheetTable = {
   sheetId: 1,
   title: '応募振り分け',
   rows: [
     HEADER,
-    ['山田 太郎', 'taro@example.com', '設定済み', '2026/09/08', ''],
-    ['佐藤 花子', 'hanako@example.com', '設定済み', '2026/09/08', ''],
-    ['来月 次郎', 'jiro@example.com', '設定済み', '2026/10/08', ''],
+    ['山田 太郎', 'taro@example.com', '新田', '設定済み', '2026/09/08', '実施'],
+    ['佐藤 花子', 'hanako@example.com', '針山', '設定済み', '2026/09/08', '実施'],
+    ['来月 次郎', 'jiro@example.com', '新田', '設定済み', '2026/10/08', '実施'],
   ],
+};
+
+const SENDER_POLICY = {
+  ownerEmails: buildOwnerEmailMap(['新田:nitta@quad-4.co.jp', '針山:hariyama@quad-4.co.jp']),
+  defaultAddress: null,
+  fallbackToDefault: false,
 };
 
 const SILENT = { info: () => {}, warn: () => {}, error: () => {} };
 
 const OPTIONS: SendRemindersOptions = {
   offsetDays: 1,
-  remindFlagMode: 'skipIfMarked',
+  remindFlagMode: 'requireMarked',
   remindFlagAllowValues: ['実施'],
   interviewScheduledValues: ['設定済み'],
   remindFlagWriteValue: '実施',
+  senderPolicy: SENDER_POLICY,
   templates: { subject: '{{interviewDate}}', body: '{{candidateName}} 様' },
   dryRun: false,
   maxSendsPerRun: 50,
@@ -84,6 +92,9 @@ test('sends to every eligible row and marks the flag', async () => {
   assert.equal(report.failed, 0);
   assert.equal(report.targetDay, '2026-09-08');
   assert.deepEqual(sender.sent.map((mail) => mail.to), ['taro@example.com', 'hanako@example.com']);
+  // Each reminder goes out as its own 担当者.
+  assert.deepEqual(sender.sent.map((mail) => mail.from), ['nitta@quad-4.co.jp', 'hariyama@quad-4.co.jp']);
+  assert.deepEqual(sender.sent.map((mail) => mail.fromDisplayName), ['新田', '針山']);
   assert.equal(sender.sent[0]?.body, '山田 太郎 様');
   assert.equal(flags.marked.length, 2);
   assert.deepEqual(log.appended.map((record) => record.status), ['sent', 'sent']);
@@ -152,4 +163,66 @@ test('the per-run ceiling aborts before a single message goes out', async () => 
     /exceeds MAX_SENDS_PER_RUN=1/,
   );
   assert.equal(sender.sent.length, 0);
+});
+
+test('an unmapped 担当者 blocks that row, sends the rest, and fails the run', async () => {
+  const table: SheetTable = {
+    sheetId: 1,
+    title: '応募振り分け',
+    rows: [
+      HEADER,
+      ['山田 太郎', 'taro@example.com', '新田', '設定済み', '2026/09/08', '実施'],
+      ['未登録 担当', 'unknown@example.com', '大津', '設定済み', '2026/09/08', '実施'],
+    ],
+  };
+  const sender = new RecordingSender();
+  const log = new MemoryLog();
+
+  const report = await sendReminders(
+    { source: { loadTables: () => Promise.resolve([table]) }, sender, sendLog: log, flagWriter: null, clock, logger: SILENT },
+    OPTIONS,
+  );
+
+  assert.deepEqual(sender.sent.map((mail) => mail.to), ['taro@example.com']);
+  assert.deepEqual(report.unmappedOwners, ['大津']);
+  assert.equal(report.skipped.at(-1)?.reason, 'owner-not-mapped');
+  // The blocked row must not be recorded as sent, so it goes out once 大津 is mapped.
+  assert.deepEqual(log.appended.map((record) => record.email), ['taro@example.com']);
+});
+
+test('the fallback address is used only when explicitly enabled', async () => {
+  const table: SheetTable = {
+    sheetId: 1,
+    title: '応募振り分け',
+    rows: [HEADER, ['未登録 担当', 'x@example.com', '大津', '設定済み', '2026/09/08', '実施']],
+  };
+  const source = { loadTables: () => Promise.resolve([table]) };
+  const sender = new RecordingSender();
+
+  await sendReminders(
+    { source, sender, sendLog: new MemoryLog(), flagWriter: null, clock, logger: SILENT },
+    { ...OPTIONS, senderPolicy: { ...SENDER_POLICY, defaultAddress: 'info@quad-4.co.jp', fallbackToDefault: true } },
+  );
+
+  assert.deepEqual(sender.sent.map((mail) => mail.from), ['info@quad-4.co.jp']);
+});
+
+test('requireMarked skips rows whose リマインド可否 is blank', async () => {
+  const table: SheetTable = {
+    sheetId: 1,
+    title: '応募振り分け',
+    rows: [
+      HEADER,
+      ['未承認 太郎', 'pending@example.com', '新田', '設定済み', '2026/09/08', ''],
+      ['承認済 花子', 'ok@example.com', '新田', '設定済み', '2026/09/08', '実施'],
+    ],
+  };
+  const sender = new RecordingSender();
+
+  await sendReminders(
+    { source: { loadTables: () => Promise.resolve([table]) }, sender, sendLog: new MemoryLog(), flagWriter: null, clock, logger: SILENT },
+    OPTIONS,
+  );
+
+  assert.deepEqual(sender.sent.map((mail) => mail.to), ['ok@example.com']);
 });

@@ -15,9 +15,11 @@
     "dry-run": "DRY_RUN=true node --experimental-strip-types src/main.ts",
     "forward": "node --experimental-strip-types src/forward-main.ts",
     "forward:dry-run": "DRY_RUN=true node --experimental-strip-types src/forward-main.ts",
-    "line:verify": "node --experimental-strip-types scripts/line-verify.ts"
+    "line:verify": "node --experimental-strip-types scripts/line-verify.ts",
+    "joblisting": "node --experimental-strip-types src/joblisting-main.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
     "googleapis": "^144.0.0"
   },
   "devDependencies": {

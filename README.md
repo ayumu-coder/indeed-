@@ -1,13 +1,16 @@
-# indeed-automation — 面接リマインド送信 / メール LINE 転送
+# indeed-automation — 面接リマインド送信 / メール LINE 転送 / 求人シート生成
 
-このリポジトリには独立した 2 つのジョブが入っている。
+このリポジトリには独立した 3 つのジョブが入っている。
 
 | ジョブ | 内容 | エントリポイント | ワークフロー |
 | --- | --- | --- | --- |
 | リマインド送信 | 翌日面接の求職者へメールを毎日送る | `npm start` | `.github/workflows/daily-reminder.yml` |
 | LINE 転送 | 特定の差出人からのメールを LINE へ通知する | `npm run forward` | `.github/workflows/gmail-line-forward.yml` |
+| 求人シート生成 | PDF・画像などの求人資料を Indeed の求人入力シートにまとめる | `npm run joblisting` | 手動実行 |
 
-以下は **リマインド送信**。LINE 転送は [メール → LINE 自動転送](#メール--line-自動転送) を参照。
+以下は **リマインド送信**。
+LINE 転送は [メール → LINE 自動転送](#メール--line-自動転送)、
+求人シート生成は [求人資料 → Indeed 求人入力シート](#求人資料--indeed-求人入力シート) を参照。
 
 ---
 
@@ -378,7 +381,7 @@ Variables:
 ## 開発
 
 ```bash
-npm test                 # 型チェック + ユニットテスト (81 件、ネットワーク不要)
+npm test                 # 型チェック + ユニットテスト (106 件、ネットワーク不要)
 npm run forward:dry-run
 ```
 
@@ -386,3 +389,73 @@ npm run forward:dry-run
 Google / LINE の API に一切依存しない純粋関数。`src/google/gmail-inbox.ts` と
 `src/line/line-notifier.ts` がアダプタで、`src/ports.ts` の `MailInbox` / `Notifier`
 経由で `src/usecase/forward-mail-to-line.ts` に注入される。
+
+
+---
+
+# 求人資料 → Indeed 求人入力シート
+
+PDF の求人票、紙の求人票を撮った写真、テキストのメモ — 形式がばらばらな資料から、
+Indeed の一括アップロード用シート `templates/indeed-job-upload.xlsx` の 1 行を作る。
+
+```bash
+# 複数の資料を 1 件の求人としてまとめる
+npm run joblisting -- --out 求人.xlsx 求人票.pdf 職場写真.jpg メモ.txt
+
+# 資料 1 件につき 1 求人として、複数行を一度に作る
+npm run joblisting -- --out 求人.xlsx --split A社.pdf B社.pdf
+```
+
+対応形式: `.pdf` `.png` `.jpg` `.jpeg` `.gif` `.webp` `.txt` `.md` `.csv` `.tsv` `.json`。
+PDF と画像は Messages API がそのまま読むので、OCR の前処理は要らない。
+
+## 動作仕様
+
+1. 資料を読み込む（1 ファイル 12 MB、1 回 24 MB まで。超えたら送信せずに落とす）。
+2. Claude に 66 項目すべてを埋めさせる。**資料に書かれていない項目は空欄**にさせる。
+3. Indeed が受け付けない値を捨てる。捨てた値は理由つきでログに出す。
+   - 選択肢が決まっている項目（雇用形態、勤務形態、タグ…）で選択肢にない値
+   - 金額・時間の項目で数値として読めない値（`要相談` など）
+   - 郵便番号 7 桁、メールアドレス、電話番号の形式に合わない値
+   - 上限を超えた値（タグ 3 個、職業カテゴリー 3 個、掲載画像 15 個）
+4. Indeed が公開している雛形そのものに行を書き足して出力する。
+   `例` タブも `入力方法` タブもヘッダー行も原本のまま残る。
+
+**空欄は正常な出力**。埋まらなかった必須項目は `required fields left blank` として
+ログに出るので、そこだけ人が埋める。推測で埋めることはしない。
+
+## 出力の確認
+
+```
+{"level":"warn","message":"value dropped","field":"給与（最高額）","value":"応相談","reason":"not-a-number"}
+{"level":"warn","message":"required fields left blank","fields":["fixedOvertimeUnit","plannedHires"]}
+{"level":"info","message":"workbook written","out":"求人.xlsx","rows":1}
+```
+
+## 設定
+
+`.env` の `ANTHROPIC_API_KEY` が必須。任意で `ANTHROPIC_MODEL`（既定
+`claude-opus-5`）、`EXTRACTION_MAX_TOKENS`、`INDEED_TEMPLATE_PATH`。
+
+## 既知の制約
+
+- **Indeed の条件付き必須は判定しない。** 「雇用形態が業務委託なら給与形態は任意」といった
+  条件分岐は追わず、無条件の必須項目だけを報告する。最終的な検証は Indeed 側に任せる。
+- **職業カテゴリーは検証しない。** Indeed の職業カテゴリー一覧はこのリポジトリにないので、
+  抽出された文字列をそのまま書く。取り込み時に弾かれたら手で直す。
+- **`審査用の質問` と `自動アプローチ条件設定` は YAML をそのまま書く。** 構文検証はしない。
+- **金額は単体の数値表記のみ解釈する。** `25万円` `1,200` は読むが、`20万〜30万` のような
+  範囲表記は最低額・最高額のどちらとも決められないので空欄にして警告を出す。
+- **セル幅・折り返しは設定しない。** 長文セルは Excel 上で 1 行に見えるが、値は完全なもの。
+
+## 開発
+
+```bash
+npm test   # 型チェック + ユニットテスト。API も雛形の書き換えも要らない
+```
+
+`src/joblisting/schema.ts` が唯一の定義元で、列の順序・選択肢・必須は雛形の `入力方法`
+タブから起こしてある。`src/joblisting/posting.ts`（値の正規化）と
+`src/joblisting/workbook.ts` + `zip.ts`（.xlsx の書き換え）は API に一切依存しない純粋関数。
+`src/joblisting/extractor.ts` が `JobExtractor` ポートの Anthropic 実装で、
+`src/usecase/build-job-listing-sheet.ts` に注入される。

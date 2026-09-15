@@ -386,3 +386,17 @@ npm run forward:dry-run
 Google / LINE の API に一切依存しない純粋関数。`src/google/gmail-inbox.ts` と
 `src/line/line-notifier.ts` がアダプタで、`src/ports.ts` の `MailInbox` / `Notifier`
 経由で `src/usecase/forward-mail-to-line.ts` に注入される。
+
+---
+
+# 求人原稿テンプレート
+
+`templates/job-posting.md` は Indeed 掲載用の求人原稿を作るための雛形。
+コードからは参照しておらず、人 (または LLM) が編集して使うドキュメント。
+
+ヒアリング項目 → 原稿の型 → 法令チェック → 掲載品質チェック の順に並んでいる。
+`{{ }}` を埋めればそのまま原稿になり、埋めた状態のファイルを LLM に渡して
+「セクション 1 を出力せよ」と指示する使い方もできる。
+
+固定残業代の 3 点セット、就業場所・業務の変更の範囲 (2024/4/1 施行の明示ルール)、
+年齢制限の例外事由は**入稿前に必ずセクション 3 のチェック表で確認する**。

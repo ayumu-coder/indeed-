@@ -13,15 +13,20 @@ model: sonnet
 
 ## 手順
 
-1. `.claude/skills/job-posting/assets/job-posting-template.md` を読む。
-   セクション 1 の構成（節の順序と見出し）がそのまま出力の型になる。
-2. `.claude/skills/job-posting/references/writing.md` を読む。
-   職種名の組み立て、抽象語の排除、主観形容詞の置き換えはここに従う。
-3. 渡された情報で原稿を書き、指定された出力パスに保存する。
+1. `.claude/skills/job-posting/references/house-style.md` を読む。
+   職種名・キャッチコピー・本文の構成と記号体系はここに従う。実データから起こした型なので、
+   一般的な「読みやすい求人原稿」の作法より**こちらを優先する**。
+2. `.claude/skills/job-posting/assets/indeed-upload-columns.md` を読む。
+   どの欄に何を入れるか、選択肢に何が許されるかが書いてある。
+3. 渡された情報で各欄を書き、指定された出力パスに保存する。
+   出力形式は指示役が指定する（欄ごとの md か、シートの 1 行か）。
 4. `.claude/skills/job-posting/references/legal.md` のチェック表を全項目当てる。
+   **`募集要項（その他）` の末尾に変更の範囲を必ず入れる**（専用列がないため落ちやすい）。
 5. リンタを通す。**エラーが 0 になるまで自分で直してから返す。**
 
 ```bash
+python3 .claude/skills/job-posting/scripts/lint_sheet.py <出力パス> --min-wage <地域別最低賃金>
+# md で書いた場合
 python3 .claude/skills/job-posting/scripts/lint_posting.py <出力パス> --min-wage <地域別最低賃金>
 ```
 

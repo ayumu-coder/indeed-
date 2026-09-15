@@ -1,0 +1,161 @@
+"""求人原稿の判定に共通で使う語彙と小道具。
+
+原稿 md を見る lint_posting.py と、アップロード用シートを見る lint_sheet.py が
+同じ NG 表現の定義を共有するために切り出してある。片方だけ直して判定がずれるのを防ぐ。
+"""
+
+from __future__ import annotations
+
+import re
+import unicodedata
+from dataclasses import dataclass
+
+ERROR = "error"
+WARN = "warn"
+
+
+@dataclass(frozen=True)
+class Finding:
+    target: str
+    severity: str
+    code: str
+    message: str
+    hint: str = ""
+
+
+def visual_width(text: str) -> float:
+    """全角換算の文字数。媒体の表示幅は文字数ではなく幅で決まる。"""
+    return sum(2 if unicodedata.east_asian_width(ch) in "WFA" else 1 for ch in text) / 2
+
+
+# --- 年齢 ---------------------------------------------------------------
+# 労働施策総合推進法 9 条。例外事由の明記があれば警告に落とす。
+AGE_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"(?<![0-9])[0-9]{2}\s*歳\s*(?:以上|以下|未満|まで)", "年齢の上限・下限"),
+    (r"[0-9]{2}\s*[〜~ー-]\s*[0-9]{2}\s*歳", "年齢レンジ"),
+    (r"若手(?:の方)?(?:歓迎|募集|限定)", "若年層の限定"),
+    (r"(?:シニア|中高年)(?:の方)?(?:歓迎|募集|限定)", "年齢層の限定"),
+    (r"新卒(?:のみ|限定)", "新卒限定"),
+)
+AGE_EXEMPTION_HINTS = (
+    "例外事由",
+    "定年",
+    "労働基準法",
+    "長期勤続によるキャリア形成",
+    "長期キャリア形成",
+    "技能・ノウハウの継承",
+)
+
+# 「20代活躍中」「20代30代スタッフ多数活躍中」は在籍者の構成を示す表現で、
+# 応募を年齢で制限するものではないため違反ではない。実データでも多用されている。
+# ただし募集条件の文脈に置くと制限と読まれうるので、警告として一度目に入れる。
+AGE_SOFT_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"[0-9]{2}\s*代[^\n。]{0,8}?(?:活躍|多数)", "年齢層に触れる表現"),
+)
+
+# --- 性別 ---------------------------------------------------------------
+GENDER_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"営業マン|セールスマン", "営業職 と書く"),
+    (r"看護婦|看護夫", "看護師 と書く"),
+    (r"保母|保父", "保育士 と書く"),
+    (r"ウェイトレス|ウェイター", "ホールスタッフ と書く"),
+    (r"スチュワーデス", "客室乗務員 と書く"),
+    (r"(?:女性|男性|婦人)(?:の方)?(?:限定|のみ|歓迎|活躍中|活躍)", "性別を外して「20代・30代活躍中」と書く"),
+    (r"(?:男女)いずれか", "性別による限定は書けない"),
+)
+
+# --- 身体的要件・属性 ---------------------------------------------------
+BODY_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"身長\s*[0-9]{3}\s*cm", "身長要件（間接差別）"),
+    (r"体重\s*[0-9]{2,3}\s*kg", "体重要件（間接差別）"),
+    (r"容姿(?:端麗|に自信)", "容姿要件"),
+)
+
+NATIONALITY_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"日本国籍(?:の方)?(?:限定|のみ|に限る)", "国籍による限定"),
+    (r"外国籍(?:の方)?(?:不可|お断り)", "国籍による排除"),
+    (r"既婚者(?:のみ|限定)|未婚者(?:のみ|限定)|子[供ど]も(?:のいない|がいない)", "家族構成による限定"),
+)
+
+APPLICANT_COST_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"登録料|入会金|(?:研修|教材|講習)費(?:用)?(?:は)?(?:自己負担|ご負担)", "応募者への金銭負担の要求"),
+)
+
+# 日本語能力の要件。業務上の必要性を超えると国籍による間接差別になりうる。
+LANGUAGE_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"日本語能力試験\s*N1", "N1 は最上位。業務上そこまで必要か（N2・N3 で足りないか）確認する"),
+)
+
+PLACEHOLDER_RE = re.compile(r"\{\{\s*(?!要確認)([^}]+?)\s*\}\}")
+UNRESOLVED_RE = re.compile(r"\{\{\s*要確認[:：]?\s*([^}]*?)\s*\}\}")
+
+OVERTIME_HOURS_RE = re.compile(r"残業[^\n。]{0,12}?[0-9０-９][0-9０-９．.]*\s*時間")
+
+
+def match_patterns(
+    text: str,
+    target: str,
+    patterns: tuple[tuple[str, str], ...],
+    code: str,
+    severity: str,
+    label: str,
+) -> list[Finding]:
+    findings = []
+    for pattern, note in patterns:
+        found = re.search(pattern, text)
+        if found:
+            findings.append(Finding(target, severity, code, f"{label}: 「{found.group(0)}」", note))
+    return findings
+
+
+def check_age_expressions(text: str, target: str) -> list[Finding]:
+    """年齢表現。例外事由が併記されていれば適法なので警告に落とす。"""
+    hits = match_patterns(text, target, AGE_PATTERNS, "age-limit", ERROR, "年齢制限の表現")
+    if hits and any(hint in text for hint in AGE_EXEMPTION_HINTS):
+        hits = [
+            Finding(
+                f.target, WARN, f.code,
+                f.message + "（例外事由の記載あり）",
+                "期間の定めのない契約かつ職務経験不問であることを確認する。経験を要件にすると例外事由 3 号イは成立しない",
+            )
+            for f in hits
+        ]
+    return hits + match_patterns(text, target, AGE_SOFT_PATTERNS, "age-soft", WARN, "年齢層に触れる表現")
+
+
+def check_discrimination(text: str, target: str) -> list[Finding]:
+    """性別・身体・属性・言語要件をまとめて当てる。"""
+    return (
+        match_patterns(text, target, GENDER_PATTERNS, "gender", ERROR, "性別を限定する表現")
+        + match_patterns(text, target, BODY_PATTERNS, "physical", ERROR, "身体的要件")
+        + match_patterns(text, target, NATIONALITY_PATTERNS, "attribute", ERROR, "属性による限定")
+        + match_patterns(text, target, APPLICANT_COST_PATTERNS, "applicant-cost", ERROR, "応募者への金銭負担")
+        + match_patterns(text, target, LANGUAGE_PATTERNS, "language", WARN, "日本語能力の要件")
+    )
+
+
+def check_placeholders(text: str, target: str) -> list[Finding]:
+    findings = []
+    for found in UNRESOLVED_RE.finditer(text):
+        findings.append(Finding(target, WARN, "unresolved", f"未確認のまま: {found.group(1) or '項目不明'}", "入稿前に確定させる"))
+    for found in PLACEHOLDER_RE.finditer(text):
+        findings.append(Finding(target, ERROR, "placeholder", f"プレースホルダが残っている: {{{{{found.group(1)}}}}}"))
+    return findings
+
+
+def render(findings: list[Finding], unit: str, count: int) -> str:
+    """人が読む形に整える。JSON 出力は呼び出し側が組み立てる。"""
+    lines = []
+    for target in sorted({f.target for f in findings}):
+        lines.append(f"\n{target}")
+        for finding in findings:
+            if finding.target != target:
+                continue
+            mark = "ERROR" if finding.severity == ERROR else "WARN "
+            lines.append(f"  {mark} [{finding.code}] {finding.message}")
+            if finding.hint:
+                lines.append(f"        → {finding.hint}")
+    errors = sum(f.severity == ERROR for f in findings)
+    warnings = len(findings) - errors
+    lines.append(f"\n{count} {unit} / エラー {errors} 件 / 警告 {warnings} 件")
+    return "\n".join(lines)

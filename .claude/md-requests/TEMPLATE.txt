@@ -1,0 +1,7 @@
+# md 変更依頼テンプレート。コピーして YYYYMMDD-<slug>.txt として保存する (このファイル自体は編集しない)。
+target: docs/EXAMPLE.md            # 対象 md (新規なら "new: <path>")
+requested_by: <branch or session>  # 依頼元
+summary: <1 行要約>
+detail: |
+  <変更内容を具体的に。コード変更との対応があれば commit / PR を明記>
+reason: <なぜ必要か>

@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash|mcp__github__create_or_update_file|mcp__github__delete_file|mcp__github__push_files",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --experimental-strip-types \"$CLAUDE_PROJECT_DIR/scripts/md-guard.ts\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

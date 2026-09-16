@@ -19,6 +19,8 @@ import re
 import sys
 import unicodedata
 from dataclasses import dataclass, asdict
+
+from rules import check_wage_in_copy
 from pathlib import Path
 
 ERROR = "error"
@@ -119,6 +121,19 @@ def extract_job_title(text: str) -> str | None:
     if match is None:
         match = re.search(r"^\s*(?:\*\*)?職種名(?:\*\*)?\s*[:：]\s*(.+)$", text, flags=re.MULTILINE)
         return match.group(1).strip() if match else None
+    for line in text[match.end():].splitlines():
+        stripped = line.strip().strip("`")
+        if stripped:
+            return stripped
+    return None
+
+
+def extract_catch_copy(text: str) -> str | None:
+    """「キャッチコピー」見出しの直後、または `キャッチコピー: ...` 行の中身。"""
+    match = re.search(r"^#{1,6}\s*(?:求人)?キャッチコピー\s*$", text, flags=re.MULTILINE)
+    if match is None:
+        inline = re.search(r"^\s*(?:\*\*)?(?:求人)?キャッチコピー(?:\*\*)?\s*[:：|]\s*(.+)$", text, flags=re.MULTILINE)
+        return inline.group(1).strip().strip("|").strip() if inline else None
     for line in text[match.end():].splitlines():
         stripped = line.strip().strip("`")
         if stripped:
@@ -277,6 +292,10 @@ def lint(path: Path, min_wage: int | None) -> list[Finding]:
     findings += check_patterns(text, name, NATIONALITY_PATTERNS, "attribute", ERROR, "属性による限定")
     findings += check_patterns(text, name, APPLICANT_COST_PATTERNS, "applicant-cost", ERROR, "応募者への金銭負担")
     findings += check_misc(text, name)
+    catch = extract_catch_copy(text)
+    if catch:
+        findings += [Finding(f.target, f.severity, f.code, f.message, f.hint)
+                     for f in check_wage_in_copy(catch, name)]
     return findings
 
 

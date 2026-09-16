@@ -91,6 +91,26 @@ UNRESOLVED_RE = re.compile(r"\{\{\s*要確認[:：]?\s*([^}]*?)\s*\}\}")
 
 OVERTIME_HOURS_RE = re.compile(r"残業[^\n。]{0,12}?[0-9０-９][0-9０-９．.]*\s*時間")
 
+# キャッチコピーに書かれた給与額。給与欄と二重に書くと、片方だけ改定されたときに
+# 食い違って誤認表示になる。拠点ごとに給与が違う案件では、全行同一のキャッチコピーに
+# 正しい額を書きようがない。
+WAGE_IN_COPY_RE = re.compile(
+    r"(?:月給|年収|時給|日給|週給|年俸|月収)[^\n]{0,6}?[0-9０-９][0-9０-９,，.．]*\s*(?:万|千)?円"
+    r"|[0-9０-９][0-9０-９,，.．]*\s*(?:万|千)?円[^\n]{0,4}?(?:〜|~|以上|スタート)"
+)
+
+
+def check_wage_in_copy(text: str, target: str, label: str = "キャッチコピー") -> list[Finding]:
+    """キャッチコピーに給与額が入っていないかを見る。"""
+    found = WAGE_IN_COPY_RE.search(text)
+    if found is None:
+        return []
+    return [Finding(
+        target, WARN, "copy-wage",
+        f"{label}に給与額が入っている: 「{found.group(0)}」",
+        "給与は給与欄と本文で扱う。キャッチコピーには金額以外の訴求を置く",
+    )]
+
 
 def match_patterns(
     text: str,

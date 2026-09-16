@@ -3,7 +3,7 @@
 ## プロジェクト概要
 
 Indeed 経由の応募者向け面接リマインドメール送信 (`src/main.ts`) と、監視対象送信者からのメールを LINE へ転送する処理 (`src/forward-main.ts`)。
-TypeScript / Node 22 (`--experimental-strip-types`)、GitHub Actions で日次実行。テストは `npm test`。
+TypeScript / Node 22 (`--experimental-strip-types`)。GitHub Actions で実行 (リマインドは日次 09:00 JST `daily-reminder.yml`、LINE 転送は 10 分毎 `gmail-line-forward.yml`)。テストは `npm test`。
 
 ## Markdown (*.md) の運用ルール — 必読
 
@@ -11,7 +11,7 @@ TypeScript / Node 22 (`--experimental-strip-types`)、GitHub Actions で日次�
 それ以外のセッション (人間の対話セッション、他の Routine、サブエージェント) は md を書き込まない。
 
 - 強制手段: `.claude/settings.json` の PreToolUse フック (`scripts/md-guard.ts`) が、監査役以外のセッションからの
-  Write / Edit / Bash / GitHub MCP による md 書き込みを拒否する。
+  Write / Edit / MultiEdit / NotebookEdit / Bash / GitHub MCP (create_or_update_file, delete_file, push_files) による md 書き込みを拒否する。
   監査役セッションの ID は `.claude/md-auditor.json` の `auditorSessionIds` で管理する。
 - md の変更が必要になった場合は、`.claude/md-requests/TEMPLATE.txt` を複製して
   `.claude/md-requests/YYYYMMDD-<slug>.txt` に依頼を書く (対象ファイル / 変更内容 / 理由)。

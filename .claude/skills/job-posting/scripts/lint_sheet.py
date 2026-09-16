@@ -319,6 +319,10 @@ def check_location_match(row: dict[str, str], target: str) -> list[Finding]:
     tail = re.split(r"[｜|/／]", title)[-1].strip()
     if not tail or visual_width(tail) > 12:
         return []
+    # 末尾が地名だと読めるときだけ突き合わせる。「正社員」や職種名で終わる職種名は
+    # そもそも地名を持たないので、ここで警告を出しても直しようがない。
+    if not re.search(r"(都|道|府|県|市|区|町|村|駅|支店|営業所|サービスオフィス|センター)$", tail):
+        return []
     place = re.sub(r"(駅|支店|営業所|サービスオフィス|センター)$", "", tail)
     if len(place) < 2:
         return []

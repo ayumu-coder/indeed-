@@ -2,6 +2,18 @@
 
 md 監査役セッションの日次作業記録。直近 30 日分のみ保持し、古いエントリは削除する。
 
+## 2026-09-17
+
+- 確認した md: 3 件 (`CLAUDE.md`, `docs/MD_INDEX.md`, `docs/md-audit-log.md`)。未追跡 md なし。
+- 依頼キュー: 依頼なし (`TEMPLATE.txt` のみ)。
+- 前回監査 (commit eb2d0a2) 以降、作業ブランチにコード変更なし。md とコード (src/, scripts/, .github/workflows/, package.json) の矛盾・リンク切れなし。
+- 実施した変更:
+  - `docs/MD_INDEX.md`: 最終監査日を更新。
+  - `docs/md-audit-log.md`: 本エントリを追記。
+- 却下した依頼: なし。
+- 要人間判断 (継続):
+  - `.github/workflows/gmail-line-forward.yml` の cron コメントの README 参照 (削除済み) は未対応のまま。
+
 ## 2026-09-16
 
 - 確認した md: 1 件 (`CLAUDE.md`)。未追跡 md なし。

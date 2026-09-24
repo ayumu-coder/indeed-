@@ -32,6 +32,7 @@ from rules import (
     check_age_expressions,
     check_discrimination,
     check_placeholders,
+    check_title_words,
     check_wage_in_copy,
     render,
     visual_width,
@@ -395,6 +396,7 @@ def lint_row(row: dict[str, str], index: int, min_wage: int | None) -> list[Find
         + check_location_match(row, target)
         + check_consistency(row, target, blob)
         + check_wage_in_copy(row.get("求人キャッチコピー", ""), target)
+        + check_title_words(row.get("職種名", ""), target)
         + check_age_expressions(blob, target)
         + check_discrimination(blob, target)
         + check_placeholders(blob, target)

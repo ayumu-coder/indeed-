@@ -86,6 +86,29 @@ LANGUAGE_PATTERNS: tuple[tuple[str, str], ...] = (
     (r"日本語能力試験\s*N1", "N1 は最上位。業務上そこまで必要か（N2・N3 で足りないか）確認する"),
 )
 
+# 職種名に使わない語（2026-09-24 追加）。キャッチコピーや本文は対象外。
+# 半角 OK と全角 ＯＫ だけを見る。小文字 "ok" まで拾うと Book などに誤反応するため。
+NG_IN_TITLE_RE = re.compile(r"OK|ＯＫ|歓迎")
+
+# 「OK」「歓迎」を外すときの言い換え。house-style.md の表と揃えてある。
+TITLE_LEAD_ALTERNATIVES = (
+    "未経験から", "経験不問", "未経験スタート", "資格不要", "業界未経験から",
+    "内勤中心", "訪問なし", "もくもく作業", "駅チカ", "シフト相談",
+)
+
+
+def check_title_words(text: str, target: str, label: str = "職種名") -> list[Finding]:
+    """職種名に OK・歓迎 が入っていないかを見る。"""
+    found = NG_IN_TITLE_RE.search(text)
+    if found is None:
+        return []
+    return [Finding(
+        target, WARN, "title-word",
+        f"{label}に「{found.group(0)}」が入っている",
+        "言い換え候補: " + " / ".join(TITLE_LEAD_ALTERNATIVES[:5]) + " ほか（house-style.md）",
+    )]
+
+
 PLACEHOLDER_RE = re.compile(r"\{\{\s*(?!要確認)([^}]+?)\s*\}\}")
 UNRESOLVED_RE = re.compile(r"\{\{\s*要確認[:：]?\s*([^}]*?)\s*\}\}")
 

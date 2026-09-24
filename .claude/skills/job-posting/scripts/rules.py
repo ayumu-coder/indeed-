@@ -109,6 +109,46 @@ def check_title_words(text: str, target: str, label: str = "職種名") -> list[
     )]
 
 
+# 箇条書きの体裁（2026-09-24 追加）。■ と ✔ の項目どうしは空行で離さない。
+# 空行はセクションの区切り（＝＝＝ の罫線）と見出し（【】《》）の前後にだけ置く。
+BULLET_PREFIX = ("■", "✔")
+SECTION_MARKERS = ("＝", "─", "✦", "【", "《", "◆", "＜")
+
+
+def _starts_bullet(line: str) -> bool:
+    return line.lstrip().startswith(BULLET_PREFIX)
+
+
+def check_bullet_spacing(text: str, target: str, label: str = "本文") -> list[Finding]:
+    """■ / ✔ の項目と項目のあいだに空行が入っていないかを見る。
+
+    項目に説明の行がぶら下がっている場合も拾う。空行のうしろが ■ / ✔ で、
+    空行から上へさかのぼる途中に ■ / ✔ の行があれば、項目どうしが離れている。
+    見出しや罫線に当たった時点で打ち切るので、セクションの区切りは対象にしない。
+    """
+    lines = text.split("\n")
+    findings = []
+    for i, line in enumerate(lines):
+        if line.strip() or i + 1 >= len(lines):
+            continue
+        nxt = lines[i + 1]
+        if not _starts_bullet(nxt):
+            continue
+        for back in range(i - 1, -1, -1):
+            prev = lines[back]
+            if not prev.strip() or prev.lstrip().startswith(SECTION_MARKERS):
+                break
+            if _starts_bullet(prev):
+                findings.append(Finding(
+                    target, WARN, "bullet-spacing",
+                    f"{label}の箇条書きに空行が入っている: "
+                    f"「{prev.lstrip()[:18]}」と「{nxt.lstrip()[:18]}」のあいだ",
+                    "■ と ✔ の項目どうしは続けて書く。空行は罫線と見出しの前後だけ",
+                ))
+                break
+    return findings
+
+
 PLACEHOLDER_RE = re.compile(r"\{\{\s*(?!要確認)([^}]+?)\s*\}\}")
 UNRESOLVED_RE = re.compile(r"\{\{\s*要確認[:：]?\s*([^}]*?)\s*\}\}")
 

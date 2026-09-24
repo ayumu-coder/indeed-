@@ -61,18 +61,14 @@
 ```
 ■ 業務概要
 {{jobSummary}}
-
 ■ 具体的な業務
 ・{{task1}}
 ・{{task2}}
 ・{{task3}}
-
 ■ 1日の流れ
 {{dailySchedule}}
-
 ■ 入社後のフォロー
 {{onboarding}}
-
 ■ 従事すべき業務の変更の範囲
 {{taskChangeScope}}
 ```
@@ -88,10 +84,8 @@
 
 ■ 固定残業代
 {{fixedOvertime}}
-
 ■ 昇給・賞与
 {{raiseBonus}}
-
 ■ モデル年収
 {{modelIncome}}
 ```

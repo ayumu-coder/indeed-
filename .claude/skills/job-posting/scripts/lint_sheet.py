@@ -31,6 +31,7 @@ from rules import (
     OVERTIME_HOURS_RE,
     check_age_expressions,
     check_discrimination,
+    check_bullet_spacing,
     check_placeholders,
     check_title_words,
     check_wage_in_copy,
@@ -397,6 +398,8 @@ def lint_row(row: dict[str, str], index: int, min_wage: int | None) -> list[Find
         + check_consistency(row, target, blob)
         + check_wage_in_copy(row.get("求人キャッチコピー", ""), target)
         + check_title_words(row.get("職種名", ""), target)
+        + check_bullet_spacing(row.get("募集要項（仕事内容）", ""), target, "仕事内容")
+        + check_bullet_spacing(row.get("募集要項（アピールポイント）", ""), target, "アピールポイント")
         + check_age_expressions(blob, target)
         + check_discrimination(blob, target)
         + check_placeholders(blob, target)

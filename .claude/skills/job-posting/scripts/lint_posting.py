@@ -20,7 +20,7 @@ import sys
 import unicodedata
 from dataclasses import dataclass, asdict
 
-from rules import check_title_words, check_wage_in_copy
+from rules import check_bullet_spacing, check_title_words, check_wage_in_copy
 from pathlib import Path
 
 ERROR = "error"
@@ -296,6 +296,8 @@ def lint(path: Path, min_wage: int | None) -> list[Finding]:
     if catch:
         findings += [Finding(f.target, f.severity, f.code, f.message, f.hint)
                      for f in check_wage_in_copy(catch, name)]
+    findings += [Finding(f.target, f.severity, f.code, f.message, f.hint)
+                 for f in check_bullet_spacing(text, name)]
     title = extract_job_title(text)
     if title is not None:
         findings += [Finding(f.target, f.severity, f.code, f.message, f.hint)

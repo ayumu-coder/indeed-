@@ -2,6 +2,19 @@
 
 md 監査役セッションの日次作業記録。直近 30 日分のみ保持し、古いエントリは削除する。
 
+## 2026-09-25
+
+- 確認した md: 3 件 (`CLAUDE.md`, `docs/MD_INDEX.md`, `docs/md-audit-log.md`)。未追跡 md なし。
+- 依頼キュー: 依頼なし (`TEMPLATE.txt` のみ)。
+- 前回監査 (commit 336e796) 以降、作業ブランチ・デフォルトブランチともに変更なし。md が参照するファイルはすべて実在し、記述と整合。
+- 実施した変更:
+  - `docs/MD_INDEX.md`: 最終監査日を更新。
+  - `docs/md-audit-log.md`: 本エントリを追記。
+- 却下した依頼: なし。
+- 要人間判断 (継続、2026-09-18 のエントリ参照):
+  - デフォルトブランチでの GitHub Actions ワークフロー削除 (commit 01b5574) と `CLAUDE.md` の「GitHub Actions で実行」記述の乖離。統合方針が未定のため未対応。
+  - 作業ブランチの `gmail-line-forward.yml` の cron コメントにある削除済み README への参照。
+
 ## 2026-09-24
 
 - 確認した md: 3 件 (`CLAUDE.md`, `docs/MD_INDEX.md`, `docs/md-audit-log.md`)。未追跡 md なし。

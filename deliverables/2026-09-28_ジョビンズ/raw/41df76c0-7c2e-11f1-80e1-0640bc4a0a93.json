@@ -1,0 +1,173 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 461395,
+  "vacancy_no": "00461394-05076",
+  "title": "【愛知】設計（地盤改良工事）｜完全未経験OK◉｜Uターン大歓迎🎉｜不動テトラGの安定基盤◎｜年間休日125日＆完全週休2日制（土日祝）で家族との時間も大切にできる🏠",
+  "company_name": "愛知ベース工業株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 0,
+    "minimum_industry_experience": 0,
+    "overall_experience": "N",
+    "minimum_education_level": "大学卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 461395,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 19,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件あり",
+      "pivot": {
+       "job_id": 461395,
+       "characteristic_id": 19
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 461395,
+       "characteristic_id": 10
+      }
+     },
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 461395,
+       "characteristic_id": 30
+      }
+     }
+    ]
+   },
+   "organization_name": "愛知ベース工業株式会社",
+   "estd_date": "2000年2月10日",
+   "capital": "3000万",
+   "number_of_employees": "74",
+   "head_office_location": "藤川町北荒古１５番地１",
+   "sales_revenue": "23億",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 420,
+    "max_year_salary": 560
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "建築・土木技術職",
+    "sub_job_type": "設計【土木】"
+   },
+   "update_date": "2026/09/10",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "🌟Uターン大歓迎！\n・理系の四大卒以上の方（学部指定なし）",
+    "years_of_experience": {
+     "other": "N",
+     "job_type": 0,
+     "industry": 0
+    },
+    "preferred_qualifications": [
+     "大学卒以上",
+     "理系の大学を卒業されている方\n工学部・建築学部を卒業されている方であれば大歓迎です！"
+    ],
+    "welcome_condition": "・理系の四大卒（工学部・建築学部）を卒業されている方"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "🏡「やっぱり、地元を支える仕事がしたい。」大学で学んだ理系の知識が、この街の未来の土台になる。\n\n当社では、現在『Uターン希望者・完全未経験の方を大歓迎』しています！🙌\nお任せするのは、すべての建物の基盤となる「地盤改良工事」の**設計職**。\n\n「設計の仕事って、経験がないと難しそう…」と思うかもしれませんが、心配いりません。\n理系の大学で学んだ基礎知識（分野は不問です！）があれば、専門知識は入社後にイチから身につけられます。\n\n派手さはなくても、街の安全を文字通り「足元から支える」なくてはならない重要インフラのお仕事です。\n住み慣れた地元の未来を創る側に回り、\n「家族との時間を増やしたい🍀」\n「地元で腰を据えて専門スキルを身につけたい🏠」という方を、私たちは全力で応援します！\n\n【仕事内容】\n住宅・店舗・工場などの建築計画に伴う「地盤改良設計」をお任せします。\n当社は地盤調査から設計・施工までを一貫して手掛けており、目に見えない地中の状態を明らかにし、\n建築物を根底から支え、将来的な安心・安全をお届けする重要な仕事です。\n\n＜具体的な業務内容＞\n・地盤調査データの解析：建設・建築の計画地におけるデータの分析\n・設計検討：建築計画および地盤データに応じた地盤改良工事の計画・検討\n・設計提案：最適な地盤改良工事や杭工事の設計提案\n・環境調査・その他：土壌環境調査および浄化工事に関する業務\n※ミルク状にしたセメント系固化材を注入し、\n　強固な改良体を造る「深層混合処理工法（柱状地盤改良工法）」をメインに扱います。\n\n＜担当する案件・プロジェクト＞\n住宅、店舗、工場などのほか、小規模〜中層建築物の基礎、河川築堤・護岸の基礎、\n道路・盛土の沈下防止など幅広い案件を担当します。\n（施工例：愛知県岡崎市の大型アウトレットパークにおける柱状地盤改良工事など）\n営業エリアである関東および関西の案件にも広く携わります。\n\n【入社後の流れ・教育体制（未経験でも安心！）】\n中途採用の方は、『入社後2ヶ月〜1年間（経験や習得度に応じて設定）の丁寧な研修期間』があります。\nまずは主要な各部署で業務を経験しながら、会社や仕事全体の流れを理解していただきます。\n配属後も先輩社員が教育係としてマンツーマンで付き添うため、\n専門的な知識もじっくりと学べる安心の環境です！\n\n【休日・休暇】\n＼業界トップクラス！年間休日125日＆完全週休2日制📅 ／\n「土木業界は休みが少ない…」そんなイメージを180度覆します！\n仕事もプライベートも、どちらも妥協しない働き方が可能です\n・年間休日125日（※当社カレンダーによる）\n・完全週休2日制（土・日）＋ 祝日休み\n・長期休暇もしっかり満喫！\n・年末年始休暇（約7日間）\n・GW休暇（約7日間）\n・夏季休暇（約7日間）\n・有給休暇（有給奨励日ありで取得しやすい環境です🎵）\n・慶弔休暇\n・産前・産後休暇 ／ 育児休暇（★取得実績あり）\n\n＜💡 ここがポイント！＞\nUターンして家族との時間が増えるだけでなく、\n旅行や趣味など「自分の時間」もしっかりリフレッシュできる休日数です。\nオンとオフのメリハリを大切にしたい方にぴったりの環境ですよ！\n\n【今後の成長】\n＼大手グループの安定基盤×さらなる成長へ！🚀／\n当社は、地盤改良のリーディングカンパニーである「不動テトラ」のグループ企業です！\n最大手の確かな技術力と安定した基盤があるからこそ、安心して長く働ける環境が整っています。\n\n現在はさらなる成長路線を突き進んでおり、\n『今後10年で現在の売上約23〜24億円から【30億円】への拡大』を目指しています！\n大好きな地元にいながら、業界トップクラスのグループの強みを活かし、\nスケールの大きな未来を一緒に創っていきませんか？\n夢と安定を同時に叶えられる環境です！🌟\n\n【🤝 応募者の皆様へ】\n最後までお読みいただき、ありがとうございました。\n\n転職は人生の大きな転機であり、特に「未経験からの挑戦」や地元へ戻る「Uターン」には不安も伴うかと思います。\nだからこそ当社では、あなたが安心して新しいスタートを切れるよう、\n面接時期の調整や入社準備など、最大限のサポートを惜しみません。\n\n「大学での理系の知識を活かしたい」\n「未経験から一生モノの専門スキルを身につけたい」\n「大好きな地元に貢献したい🏙️」\nその気持ちがあれば十分です。\n専門知識は私たちが責任を持ってイチから教えます。\n\n少しでも気になった方は、まずはカジュアルにお話してみませんか？\nあなたからのご応募を、スタッフ一同心よりお待ちしております！✨",
+    "job_description_detail": null,
+    "number_of_hires": "2",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月",
+     "working_hours": "8:30～17:30（実働8時間）\n※職種により変形労働時間あり",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "本社\n住所：愛知県岡崎市藤川町字北荒古15-1",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 420,
+      "max_year_salary": 560
+     },
+     "monthly_income": {
+      "min_month_salary": 30,
+      "max_month_salary": 40
+     },
+     "salary_detials": "月給：30万円〜40万円\n基本給：25万円〜33万円\n昇給：年1回（4月）\n残業代の有無：有（平日固定30h）\n\n【モデル年収】\n入社1年目：420万円〜560万円\n入社5年目：470万円〜610万円\n入社10年目：550万円〜700万円"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": "N",
+     "stock_options": "N",
+     "bonus_details": "年2回（6月、12月）",
+     "welfare_benefits": [
+      "産休/育休実績あり",
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": "■通勤手当（実費）\n■時間外勤務手当\n■役職手当\n■家賃手当",
+     "welfare_benefits_detail": "■社会保険完備\n■レクリエーション開催（バーベキュー、忘年会など）\n■スポーツジム・リゾートホテル会員\n■奨学金返還支援制度\n■資格取得奨励制度\n■退職金制度"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "■年間休日125日（2026年度）※当社カレンダーによる\n■完全週休2日制（土・日）\n■祝日休み\n■年末年始休暇 （約7日間）\n■GW休暇（約7日間）\n■夏季休暇（約7日間）\n■慶弔休暇\n■有給休暇：年5日の有給奨励日を設けており、取得しやすい環境です。\n※入社月に応じて有給休暇を付与しています。\n■産前・産後休暇（取得実績あり）\n■育児休暇（取得実績あり）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考→面接（1~2回）→内定"
+   },
+   "selection_flow": "書類選考→面接（1~2回）→内定",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

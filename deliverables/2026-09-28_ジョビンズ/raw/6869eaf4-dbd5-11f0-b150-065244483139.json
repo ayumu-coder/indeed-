@@ -1,0 +1,169 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 324818,
+  "vacancy_no": "00324817-b709c",
+  "title": "【愛知県】スマートカーライフプランナー(一般営業職)　※営業・販売経験者",
+  "company_name": "株式会社IDOM",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 1,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "Y",
+    "characteristics": [
+     {
+      "characteristic_id": 25,
+      "category": "day_off",
+      "title": "シフト制",
+      "pivot": {
+       "job_id": 324818,
+       "characteristic_id": 25
+      }
+     },
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 324818,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 324818,
+       "characteristic_id": 10
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社IDOM",
+   "estd_date": "1994/10/25",
+   "capital": "41億5,702万円",
+   "number_of_employees": "4023",
+   "head_office_location": "東京都千代田区丸の内20702JPタワー26階",
+   "sales_revenue": "4966億円",
+   "ipo": "未上場",
+   "industries": {
+    "industry": "小売業界",
+    "sub_industry": "自動車ディーラー"
+   },
+   "annual_salary": {
+    "min_year_salary": 350,
+    "max_year_salary": 500
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "営業",
+    "sub_job_type": "内勤営業、カウンターセールス"
+   },
+   "update_date": "2026/03/12",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・営業 or 接客販売経験が1年以上ある方（契約書を取り交わすもの）※業界不問\n・正社員歴：3年以上ある方\n・1年以内の早期離職歴がない方\n・入社までに普通自動車免許の取得必須（AT限定またはMT",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 1,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": "【歓迎条件】\n・同業界での営業 または 販売の経験がある方\n・チームマネジメント経験がある方\n・新人や後輩の指導・育成経験がある方"
+   },
+   "overview": {
+    "reason_for_recruitment": "事業拡大の伴う採用強化",
+    "job_description": "【仕事内容】\n損害車の査定及び買取業務をお任せします。\nまずは仕入先を増やすため、自動車修理工場やカーディーラー、板金工場などに連絡をとり、情報を集めましょう。\n未経験の方でも査定ができるよう、データベースやシステムを整えています。\n\n【仕事上で大切なことは、顧客と信頼関係を築くこと】\n顧客のもとに損害車が届いた際に連絡をいただけるよう、普段から関係性を深めておくことが大切です。\nというのも、顧客のもとにいつ、何台の損害車が届くかは、顧客自身も分かりません。それだけに、いざ損害車が届いた際に「いつも来てくれるはなまるの営業に知らせよう」と思い出していただく必要があります。\nまた、競合の営業とバッティングした際は、どちらに損害車を売るか検討していただくため、信頼関係の深さが重要になってきます。\n信頼関係が深まるよう、根気よく営業活動に取り組んでください。\n\n【仕事の流れ】\n▼顧客を訪問\n損害車の状況や年代・車種といった車の状態を査定システムでチェックし、買取価格を交渉します。\nデータベースもありますが、車の写真をメールで送れば、社内の先輩メンバーが随時アドバイスやサポートをします。\n\n▼査定に基づいた買取価格で契約\nその後は自社で運営するオークションサイトを通じて販売。\n顧客との信頼関係を維持することができれば、安定した契約に繋げることができます。\n\n※買い取った車の名義変更などの諸業務は事務員が担当しており、販売は販売課が担当するため、営業は買取業務に専念することができます。\n※入社年数に関らず、意欲のある方にはどんどんポジションをお任せしていきます。\n\n■ポイント\n【「マイ営業車」あるし、「売らない営業」だし。快適です】\n雨の日も、暑い日も、寒い日も、快適に過ごせます。\nなぜなら「マイ営業車」があるから。ガソリン代や高速代もすべて会社が負担。これが同社の営業です。\n\n【決して「売る」仕事ではありません】\nお任せするのは、損害車の買取営業。車種や年式、走行距離、車の状態をチェックして、適正価格で「買い取る」仕事です。\nそのため、ガツガツ押し売りするなんてことはありません。むしろ、顧客から「買い取ってほしい」「査定してほしい」との連絡を受けます。\n簡単に査定できる仕組みがあるので特別な知識や経験は不要です。\n\n【業界トップクラスの実績】\n同社は業界でもトップクラスの実績があり、高値で買い取れるため、契約率も60％ほどと高めです。\n\n【実績に応じたインセンティブ】\n月給28万5千円スタートなので、入社1年目の平均年収は440万円程度。\n2〜3年目で支店長になり年収800万円ほどを稼ぐ人もいます。\n\n【勤務地候補】各支店（勤務地は希望を考慮）＊昇格のタイミングで転勤の可能性あり。ただし、本人の希望がある場合のみとなります。\n大阪・札幌・盛岡・仙台・新潟・水戸・長野・東京・千葉・埼玉・横浜・金沢・静岡・名古屋・広島・鳥取・高松・福岡・鹿児島・沖縄\n\n【ポイント】\n当社の強みは、、、ワンストップで仕入れから販売までを行えること。\n自社でインターネットオークションを運営しており、クライアントの4割は海外です。\n海外とは累計110各国の販路があります！",
+    "job_description_detail": "会社規定に準ずる",
+    "number_of_hires": "50",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n4か月",
+     "working_hours": "【勤務時間】\n10:00~20:00の間でシフト制(実働8時間)",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n・全国47都道府県にある直営店舗および事業所（https://221616.com/shop/）\n・エリア社員制度：３つの働き方の形態があります。\n　→ ナショナル社員（全国で勤務）\n　→ エリア限定社員（選択した12エリア内で勤務）\n　　　北海道、北東北、南東北、北関東、南関東・甲信、東海、北陸、近畿、中国、四国、\n　　　北九州、南九州・沖縄\n　→ 都道府県限定社員（選択した都道府県内で勤務）\n・初期配属のご希望は選考内にてご希望をお聞きして相談させていただきますが、ご希望に添えない場合もあります。\n※受動喫煙防止対策：屋内全面禁煙\n\n・転勤：あり\n※就業場所の変更の範囲：上記のエリア社員制度の範囲内にある直営店舗、事業所",
+     "scope_of_change": "上記のエリアの範囲内にある直営店舗、事業所内での異動の可能性あり",
+     "possibility_of_work": "Y"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 350,
+      "max_year_salary": 500
+     },
+     "monthly_income": {
+      "min_month_salary": 25,
+      "max_month_salary": 30
+     },
+     "salary_detials": "【給与詳細】\n固定みなし残業代：月20時間分の「35,715円〜」が含まれています\n固定みなし残業代は残業がない場合も支給し、超過する場合は別途支給します\n一定期間経過より能力評価が反映され変動します\n※ご経歴を加味して給与算定を行います\n※配属先によって手当が異なります\n\n\n【モデル年収】\n・28歳 セールスマネージャー：年収8,350,000円 (月給500,000円 + 賞与 + インセンティブ)\n・34歳 ストアマネージャー：年収9,450,000円 (月給600,000円 + 賞与 + インセンティブ)\n・38歳 エリアマネージャー：年収10,420,000円 (月給615,000円 + 賞与 + インセンティブ)\n\n【固定残業代（円）】\n35715"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": "Y",
+     "stock_options": null,
+     "bonus_details": "年2回(6月/12月）※会社規定に準ずる",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり",
+      "産休/育休実績あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【福利厚生詳細】\n・厚生年金、健康保険、雇用保険、労災保険\n・確定拠出年金（401k）\n・社員割引（クルマ購入、売却、アフターサービス）\n・従業員持株会\n・団体保険割引\n・各種レジャー施設割引\n・社宅制度（独身、家族）：引越し費用、敷金・礼金、家賃補助、転居手当\n・単身赴任制度：引越し費用、敷金・礼金、家賃補助、単身赴任手当、帰省交通費、転居手当\n・妊活支援\n　時短・休職が利用可能（入社1年後から可）\n　不妊治療補助金制度\n・育児時短勤務の対象年齢引き上げ：6歳から「12歳」まで拡大"
+    },
+    "holiday": {
+     "holiday": "シフト制",
+     "holiday_details": "【休日詳細】\n・シフト制/休日:月9日以上\n・長期休暇(GW、夏季、年末年始)、有給休暇(試用期間終了後付与)\n・慶弔休暇、特別休暇、出産/育児休暇、・介護休暇\n・年間休日：120日\n※上記内訳／公休：108日（9日/月×12か月）、有給休暇：5日（年間の取得義務分）、ライフサポート休暇：7日（有給とは別"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "【面接回数】\n1回\n\n【適性検査の有無】\n有\n\n【1次面接官】\n採用担当"
+   },
+   "selection_flow": "【面接回数】\n1回\n\n【適性検査の有無】\n有\n\n【1次面接官】\n採用担当",
+   "amount_of_sales": "4966億円",
+   "industry": "小売業界",
+   "sub_industry": "自動車ディーラー",
+   "postal_code": "100-0005",
+   "prefecture": "東京都",
+   "city": "千代田区",
+   "street_address": "丸の内20702JPタワー26階"
+  },
+  "can_recommend": true
+ }
+}

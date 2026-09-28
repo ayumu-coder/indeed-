@@ -1,0 +1,591 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 359980,
+  "vacancy_no": "00359978-4eb4c",
+  "title": "【未経験OK！】機械設計エンジニア ★自動車・医療機器・航空関連等　※無期雇用派遣（正社員）※",
+  "company_name": "株式会社メイテックフィルダーズ",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高専/短大/専門卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 359980,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 13,
+      "category": "work_environment",
+      "title": "フレックス制",
+      "pivot": {
+       "job_id": 359980,
+       "characteristic_id": 13
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 359980,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社メイテックフィルダーズ",
+   "estd_date": "1979/12/25",
+   "capital": "1億2,000万円",
+   "number_of_employees": "4,576名（2024年3月期）",
+   "head_office_location": "東京都台東区上野1-1-10 オリックス上野1丁目ビル",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "人材サービス・アウトソーシング業界・コールセンター",
+    "sub_industry": "技術系アウトソーシング（特定技術者派遣）"
+   },
+   "annual_salary": {
+    "min_year_salary": 400,
+    "max_year_salary": 720
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 1,
+     "name": "北海道",
+     "name_kana": "ﾎｯｶｲﾄﾞｳ"
+    },
+    {
+     "id": 2,
+     "name": "青森県",
+     "name_kana": "ｱｵﾓﾘｹﾝ"
+    },
+    {
+     "id": 3,
+     "name": "岩手県",
+     "name_kana": "ｲﾜﾃｹﾝ"
+    },
+    {
+     "id": 4,
+     "name": "宮城県",
+     "name_kana": "ﾐﾔｷﾞｹﾝ"
+    },
+    {
+     "id": 5,
+     "name": "秋田県",
+     "name_kana": "ｱｷﾀｹﾝ"
+    },
+    {
+     "id": 6,
+     "name": "山形県",
+     "name_kana": "ﾔﾏｶﾞﾀｹﾝ"
+    },
+    {
+     "id": 7,
+     "name": "福島県",
+     "name_kana": "ﾌｸｼﾏｹﾝ"
+    },
+    {
+     "id": 8,
+     "name": "茨城県",
+     "name_kana": "ｲﾊﾞﾗｷﾞｹﾝ"
+    },
+    {
+     "id": 9,
+     "name": "栃木県",
+     "name_kana": "ﾄﾁｷﾞｹﾝ"
+    },
+    {
+     "id": 10,
+     "name": "群馬県",
+     "name_kana": "ｸﾞﾝﾏｹﾝ"
+    },
+    {
+     "id": 11,
+     "name": "埼玉県",
+     "name_kana": "ｻｲﾀﾏｹﾝ"
+    },
+    {
+     "id": 12,
+     "name": "千葉県",
+     "name_kana": "ﾁﾊﾞｹﾝ"
+    },
+    {
+     "id": 13,
+     "name": "東京都",
+     "name_kana": "ﾄｳｷｮｳﾄ"
+    },
+    {
+     "id": 14,
+     "name": "神奈川県",
+     "name_kana": "ｶﾅｶﾞﾜｹﾝ"
+    },
+    {
+     "id": 15,
+     "name": "新潟県",
+     "name_kana": "ﾆｲｶﾞﾀｹﾝ"
+    },
+    {
+     "id": 16,
+     "name": "富山県",
+     "name_kana": "ﾄﾔﾏｹﾝ"
+    },
+    {
+     "id": 18,
+     "name": "石川県",
+     "name_kana": "ｲｼｶﾜｹﾝ"
+    },
+    {
+     "id": 19,
+     "name": "福井県",
+     "name_kana": "ﾌｸｲｹﾝ"
+    },
+    {
+     "id": 17,
+     "name": "山梨県",
+     "name_kana": "ﾔﾏｼﾅｹﾝ"
+    },
+    {
+     "id": 20,
+     "name": "長野県",
+     "name_kana": "ﾅｶﾞﾉｹﾝ"
+    },
+    {
+     "id": 21,
+     "name": "岐阜県",
+     "name_kana": "ｷﾞﾌｹﾝ"
+    },
+    {
+     "id": 22,
+     "name": "静岡県",
+     "name_kana": "ｼｽﾞｵｶｹﾝ"
+    },
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    },
+    {
+     "id": 24,
+     "name": "三重県",
+     "name_kana": "ﾐｴｹﾝ"
+    },
+    {
+     "id": 25,
+     "name": "滋賀県",
+     "name_kana": "ｼｶﾞｹﾝ"
+    },
+    {
+     "id": 26,
+     "name": "京都府",
+     "name_kana": "ｷｮｳﾄﾌ"
+    },
+    {
+     "id": 27,
+     "name": "大阪府",
+     "name_kana": "ｵｵｻｶﾌ"
+    },
+    {
+     "id": 28,
+     "name": "兵庫県",
+     "name_kana": "ﾋｮｳｺﾞｹﾝ"
+    },
+    {
+     "id": 29,
+     "name": "奈良県",
+     "name_kana": "ﾅﾗｹﾝ"
+    },
+    {
+     "id": 30,
+     "name": "和歌山県",
+     "name_kana": "ﾜｶﾔﾏｹﾝ"
+    },
+    {
+     "id": 31,
+     "name": "鳥取県",
+     "name_kana": "ﾄｯﾄﾘｹﾝ"
+    },
+    {
+     "id": 32,
+     "name": "島根県",
+     "name_kana": "ｼﾏﾈｹﾝ"
+    },
+    {
+     "id": 33,
+     "name": "岡山県",
+     "name_kana": "ｵｶﾔﾏｹﾝ"
+    },
+    {
+     "id": 34,
+     "name": "広島県",
+     "name_kana": "ﾋﾛｼﾏｹﾝ"
+    },
+    {
+     "id": 35,
+     "name": "山口県",
+     "name_kana": "ﾔﾏｸﾞﾁｹﾝ"
+    },
+    {
+     "id": 36,
+     "name": "徳島県",
+     "name_kana": "ﾄｸｼﾏｹﾝ"
+    },
+    {
+     "id": 37,
+     "name": "香川県",
+     "name_kana": "ｶｶﾞﾜｹﾝ"
+    },
+    {
+     "id": 38,
+     "name": "愛媛県",
+     "name_kana": "ｴﾋﾒｹﾝ"
+    },
+    {
+     "id": 39,
+     "name": "高知県",
+     "name_kana": "ｺｳﾁｹﾝ"
+    },
+    {
+     "id": 40,
+     "name": "福岡県",
+     "name_kana": "ﾌｸｵｶｹﾝ"
+    },
+    {
+     "id": 41,
+     "name": "佐賀県",
+     "name_kana": "ｻｶﾞｹﾝ"
+    },
+    {
+     "id": 42,
+     "name": "長崎県",
+     "name_kana": "ﾅｶﾞｻｷｹﾝ"
+    },
+    {
+     "id": 43,
+     "name": "熊本県",
+     "name_kana": "ｸﾏﾓﾄｹﾝ"
+    },
+    {
+     "id": 44,
+     "name": "大分県",
+     "name_kana": "ｵｵｲﾀｹﾝ"
+    },
+    {
+     "id": 45,
+     "name": "宮崎県",
+     "name_kana": "ﾐﾔｻﾞｷｹﾝ"
+    },
+    {
+     "id": 46,
+     "name": "鹿児島県",
+     "name_kana": "ｶｺﾞｼﾏｹﾝ"
+    },
+    {
+     "id": 47,
+     "name": "沖縄県",
+     "name_kana": "ｵｷﾅﾜｹﾝ"
+    },
+    {
+     "id": 48,
+     "name": "海外",
+     "name_kana": "ｶｲｶﾞｲ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "エンジニア【機械・電気・電子・半導体・制御】",
+    "sub_job_type": "その他機械・機構設計"
+   },
+   "update_date": "2026/03/05",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n専門学校以上で力学・製図・CADの履修経験をお持ちの方（実務経験1年未満の方）\n\n＊「生涯プロエンジニア」として定年まで活躍できる環境を提供＊\n＊定年に到達したエンジニアは300名以上。再雇用制度もあり＊\n【企業について】 エンジニアの自己実現支援を大切にしています。\n■「透明な評価制度」→面談の実施、保有案件の全開示\n■「働きやすい労働環境」→残業月20時間程度\n■「充実の待遇」→例:賞与約145万(2023年冬・2024年夏実績・管理職を除く社員平均)\n■「誰でも学べる環境」→受講したい研修を664もの講座から選べます",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高専/短大/専門卒以上",
+     null
+    ],
+    "welcome_condition": null
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n【職務内容】\n設計開発（３DCADを用いた製品・装置等の機構・筐体設計 等）、設計周辺の実験・評価、各種解析、生産技術業務等（変更の範囲）当社の定める業務。詳細は就業条件明示書に記載。\n\nご経験・v希望に合わせて大手メーカーを中心とした取引先にて、製品・設備の機構設計・筐体設計・冶具設計・解析評価　等に携わっていただきます。大手から中堅企業まで約1,200社以上の案件からアサイン先を決定。\n・自動車…内装品の樹脂設計、トランスミッションの設計開発　\n・航空宇宙…回転翼航空機装備品の設計開発、ロケット用油圧機器の開発\n・医療用機器…血液分析装置の設計、医療用X線装置の設計開発\n・ロボット…産業用ロボットアームの機構設計 など\n（変更の範囲）当社の定める業務。詳細は就業条件明示書に記載。",
+    "job_description_detail": null,
+    "number_of_hires": "3",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n有り（3ヵ月）",
+     "working_hours": "【勤務時間】\n9：00～18：00(休憩時間12:00～13:00）実働8時間\n※フレックスタイム制度有り",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "北海道",
+       "name_kana": "ﾎｯｶｲﾄﾞｳ"
+      },
+      {
+       "name": "青森県",
+       "name_kana": "ｱｵﾓﾘｹﾝ"
+      },
+      {
+       "name": "岩手県",
+       "name_kana": "ｲﾜﾃｹﾝ"
+      },
+      {
+       "name": "宮城県",
+       "name_kana": "ﾐﾔｷﾞｹﾝ"
+      },
+      {
+       "name": "秋田県",
+       "name_kana": "ｱｷﾀｹﾝ"
+      },
+      {
+       "name": "山形県",
+       "name_kana": "ﾔﾏｶﾞﾀｹﾝ"
+      },
+      {
+       "name": "福島県",
+       "name_kana": "ﾌｸｼﾏｹﾝ"
+      },
+      {
+       "name": "茨城県",
+       "name_kana": "ｲﾊﾞﾗｷﾞｹﾝ"
+      },
+      {
+       "name": "栃木県",
+       "name_kana": "ﾄﾁｷﾞｹﾝ"
+      },
+      {
+       "name": "群馬県",
+       "name_kana": "ｸﾞﾝﾏｹﾝ"
+      },
+      {
+       "name": "埼玉県",
+       "name_kana": "ｻｲﾀﾏｹﾝ"
+      },
+      {
+       "name": "千葉県",
+       "name_kana": "ﾁﾊﾞｹﾝ"
+      },
+      {
+       "name": "東京都",
+       "name_kana": "ﾄｳｷｮｳﾄ"
+      },
+      {
+       "name": "神奈川県",
+       "name_kana": "ｶﾅｶﾞﾜｹﾝ"
+      },
+      {
+       "name": "新潟県",
+       "name_kana": "ﾆｲｶﾞﾀｹﾝ"
+      },
+      {
+       "name": "富山県",
+       "name_kana": "ﾄﾔﾏｹﾝ"
+      },
+      {
+       "name": "石川県",
+       "name_kana": "ｲｼｶﾜｹﾝ"
+      },
+      {
+       "name": "福井県",
+       "name_kana": "ﾌｸｲｹﾝ"
+      },
+      {
+       "name": "山梨県",
+       "name_kana": "ﾔﾏｼﾅｹﾝ"
+      },
+      {
+       "name": "長野県",
+       "name_kana": "ﾅｶﾞﾉｹﾝ"
+      },
+      {
+       "name": "岐阜県",
+       "name_kana": "ｷﾞﾌｹﾝ"
+      },
+      {
+       "name": "静岡県",
+       "name_kana": "ｼｽﾞｵｶｹﾝ"
+      },
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      },
+      {
+       "name": "三重県",
+       "name_kana": "ﾐｴｹﾝ"
+      },
+      {
+       "name": "滋賀県",
+       "name_kana": "ｼｶﾞｹﾝ"
+      },
+      {
+       "name": "京都府",
+       "name_kana": "ｷｮｳﾄﾌ"
+      },
+      {
+       "name": "大阪府",
+       "name_kana": "ｵｵｻｶﾌ"
+      },
+      {
+       "name": "兵庫県",
+       "name_kana": "ﾋｮｳｺﾞｹﾝ"
+      },
+      {
+       "name": "奈良県",
+       "name_kana": "ﾅﾗｹﾝ"
+      },
+      {
+       "name": "和歌山県",
+       "name_kana": "ﾜｶﾔﾏｹﾝ"
+      },
+      {
+       "name": "鳥取県",
+       "name_kana": "ﾄｯﾄﾘｹﾝ"
+      },
+      {
+       "name": "島根県",
+       "name_kana": "ｼﾏﾈｹﾝ"
+      },
+      {
+       "name": "岡山県",
+       "name_kana": "ｵｶﾔﾏｹﾝ"
+      },
+      {
+       "name": "広島県",
+       "name_kana": "ﾋﾛｼﾏｹﾝ"
+      },
+      {
+       "name": "山口県",
+       "name_kana": "ﾔﾏｸﾞﾁｹﾝ"
+      },
+      {
+       "name": "徳島県",
+       "name_kana": "ﾄｸｼﾏｹﾝ"
+      },
+      {
+       "name": "香川県",
+       "name_kana": "ｶｶﾞﾜｹﾝ"
+      },
+      {
+       "name": "愛媛県",
+       "name_kana": "ｴﾋﾒｹﾝ"
+      },
+      {
+       "name": "高知県",
+       "name_kana": "ｺｳﾁｹﾝ"
+      },
+      {
+       "name": "福岡県",
+       "name_kana": "ﾌｸｵｶｹﾝ"
+      },
+      {
+       "name": "佐賀県",
+       "name_kana": "ｻｶﾞｹﾝ"
+      },
+      {
+       "name": "長崎県",
+       "name_kana": "ﾅｶﾞｻｷｹﾝ"
+      },
+      {
+       "name": "熊本県",
+       "name_kana": "ｸﾏﾓﾄｹﾝ"
+      },
+      {
+       "name": "大分県",
+       "name_kana": "ｵｵｲﾀｹﾝ"
+      },
+      {
+       "name": "宮崎県",
+       "name_kana": "ﾐﾔｻﾞｷｹﾝ"
+      },
+      {
+       "name": "鹿児島県",
+       "name_kana": "ｶｺﾞｼﾏｹﾝ"
+      },
+      {
+       "name": "沖縄県",
+       "name_kana": "ｵｷﾅﾜｹﾝ"
+      },
+      {
+       "name": "海外",
+       "name_kana": "ｶｲｶﾞｲ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n未経験者：（雇入れ直後）全国の事業所のいずれかに配属。派遣先企業にて就業。\n（変更の範囲）同社における各部署及び各拠点等、同社の定める場所。詳細は就業条件明示書に記載。\n\n【変更点】\n従来：勤務地配慮無しの全国オファー\n現在：機械系・電気系採用に限り、経験者同様「勤務地配慮あり」でのオファーが可能\n\n【補足・注意点】\n・機械、電気職限定です。ソフト人材に関しては引き続き全国オファーとなります。\n・経験者同様、同社拠点を構えている県は必ず入れる必要がございます。\n（西エリアの場合：大阪／兵庫／滋賀／京都／広島／福岡／熊本 のいずれか必須）",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 400,
+      "max_year_salary": 720
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n400万円～720万円　　※超過勤務手当20H/月、見込み賞与、各種手当を含んだ額となります。\n能力・経験・年齢等を考慮の上、当社規程による 雇 用 形 態 無期雇用派遣（正社員）月給：192,700円以上\n\n・賞与\n年2回（6､12月）　※賞与合計額1,424,500円　(2023年実績・管理職を除く社員平均）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "賞与:年2回",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n社会保険完備　（雇用保険、労災保険、厚生年金保険、健康保険、介護保険）\n\n【福利厚生詳細】\n【メイテック健康保険組合】・各種付加給付（医療費自己負担2万円迄 等）・人間ドック受診補助 　他\n【財産形成関連】・社員持株（メイテックグループホールディングス株）制度（奨励金5%付加）\n・財形貯蓄奨励金制度（奨励金1%付加）　他\n【教育・自己啓発関連】・資格取得奨励金、通信研修補助金 　他\n【その他】・休業補償、慶弔見舞金、遺族補償制度 ・退職金・退職年金制度・ 福利厚生サービス「ベネフィット・ワン　ベネフィット・ステーション」・互助会制度（親睦補助金・貸付金）　他\n通勤手当：全額支給\n社宅制度有り※業務の為、自宅通勤できない場合は会社にて、社宅を用意いたします。"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（土曜・日曜・祝日休み）　GW、夏季休暇、年末年始 ＊年間休日124日（2024.4.1～2025.3.31）\n他に年次有給休暇、特別休暇、積立休暇、育児休業、介護休業 他"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n当社拠点：各事業所にて対策有"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n面接※未経験者には筆記試験有\n面接：オンライン"
+   },
+   "selection_flow": "【選考フロー】\n面接※未経験者には筆記試験有\n面接：オンライン",
+   "amount_of_sales": "",
+   "industry": "人材サービス・アウトソーシング業界・コールセンター",
+   "sub_industry": "技術系アウトソーシング（特定技術者派遣）",
+   "postal_code": "110-0005",
+   "prefecture": "東京都",
+   "city": "台東区",
+   "street_address": "上野1-1-10 オリックス上野1丁目ビル"
+  },
+  "can_recommend": true
+ }
+}

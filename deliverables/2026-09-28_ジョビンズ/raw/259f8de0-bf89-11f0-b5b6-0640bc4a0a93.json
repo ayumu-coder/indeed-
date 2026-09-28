@@ -1,0 +1,154 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 303815,
+  "vacancy_no": "00303814-05a74",
+  "title": "【愛知】【建築施工管理職】◇1級建築施工管理技士募集／２級建築施工管理技士募集／地域のインフラを支える／建築のスペシャリストに！／資格手当あり",
+  "company_name": "株式会社梶川建設",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 26,
+      "category": "day_off",
+      "title": "その他",
+      "pivot": {
+       "job_id": 303815,
+       "characteristic_id": 26
+      }
+     },
+     {
+      "characteristic_id": 5,
+      "category": "overtime",
+      "title": "残業20時間以下",
+      "pivot": {
+       "job_id": 303815,
+       "characteristic_id": 5
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社梶川建設",
+   "estd_date": "1955年（昭和30年）2月",
+   "capital": "2000万円",
+   "number_of_employees": "103",
+   "head_office_location": "尾城町2丁目51番地",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": "建設・プラント・不動産業界",
+    "sub_industry": "ゼネコン"
+   },
+   "annual_salary": {
+    "min_year_salary": 650,
+    "max_year_salary": 780
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "建築・土木技術職",
+    "sub_job_type": "施工管理・工事監理者【建築】"
+   },
+   "update_date": "2026/07/30",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・1級建築施工管理技士の資格をお持ちの方　または　2級建築施工管理技士の資格をお持ちの方\n・建築施工管理（特に現場代理人）の経験が豊富な方\n・普通自動車運転免許（ＡＴ限定不可）",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": null
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n◎公共施設（学校、庁舎など）、商業施設、工場、オフィスビル、マンションなど、多岐にわたる建築プロジェクトの現場代理人をお任せします。\n◎設計図を「カタチ」にするため、予算・工程・品質・安全の全てを管理し、発注者や設計事務所、専門工事業者と折衝しながら、プロジェクトを成功に導きます。\n\n【仕事のポイント】\n◎土木が強い会社ですが、建築分野でも安定した実績があります。\n◎愛知本社の新社屋のような、自社の働く環境づくりにも携わるチャンスがあります。\n\n【梶川建設の魅力】\n★★★100年の安定基盤と、未来を創る独自技術、そして社員を想う温かさ★★★\n\n当社は単なる「建設会社」ではありません。100年以上の歴史が培った安定性と、他社にはない独自技術、そして何より社員を大切にする社風が自慢です。\n\n1️⃣ 100年企業が築く「圧倒的な安定性」\n◎造船業から始まり、土木、建築、そして特殊技術へと、時代の変化にしなやかに対応し、1世紀以上にわたり堅実な経営を続けてきました。\n◎この安定した基盤があるからこそ、社員は安心して日々の業務に集中し、長期的なキャリアプランを描くことができます。\n\n2️⃣認定企業のみが許された「希少な技術力」\n◎当社の核となるのが、騒音や振動を最小限に抑える杭圧入技術「パイラー工法」です。\nこれは認定を受けた企業（GM1）のみが扱える高度な技術であり、都市部や困難な現場で絶大な力を発揮します。\n◎当社はこの技術をいち早く導入し、全国でも数少ない特殊な機械を保有・施工できる数少ない企業として、\n業界内で確固たる評価と安定した受注を獲得しています。\n\n3️⃣ 社員を想う「手厚くユニークな福利厚生」\n私たちは、社員とその家族の幸せを本気で考えています。\n◎禁煙手当: タバコを吸わない社員には、夏と冬に積立金を支給（毎月2千円）。禁煙外来の補助もあり、健康を応援します。\n◎季節の手当: 「クリスマスケーキ手当」「夏を乗り切ろう手当」など、日々の頑張りを労うユニークな手当があります。\n◎快適な職場環境（愛知本社）: 新社屋のきれいなオフィスに加え、作業着は会社がクリーニングし、各自のロッカーに準備。清潔な環境で気持ちよく働けます。\n◎福利厚生クラブ: 全国の施設で割引や特典が受けられ、プライベートも充実させられます。\n\n【求める人材】\n建築分野のスペシャリストとして、多様な建築物の施工をリードしたい方",
+    "job_description_detail": null,
+    "number_of_hires": "4",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "1ヶ月\n※同条件",
+     "working_hours": "8時00分〜17時00分\n休憩時間 60分\n\n時間外労働有り",
+     "average_monthly": {
+      "overtime_hours": "残業20時間以下",
+      "overtime_hours_details": "月平均時間外労働時間\n17時間"
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知本社\n◇住所：\n愛知県碧南市尾城町２丁目５１番地\n◇最寄り駅：\n名鉄三河線 碧南中央駅 徒歩20分\n※マイカー通勤可（駐車場有）",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 650,
+      "max_year_salary": 780
+     },
+     "monthly_income": {
+      "min_month_salary": 46.4,
+      "max_month_salary": 55.7
+     },
+     "salary_detials": "１級をお持ちの方\n＜年収＞\n6,500,000円～7,800,000円\n\n＜月給＞\n464,300円～557,200円\n\n＜昇給＞\n1,000円〜8,000円/月（前年度実績）\n\n２級をお持ちの方\n＜年収＞\n5,000,000円～6,500,000円\n\n＜月給＞\n360,000円～460,000円\n\n＜昇給＞\n1,000円〜8,000円/月（前年度実績）\n\n\n＜賞与＞\n・賞与：年2回、合計で 2.00ヶ月分（前年度実績）\n・決算賞与：業績好調の場合、6月決算時に 支給（1.50～2.00ヶ月分 ）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "・賞与：年2回、合計で 2.00ヶ月分（前年度実績）\n・決算賞与：業績好調の場合、6月決算時に 支給（1.50～2.00ヶ月分 ）",
+     "welfare_benefits": [],
+     "various_allowances": "■家族手当\n■禁煙手当\n■季節の手当\n■資格手当\n・一級土木施工管理技士\n支給方法：合格時の一括報奨金\n金額：120,000円\n・二級土木施工管理技士\n支給方法：合格時の一括報奨金\n金額：45,000円\n・JIS溶接資格（JIS Z 3841：半自動溶接技術者資格）\n支給方法：毎月の手当\n金額：40,000円／月",
+     "welfare_benefits_detail": "■社会保険\n雇用保険、労災保険、健康保険、厚生年金\n■退職金共済\n■退職金制度（継続3年以上）\n■バースデー休暇\n■資格取得報奨：一時金支給、図書室の各制度\n■福利厚生クラブ\n\n＜定年制＞\n定年一律 60歳（再雇用制度で上限65歳）"
+    },
+    "holiday": {
+     "holiday": "その他",
+     "holiday_details": "■年間休日：121日（会社カレンダーによる休日＋有給休暇推奨日5日を含む）\n※会社カレンダー2026年：116日\n■内訳：\n・週休二日制（日曜日＋その他）\n・夏季休暇\n・冬季休暇\n・GW休暇\n・年次有給休暇：入社6か月後に10日付与（うち推奨取得日数5日）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": "屋内禁煙"
+    },
+    "others": null,
+    "selection_flow": "書類選考\n↓\n面接（1回）\n↓\n内定"
+   },
+   "selection_flow": "書類選考\n↓\n面接（1回）\n↓\n内定",
+   "industry": "建設・プラント・不動産業界",
+   "sub_industry": "ゼネコン"
+  },
+  "can_recommend": true
+ }
+}

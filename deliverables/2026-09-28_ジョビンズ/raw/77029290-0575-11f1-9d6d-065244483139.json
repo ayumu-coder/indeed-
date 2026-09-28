@@ -1,0 +1,159 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 356778,
+  "vacancy_no": "00356777-cb941",
+  "title": "【愛知県豊田市勤務】技術職：機械設計",
+  "company_name": "リックス株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高専/短大/専門卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 356778,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 356778,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "リックス株式会社",
+   "estd_date": "1964年(昭和39年)5月",
+   "capital": "8億2,790万円",
+   "number_of_employees": "437名（2022年3月31日現在）",
+   "head_office_location": "福岡県福岡市博多区東比恵1丁目4番10号 S-GATE FIT 東比恵 5階",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "メーカー（機械・電気）業界",
+    "sub_industry": "産業用装置（工作機械・半導体製造装置・ロボットなど）メーカー"
+   },
+   "annual_salary": {
+    "min_year_salary": 434,
+    "max_year_salary": 651
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "エンジニア【機械・電気・電子・半導体・制御】",
+    "sub_job_type": "自動車・輸送機器関連 機械・機構設計"
+   },
+   "update_date": "2026/03/03",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n【必須】\n機械設計の業務経験(概ね5年程度)\n3D CADの操作ができる方\n\n【必要資格】\n普通自動車免許",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高専/短大/専門卒以上",
+     null
+    ],
+    "welcome_condition": "【歓迎】\n特殊仕様の自動機、搬送機、治具等において設計・見積・顧客折衝等の一連の業務経験がある方"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "仕事内容\n◆完成車メーカーおよび1次サプライヤー向けの装置および治具等の機械設計\n電池関連の開発及び生産部門の顧客の要求仕様に基づく機械設計業務\n・専用装置の構想および機械設計\n・治具等の構想および機械設計\n※上記業務に関する顧客や仕入先との打合せ、見積作成、組立指示等も含む",
+    "job_description_detail": null,
+    "number_of_hires": "3",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n試用期間２ヵ月　試用期間中の条件：同じ",
+     "working_hours": "【勤務時間】\n8時30分～17時00分　（残業月平均20時間）",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n愛知県豊田市寿町5-12\n当面は中部テクニカルセンターでの勤務となりますが、事業拡大等の事由により勤務地が変更となる場合がございます。\n\n＜転勤有無＞\n有り（当面は予定なし)",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 434,
+      "max_year_salary": 651
+     },
+     "monthly_income": {
+      "min_month_salary": 31,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n27歳想定　年収536万円～\n＜給与＞\n月給 310,000 円 -\n（例）下記は27歳想定　年収536万円～\n基本給　206,000円　月収　266,000円～\n残業込み月収：310,000円～ \n残業実績支払い（20時間と仮定44,000円）\n\n給与は年齢・経験を考慮して決定します。\n総合職は借上社宅制度が適用されます。\n家族が扶養親族の場合は家族手当支給があります。5,000円～\n\n＜昇給＞\n年1回（4月）\n\n＜賞与＞\n年2回（6月、12月）\n業績により変動します（直近3か年の平均支給実績　8か月/年）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "賞与:年2回",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n健康保険、厚生年金保険、雇用保険、労災保険\n\n【福利厚生詳細】\n＜手当＞\n職種手当、住宅手当、家族手当、残業手当、通勤交通費\n\n＜通勤手当＞\n規程により支給(8万円/月まで)\n\n＜福利厚生＞\n退職金制度、借上社宅制度、共済会制度、湯布院保養所、リフレッシュ休暇、永年勤続表彰、福利厚生アウトソーシング、インフルエンザ予防接種費用、ソフトバンクホークスチケット社員割引　など\n\n＜借上社宅＞\n借上社宅制度有り\n地区で限度額を設定しています。\n入居費用（敷金・礼金）会社負担です。\n引越代は県外のみ会社負担\n40～60万程度の家賃補助があります。"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制/土曜・日曜・祝日（但し、稼動日数に配慮し振替えの場合あり）\nGW休暇、夏期休暇、年末年始休暇、年間休日123日（2022年度実績）\n\n＜有給休暇＞\n入社6ヵ月経過後、10日付与\n以降順次繰越（最大40日）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n屋内全面禁煙"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n選考ステップ\n①書類選考\n②適性検査（web)\n③面接（1次）\n④面接（最終）\n※1次面接は中部テクニカルセンター(愛知県豊田市)またはWebにて、最終面接は中部テクニカルセンターにて予定しております。"
+   },
+   "selection_flow": "【選考フロー】\n選考ステップ\n①書類選考\n②適性検査（web)\n③面接（1次）\n④面接（最終）\n※1次面接は中部テクニカルセンター(愛知県豊田市)またはWebにて、最終面接は中部テクニカルセンターにて予定しております。",
+   "amount_of_sales": "",
+   "industry": "メーカー（機械・電気）業界",
+   "sub_industry": "産業用装置（工作機械・半導体製造装置・ロボットなど）メーカー",
+   "postal_code": "812-0007",
+   "prefecture": "福岡県",
+   "city": "福岡市博多区",
+   "street_address": "東比恵1丁目4番10号 S-GATE FIT 東比恵 5階"
+  },
+  "can_recommend": true
+ }
+}

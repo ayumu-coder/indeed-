@@ -1,0 +1,159 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 358230,
+  "vacancy_no": "00358229-5ce5e",
+  "title": "【愛知県】組込みソフトウェア開発メンバー　※リモートOK",
+  "company_name": "株式会社ビーネックスソリューションズ",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高専/短大/専門卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 358230,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 22,
+      "category": "work_environment",
+      "title": "リモート可",
+      "pivot": {
+       "job_id": 358230,
+       "characteristic_id": 22
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社ビーネックスソリューションズ",
+   "estd_date": "1999年8月6日 （創業 1985年5月）",
+   "capital": "50,000,000円（2023年7月1日現在）",
+   "number_of_employees": "1,132名",
+   "head_office_location": "愛知県刈谷市南桜町1-23 SOUTH SQUARE KARIYA 2階",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "IT・通信業界",
+    "sub_industry": "システムインテグレータ（SIer）"
+   },
+   "annual_salary": {
+    "min_year_salary": 430,
+    "max_year_salary": 620
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "Web・オープン系 プログラマ【PG】"
+   },
+   "update_date": "2026/02/19",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n【必須スキル・経験】\n■開発スキル\n・C++（2年以上の業務経験）\n・Linux（2年以上の業務経験）\n\n【応募資格】\n学歴：専門学校卒以上\n業界経験：ソフトウェア開発の経験\n英語力：不問\n資格：不問",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高専/短大/専門卒以上",
+     null
+    ],
+    "welcome_condition": "【歓迎するスキル・経験】\n・C言語の開発経験\n・Yocto/Bitbake環境での開発経験\n・プロセス間通信を用いた開発経験\n・音声/映像信号を扱った開発の経験\n・チーム管理、進捗管理経験"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n・チームの開発メンバとして、製品の要件仕様に従い、設計・実装・評価を担当\nシステム仕様書、要求書より、ソフト設計、コーディング、机上評価、結合テスト,システム評価実務担当を担当いただきます。\n\n民製品の組込み開発を行うプロジェクトにて、プロジェクト全体のマネジメントに携わっていただきます。\nプロジェクト規模の拡大を目的とした募集になります。\n幅広く技術に携わりたい、チームメンバと協力して大きな成果を出したい、といった方大歓迎です。\n\n<身に付くスキル>\n・組込み開発スキル\n・映像処理機能/通信機能に関する知識・経験\n・チームマネジメントスキル\n・業務計画立案、クライアントとの折衝",
+    "job_description_detail": null,
+    "number_of_hires": "3",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n試⽤期間3ヶ⽉/同条件",
+     "working_hours": "【勤務時間】\n勤務時間：9:00～18:00\n所定労働時間：8時間00分（休憩60分）\n残業：月平均15時間\n\n＊プロジェクトにより異なります",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n刈谷本社もしくは顧客先\n※刈谷本社の場合はリモート可\n\n※転勤あり（入社時は希望勤務地にて配属可）",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 430,
+      "max_year_salary": 620
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n［想定年収］430万円~620万円\n［月給］240000円～\n［想定年収］430万円~620万円\n\n※試⽤期間3ヶ⽉（試用期間中の条件は同じです）\n\n【手当】\n・交通費（上限：月額50,000円まで）\n・残業手当（1分単位で全額支給）\n・資格手当（受験費用負担。資格取得お祝い金）\n【昇給】\n年1回（4月）\n【賞与】\n年2回（6月・12月"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回（6月・12月）",
+     "welfare_benefits": [],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n社会保険完備\n【社会保険制度】\n・健康保険\n・厚生年金\n・雇用保険\n・労災保険\n\n【福利厚生詳細】\n【福利厚生】\n◎リゾート施設使用割引\n◎スポーツクラブ利用補助\n◎退職金（確定拠出年金）\n◎慶弔見舞金制度\n◎定期健康診断\n◎育児休業制度\n◎介護休業制度\n◎産前産後休業制度\n◎出生時育児休業（産後パパ育休）制度\n◎育児介護短時間勤務制度（子が小学校卒業まで）\n◎子の介護休暇制度（当該子が一人の場合は5日/年）\n◎ベネフィットステーション（各種サービス割引利用）\n◎安否確認システム\n◎社員持株会"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n◇年間休⽇121日\n◇完全週休2⽇制/⼟⽇\n◇GW・夏季・年末年始/各9⽇程\n◇有給/初年度10⽇\n◇慶弔\n◇特別\n◇産前産後・育休\n◇介護休暇"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n屋内原則禁煙"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n1.書類選考 \n2.面接（1～複数回） \n3.内定 \n※選考内容は、状況に応じて変更が生じる場合があります。"
+   },
+   "selection_flow": "【選考フロー】\n1.書類選考 \n2.面接（1～複数回） \n3.内定 \n※選考内容は、状況に応じて変更が生じる場合があります。",
+   "amount_of_sales": "",
+   "industry": "IT・通信業界",
+   "sub_industry": "システムインテグレータ（SIer）",
+   "postal_code": "448-0841",
+   "prefecture": "愛知県",
+   "city": "刈谷市",
+   "street_address": "南桜町1-23 SOUTH SQUARE KARIYA 2階"
+  },
+  "can_recommend": true
+ }
+}

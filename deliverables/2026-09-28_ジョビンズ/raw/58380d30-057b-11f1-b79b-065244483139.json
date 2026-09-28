@@ -1,0 +1,148 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 358872,
+  "vacancy_no": "00358871-39052",
+  "title": "【モビリティ】エアモビリティ等の開発エンジニア",
+  "company_name": "株式会社テクノプロ　テクノプロ・デザイン社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 358872,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社テクノプロ　テクノプロ・デザイン社",
+   "estd_date": "1997/06/01",
+   "capital": "101百万円",
+   "number_of_employees": "23,357名",
+   "head_office_location": "東京都港区6-10-1 六本木ヒルズ森タワー35F",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "人材サービス・アウトソーシング業界・コールセンター",
+    "sub_industry": "技術系アウトソーシング（特定技術者派遣）"
+   },
+   "annual_salary": {
+    "min_year_salary": 480,
+    "max_year_salary": 1200
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "Web・オープン系 プロジェクトマネージャー【PM】、リーダー【PL】"
+   },
+   "update_date": "2026/05/08",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n業界経験問わず、以下知見や経験があればご活躍いただけます。\n\n【必須】（いずれか）\n・制御ソフト開発経験（C言語、MBD）\n・基盤回路設計経験\n・1D-CAEでのシミュレーションや取り扱い経験\n・エアロダイナミクスの検討機械設計\n・CFD解析の経験",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": "【歓迎】\n・航空機関連の開発経験\n・仕様、設計、試作評価、量産までの一連の開発経験\n・チームマネジメントや開発管理経験\n・機能安全を考慮した車載機器の電子回路設計経験\n\n※経験や適性により、PM/PL/メンバーいずれかのポジションをお任せいたします\n※請負や準委任契約が中心のため、キャリアアップを実現しやすい環境となっています\n\n【フィットする人物像】\n・新しい技術をつくることから携わりたい方\n・既存の技術・概念にとらわれず、新たな開発にチャレンジしたい方\n・これまでの知見を活かし、グローバルニーズの高い領域で市場価値高く新たなキャリアを積んでみたい方\n・チームリードやマネジメントにチャレンジしたい方"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n【募集背景】\nテクノプロ・デザイン社では、自動車を含む様々なモビリティ製品の開発における専門の部署【モビリティ統括部】を設け、制御ソフト、電子回路設計、シミュレーション領域を中心に対応しています。\n製品機能の複雑化・高度化が加速、また社会全体で品質や環境性能に対する要求が高まっており、開発提案型のプロセスへの対応力が求められています。\n対象は自動車のみならずeVTOLなどエアモビリティや船舶の電動化や自動航行、物流のラストワンマイル向けロボット、自動運転建設機械など、様々なモビリティ製品であり、その開発は急務となっています。\n※モビリティ事業の実績は下記事例をご覧ください。\nhttps://www.technopro.com/design/business_area/article/20210924-1180/\n\nまた同社は技術指針【技術戦略マップ※1】を基に専門部署にて開発初期段階から試作・量産までのメーカの開発プロセス全般を支援する機能と体制を整えています。\n2023年2月現在で全国に400名を超えるエンジニアが在籍する規模となりましたが、その機能と体制をさらに強化するべく、向上心と技術を兼ね備えたエンジニアを求めています。\n※1技術戦略マップ：テクノプロ・デザイン社の技術指針でエンジニア・営業・採用など全ての社員に関わる高付加価値戦略の根幹となっています。\nhttps://www.technopro.com/design/advantage/strategy/\n\n【業務概要】\nエアモビリティなど次世代モビリティに対する下記業務を行います。\n※ご経験やご希望を基に担当いただく開発対象や技術を選定いたします\n\n１．eVTOL向けの電動化に対する電子回路もしくは制御ソフトの設計開発\n２．エアロダイナミクス検討\n３．1D-CAE、HILS、MILSなどを活用するシステム設計\n４．同社開発チームのマネジメント\n※ご経験や能力により、PM/PL/メンバーいずれかのポジションをお任せいたします。\n\n【テクノプロ・デザイン社について】\n同社は年間売上が1,600億円を超える国内最大の技術ソリューション企業・テクノプログループを牽引する中核企業です。テクノプロ・デザイン社では7,000名を超えるエンジニアが上場企業を中心にソリューションサービスを提供しています。\n\n【ポジション・役割】\nPM/PL/リーダー候補/メンバー\n\n（変更の範囲）会社の定める業務",
+    "job_description_detail": null,
+    "number_of_hires": "10",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n入社後、2ヶ月間（条件の変更なし）",
+     "working_hours": "【勤務時間】\n■勤務時間：9:00-18:00\nリモート勤務：プロジェクトによる\n\n■時間外労働：あり\n想定残業時間：25時間",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n【勤務地】　\n愛知県\n\n【就業形態】 \n同社開発センター（神戸・名古屋・刈谷・東京）もしくは取引先構内（愛知県内中心）\n\n※プロジェクトによっては同社の他の開発センター等での勤務となる場合がございます\n\n【転勤の有無】 \nあり\n※ただし、希望を考慮します\n\n（変更の範囲）会社の定める場所（リモートワークの場所を含む）",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 480,
+      "max_year_salary": 1200
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n月給：27万円～70万円＋賞与年2回（昨年度実績3.85ヶ月分）\n年収：480～1,200万\n\n経験・能力などを考慮の上、決定します。\n残業代は固定支給ではなく、1分単位で残業手当を支給します。\n60歳定年制のため、60歳以降は月俸制となります。\n\n【手当】\n・交通費支給（上限15万円／月）\n・残業手当（1分単位）\n・赴任手当\n・役職手当\n・テレワーク手当等\n\n【昇給】\n年1回\n\n【他部門年収例 残業込み】\n1,000万円／テクニカルエキスパート/入社3年（月給70万円）\n900万円／シニアプロフェッショナルエンジニア/入社2年（月給54万円）\n800万円／チーフエンジニア/入社1年（月給48万円）\n\n【賞与】\n年2回 ※別途決算賞与を支給する場合あり\n\n【通勤交通費】\n通勤交通費支給（月額上限15万円）\n\n【住宅】\n寮・社宅制度（家族・単身・独身）\n（月2万円～3万円＋光熱費を個人負担）\n※単身赴任の際は赴任手当支給あり（8万円/月）\n\n【退職金】\n確定拠出型年金"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回",
+     "welfare_benefits": [],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n社会保険完備（健康保険、厚生年金、雇用保険、労災保険、介護保険）\n\n【福利厚生詳細】\n寮社宅制度\n転勤赴任一時金\n帰省旅費補助\n引越費用補助\nテクノプログループ従業員持株会（奨励金あり）\n慶弔見舞金制度\nパパママ育児応援金制度\n企業主導型ベビーシッター利用者支援制度\n総合福祉団体定期保険\n退職金制度(確定拠出年金制度)\n財形貯蓄制度\n社内クラブサークル活動支援\n健康保険組合\n福利厚生サービス「ベネフィット・ステーション」\n[労働組合有]\n[定年再雇用]\n[EAP（カウンセリング）サービス]\n[教育自己啓発関連]\n[社内研修]\n[通信教育補助]\n[社内外講習補助]\n[図書購入補助]\n[社外技術研修参加費]\n[学会参加費]\n[自己啓発支援]\n[資格取得補助]等"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（土日祝※祝日のある週は土曜出勤の場合あり）\n年末年始、有給休暇(夏季取得推奨日あり)、慶弔休暇、特別休暇、育児休業、介護休業、入社時休暇(上限3日)、災害時休暇(年5回、最大5日)\n※年間休日123日"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n※【受動喫煙】原則屋内禁煙。ただし、就業場所により異なる"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n書類選考 ⇒ 1次面接（採用部門）⇒ 2次面接（プロジェクトマネージャー） ⇒ 内定\n※オンライン面接となります\n※面接は2回を予定しております"
+   },
+   "selection_flow": "【選考フロー】\n書類選考 ⇒ 1次面接（採用部門）⇒ 2次面接（プロジェクトマネージャー） ⇒ 内定\n※オンライン面接となります\n※面接は2回を予定しております",
+   "amount_of_sales": "",
+   "industry": "人材サービス・アウトソーシング業界・コールセンター",
+   "sub_industry": "技術系アウトソーシング（特定技術者派遣）",
+   "postal_code": "106-6105",
+   "prefecture": "東京都",
+   "city": "港区",
+   "street_address": "6-10-1 六本木ヒルズ森タワー35F"
+  },
+  "can_recommend": true
+ }
+}

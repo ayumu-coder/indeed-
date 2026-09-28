@@ -1,0 +1,170 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 20040,
+  "vacancy_no": "00020041",
+  "title": "MAX月給38万も◎現場の安全を守る！＜重機整備士＞12月中スタートも可！",
+  "company_name": "太平産業株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 0,
+    "minimum_industry_experience": 0,
+    "overall_experience": "N",
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 5,
+      "category": "overtime",
+      "title": "残業20時間以下",
+      "pivot": {
+       "job_id": 20040,
+       "characteristic_id": 5
+      }
+     },
+     {
+      "characteristic_id": 26,
+      "category": "day_off",
+      "title": "その他",
+      "pivot": {
+       "job_id": 20040,
+       "characteristic_id": 26
+      }
+     },
+     {
+      "characteristic_id": 8,
+      "category": "selection",
+      "title": "急募",
+      "pivot": {
+       "job_id": 20040,
+       "characteristic_id": 8
+      }
+     },
+     {
+      "characteristic_id": 19,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件あり",
+      "pivot": {
+       "job_id": 20040,
+       "characteristic_id": 19
+      }
+     }
+    ]
+   },
+   "organization_name": "太平産業株式会社",
+   "estd_date": "昭和38年 9月26日",
+   "capital": "3,300万円",
+   "number_of_employees": "78",
+   "head_office_location": "栄1丁目29-19　6階",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 400,
+    "max_year_salary": 530
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "技能工・設備・交通・運輸",
+    "sub_job_type": "技能工【整備・メカニック関連】"
+   },
+   "update_date": "2025/10/08",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "★学歴・英語力一切問いません！\n◎普通自動車運転免許（MT以上）\n\n＜未経験・既卒・第二新卒の方大歓迎♪＞",
+    "years_of_experience": {
+     "other": "N",
+     "job_type": 0,
+     "industry": 0
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     "不問"
+    ],
+    "welcome_condition": "・自動車整備士資格\n・重機整備士の資格\n（等級は問いません）"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "<重機建設整備士としてのお仕事全般>\n建設の現場で活躍しているユンボやクレーン車などの重機や建機を整備する仕事です。\n重機整備士は建設現場の安全を守るために必要な仕事で、とても重要な役目なのです！\n\n有資格者も多数居いるため、\nサポート・フォロー体制はバッチリ！安心です◎\n\n＼★他とはココが違う太平産業の魅力★／\n◎コロナ禍でも業績増加中！\n安定的なビジネスで、コロナ禍でも業績が落ちることなく、むしろ増加し続けています！\nみませんか。\n\n＼社員ファーストな環境／\n◎現場の声を大事に、働きやすさを追求！\n現場で働くスタッフの意見を大切にし、\nより良い環境づくりを目指してます。\n\n◎一緒に働くメンバー\n60年続く太平産業の中核となる建設汚泥の中間処理事業。\nその要となるプラントを守るべく働く仲間は、若手～ベテラン社員の幅広い層ですが、\n家族の様な暖かな雰囲気で、和気あいあいとお仕事しています。\n歴史ある事業を次世代へ繋ぐ為、新たに加わるメンバーの活躍を期待しています！",
+    "job_description_detail": null,
+    "number_of_hires": "1",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月",
+     "working_hours": "8:00~17:00\n（実働8h／休憩60min）\n\n※残業：月平均20h程度",
+     "average_monthly": {
+      "overtime_hours": "残業20時間以下",
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "＜住所＞\n太平産業株式会社 豊田ODCセンター\n愛知県豊田市田籾町広久手614-35\n\n＜交通＞\n自家用車通勤OK！【駐車場あり】",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 400,
+      "max_year_salary": 530
+     },
+     "monthly_income": {
+      "min_month_salary": 28,
+      "max_month_salary": 38
+     },
+     "salary_detials": "※年収はあくまで想定年収となります。\n\n＜年収例＞\n●年収600万円／入社8年目／課長\n●年収750万円／入社12年目／部長"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "賞与：2回（6月、12月）\n昇給：1回",
+     "welfare_benefits": [],
+     "various_allowances": "◇ 住宅手当あり(条件による)\n◇ 資格取得支援・手当あり\n◇ 育児支援あり",
+     "welfare_benefits_detail": "◆大型福利厚生サービス制度導入済み(ベネフィットステーション)\n●雇用保険\n●労災保険\n●厚生年金\n●健康保険\n●退職金制度あり"
+    },
+    "holiday": {
+     "holiday": "その他",
+     "holiday_details": "●年間休日126日\n※土曜日の出勤あります。\n●完全週休2日制\n●夏季休暇あり\n●年末年始休暇あり\n\n＼働きやすい！／\n急なお休み考慮OK・有休消化率80%以上◎"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "1次面接：人事担当\n↓\n2次面接：豊田支店担当者2名\n↓\n内定"
+   },
+   "selection_flow": "1次面接：人事担当\n↓\n2次面接：豊田支店担当者2名\n↓\n内定",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

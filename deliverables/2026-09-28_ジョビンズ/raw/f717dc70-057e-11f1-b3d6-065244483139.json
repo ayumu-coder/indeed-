@@ -1,0 +1,161 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 360131,
+  "vacancy_no": "00360129-61f04",
+  "title": "【勤務地：豊橋/神野・第二新卒歓迎】ポートロジスティクス(港湾物流)オペレーション構築・推進",
+  "company_name": "鈴与株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "大学卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 360131,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 360131,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "鈴与株式会社",
+   "estd_date": "創業：1801年（享和元年）　・　創立： 1936年（昭和11年）",
+   "capital": "10億円",
+   "number_of_employees": "1,166人（2019年11月1日現在）",
+   "head_office_location": "静岡県静岡市清水区入船町11-1",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "運輸・物流業界",
+    "sub_industry": "倉庫業・梱包業"
+   },
+   "annual_salary": {
+    "min_year_salary": 425,
+    "max_year_salary": 560
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "エンジニア【機械・電気・電子・半導体・制御】",
+    "sub_job_type": "機械・電気・電子・半導体・制御系 生産管理・製造管理"
+   },
+   "update_date": "2026/03/02",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n■必須\n・社会人経験1年以上\n・普通自動車運転免許（AT限定可）",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "大学卒以上",
+     null
+    ],
+    "welcome_condition": "■歓迎:\n・本船フォアマン経験者\n・鈴与で長く、成長することができる方\n・飽くなき向上心をお持ちの方\n・環境変化を愉しみ、柔軟に対応できる方\n・「自己改革」できる方。"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n■採用背景\n\n「世の中にある物流の無駄を省く」\n\n経済のグローバル化、EＣの普及等により、動くモノの「量」は増加の一途を辿り、モノの「動き方」も複雑さを極めています。\nまた、日本国内においては人口減を背景に物流の担い手が減少、トラックなどのCO２排出による環境問題への取り組みも待ったなしの状況にあります。\n\n一方で、世の中にはまだまだ「無駄な」物流が多く残されています。\n\n例えば、貨物輸送の９０％以上を担うトラック輸送について、積載率（最大積載量に対する実際の積載数量）が４割を下回っている現状があり、極端に言えば、６割のトラックは空の状態で走っていると言えます。\n\n世の中には「無駄」な物流が非常に多く残されており、私たちは、その無駄をなくすとともに、お客さまのビジネス上の課題解決まで踏み込んだサービスを提供することで、取引を拡大しています。また、社会インフラたる物流を支え、守ることは私たちの使命でもあります。\n\nBtoB、BtoCの領域において、物流の最適化・サプライチェーンの清流化を図る当社のサービスは、あらゆる業種・業界の企業様の販売戦略・サステナビリティ戦略・経営戦略に大きく貢献できるため、多くの企業様から当社サービスにご興味をいただいており、コロナ禍でも毎年業績を伸ばしています。この成長を続け、より高いレベルのサービスを提供していくため、現在、採用強化を図っております。\n\n本ポジションでは、日本のゲートウェイ、社会インフラである港湾にて、グローバルサプライチェーンを繋ぎ、支える港湾オペレーションをマネージしていただきます。\n\n■業務詳細\n豊橋神野港を中心に、自動車船、バルク船、コンテナ船等の貨物船の貨物積み降ろし（本船荷役）のオペレーション構築・推進を担っていただきます。\n・本船荷役プランニング：国内外の港、船会社と連携をとり、輸出入貨物の積載スペース確認・確保等を行い、荷役計画を立案\n・本船荷役フォアマン：本船入港後、自身が立案したプランをもとに、自身がフォアマン(監督者)となり、重機等を動かす作業スタッフへの指示・命令、フォロー、トラブルシューティング\n※貨物船は主に外国船であり、アジア・東欧諸国の船員(クルー)と平易な英語でのコミュニケーションがベース",
+    "job_description_detail": null,
+    "number_of_hires": "10",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n試用期間／有り（６ヵ月間、本採用後の労働条件との相違なし。）",
+     "working_hours": "【勤務時間】\n8：00～16：50\n勤務場所により異なる場合があります。",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n豊橋支店\n\nその他\n転勤はございません。",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 425,
+      "max_year_salary": 560
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n【年収例】425万～560万円\n【月給】235,000円～　\n【年収例】425万～560万円 ※時間外勤務手当を含めた想定年収です。通勤手当等の諸手当は規定に応じ別途支給します。\n\n\n試用期間／有り（６ヵ月間、本採用後の労働条件との相違なし。）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "賞与:年2回",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n雇用保険、労災保険、健康保険（鈴与健康保険組合）、厚生年金保険\n\n【福利厚生詳細】\n・社宅、独身寮完備（全国転勤型の場合、入居可及び一部自己負担あり）\n・退職金、確定給付企業年金、確定拠出年金、財形貯蓄制度\n・自己啓発、資格取得奨励制度\n・慶弔見舞金\n・定期健康診断\n・各種保養施設\n・鈴与グループ体育文化会　他"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n・週休2日制（土曜日、日曜日）、祝日、年末年始、年次有給休暇（12～22日）、慶弔休暇、産前産後休暇、育児休暇および休業、介護休暇および休業、看護休暇、リフレッシュ休暇、裁判員休暇、生理休暇、その他特別休暇 \n・年間休日：120日以上"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n敷地内禁煙 \n※事業所によっては屋内禁煙、喫煙専用スペースの設置等あり"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n【選考フロー】\n書類選考（履歴書・職務経歴書）\n1次面接　WEB　\n2次面接　WEB\n3次面接　対面　※交通費・宿泊費支給（規定あり）\n※適宜、複数の適性検査・筆記試験を実施いたします。"
+   },
+   "selection_flow": "【選考フロー】\n【選考フロー】\n書類選考（履歴書・職務経歴書）\n1次面接　WEB　\n2次面接　WEB\n3次面接　対面　※交通費・宿泊費支給（規定あり）\n※適宜、複数の適性検査・筆記試験を実施いたします。",
+   "amount_of_sales": "",
+   "industry": "運輸・物流業界",
+   "sub_industry": "倉庫業・梱包業",
+   "postal_code": "424-0942",
+   "prefecture": "静岡県",
+   "city": "静岡市清水区",
+   "street_address": "入船町11-1"
+  },
+  "can_recommend": true
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 358792,
+  "vacancy_no": "00358791-75437",
+  "title": "リモートOK【東海】サーバエンジニア（クラウド環境（AWS、GCP、Azure）やオンプレミス環境におけるインフラ基盤の設計・構築・運用業務）　年収：500万円～",
+  "company_name": "株式会社テクノプロ　テクノプロ・デザイン社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 5,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 358792,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社テクノプロ　テクノプロ・デザイン社",
+   "estd_date": "1997/06/01",
+   "capital": "101百万円",
+   "number_of_employees": "23,357名",
+   "head_office_location": "東京都港区6-10-1 六本木ヒルズ森タワー35F",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "人材サービス・アウトソーシング業界・コールセンター",
+    "sub_industry": "技術系アウトソーシング（特定技術者派遣）"
+   },
+   "annual_salary": {
+    "min_year_salary": 500,
+    "max_year_salary": 800
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "ネットワーク設計・ネットワーク構築"
+   },
+   "update_date": "2026/05/07",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n●必須\n・サーバの設計、構築、運用のいずれかの経験5年以上",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 5,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": "●尚可\n・クラウドに興味関心のある方\n・下記の技術のいずれかを経験されている方\n-Linux\n-WindowsServer\n-VMware(仮想化)\n-ActiveDirectory\n-Zabbix\n-Terraform\n-ansible\n-JP1\n\n\n●求める人物像\n＜マインド＞\n・チャレンジ精神旺盛な方\n・顧客との会話が好きな方\n・運用監視からステップアップしたい方\n・クラウドなどの先端技術に興味がある方"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n【会社説明】\nテクノプロ・デザイン社は社会課題解決に向けて、メーカーやIT企業に対し設計・開発・生産技術の領域を中心に技術支援を行う企業です。\n日本の主要産業である自動車・航空・精密機器などの多様な分野で、プロジェクトを牽引するリーダーや技術を極めるスペシャリストとして活躍できます。\n近年では製造業のDX化に伴い、シミュレーション・IoT・AI領域のニーズも拡大中。現場に根差した技術力と課題解決力を兼ね備えた人材を求めています。\n\n\n【具体的には】\nお取引のある大手製造メーカーを中心に、クラウド環境（AWS、GCP、Azure）やオンプレミス環境におけるインフラ基盤の設計・構築・運用業務のすべての技術工程に携わっていただきます。\nネットワーク、サーバー、セキュリティ、データ基盤、運用保守、PMOなど、ご経験やご希望に応じた多様なプロジェクトをご用意しています。\n\n例えば、、、\n■クラウド・サーバー構築・運用\n■ネットワーク設計・構築\n■データ基盤・分析環境構築\n■社内インフラ・業務支援\n■金融・防衛・公共系インフラ対応\n■プリセールス・提案業務\n\nユニットと呼ばれるチーム単位で取組んでいきます。\nテクノプロデザインのエンジニアで最大20数名規模で構成されたプロジェクトもございます。\n経験・スキルにより、PL、PMとして活躍いただくことも想定しています。\n\n【使用される技術】\n・Linux\n・WindowsServer\n・VMware(仮想化)\n・AWS\n・Azure\n・GCP\n・ActiveDirectory\n・Zabbix\n・Terraform\n・ansible\n・JP1\n\n【プロジェクトによっては構想から】\nクライアントが考える構想を元に課題感を抽出、整理し、解決するために、どのような方法で実現するか方針を定め取り組んでいます。タスクの洗い出しや課題抽出・対応方針策定・要求事項整理・評価など、構想フェーズから関わることができます。\n\n【テクノプロ・デザイン社でのやりがい】\n１．話題性の高いモノづくりに携わることができます。\n２．プロジェクトによっては、白紙の段階から構想をもとに要件設定ができます。\n３．様々な技術を試せる環境で働くことができます。\n４．各々の技術力の成長ができる環境です。\n５．ライフワークバランスが取りやすいです。\n\n【働く環境】\nリーディングカンパニーとして業界価値を高めるために、\nそして、エンジニアの選択肢が多い働きやすい職場環境をつくるために、様々な取り組みを行っています。\n例えば、技術コンサルティング業務のさらなる強化。これにより抜本的な収益構造改善による給与水準の向上や、\nエンジニアが安定的に強みを磨き続ける環境づくりができるのです。\n現在53歳の現役エンジニアとしてプロジェクトを統括する社員などからも「人生を通して徹底的に技術を磨くことができる環境」との声が上がっています。\nまた、社員の夢を実現まで応援する「自己実現委員会」などの独自の研修制度や、\nそもそもの生き方から共に考え、悩み、最適なキャリアを描く風土があり、人がいます。\n技術を育てる技術が、テクノプロ・デザイン社には溢れています。\n\n【豊富な研修制度】\n自社研修以外にもUdemyやAidemyなどの外部e-Learningのコンテンツも会社負担でご利用いただけます。\n技術研修数：1092研修\nヒューマン&ビジネス系研修：155研修\n《これまでに研修を受講したエンジニアは97492名》\n階層別、職能別、目的・課題別の研修プログラムを200種以上用意しており、\nいつでも学ぶことができます。\nさらに、技術研修事業を手がけるグループ会社が運営する、\n全国60校以上の外部スクールも活用OK！多様なニーズに対応しています。\nその他にもさまざまなプログラムを用意しております。\n\n変更の範囲：会社の定める業務",
+    "job_description_detail": null,
+    "number_of_hires": "10",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n入社後、2ヶ月間　試用期間中の条件：同じ",
+     "working_hours": "【勤務時間】\n■勤務時間：9:00 ～ 18:00 ※実働8時間\n(休憩12:00～13:00)\n\n時間外労働:あり\n■想定残業時間：20時間",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n【勤務地】愛知県\n\n【就業形態】・取引先構内もしくはリモート勤務\n（変更の範囲）会社の定める場所（リモートワークの場所を含む）\n\n\n※転勤の有無:あり\nただし、希望を考慮します",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 500,
+      "max_year_salary": 800
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n給与:賃金改定年1回\n年収：500万円～800万円\n月給：28.3万円～45.2万円\n\n※能力・経験・年齢等を考慮の上、同社規程に従って決定致します。\n年2回 ※別途決算賞与を支給する場合あり\n\n通勤交通費支給（月額上限15万円）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回",
+     "welfare_benefits": [],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n社会保険完備（健康保険、厚生年金、雇用保険、労災保険、介護保険）\n\n【福利厚生詳細】\n住宅:寮・社宅制度（家族・単身・独身）（月2万円～3万円＋光熱費を個人負担）\n手当:残業手当（1分単位）、役職手当 等\n退職金:確定拠出型年金\n労働組合　あり\n\n福利厚生\n日本最大手のエンジニア集団である弊社。\n充実の福利厚生・待遇で、みなさまをしっかりとサポートします。\n\n【各種手当】\n赴任手当、転勤赴任一時金、帰省旅費補助、引越費用補助\n\n【教育】\n社内外講習補助、勉強会講師料補助、通信教育補助、資格取得補助、図書購入補助、社外技術研修参加費、自己啓発支援\n\n【その他】\n退職金制度(確定拠出年金制度)、慶弔見舞金制度、社内クラブサークル活動支援、健康保険組合、財形貯蓄制度、定年再雇用、テクノプロ・グループ従業員持株会（奨励金あり） 、福利厚生サービス「ベネフィット・ステーション」、総合福祉団体定期保険"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（土日祝※祝日のある週は土曜出勤の場合あり）、年末年始、有給休暇(夏季取得推奨日あり)、慶弔休暇、特別休暇、育児休業、介護休業、入社時休暇(上限3日)、災害時休暇(年5回、最大5日)\n※年間休日122日"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n【受動喫煙】\n原則屋内禁煙\nただし、就業場所により異なる"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n面接1～2回\n選考方法備考・・・1次面接（WEB）⇒2次面接(対面 or WEB)⇒内定\n\n■面接地：対面の場合は本社または最寄りの支店にて実施する場合あり\n■選考曜日：月～金曜日\n■選考時間：9:00～20:00開始\n※ご都合が合わない場合は、ご相談ください。"
+   },
+   "selection_flow": "【選考フロー】\n面接1～2回\n選考方法備考・・・1次面接（WEB）⇒2次面接(対面 or WEB)⇒内定\n\n■面接地：対面の場合は本社または最寄りの支店にて実施する場合あり\n■選考曜日：月～金曜日\n■選考時間：9:00～20:00開始\n※ご都合が合わない場合は、ご相談ください。",
+   "amount_of_sales": "",
+   "industry": "人材サービス・アウトソーシング業界・コールセンター",
+   "sub_industry": "技術系アウトソーシング（特定技術者派遣）",
+   "postal_code": "106-6105",
+   "prefecture": "東京都",
+   "city": "港区",
+   "street_address": "6-10-1 六本木ヒルズ森タワー35F"
+  },
+  "can_recommend": true
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 322161,
+  "vacancy_no": "00322160-72860",
+  "title": "【土木施工管理】<新城市>2級土木施工管理技士/平均残業15H/ベテラン歓迎",
+  "company_name": "松井建拓株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 5,
+      "category": "overtime",
+      "title": "残業20時間以下",
+      "pivot": {
+       "job_id": 322161,
+       "characteristic_id": 5
+      }
+     },
+     {
+      "characteristic_id": 26,
+      "category": "day_off",
+      "title": "その他",
+      "pivot": {
+       "job_id": 322161,
+       "characteristic_id": 26
+      }
+     }
+    ]
+   },
+   "organization_name": "松井建拓株式会社",
+   "estd_date": "1944年09月",
+   "capital": "54百万円",
+   "number_of_employees": "36",
+   "head_office_location": "城北１－１－５",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 550,
+    "max_year_salary": 700
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "建築・土木技術職",
+    "sub_job_type": "施工管理・工事監理者【土木・解体工事】"
+   },
+   "update_date": "2025/12/17",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【必須】\n■2級土木施工管理技士の資格を有している方\n■普通自動車運転免許",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     "大学院 大学 高専 短大 専修 高校"
+    ],
+    "welcome_condition": "■公共機関/官公庁案件の実務経験がある方\n■1級土木施工管理技士の資格を有している方\n\n【求める人物像】自ら考え実行できる「積極性」のある人/「柔軟性」をもって業務を遂行できる人\n\nーーーーーー\n★資格支援制度でほとんどの従業員が1級の資格を取得しています！\n★経験豊富な社員が多く、一緒に仕事する上で新しい知識が身につき、楽しく充実した仕事ができます。"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n◇職務要約・魅力\n・河川改修工事・道路整備工事・造成工事・上下水道工事などのインフラ整備を通じて地域の安全と発展に貢献。\n・社員を全面的にバックアップする事で、働きやすくスキルアップできる環境づくりに力を注いでいます。\n\n◇業務内容\n●東三河地区の土木施工管理をお任せします。\n宿泊を伴う出張はありません。\n大規模案件は複数の施工管理者を配置、業務量が集中しないようにしています。\n現場へ直行直帰の場合も有。\n実務作業は下請会社に発注します。\n\n≪業務内容の詳細≫\n・現場巡視による工事品質管理/作業員等の安全管理\n・予算管理(必要経費の計算や実費の把握)\n・下請け工事業者の手配\n・工程管理（工事の業務効率化）\n\n≪工期≫\n・官公庁：6ヶ月〜約1年\n\n≪案件規模≫\n・平均3000万～1億円規模：\n舗装の修繕や側溝改良などの数百万単位の案件から、約2億円規模の道路・橋梁改良案件まで様々な案件に携わって頂けます。\n\n●安全管理について\n従業員の安全と健康を守るために、現場での朝のKY活動をとても重視し、労働災害やトラブルを未然に防ぐことを心がけています。",
+    "job_description_detail": null,
+    "number_of_hires": "2",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月\n変更無",
+     "working_hours": "08:00～17:00（所定労働時間8時間）\n【休憩】60分\n【残業】有\n【備考】固定残業代の相当時間：15.0時間/月",
+     "average_monthly": {
+      "overtime_hours": "残業20時間以下",
+      "overtime_hours_details": "固定残業代の相当時間：15.0時間/月"
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "本社\n愛知県 新城市 城北1-1-5\n【最寄駅】 JR 飯田線 新城駅 徒歩10分\n【備考】マイカー通勤可能",
+     "scope_of_change": "なし",
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 550,
+      "max_year_salary": 700
+     },
+     "monthly_income": {
+      "min_month_salary": 29.9,
+      "max_month_salary": null
+     },
+     "salary_detials": "【形態】\n月給制\n\n【備考】\n月給￥299,300～\n基本給￥270,000～\n固定残業代￥29,300～を含む/月\n\n■賞与実績:年2回：7月、12月(昨年実績：5.85ヶ月)\n\n【モデル年収】\n年収560万円 入社6年目 メンバー/2級土木施工（月給29万+賞与 ※2級土木施工管理技士）\n年収830万円 入社20年目 係長/1級土木施工（月給40万+賞与 ※1級土木施工管理技士）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回 7月、12月（昨年実績：5.85か月）\n※業績により決算賞与（6月） 平均141万円（2024年6月実績）",
+     "welfare_benefits": [],
+     "various_allowances": "【諸手当】\n通勤手当（会社規定に基づき支給）\n残業手当（固定残業代制 超過分別途支給）",
+     "welfare_benefits_detail": "【社会保険】\n健康保険 厚生年金保険 雇用保険 労災保険\n\n【制度・設備】\n資格取得支援制度（全従業員利用可）\n継続雇用制度(再雇用)（全従業員利用可）\n従業員専用駐車場あり（全従業員利用可）\n\n【退職金】有\n\n【寮・社宅】無\n\n【その他制度】\n定年：65歳(再雇用制度有)\n※定年後は1年毎の契約更新で働いていただけます(70歳まで)"
+    },
+    "holiday": {
+     "holiday": "その他",
+     "holiday_details": "【休日】105日\n（内訳） 日曜 夏季5日 年末年始7日\nその他（企業カレンダーにより土曜は年5回出勤有）\n\n【有給休暇】有（10～20日）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking",
+      "smoking_room_available"
+     ],
+     "details_on_secondhand": "【喫煙環境】敷地内禁煙（屋外喫煙可能場所あり）"
+    },
+    "others": null,
+    "selection_flow": "★遠方の方に関しては別途面接方法をご相談くださいませ。\n\n書類選考\n↓\n面接（1-2回）\n↓\n内定"
+   },
+   "selection_flow": "★遠方の方に関しては別途面接方法をご相談くださいませ。\n\n書類選考\n↓\n面接（1-2回）\n↓\n内定",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

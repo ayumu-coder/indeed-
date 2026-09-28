@@ -1,0 +1,170 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 359252,
+  "vacancy_no": "00359251-df7eb",
+  "title": "愛知【システムエンジニア】自動車メーカー向け車載システムの自己診断機能設計開発をお任せします　　※残業平均20時間程度／ワークライフバランス◎",
+  "company_name": "株式会社日立産業制御ソリューションズ",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 359252,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 13,
+      "category": "work_environment",
+      "title": "フレックス制",
+      "pivot": {
+       "job_id": 359252,
+       "characteristic_id": 13
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 359252,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社日立産業制御ソリューションズ",
+   "estd_date": "2014/04/01",
+   "capital": "30億円（日立製作所　100％出資）",
+   "number_of_employees": "3,580名（2022年4月）",
+   "head_office_location": "東京都台東区秋葉原6-1",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "IT・通信業界",
+    "sub_industry": "システムインテグレータ（SIer）"
+   },
+   "annual_salary": {
+    "min_year_salary": 430,
+    "max_year_salary": 1100
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "Web・オープン系 プログラマ【PG】"
+   },
+   "update_date": "2026/03/03",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n車載診断に関する知見がある方",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": null
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n同社は、自動車業界における自動運転や電動化の進化とともにシステム開発で培い、積み重ねて\nきたCASE(※)に関する高度な技術と手法を活かして、お客さまの複雑化・大規模化するシステム\n開発をコンサルティングからエンジニアリングまで幅広く支援しています。\n※CASE：Connected（つながる）、Autonomous（自動運転）、Shared & Service（シェアリング/サービス）、Electric（電動化）の頭文字を組み合わせた造語です。\n\nあなたにお任せするのは、愛知地区における自動車メーカー向け車載システムの自己診断機能設計開発。お客さま先に常駐し、電気自動車に欠かせない充電・給電システムに関わるダイアグ機能の要件定義から詳細設計までの最上流工程を担当。完成した仕様を後工程の顧客先の担当者に提供するまでが業務範囲となります。\n\n※入社後は、OJTを通して実際の業務プロセスに携わりながら経験を積んでいただきます。業務に慣れてきたら10名弱のチームのマネジメントを担ってもらうことを期待いたします。\n\n[この仕事の魅力・面白さ]\n個人の裁量が大きいため、新しい技術やアイデアに対して自由に挑戦できます。プロジェクトにおいて自分の手腕を発揮し、イノベーションに貢献することができます。\n\n[この仕事の大変さ]\n個人の裁量が大きい分、プロジェクトの成功や成果は、個人の取り組みと決断に大きく依存します。また、問題解決能力が求められるため、高い専門知識と実務経験を学び、プロジェクトを成功に導くためのスキルを磨くことが必要です。\n\n[働く環境について]\n客先常駐が中心の業務となります。\n残業時間は平均で20時間程度です。\n\n【配属組織】\n配属となる組織(愛知地区)は協力会社と併せて10名程の組織で、35歳～45歳の社員が多く在籍をしております。\n\n【PR】\n同社は社員のワークライフバランスの実現に取り組んでおり、経済産業省「健康経営優良法人2023」に認定されております。",
+    "job_description_detail": null,
+    "number_of_hires": "1",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n3ヶ月　試用期間中の条件：同じ",
+     "working_hours": "【勤務時間】\n◎勤務時間 \nフレックスタイム制 \nコアタイム：10:50～15:20 \nフレキシブルタイム：7:05～10:50、15:20～22:00 \n休憩時間：45分 \n時間外労働有無：有\n\n＜標準的な勤務時間帯＞ \n8:50～17:20 \n＜その他就業時間補足＞ \n【東京地区】8:50～17:20【茨城地区】8:40～17:10",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n愛知県豊田市\n※お客さま先への常駐となります。",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 430,
+      "max_year_salary": 1100
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n想定年収：430万円～1100万円\n\n試用期間：有/3ヶ月（変更なし）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "賞与:年2回",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n健康保険、厚生年金保険、雇用保険、労災保険\n\n【福利厚生詳細】\n通勤手当、家族手当、住宅手当、寮社宅、健康保険、厚生年金保険、雇用保険、労災保険、厚生年金基金、退職金制度 \n\n＜各手当・制度補足＞ \n通勤手当：新幹線・特急通勤の場合は一部自己負担有り \n家族手当：補足事項なし \n住宅手当：但し、適用条件あり \n寮社宅：但し、適用条件あり \n社会保険：補足事項なし \n厚生年金基金：補足事項なし \n退職金制度：補足事項なし \n\n＜定年＞ \n60歳 \n\n＜教育制度・資格補助補足＞ \n専門技術教育、階層別教育、グローバル教育、資格取得支援制度 等 \n\n＜その他補足＞ \n・各種社会保険、日立グループ団体保険制度、企業年金制度など \n・従業員クラブ、スポーツ施設、病院、リゾート施設など \n・短時間勤務制度あり（ただし、適用条件あり）"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（休日は土日祝日） \n年間有給休暇2日～24日（下限日数は、入社直後の付与日数となります） \n年間休日日数126日 \n\n週休2日、年間休日126日、年次有給休暇 \nフレックスタイム制勤務制度、育児休暇、介護休暇、リフレッシュ休暇など"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n屋内全面禁煙"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n1.書類選考 \n2.面接（1～複数回） \n3.内定 \n※選考内容は、状況に応じて変更が生じる場合があります。"
+   },
+   "selection_flow": "【選考フロー】\n1.書類選考 \n2.面接（1～複数回） \n3.内定 \n※選考内容は、状況に応じて変更が生じる場合があります。",
+   "amount_of_sales": "",
+   "industry": "IT・通信業界",
+   "sub_industry": "システムインテグレータ（SIer）",
+   "postal_code": "110-0006",
+   "prefecture": "東京都",
+   "city": "台東区",
+   "street_address": "秋葉原6-1"
+  },
+  "can_recommend": true
+ }
+}

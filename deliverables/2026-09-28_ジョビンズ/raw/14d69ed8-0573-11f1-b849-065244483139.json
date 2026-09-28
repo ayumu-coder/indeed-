@@ -1,0 +1,168 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 355402,
+  "vacancy_no": "00355400-45f9a",
+  "title": "【名古屋/刈谷】 制御ソフトウェア開発エンジニア～残業20H程/リモート相談可/賞与4.7か月/WLBが取りやすい！～",
+  "company_name": "サイバーコム株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 13,
+      "category": "work_environment",
+      "title": "フレックス制",
+      "pivot": {
+       "job_id": 355402,
+       "characteristic_id": 13
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 355402,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 355402,
+       "characteristic_id": 10
+      }
+     }
+    ]
+   },
+   "organization_name": "サイバーコム株式会社",
+   "estd_date": "1978年（昭和53年）12月4日",
+   "capital": "39,956万円",
+   "number_of_employees": "1,272名",
+   "head_office_location": "神奈川県横浜市中区本町4-34　横浜本社ビル",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "IT・通信業界",
+    "sub_industry": "システムインテグレータ（SIer）"
+   },
+   "annual_salary": {
+    "min_year_salary": 411,
+    "max_year_salary": 710
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "制御系 SE【ソフトウェア設計】"
+   },
+   "update_date": "2026/02/13",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n■必須条件\n・組み込みソフトウェアの開発実務経験1年以上の方\n（言語：C言語、C++　OS：RTOS、Android、Linux）\n\n■歓迎条件\n・開発の上流から下流までの全工程の経験\n・マネジメント経験（PL、PM）\n・モデルベース開発（MATLAB、Simulink）の知識・経験\n・車載ネットワーク（CAN、LIN）の知識・経験\n・AUTSAR、機能安全の知識・経験",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": null
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n■業務概要：\nソフトウェアの受託開発を軸に、多様なニーズに適う高品質なソフトウェアを提供する当社にて、車載関連のシステム開発を中心にお任せします。主な開発案件としては、下記となります。\n・車載制御システム（ECU)\n・自動運転、インパネ、ボデー、エンジン、HV\n・ECU基盤プラットフォーム など\n・産業用ロボット開発\n\n■主な開発環境：【言語】C言語、C++【OS】RTOS、Android、Linux\n\n■業務の魅力：\nスペシャリスト・ゼネラリストを目指すいずれのキャリアパスも用意されていますので、エンジニアとして成長していくための幅広い選択肢があります。\nまた、勤務地の一つである刈谷オフィスは、車載開発をメインターゲットにしたオフィスとなっています。 2008年に5名のメンバーでスタートしましたが、現在100名規模の組織へ拡大中。部門の成長とともに、自らのキャリアアップを目指すことができ大きなやりがいを感じていただけます。\n\n■評価制度について：\n2020年度に評価制度を変更したばかりで、上司・本人との相互評価を導入し、\n明確に評価できる体制を整えました。この個人評価および業績評価が賞与に反映されます。\n\n■キャリアパス：\n「マネジメント職」と「テクニカル職」と言う2パターンのキャリアパスがあり、社員の適正に応じたキャリアが描けます。\n「マネジメント職」：メンバー→リーダー→主任→課長→部長のキャリアがあり、メンバーから早くて2～3年でリーダーに昇格することも可能です。\n「テクニカル職」：一定の技術分野で豊富な知識とノウハウを持ち専門技術に特化していきます。\n\n■働き方改革について：\n・残業時間は「全社平均残業23時間/月」。職種平均では20時間以下。離職率は約5%と定着率が高く、企業として働きやすい環境作りに努めています。\n・「わたしの有休消化日」として祝日のない6月に月曜か金曜のいずれか1日を任意に有休消化し3連休にしたり、プレミアムフライデーとして毎月最終金曜日は15時退社を推奨するなど様々なワークライフバランスの取り組みをしています。（一部客先勤務の場合は応相談）\n\n職場情報・PR\n【次世代エンジニアとして活躍頂ける環境が揃っています】\n◆評価制度については9段階評価となり年2回評価があります。評価制度についても明確な基準があり最短1年で次の職級へ昇進可能です\n◆曖昧なサービス残業を撲滅するために1分単位で残業代を支給いたします。※みなし残業はございません。\n◆キャリアパスとしては「マネジメント職」「テクニカル職」双方でリーダー・主任・課長・部長ポジションがございます！\n◆「福利厚生」「各種手当面(扶養家族手当、超過勤務手当、通勤手当、深夜手当等）が充実！\n◆エンジニアを大切にする会社で常任の現役員はすべてエンジニア出身！\n◆人を大切にする企業として、離職率は6.5％と業界平均よりも非常に低い数値となっております。\n◆社内イベントが豊富でフラットな人間関係。エンジニアにとって働きやすく、非常に風通しが良い社風です！\n◆Eラーニングも充実し、基礎から応用までしっかり学べる環境がございます。",
+    "job_description_detail": null,
+    "number_of_hires": "3",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n有：3ヶ月　条件の変更なし",
+     "working_hours": "【勤務時間】\n■所定労働時間　7時間30分（休憩60分）\n■フレックスタイム制（コアタイム：無）\n■残業：有（平均残業時間：22時間）\n■残業手当：有（有残業時間に応じて1分単位で別途支給）",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n・刈谷市内のお客様先\n愛知県\n\n・名古屋市内のお客様先\n愛知県\n\n・愛知県内のお客様\n\n■転勤有無\n当面なし\n案件によっては長期の出張の可能性もございます",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 411,
+      "max_year_salary": 710
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n想定年収：411万円～710万円\n想定年収：411万円～710万円\n月給：220,000円～380,000円\n※スキル、経験を考慮して決定します。\n\n■賞与実績：年2回\n■残業手当：有（残業時間に応じて1分単位で別途支給）\n■通勤手当：会社規定に基づき支給\n\n■年収試算時の賞与掛け率\n　6.12ヶ月\n■適用日\n　2026年1月から内定をお出しする方を対象といたします。"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "■賞与実績：年2回",
+     "welfare_benefits": [
+      "産休/育休実績あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n■社会保険\n健康保険：有\n厚生年金：有\n雇用保険：有\n労災保険：有\n\n【福利厚生詳細】\n【ワークライフバランスを保つ制度】\n■定時退社日（毎週水曜・金曜）\n■プレミアムフライデー（毎月最終金曜日は15時退社）\n■育児・介護休業制度　■短縮勤務制度　■わたしの有給消化日■在宅勤務　■扶養手当（一般社員採用時）\n\n【長期就業に向けた制度】\n■永年勤続表彰　■企業年金基金　■確定拠出年金　■慶弔金制度　■退職金制度　■財形利子補給　■提携住宅ローン■グループ保険、GLTD　■生命保険加入における優遇措置　■ベネフィットステーション 結婚祝い品　■契約保養所\n\n【健康促進制度】\n■健康管理センター　■予防接種費用補助　■定期健康診断　■ストレスチェック　■各種相談窓口"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n■年間休日：128日（内訳：土曜・日曜・祝日）\n■特別休日：夏3日、年末年始3日\n■有休休暇：10日～最高20日（入社直後付与）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n■喫煙環境\nサイバーコム刈谷オフィス：敷地内全面禁煙\nお客様先：屋内禁煙（屋内喫煙可能場所あり）"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n■面接回数\n1回\n\n■選考フロー\n適性検査(WEB)→最終面接(WEB)"
+   },
+   "selection_flow": "【選考フロー】\n■面接回数\n1回\n\n■選考フロー\n適性検査(WEB)→最終面接(WEB)",
+   "amount_of_sales": "",
+   "industry": "IT・通信業界",
+   "sub_industry": "システムインテグレータ（SIer）",
+   "postal_code": null,
+   "prefecture": "神奈川県",
+   "city": "横浜市中区",
+   "street_address": "本町4-34　横浜本社ビル"
+  },
+  "can_recommend": true
+ }
+}

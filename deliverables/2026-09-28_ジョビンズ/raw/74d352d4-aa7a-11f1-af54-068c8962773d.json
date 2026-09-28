@@ -1,0 +1,168 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 496874,
+  "vacancy_no": "00496873-6160f",
+  "title": "【愛知/営業/中途】未経験OK/年間休日135日×賞与年3回！/★地域密着企業で始める100％反響営業★",
+  "company_name": "株式会社エネチタ",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 0,
+    "minimum_industry_experience": 0,
+    "overall_experience": "N",
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 5,
+      "category": "overtime",
+      "title": "残業20時間以下",
+      "pivot": {
+       "job_id": 496874,
+       "characteristic_id": 5
+      }
+     },
+     {
+      "characteristic_id": 26,
+      "category": "day_off",
+      "title": "その他",
+      "pivot": {
+       "job_id": 496874,
+       "characteristic_id": 26
+      }
+     },
+     {
+      "characteristic_id": 33,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件なし",
+      "pivot": {
+       "job_id": 496874,
+       "characteristic_id": 33
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社エネチタ",
+   "estd_date": "1935年",
+   "capital": "3,000万円",
+   "number_of_employees": "440",
+   "head_office_location": "愛知県知多郡阿久比町草木字上外六3-1",
+   "sales_revenue": "173億円",
+   "ipo": "未上場",
+   "industries": {
+    "industry": "建設・プラント・不動産業界",
+    "sub_industry": "住宅（ハウスメーカー）"
+   },
+   "annual_salary": {
+    "min_year_salary": 460,
+    "max_year_salary": 1000
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "営業",
+    "sub_job_type": "内勤営業、カウンターセールス"
+   },
+   "update_date": "2026/09/20",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・20代～30代前半\n・未経験者歓迎\n・転職回数は1～2回程度が望ましい",
+    "years_of_experience": {
+     "other": "N",
+     "job_type": 0,
+     "industry": 0
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": null
+   },
+   "overview": {
+    "reason_for_recruitment": "増員募集",
+    "job_description": "不動産事業・リフォーム事業\n【リフォーム事業】\n★100％反響営業★\nキッチン・お風呂など水回りのプロとして、\n“快適な暮らし”を提案\nご自宅や店舗の水回りリフォームを中心に、お客様の理想の住まいづくりをサポート。\nご要望に寄り添った提案で、「お願いしてよかった」と言ってもらえるやりがいがあります。\n\n【不動産事業】\n「理想の住まい」との出会いをサポートする、住まいの案内人\n「ハウスドゥ」をフランチャイズで展開。家や土地を探すお客様と一緒に物件見学や契約サポートを行い、住まいの夢を一緒に叶えます。\n一生に一度の買い物に立ち会える、責任と喜びのある仕事です。",
+    "job_description_detail": null,
+    "number_of_hires": "5",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "N",
+     "probation_period_detail": null,
+     "working_hours": "9:00~18:00",
+     "average_monthly": {
+      "overtime_hours": "残業20時間以下",
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "☆リフォーム事業☆\n【エネチタ半田常滑ショールーム】\n〒475-0903　\n愛知県半田市出口町1-216-9\n\n【エネチタ東海知多ショールーム】\n〒476-0012　\n愛知県東海市富木島町伏見4-17-5\n\n【エネチタ大府東浦ショールーム】\n〒474-0026　\n愛知県大府市桃山町1-223-1\n\n【エネチタ岡崎安城ショール―ム】\n2026年11月オープン予定\n\n☆不動産事業☆\n【ハウスドゥ 大府】\n〒474-0061　\n愛知県大府市共和町3丁目18-14\n\n【ハウスドゥ 東海】\n〒476-0011　\n東海市富木島町外面6-4\n\n【ハウスドゥ 東浦・阿久比】\n〒470-2102　\n愛知県知多郡東浦町緒川下出口24番1\n\n【ハウスドゥ 常滑】\n〒479-0836　\n愛知県常滑市栄町2丁目1\n\n【ハウスドゥ 知多】\n〒478-0053　\n愛知県知多市清水が丘1丁目1712番\n\n【ハウスドゥ 半田中央】\n〒475-0911　\n愛知県半田市星崎町3丁目22-9\n\n【ハウスドゥ 半田武豊】\n〒475-0836　\n半田市青山4丁目4-14\n\n【ハウスドゥ　刈谷R155】\n〒448-0038　\n愛知県刈谷市稲場町5丁目612\n\n【ハウスドゥ　家・不動産買取専門店　大府】\n〒474-0061\n愛知県大府市共和町3丁目18-14\n\n【ハウスドゥ　家・不動産買取専門店　知多】\n〒478-0036　\n愛知県知多市新舞子竹ノ花109-1\n\n【ハウスドゥ　家・不動産買取専門店　東浦・阿久比】\n〒470-2102　\n愛知県知多郡東浦町緒川下出口24番1\n\n【ハウスドゥ 家・不動産買取専門店 東海】\n〒477-0032　\n愛知県東海市加木屋町柿畑58-1\n\n【ハウスドゥ　家・不動産買取専門店　刈谷駅東】\n〒448-0021　\n愛知県刈谷市八軒町1丁目71−３\n\n【リノベーションショールーム刈谷店】\n〒448-0021　\n愛知県刈谷市八軒町１丁目71−３\n\n【ハウスドゥ 名古屋緑】\n2027年4月オープン予定",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 460,
+      "max_year_salary": 1000
+     },
+     "monthly_income": {
+      "min_month_salary": 28.7,
+      "max_month_salary": 55.2
+     },
+     "salary_detials": "インセンティブ制有り\n上記月給とは別で、営業目標を達成した場合に売上に応じたインセンティブが支給さ\n\n固定残業：￥58,110～￥61,370\n35時間を超える残業代は追加で支給。"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": "Y",
+     "stock_options": "N",
+     "bonus_details": "賞与回数3回",
+     "welfare_benefits": [],
+     "various_allowances": "・役職手当\n・資格手当\n・子育て応援手当\n・懇親会手当\n・ローン応援手当\n・ひとり暮らし応援手当（同棲も対象！）",
+     "welfare_benefits_detail": "・社会保険完備\n・交通費支給\n・退職金制度\n・前払退職金制度"
+    },
+    "holiday": {
+     "holiday": "その他",
+     "holiday_details": "年間休日：135日\n休暇制度：年末年始休暇、夏季休暇、特別休暇、産休・育休\n補足情報：ウェディング休暇（最大7日間）\n\n産休育休取得率100％　※男性の育児休暇取得推進！"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "オンライン面談\n職場見学\n事業部責任者面接\n必要に応じて当日最終面接\n内定"
+   },
+   "selection_flow": "オンライン面談\n職場見学\n事業部責任者面接\n必要に応じて当日最終面接\n内定",
+   "amount_of_sales": "173億円",
+   "industry": "建設・プラント・不動産業界",
+   "sub_industry": "住宅（ハウスメーカー）",
+   "postal_code": "470-2211",
+   "prefecture": "愛知県",
+   "city": "知多郡阿久比町",
+   "street_address": "草木字上外六3-1"
+  },
+  "can_recommend": true
+ }
+}

@@ -1,0 +1,217 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 21165,
+  "vacancy_no": "00021166",
+  "title": "【愛知】組込系エンジニア(大手自動車メーカー車載開発)／フレックス・年休124日",
+  "company_name": "株式会社エヌアイデイ",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 1,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高専/短大/専門卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 5,
+      "category": "overtime",
+      "title": "残業20時間以下",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 5
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 19,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件あり",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 19
+      }
+     },
+     {
+      "characteristic_id": 13,
+      "category": "work_environment",
+      "title": "フレックス制",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 13
+      }
+     },
+     {
+      "characteristic_id": 22,
+      "category": "work_environment",
+      "title": "リモート可",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 22
+      }
+     },
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 7,
+      "category": "selection",
+      "title": "面接1回で終了",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 7
+      }
+     },
+     {
+      "characteristic_id": 8,
+      "category": "selection",
+      "title": "急募",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 8
+      }
+     },
+     {
+      "characteristic_id": 11,
+      "category": "selection",
+      "title": "WEB面接OK",
+      "pivot": {
+       "job_id": 21165,
+       "characteristic_id": 11
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社エヌアイデイ",
+   "estd_date": "1967年（昭和42年）5月",
+   "capital": "6億53百万円",
+   "number_of_employees": "1663",
+   "head_office_location": "晴海アイランドトリトンスクエアX棟29階",
+   "sales_revenue": "204億49百万円（2023年3月期）",
+   "ipo": "スタンダード市場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 450,
+    "max_year_salary": 650
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "組み込み系 プロジェクトマネージャー【PM】、リーダー【PL】"
+   },
+   "update_date": "2025/10/08",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【必須】\n・制御プログラム開発経験\n・C言語を用いた制御プログラム開発、試験、評価などの経験\n\n【求める人物像】\nITに対する向上心、好奇心が強い方\nニーズが高まる分野でスキルアップしていきたい方\n将来的に市場価値の高い存在へと成長していきたい方\n\n【必要資格・ライセンス】特に無し",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 1,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高専/短大/専門卒以上",
+     "専門学校卒業以上"
+    ],
+    "welcome_condition": "・車載システムに関する経験\n・PM、PLなど、プロジェクトマネジメント経験"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "日本を代表する大手自動車メーカーのパートナーとして、\n車載ECU（EFI、HV等）の制御仕様設計、ソフト開発、評価や、\n自動運転・先進安全機能の仕様および開発補助ツールの検討・実証に参画頂きます。\n\n具体的には以下業務をお任せいたします。\n・システム設計、要件定義仕様設計等の上流設計業務\n・ソフト実装、結合、検査等のソフト開発業務\n・ソフト評価の自動化に向けたプロセス検討、環境構築\n\n■ポジションの魅力：\n・仕様設計のフェーズ及び総合運用試験まで、上流工程から携われます。\n※開発経験のみの方でも他のメンバーと一緒に上流工程をご担当いただくことを想定しております。\n・エンジン制御ユニット等のハード面はもちろん、各種制御を効率化、\n高度化するためのアプリケーション開発などハード、ソフト両面の知識や経験を高められる環境です。\n・チャレンジ段階にある先進的な研究開発にも携われるチャンスも多数あります。\n\n■評価制度/教育制度：\n年初に1回、目標設定する機会と上期・下期に1回ずつ上長からフィードバックを行う面談を設定しており、\nその面談で自己評価と上長評価を合わせて決定します。\nまた、上長と話し合った上で自身のスキルを『棚卸し』する機会でもあり、\n今身に付けなくてはならないスキルや今後伸ばして欲しい考え方を明確化します。\n社員の成長を大事にしており、一人一人に合った育成を行うことで、スキルの向上を支援しています。\n\n■働く環境：\n残業時間は月平均20時間程度。有給取得率は77%となっており、非常に働きやすい環境が整っておりますので、\n仕事とプライベートとのメリハリをつけて働くことができます。",
+    "job_description_detail": null,
+    "number_of_hires": "5",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月",
+     "working_hours": "9:00～18:00(休憩60分)\n※フレックスタイム制あり",
+     "average_monthly": {
+      "overtime_hours": "残業20時間以下",
+      "overtime_hours_details": "20時間程度"
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知県\n中部事業所もしくは愛知県内顧客先での常駐勤務　\n※リモート勤務可",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 450,
+      "max_year_salary": 650
+     },
+     "monthly_income": {
+      "min_month_salary": 27.8,
+      "max_month_salary": 39
+     },
+     "salary_detials": "＜年収について＞\n前職給与を参考に保有スキルによって決定致します。\n予定年収450万〜650万 ※目安\n\n年収例：34歳中途入社\n　年収450万(入社初年度)　→　年収670万(入社4年後)"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "■賞与年2回（6月・12月）\n実績例:4.7ヶ月分\n半年に一回面談があり決定します。賞与および特別手当額は会社業績と社員の成果（評価）に基づき変動。\nまた入社月に応じた期間控除があります。\n\n■昇給年1回（4月）",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": "■住宅手当\n■扶養手当\n■通勤手当\n■時間外勤務手当",
+     "welfare_benefits_detail": "■各種社会保険完備（健康・雇用・労災・厚生年金）\n■退職金、財形貯蓄、団体生命保険\n■育児、介護休業制度・従業員持株会\n■資格取得祝金、永年勤続表彰\n■保養所、スポーツ施設、スキー・テニス教室\n■社員旅行、スポーツ大会、各種同好会など"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "年間休日124日＋有給取得推奨5日\n完全週休2日制（土・日）、祝日\n創立記念日、年次有給休暇、夏季休暇、年末年始休暇、年次有給休暇、慶弔休暇、その他各種特別休暇"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考→面接(1回)→内定\n\n＜備考＞\n基本的にはWebで行われる。\n適正テストあり\n\n※場合によっては面接2回行われるケースもあり"
+   },
+   "selection_flow": "書類選考→面接(1回)→内定\n\n＜備考＞\n基本的にはWebで行われる。\n適正テストあり\n\n※場合によっては面接2回行われるケースもあり",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

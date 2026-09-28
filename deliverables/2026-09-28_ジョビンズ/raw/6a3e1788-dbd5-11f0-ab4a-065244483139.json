@@ -1,0 +1,169 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 324852,
+  "vacancy_no": "00324851-0bc70",
+  "title": "【愛知県】【未経験大歓迎】Gulliver スマートカーライフプランナー",
+  "company_name": "株式会社IDOM",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "MAXIMUM_CONSIDERATION",
+    "characteristics": [
+     {
+      "characteristic_id": 25,
+      "category": "day_off",
+      "title": "シフト制",
+      "pivot": {
+       "job_id": 324852,
+       "characteristic_id": 25
+      }
+     },
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 324852,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 324852,
+       "characteristic_id": 10
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社IDOM",
+   "estd_date": "1994/10/25",
+   "capital": "41億5,702万円",
+   "number_of_employees": "4023",
+   "head_office_location": "東京都千代田区丸の内20702JPタワー26階",
+   "sales_revenue": "4966億円",
+   "ipo": "未上場",
+   "industries": {
+    "industry": "小売業界",
+    "sub_industry": "自動車ディーラー"
+   },
+   "annual_salary": {
+    "min_year_salary": 300,
+    "max_year_salary": 360
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "営業",
+    "sub_job_type": "内勤営業、カウンターセールス"
+   },
+   "update_date": "2026/03/12",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・高卒以上の方\n・入社までに普通自動車免許の取得必須（AT限定またはMT）\n・車業界未経験大歓迎\n・営業経験者大歓迎",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": "【歓迎条件】\n・同業界での営業 または 販売の経験がある方"
+   },
+   "overview": {
+    "reason_for_recruitment": "事業拡大による採用強化",
+    "job_description": "【仕事内容】\n◆全国に展開するガリバー店舗にて、お車の提案営業（買取・販売）を行います。\n◆具体的な業務内容\n・お客様との提案商談（自動車の販売、買取、その他サービスのご提案）\n　※自動車保険やローンといった金融商品も含む\n　※来店対応やアポイントがある訪問対応があります\n・自動車の査定業務\n・集客活動（webサイトへの情報登録、店舗ブログの更新 など）\n・展示車両の配置（洗車含む）\n・その他店舗運営業務 など\n◆買取業務と販売業務\n〇買取業務\n・電話やWebサイトから買取査定の依頼を受け、お客様にご来店・ご訪問します。\n・決められた項目に沿ってクルマの状態を確認し、写真を撮って査定セクションに送り、査定セクションから相場データを受け取り、店長とデータを見ながら相談し査定金額を決めて、お客様にお伝えします。\n〇販売業務\n・ご来店いただいたお客様の生活背景や使用用途や未来設計をお聴きし、どうすれば最高のカーライフを送っていただけるかを考え、パソコンツールを使ってお客様と一緒に考えて、最適な「運命の1台」との出会いをサポートします。\n\n【ポイント】\n「車」という単なる移動手段（モノ）だけではなく、お客様の人生に彩りを与える「スマートカーライフ（コト）」という考えのうえで最適な「運命の1台」との出会いをサポートできる仕事です。\n・「ガリバー」は広く認知されており、問い合わせ・来店数も多いため、お客様と接する機会が多く得られます。そして「車に全く詳しくない…」という方でも、先輩スタッフがサポートをしてくれるので安心して対応することができ、スキル・経験をアップさせることができます。",
+    "job_description_detail": "会社規定に基づく",
+    "number_of_hires": "50",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n4か月",
+     "working_hours": "【勤務時間】\n10:00~20:00の間でシフト制(実働8時間)",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n・全国47都道府県にある直営店舗および事業所（https://221616.com/shop/）\n・エリア社員制度：３つの働き方の形態があります。\n　→  ナショナル社員（全国で勤務）\n　→  エリア限定社員（選択した12エリア内で勤務）\n　　　北海道、北東北、南東北、北関東、南関東・甲信、東海、北陸、近畿、中国、四国、\n　　　北九州、南九州・沖縄\n　→  都道府県限定社員（選択した都道府県内で勤務）\n・初期配属のご希望は選考内にてご希望をお聞きして相談させていただきますが、ご希望に添えない場合もあります。\n※受動喫煙防止対策：屋内全面禁煙\n\n・転勤：あり\n※就業場所の変更の範囲：上記のエリア社員制度の範囲内にある直営店舗、事業所",
+     "scope_of_change": "上記のエリアの範囲内にある直営店舗、事業所内での異動の可能性あり",
+     "possibility_of_work": "MAXIMUM_CONSIDERATION"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 300,
+      "max_year_salary": 360
+     },
+     "monthly_income": {
+      "min_month_salary": 25,
+      "max_month_salary": 30
+     },
+     "salary_detials": "【給与詳細】\n固定みなし残業代：月20時間分の「35,715円〜」が含まれています\n　　固定みなし残業代は残業がない場合も支給し、超過する場合は別途支給します\n　　一定期間経過より能力評価が反映され変動します\n※ご経歴を加味して給与算定を行います\n※配属先によって手当が異なります\n\n昇給：昇給査定／年1回、能力給査定／年3回\n\n【モデル年収】\n・28歳 セールスマネージャー：年収8,350,000円 (月給500,000円 + 賞与 + インセンティブ)\n・34歳 ストアマネージャー：年収9,450,000円 (月給600,000円 + 賞与 + インセンティブ)\n・38歳 エリアマネージャー：年収10,420,000円 (月給615,000円 + 賞与 + インセンティブ)\n昇給：昇給査定／年1回、能力給査定／年3回"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": "Y",
+     "stock_options": null,
+     "bonus_details": "年2回(6月/12月)※会社規定に準ずる",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり",
+      "産休/育休実績あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【福利厚生詳細】\n・通勤交通費支給（上限7万円 /月まで）\n　マイカー通勤：ガソリン代を支給（規定あり）\n　公共機関利用：定期代を支給\n・インセンティブ支給（毎月実績に応じて支給）\n　※所属によって異なる場合があります\n・結婚祝金、出産祝金、慶弔見舞金\n・こども手当、介護家族手当　など"
+    },
+    "holiday": {
+     "holiday": "シフト制",
+     "holiday_details": "【休日詳細】\n・シフト制/休日:月9日以上\n・長期休暇(GW、夏季、年末年始)、有給休暇(試用期間終了後付与)\n・慶弔休暇、特別休暇、出産/育児休暇、・介護休暇\n・年間休日：120日\n※上記内訳／公休：108日（9日/月×12か月）、有給休暇：5日（年間の取得義務分）、ライフサポート休暇：7日（有給とは別）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "【面接回数】\n1回\n\n【適性検査の有無】\n有\n\n【1次面接官】\n人事担当者"
+   },
+   "selection_flow": "【面接回数】\n1回\n\n【適性検査の有無】\n有\n\n【1次面接官】\n人事担当者",
+   "amount_of_sales": "4966億円",
+   "industry": "小売業界",
+   "sub_industry": "自動車ディーラー",
+   "postal_code": "100-0005",
+   "prefecture": "東京都",
+   "city": "千代田区",
+   "street_address": "丸の内20702JPタワー26階"
+  },
+  "can_recommend": true
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 21168,
+  "vacancy_no": "00021169",
+  "title": "【法人営業】完全週休二日制｜太陽光発電市場で持続可能な未来を築く",
+  "company_name": "株式会社FD",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 2,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 21168,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 8,
+      "category": "selection",
+      "title": "急募",
+      "pivot": {
+       "job_id": 21168,
+       "characteristic_id": 8
+      }
+     },
+     {
+      "characteristic_id": 11,
+      "category": "selection",
+      "title": "WEB面接OK",
+      "pivot": {
+       "job_id": 21168,
+       "characteristic_id": 11
+      }
+     },
+     {
+      "characteristic_id": 12,
+      "category": "selection",
+      "title": "適性テストなし",
+      "pivot": {
+       "job_id": 21168,
+       "characteristic_id": 12
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社FD",
+   "estd_date": "2001年10月",
+   "capital": "87百万円",
+   "number_of_employees": "56",
+   "head_office_location": "今川町花池3番地1",
+   "sales_revenue": "3,700百万円",
+   "ipo": "未上場",
+   "industries": {
+    "industry": "エネルギー（電力・ガス・石油・新エネルギー）業界",
+    "sub_industry": "新エネルギー（太陽光・風力・地熱・バイオなど）"
+   },
+   "annual_salary": {
+    "min_year_salary": 500,
+    "max_year_salary": 700
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "営業",
+    "sub_job_type": "企画営業【法人営業・個人営業】"
+   },
+   "update_date": "2025/10/09",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・普通自動車免許\n・3年以上の営業経験",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 2,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     "高卒以上"
+    ],
+    "welcome_condition": "・電気設備またはそれに類する設備工事業界での経験\n・１→１０フェーズの企業での経験"
+   },
+   "overview": {
+    "reason_for_recruitment": "当社は、平成13年に設立した小規模から大規模までの太陽光発電所の設計・施工を中心とした会社です。\nお客様案件だけでなく、自社案件の開発・施工にも力を入れており、現在、自社発電所を50箇所以上所有しております。\n発電した電力の買取価格は20年間固定されており、安定した収入が見込まれます。\n\nそういった状況からここ5年で売上が10倍以上に伸びており日本市場においてトップランナー的存在となっておりますが、\n現状に満足せず１０年後も市場の勝者として立場を確立するため、今後は海外での発電システム提供や特許取得している日本初の技術で事業拡大し上場も計画中です。\n\n今回募集している営業部署においては、本年より組織編成をおこない、\n営業部署の中でミッションを細分化しより多くの利益を生み出す体制となりました。",
+    "job_description": "°˖✧◝+---------------------------------------------+◜✧˖°\n盤石な経営基盤×社会貢献で未来を創る！\n10年後の市場の勝者を目指し、海外進出・上場を牽引する仲間を募集！\n貴社にご登録の優秀な人材に、ぜひご紹介ください！\n°˖✧◝+---------------------------------------------+◜✧˖°\n\n【仕事内容】\n・法人営業\n・銀行や投資家への営業\n・新たな領域への新規営業\nミッションの異なる営業チームから適正の部門で力を発揮していただきたいと考えています。\n異業種出身者も多いため常識にとらわれない柔軟な発想を期待しています。\n\n【業務詳細】\n・新規クライアントの開拓\n・クライアントの課題やニーズの把握、その課題解決方法の提案、効果分析\n・社内プロジェクトマネジメント\n・コンペ資料作成・プレゼンテーション\n・ビジネスプランの提案\n・部下の育成管理、マネジメント\n・営業戦術策定、予算管理",
+    "job_description_detail": null,
+    "number_of_hires": "1",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "6ヶ月",
+     "working_hours": "8:00~17:00 \n休憩1時間",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知県 刈谷市今川町花池3-1\n最寄駅 富士松駅",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 500,
+      "max_year_salary": 700
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与例】\n主任職（20代）：年収500万円\n課長職（30代）：年収700万円"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": "N",
+     "stock_options": "N",
+     "bonus_details": "■昇給：年1回\n■賞与：年2回（6月、12月）\n前年度実績　平均　3.5ヶ月",
+     "welfare_benefits": [],
+     "various_allowances": "通勤手当：当社規定により支給\n家族手当：当社規定により支給（管理職を除く）\n住宅手当：当社規定により支給（29歳以下、単身など条件あり）\n社会保険：各種社会保険完備",
+     "welfare_benefits_detail": "■役職手当・資格手当・通勤手当\n■健康診断\n■社員旅行制度\n■単身者対象 家賃補助(単身・～35歳、最大35,000円等条件有)\n■資格取得支援及び資格取得褒章制度（会社規定による）\n■高級リゾートホテル招待・優待制度\n■ピアボーナス制度（FD賞）\n■BBQ大会などの社内レクリエーション活動\n■教育研修制度\n■慶弔見舞金\n■結婚/出産祝い金"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "完全週休2日制（土日祝　※祝日は当社カレンダーに従う）\n年間有給休暇10日～20日（下限日数は、入社半年経過後の付与日数となります）\n年間休日日数116日\n\n有給休暇（入社日に5日、6ヶ月経過後に5日付与、最高20日）\nGW、夏季、年末年始、慶弔休暇、特別休暇"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考\n↓\n一次面接（リモート可）\n↓\n最終面接\n\n＊最終面接のみ来社いただく必要あり。交通費支給はありません。"
+   },
+   "selection_flow": "書類選考\n↓\n一次面接（リモート可）\n↓\n最終面接\n\n＊最終面接のみ来社いただく必要あり。交通費支給はありません。",
+   "industry": "エネルギー（電力・ガス・石油・新エネルギー）業界",
+   "sub_industry": "新エネルギー（太陽光・風力・地熱・バイオなど）"
+  },
+  "can_recommend": true
+ }
+}

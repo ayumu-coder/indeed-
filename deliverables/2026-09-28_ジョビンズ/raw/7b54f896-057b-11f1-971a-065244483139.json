@@ -1,0 +1,562 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 358984,
+  "vacancy_no": "00358982-93200",
+  "title": "【50代も積極採用】インフラエンジニア＜希望勤務地で選考OK・全国案件多数＞",
+  "company_name": "株式会社テクノプロ　テクノプロ・IT社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 10,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 358984,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社テクノプロ　テクノプロ・IT社",
+   "estd_date": "1995/08/01",
+   "capital": "1億100万円",
+   "number_of_employees": "4,855名（2022年6月末現在）",
+   "head_office_location": "東京都港区六本木6-10-1 六本木ヒルズ森タワー35F",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "人材サービス・アウトソーシング業界・コールセンター",
+    "sub_industry": "技術系アウトソーシング（特定技術者派遣）"
+   },
+   "annual_salary": {
+    "min_year_salary": 500,
+    "max_year_salary": 800
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 1,
+     "name": "北海道",
+     "name_kana": "ﾎｯｶｲﾄﾞｳ"
+    },
+    {
+     "id": 2,
+     "name": "青森県",
+     "name_kana": "ｱｵﾓﾘｹﾝ"
+    },
+    {
+     "id": 3,
+     "name": "岩手県",
+     "name_kana": "ｲﾜﾃｹﾝ"
+    },
+    {
+     "id": 4,
+     "name": "宮城県",
+     "name_kana": "ﾐﾔｷﾞｹﾝ"
+    },
+    {
+     "id": 5,
+     "name": "秋田県",
+     "name_kana": "ｱｷﾀｹﾝ"
+    },
+    {
+     "id": 6,
+     "name": "山形県",
+     "name_kana": "ﾔﾏｶﾞﾀｹﾝ"
+    },
+    {
+     "id": 7,
+     "name": "福島県",
+     "name_kana": "ﾌｸｼﾏｹﾝ"
+    },
+    {
+     "id": 8,
+     "name": "茨城県",
+     "name_kana": "ｲﾊﾞﾗｷﾞｹﾝ"
+    },
+    {
+     "id": 9,
+     "name": "栃木県",
+     "name_kana": "ﾄﾁｷﾞｹﾝ"
+    },
+    {
+     "id": 10,
+     "name": "群馬県",
+     "name_kana": "ｸﾞﾝﾏｹﾝ"
+    },
+    {
+     "id": 11,
+     "name": "埼玉県",
+     "name_kana": "ｻｲﾀﾏｹﾝ"
+    },
+    {
+     "id": 12,
+     "name": "千葉県",
+     "name_kana": "ﾁﾊﾞｹﾝ"
+    },
+    {
+     "id": 13,
+     "name": "東京都",
+     "name_kana": "ﾄｳｷｮｳﾄ"
+    },
+    {
+     "id": 14,
+     "name": "神奈川県",
+     "name_kana": "ｶﾅｶﾞﾜｹﾝ"
+    },
+    {
+     "id": 15,
+     "name": "新潟県",
+     "name_kana": "ﾆｲｶﾞﾀｹﾝ"
+    },
+    {
+     "id": 16,
+     "name": "富山県",
+     "name_kana": "ﾄﾔﾏｹﾝ"
+    },
+    {
+     "id": 18,
+     "name": "石川県",
+     "name_kana": "ｲｼｶﾜｹﾝ"
+    },
+    {
+     "id": 19,
+     "name": "福井県",
+     "name_kana": "ﾌｸｲｹﾝ"
+    },
+    {
+     "id": 17,
+     "name": "山梨県",
+     "name_kana": "ﾔﾏｼﾅｹﾝ"
+    },
+    {
+     "id": 20,
+     "name": "長野県",
+     "name_kana": "ﾅｶﾞﾉｹﾝ"
+    },
+    {
+     "id": 21,
+     "name": "岐阜県",
+     "name_kana": "ｷﾞﾌｹﾝ"
+    },
+    {
+     "id": 22,
+     "name": "静岡県",
+     "name_kana": "ｼｽﾞｵｶｹﾝ"
+    },
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    },
+    {
+     "id": 24,
+     "name": "三重県",
+     "name_kana": "ﾐｴｹﾝ"
+    },
+    {
+     "id": 25,
+     "name": "滋賀県",
+     "name_kana": "ｼｶﾞｹﾝ"
+    },
+    {
+     "id": 26,
+     "name": "京都府",
+     "name_kana": "ｷｮｳﾄﾌ"
+    },
+    {
+     "id": 27,
+     "name": "大阪府",
+     "name_kana": "ｵｵｻｶﾌ"
+    },
+    {
+     "id": 28,
+     "name": "兵庫県",
+     "name_kana": "ﾋｮｳｺﾞｹﾝ"
+    },
+    {
+     "id": 29,
+     "name": "奈良県",
+     "name_kana": "ﾅﾗｹﾝ"
+    },
+    {
+     "id": 30,
+     "name": "和歌山県",
+     "name_kana": "ﾜｶﾔﾏｹﾝ"
+    },
+    {
+     "id": 31,
+     "name": "鳥取県",
+     "name_kana": "ﾄｯﾄﾘｹﾝ"
+    },
+    {
+     "id": 32,
+     "name": "島根県",
+     "name_kana": "ｼﾏﾈｹﾝ"
+    },
+    {
+     "id": 33,
+     "name": "岡山県",
+     "name_kana": "ｵｶﾔﾏｹﾝ"
+    },
+    {
+     "id": 34,
+     "name": "広島県",
+     "name_kana": "ﾋﾛｼﾏｹﾝ"
+    },
+    {
+     "id": 35,
+     "name": "山口県",
+     "name_kana": "ﾔﾏｸﾞﾁｹﾝ"
+    },
+    {
+     "id": 36,
+     "name": "徳島県",
+     "name_kana": "ﾄｸｼﾏｹﾝ"
+    },
+    {
+     "id": 37,
+     "name": "香川県",
+     "name_kana": "ｶｶﾞﾜｹﾝ"
+    },
+    {
+     "id": 38,
+     "name": "愛媛県",
+     "name_kana": "ｴﾋﾒｹﾝ"
+    },
+    {
+     "id": 39,
+     "name": "高知県",
+     "name_kana": "ｺｳﾁｹﾝ"
+    },
+    {
+     "id": 40,
+     "name": "福岡県",
+     "name_kana": "ﾌｸｵｶｹﾝ"
+    },
+    {
+     "id": 41,
+     "name": "佐賀県",
+     "name_kana": "ｻｶﾞｹﾝ"
+    },
+    {
+     "id": 42,
+     "name": "長崎県",
+     "name_kana": "ﾅｶﾞｻｷｹﾝ"
+    },
+    {
+     "id": 43,
+     "name": "熊本県",
+     "name_kana": "ｸﾏﾓﾄｹﾝ"
+    },
+    {
+     "id": 44,
+     "name": "大分県",
+     "name_kana": "ｵｵｲﾀｹﾝ"
+    },
+    {
+     "id": 45,
+     "name": "宮崎県",
+     "name_kana": "ﾐﾔｻﾞｷｹﾝ"
+    },
+    {
+     "id": 46,
+     "name": "鹿児島県",
+     "name_kana": "ｶｺﾞｼﾏｹﾝ"
+    },
+    {
+     "id": 47,
+     "name": "沖縄県",
+     "name_kana": "ｵｷﾅﾜｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "ネットワーク設計・ネットワーク構築"
+   },
+   "update_date": "2026/04/07",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n◇必須\n・設計・構築～運用までの一連の経験（10年以上）",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 10,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": "◇歓迎\n・何かしらのリーダー経験\n・手を動かすプレイングマネージャー\n・若手育成経験など"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n大手メーカーのプロジェクトを中心に、ネットワーク/サーバの運用・保守、設計・構築\n\n【案件例】\n◎クラウドプラットフォーム(AWS、Azure)\n　上の設計・構築\n◎ネットワークインフラの企画・提案・設計・\n　構築・運用設計業務\n◎仮想化技術(Hyper-VやVMware)を用いた\n　サーバ・クラウドの設計・構築\n◎LTE・スマホ関連ネットワークの構築・運用\n◎サーバ(Windows、Linux)の運用・保守\n\n（変更の範囲）会社の定める業務",
+    "job_description_detail": null,
+    "number_of_hires": "1",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n試用期間2カ月（その間待遇に変更はありません）",
+     "working_hours": "【勤務時間】\n9：00～18：00（実働8時間）\n◎月平均残業時間／12.5時間\n◎残業代「100％」(1分単位)支給",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "北海道",
+       "name_kana": "ﾎｯｶｲﾄﾞｳ"
+      },
+      {
+       "name": "青森県",
+       "name_kana": "ｱｵﾓﾘｹﾝ"
+      },
+      {
+       "name": "岩手県",
+       "name_kana": "ｲﾜﾃｹﾝ"
+      },
+      {
+       "name": "宮城県",
+       "name_kana": "ﾐﾔｷﾞｹﾝ"
+      },
+      {
+       "name": "秋田県",
+       "name_kana": "ｱｷﾀｹﾝ"
+      },
+      {
+       "name": "山形県",
+       "name_kana": "ﾔﾏｶﾞﾀｹﾝ"
+      },
+      {
+       "name": "福島県",
+       "name_kana": "ﾌｸｼﾏｹﾝ"
+      },
+      {
+       "name": "茨城県",
+       "name_kana": "ｲﾊﾞﾗｷﾞｹﾝ"
+      },
+      {
+       "name": "栃木県",
+       "name_kana": "ﾄﾁｷﾞｹﾝ"
+      },
+      {
+       "name": "群馬県",
+       "name_kana": "ｸﾞﾝﾏｹﾝ"
+      },
+      {
+       "name": "埼玉県",
+       "name_kana": "ｻｲﾀﾏｹﾝ"
+      },
+      {
+       "name": "千葉県",
+       "name_kana": "ﾁﾊﾞｹﾝ"
+      },
+      {
+       "name": "東京都",
+       "name_kana": "ﾄｳｷｮｳﾄ"
+      },
+      {
+       "name": "神奈川県",
+       "name_kana": "ｶﾅｶﾞﾜｹﾝ"
+      },
+      {
+       "name": "新潟県",
+       "name_kana": "ﾆｲｶﾞﾀｹﾝ"
+      },
+      {
+       "name": "富山県",
+       "name_kana": "ﾄﾔﾏｹﾝ"
+      },
+      {
+       "name": "石川県",
+       "name_kana": "ｲｼｶﾜｹﾝ"
+      },
+      {
+       "name": "福井県",
+       "name_kana": "ﾌｸｲｹﾝ"
+      },
+      {
+       "name": "山梨県",
+       "name_kana": "ﾔﾏｼﾅｹﾝ"
+      },
+      {
+       "name": "長野県",
+       "name_kana": "ﾅｶﾞﾉｹﾝ"
+      },
+      {
+       "name": "岐阜県",
+       "name_kana": "ｷﾞﾌｹﾝ"
+      },
+      {
+       "name": "静岡県",
+       "name_kana": "ｼｽﾞｵｶｹﾝ"
+      },
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      },
+      {
+       "name": "三重県",
+       "name_kana": "ﾐｴｹﾝ"
+      },
+      {
+       "name": "滋賀県",
+       "name_kana": "ｼｶﾞｹﾝ"
+      },
+      {
+       "name": "京都府",
+       "name_kana": "ｷｮｳﾄﾌ"
+      },
+      {
+       "name": "大阪府",
+       "name_kana": "ｵｵｻｶﾌ"
+      },
+      {
+       "name": "兵庫県",
+       "name_kana": "ﾋｮｳｺﾞｹﾝ"
+      },
+      {
+       "name": "奈良県",
+       "name_kana": "ﾅﾗｹﾝ"
+      },
+      {
+       "name": "和歌山県",
+       "name_kana": "ﾜｶﾔﾏｹﾝ"
+      },
+      {
+       "name": "鳥取県",
+       "name_kana": "ﾄｯﾄﾘｹﾝ"
+      },
+      {
+       "name": "島根県",
+       "name_kana": "ｼﾏﾈｹﾝ"
+      },
+      {
+       "name": "岡山県",
+       "name_kana": "ｵｶﾔﾏｹﾝ"
+      },
+      {
+       "name": "広島県",
+       "name_kana": "ﾋﾛｼﾏｹﾝ"
+      },
+      {
+       "name": "山口県",
+       "name_kana": "ﾔﾏｸﾞﾁｹﾝ"
+      },
+      {
+       "name": "徳島県",
+       "name_kana": "ﾄｸｼﾏｹﾝ"
+      },
+      {
+       "name": "香川県",
+       "name_kana": "ｶｶﾞﾜｹﾝ"
+      },
+      {
+       "name": "愛媛県",
+       "name_kana": "ｴﾋﾒｹﾝ"
+      },
+      {
+       "name": "高知県",
+       "name_kana": "ｺｳﾁｹﾝ"
+      },
+      {
+       "name": "福岡県",
+       "name_kana": "ﾌｸｵｶｹﾝ"
+      },
+      {
+       "name": "佐賀県",
+       "name_kana": "ｻｶﾞｹﾝ"
+      },
+      {
+       "name": "長崎県",
+       "name_kana": "ﾅｶﾞｻｷｹﾝ"
+      },
+      {
+       "name": "熊本県",
+       "name_kana": "ｸﾏﾓﾄｹﾝ"
+      },
+      {
+       "name": "大分県",
+       "name_kana": "ｵｵｲﾀｹﾝ"
+      },
+      {
+       "name": "宮崎県",
+       "name_kana": "ﾐﾔｻﾞｷｹﾝ"
+      },
+      {
+       "name": "鹿児島県",
+       "name_kana": "ｶｺﾞｼﾏｹﾝ"
+      },
+      {
+       "name": "沖縄県",
+       "name_kana": "ｵｷﾅﾜｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n東京都千代田区神田須田町1-10-2　メットライフ神田須田町ビル7F\n就業形態は、自社開発センターでの勤務(受託契約)\nもしくは、クライアント企業での勤務(構内請負契約/派遣契約)\n\n（変更の範囲）会社の定める場所（リモートワークの場所を含む）",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 500,
+      "max_year_salary": 800
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n想定年収：500万～800万以上（残業込み）\n昇給：年1回（7月）\n賞与：年2回／前年度実績：約4ヵ月 ※別途決算賞与を支給する場合あり\n【諸手当】\n通勤交通費支給\n資格手当(約90種類）\n残業代100%(1分単位)支給\n役職手当\n赴任手当\n配属手当\nテレワーク手当"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回",
+     "welfare_benefits": [],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n・健康保険・厚生年金・雇用保険・労災保険\n\n【福利厚生詳細】\n■福利厚生 \n寮社宅制度\n転勤赴任一時金\n帰省旅費補助\n引越費用補助\nテクノプログループ従業員持株会（奨励金あり）\n慶弔見舞金制度\nパパママ育児応援金制度\n企業主導型ベビーシッター利用者支援制度\n総合福祉団体定期保険\n退職金制度(確定拠出年金制度)\n財形貯蓄制度\n社内クラブサークル活動支援\n健康保険組合\n福利厚生サービス「ベネフィット・ステーション」\n[労働組合有]\n[定年再雇用]\n[EAP（カウンセリング）サービス]\n[教育自己啓発関連]\n[社内研修]\n[通信教育補助]\n[学会参加費]\n[自己啓発支援]\n[資格取得補助]等\n\n■福利厚生② \n社内外講習補助\n図書購入補助\n社外技術研修参加費\n\n※各種制度・研修の利用については、社内承認が必要です\n\nWinスクールでの豊富な講座を全国約50校で受講可能\n※社内承認を得た講座は全額会社負担！"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（土日祝※祝日のある週は土曜出勤の場合あり）、年末年始、有給休暇(夏季取得推奨日あり)、慶弔休暇、特別休暇、育児休業、介護休業、入社時休暇(上限3日)、災害時休暇(年5回、最大5日)\n※年間休日122日"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n屋内全面禁煙"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n書類選考⇒面接（2回）⇒内定\n\n※WEB適性検査（所要時間10分程度）"
+   },
+   "selection_flow": "【選考フロー】\n書類選考⇒面接（2回）⇒内定\n\n※WEB適性検査（所要時間10分程度）",
+   "amount_of_sales": "",
+   "industry": "人材サービス・アウトソーシング業界・コールセンター",
+   "sub_industry": "技術系アウトソーシング（特定技術者派遣）",
+   "postal_code": null,
+   "prefecture": null,
+   "city": null,
+   "street_address": "東京都港区六本木6-10-1 六本木ヒルズ森タワー35F"
+  },
+  "can_recommend": true
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 358794,
+  "vacancy_no": "00358793-0abc8",
+  "title": "【東海】組込エンジニア（車載ECU、自走式ロボット、アームロボット、建設機械、医療装置）　年収：500万円～",
+  "company_name": "株式会社テクノプロ　テクノプロ・デザイン社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 5,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 358794,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社テクノプロ　テクノプロ・デザイン社",
+   "estd_date": "1997/06/01",
+   "capital": "101百万円",
+   "number_of_employees": "23,357名",
+   "head_office_location": "東京都港区6-10-1 六本木ヒルズ森タワー35F",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": "人材サービス・アウトソーシング業界・コールセンター",
+    "sub_industry": "技術系アウトソーシング（特定技術者派遣）"
+   },
+   "annual_salary": {
+    "min_year_salary": 500,
+    "max_year_salary": 800
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "組み込み系 SE【ソフトウェア設計】"
+   },
+   "update_date": "2026/05/07",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n【必須】\n・組込実務経験が５年以上ある方\n\n<具体的には下記何れかの経験>\n・C言語でのプログラミング経験",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 5,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     null
+    ],
+    "welcome_condition": "【あれば尚可】\n・車載ECUの組込み開発経験\n・モデルベース開発の経験\n・画像処理の開発経験\n・リーダーの経験"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n【会社説明】\nテクノプロ・デザイン社は社会課題解決に向けて、メーカーやIT企業に対し設計・開発・生産技術の領域を中心に技術支援を行う企業です。\n日本の主要産業である自動車・航空・精密機器などの多様な分野で、プロジェクトを牽引するリーダーや技術を極めるスペシャリストとして活躍できます。\n近年では製造業のDX化に伴い、シミュレーション・IoT・AI領域のニーズも拡大中。現場に根差した技術力と課題解決力を兼ね備えた人材を求めています。\n\n\n【業務内容】\n同社のお客さま（自動車、医療機器、産業機器、通信機器等の大手メーカー）の開発現場で\n組込エンジニア（車載ECU、自走式ロボット、アームロボット、建設機械、医療装置）として開発業務に従事していただきます。\n\n【例えば】\n■車載制御系ソフト開発\n■画像処理・GPU開発\n■医療・産業機器向け組込開発\n■航空機器向け開発\n■検査装置・テストシステム開発\n\n\n変更の範囲：会社の定める業務",
+    "job_description_detail": null,
+    "number_of_hires": "10",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n入社後、2ヶ月間　試用期間中の条件：同じ",
+     "working_hours": "【勤務時間】\n■勤務時間：9:00 ～ 18:00 ※実働8時間\n(休憩12:00～13:00)\n\n時間外労働:あり\n■想定残業時間：20時間",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\n【勤務地】愛知県\n\n【就業形態】・取引先構内\n（変更の範囲）会社の定める場所（リモートワークの場所を含む）\n\n\n※転勤の有無:あり\nただし、希望を考慮します",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 500,
+      "max_year_salary": 800
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n給与:賃金改定年1回\n年収：500万円～800万円\n月給：28.3万円～45.2万円\n\n※能力・経験・年齢等を考慮の上、同社規程に従って決定致します。\n年2回 ※別途決算賞与を支給する場合あり\n\n通勤交通費支給（月額上限15万円）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回",
+     "welfare_benefits": [],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n社会保険完備（健康保険、厚生年金、雇用保険、労災保険、介護保険）\n\n【福利厚生詳細】\n住宅:寮・社宅制度（家族・単身・独身）（月2万円～3万円＋光熱費を個人負担）\n手当:残業手当（1分単位）、役職手当 等\n退職金:確定拠出型年金\n労働組合　あり\n\n福利厚生\n日本最大手のエンジニア集団である弊社。\n充実の福利厚生・待遇で、みなさまをしっかりとサポートします。\n\n【各種手当】\n赴任手当、転勤赴任一時金、帰省旅費補助、引越費用補助\n\n【教育】\n社内外講習補助、勉強会講師料補助、通信教育補助、資格取得補助、図書購入補助、社外技術研修参加費、自己啓発支援\n\n【その他】\n退職金制度(確定拠出年金制度)、慶弔見舞金制度、社内クラブサークル活動支援、健康保険組合、財形貯蓄制度、定年再雇用、テクノプロ・グループ従業員持株会（奨励金あり） 、福利厚生サービス「ベネフィット・ステーション」、総合福祉団体定期保険"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（土日祝※祝日のある週は土曜出勤の場合あり）、年末年始、有給休暇(夏季取得推奨日あり)、慶弔休暇、特別休暇、育児休業、介護休業、入社時休暇(上限3日)、災害時休暇(年5回、最大5日)\n※年間休日122日"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n【受動喫煙】\n原則屋内禁煙\nただし、就業場所により異なる"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n面接1～2回\n選考方法備考・・・1次面接（WEB）⇒2次面接(対面 or WEB)⇒内定\n\n■面接地：対面の場合は本社または最寄りの支店にて実施する場合あり\n■選考曜日：月～金曜日\n■選考時間：9:00～20:00開始\n※ご都合が合わない場合は、ご相談ください。"
+   },
+   "selection_flow": "【選考フロー】\n面接1～2回\n選考方法備考・・・1次面接（WEB）⇒2次面接(対面 or WEB)⇒内定\n\n■面接地：対面の場合は本社または最寄りの支店にて実施する場合あり\n■選考曜日：月～金曜日\n■選考時間：9:00～20:00開始\n※ご都合が合わない場合は、ご相談ください。",
+   "amount_of_sales": "",
+   "industry": "人材サービス・アウトソーシング業界・コールセンター",
+   "sub_industry": "技術系アウトソーシング（特定技術者派遣）",
+   "postal_code": "106-6105",
+   "prefecture": "東京都",
+   "city": "港区",
+   "street_address": "6-10-1 六本木ヒルズ森タワー35F"
+  },
+  "can_recommend": true
+ }
+}

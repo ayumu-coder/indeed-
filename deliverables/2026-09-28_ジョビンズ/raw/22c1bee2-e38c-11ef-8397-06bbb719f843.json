@@ -1,0 +1,192 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 160122,
+  "vacancy_no": "00160121-ecd7e",
+  "title": "【即戦力】建築・施工管理技士／完全週休2日制／出張・転勤なし／地元密着企業／地元優良企業からの案件が多く業績安定／年収900万円も可能！／要資格／福利厚生充実／健康経営優良法人2年連続認定中／直行直帰可／月・金はノー残業day！",
+  "company_name": "丸洋建設株式会社",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 5,
+    "minimum_industry_experience": 5,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 37,
+      "category": "overtime",
+      "title": "残業40時間以下",
+      "pivot": {
+       "job_id": 160122,
+       "characteristic_id": 37
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 160122,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 19,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件あり",
+      "pivot": {
+       "job_id": 160122,
+       "characteristic_id": 19
+      }
+     },
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 160122,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 7,
+      "category": "selection",
+      "title": "面接1回で終了",
+      "pivot": {
+       "job_id": 160122,
+       "characteristic_id": 7
+      }
+     },
+     {
+      "characteristic_id": 11,
+      "category": "selection",
+      "title": "WEB面接OK",
+      "pivot": {
+       "job_id": 160122,
+       "characteristic_id": 11
+      }
+     }
+    ]
+   },
+   "organization_name": "丸洋建設株式会社",
+   "estd_date": "1971年10月",
+   "capital": "2000万円",
+   "number_of_employees": "63",
+   "head_office_location": "法光寺町西田23番地",
+   "sales_revenue": "31億0100万円",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 600,
+    "max_year_salary": 900
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "建築・土木技術職",
+    "sub_job_type": "施工管理・工事監理者【建築】"
+   },
+   "update_date": "2026/09/08",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・1級建築施工管理技士の資格をお持ちの方\n・普通自動車免許（AT限定可ですが、MT可が望ましい）\n・非住宅の施工管理経験のがある方",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 5,
+     "industry": 5
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": "ICTに関する知見がある方"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【担当いただく業務】\n建築施工管理技士として、以下の業務をお任せします。\n・工事の進捗/工程管理\n・現場作業員の管理/指導\n・安全管理\n・原価管理/積算業務\n※官公庁案件20％：民間工事80％程度の割合です。\n\n「経験を活かしたいけど、ワークライフバランスも収入も欲しい」と思っていませんか？\n\n■当社は建設業界の常識を変えるべく、全力で働きやすい環境作りに取り組んできました！\n　その結果「愛知県休み方改革マイスター企業」「健康経営優良法人2024（2年連続！）」に認定！\n　その他、医療費補助制度【最大100万円】や、がん治療支援制度【最大300万円】など、\n　万が一があった時のサポートも充実しています。\n\n■想定年収：600万円～900万円！賞与年2回、昇給あり、各種手当も有りだから、しっかり稼ぐ事ができます！\n　年収例\n　年収800万円（50歳・次長）\n　年収700万円（45歳・課長）\n　年収600万円（35歳・係長）\n\n【当社の魅力】\n・年間休日120日、完全土日週休2日制など、働きやすい環境づくりに力を入れています！\n・転勤、出張なし、直行直帰OKです。\n・月曜、金曜はノー残業デイ\n・年収600万円～900万円と高収入！経験や資格の有無でどんどん年収がアップします。\n・女性施工管理も活躍中です、快適に働けるように制度を整えております。\n・U・I・Jターン歓迎です、社宅・寮のご用意もございます（条件あり）\n\n【当社について】\n・愛知県三河地区を中心に公共工事から土木工事、住宅や商業施設の建設などを行う会社です！\n・創業から65年、地元からも大きな信頼を寄せていただいています。\n・『愛知県休み方改革マイスター企業』『健康経営優良法人2024（2年連続！）』に認定☆\n\n【健康面のサポートが手厚い！】\n・入院時に最大100万円までの支給制度をご用意。\n・がんによる通院時には最大300万円まで支給。\n→万が一の際にも安心して治療に専念でき、長く安心して勤められます。\n\n【採用サイトはこちらです】\n当社で働くメンバーの雰囲気などを感じていただければと思います！\nhttps://saiyou-dekirukun.yo-asobi.com/maruyoukensetu\n\n【当社に関するインタビュー記事です】\n◾️「社員が精神的な豊かさを感じられる会社を目指して」：大石社長インタビュー\nhttps://note.com/maruyou_kensetu/n/n26a5c1b58b79\n\nTikTokやってます！楽しく更新中♪\nhttps://www.tiktok.com/@maruyoukensetu\n\n【中途入社者の声】⇒社員アンケートの結果を挿入します。\n・住宅営業や土木官庁営業、総務の仕事を経て、当社に転職しました。\n・社員のことを一番に考えてくれる社長のもと、私も誰に対しても感謝の気持ちを持つことを大切に、日々働いています！\n・建物が完成したときはこの仕事のやりがいを感じます！\n\n【最後に..】\n「これまでの経験を活かしながら、新たなチャレンジをしてみたい！」\n「働きやすさを重視した職場で働きたい」\n「成長過程の会社でワクワクしながら働きたい」\nそんな想いをお持ちの方、ぜひ私たちと一緒に働きませんか？\n\nまずは、堅苦しくなくざっくばらんに面談をさせてください。\nご応募お待ちしております。\n\n【他SNSものぞいてみてください！】\nYouTubeはこちら☆\nhttps://www.youtube.com/@maruyouconstruction\n\nInstagramはこちら☆\n@maruyou_con",
+    "job_description_detail": null,
+    "number_of_hires": "3",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月（条件に変更なし）",
+     "working_hours": "平均所定労働時間：160時間/月\n\n8：00～17：00（休憩60分）\n（現場時間により変動あり）\n\n就労期間：無期雇用",
+     "average_monthly": {
+      "overtime_hours": "残業40時間以下",
+      "overtime_hours_details": "平均残業時間：31.5時間\n遅くとも2026年度中には月平均残業時間20時間以下を達成する方針を社全体で定めています。"
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知県西尾市法光寺町 西田23",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 600,
+      "max_year_salary": 900
+     },
+     "monthly_income": {
+      "min_month_salary": 27,
+      "max_month_salary": 45
+     },
+     "salary_detials": "固定残業代: あり\n月給27万円～45万円（固定残業代含む）＋各種手当\n※固定残業代は、時間外労働の有無に関わらず31.5時間分を、月5万円～7万5000円支給\n※上記を超える時間外労働分は追加で支給\n\n■社員年収例\n年収800万円（50歳・次長）\n年収700万円（45歳・課長）\n年収600万円（35歳・係長）\n\n昇給：年1回"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年2回（7月,12月）（直近二期は業績賞与あり）",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり"
+     ],
+     "various_allowances": "【給与に含まれる手当】\n■資格手当\n（施工管理技士、建築士、宅地建物取引士など）\n■通勤手当\n■住宅手当\n■遠方手当\n■技術手当\n■物価手当\n■時間外手当（超過分）\n■家族手当（一律3,000円）",
+     "welfare_benefits_detail": "■社会保険完備（雇用・労災・健康・厚生年金）\n■住宅手当（条件あり）\n■退職金制度\n■資格取得支援・手当あり\n（施工管理技士、建築士、宅地建物取引士など）\n■確定拠出年金制度\n■社内旅行\n■名鉄福利厚生倶楽部サービス利用\n■ゴルフコンペ（希望者のみ）\n■スポーツジム法人会員（社員無料利用制度）\n■有志懇親会補助制度（年2回まで／上限額あり）\n■健康診断（年1回）\n■慶弔災害見舞金\n■永年勤続報奨金\n■社用車貸与（一定の運転技術をもち、現場へ配属される方）\n■ほか各種支給品あり\n（携帯電話、パソコン、制服、防寒着、作業着、ヘルメット、安全帯、安全靴、事務用品）\n■法定外労災保険完備（震災時問わず支給）\n■医療費補助制度完備（病院で入院以上した場合、100万円限度で支給）\n■がん治療支援制度完備（がんで通院した場合300万円限度で支給）\n■心身の健康相談ホットライン完備（社外相談窓口）\n\nその他\n★社員の働きやすさを叶えるために、社内体制を改革中です！\n・USEN（オフィスBGM）の導入（2022年6月から実施）\n・夏季作業着（ポロシャツ）などをユニフォーム化し、全従業員に支給\n・『健康経営優良法人2026』取得 　など"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "完全週休2日制（土日祝）\n年間休日125日\n\n6ヶ月経過後の年次有給休暇日数：10日\n・GW\n・夏期\n・年末年始\n・慶弔休暇"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "smoking_room_available"
+     ],
+     "details_on_secondhand": "敷地内喫煙可能場所あり"
+    },
+    "others": null,
+    "selection_flow": "STEP 1：書類選考後、当社では1回の面接を実施しています。\n（対面面接の場合面接1回で終了です。WEB面接をご希望される場合は対面にて二次面接を行います。）\n当社の面接は堅苦しくなく、これまでのご経験や今後実現したい事や目標などを\nざっくばらんにお伺いさせていただくスタイルをとっています！\n\nSTEP 2：内定のご連絡\n内定通知書をはじめとした諸条件をお送りさせていただきます。\n場合によってはオファー面談と合わせて実施させていただくこともございます。"
+   },
+   "selection_flow": "STEP 1：書類選考後、当社では1回の面接を実施しています。\n（対面面接の場合面接1回で終了です。WEB面接をご希望される場合は対面にて二次面接を行います。）\n当社の面接は堅苦しくなく、これまでのご経験や今後実現したい事や目標などを\nざっくばらんにお伺いさせていただくスタイルをとっています！\n\nSTEP 2：内定のご連絡\n内定通知書をはじめとした諸条件をお送りさせていただきます。\n場合によってはオファー面談と合わせて実施させていただくこともございます。",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

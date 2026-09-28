@@ -1,0 +1,211 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 494017,
+  "vacancy_no": "00494015-546ff",
+  "title": "【制御設計】自動車電子設計業務（愛知県/岡崎市）",
+  "company_name": "株式会社エンジニアス",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 5,
+    "minimum_industry_experience": 5,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "NA",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 4,
+      "category": "overtime",
+      "title": "残業10時間以下",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 4
+      }
+     },
+     {
+      "characteristic_id": 33,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件なし",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 33
+      }
+     },
+     {
+      "characteristic_id": 12,
+      "category": "selection",
+      "title": "適性テストなし",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 12
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 10
+      }
+     },
+     {
+      "characteristic_id": 20,
+      "category": "welfare",
+      "title": "外国籍採用実績あり",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 20
+      }
+     },
+     {
+      "characteristic_id": 16,
+      "category": "language",
+      "title": "英語を活かせる",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 16
+      }
+     },
+     {
+      "characteristic_id": 11,
+      "category": "selection",
+      "title": "WEB面接OK",
+      "pivot": {
+       "job_id": 494017,
+       "characteristic_id": 11
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社エンジニアス",
+   "estd_date": "2021年12月",
+   "capital": "20,000,000",
+   "number_of_employees": "27",
+   "head_office_location": "名駅2-38-2オーキッドビル7F",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 500,
+    "max_year_salary": 800
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "エンジニア【機械・電気・電子・半導体・制御】",
+    "sub_job_type": "デジタル回路設計・開発"
+   },
+   "update_date": "2026/09/22",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【必須要件】\n・日本語能力試験N２以上\n\n【下記いずれかのご経験】\n・メーターなどの車載HMI部品設計経験のある方\n・ECUハードウェアのインターフェイス設計経験のある方\n・ECU回路設計のレビュー経験のある方\n・CAN通信の基礎知識のある方",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 5,
+     "industry": 5
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     "学歴不問"
+    ],
+    "welcome_condition": "■関連部門/サプライヤーとの調整・コミュニケーションスキル\n■要求仕様書作成スキル\n■機能仕様書、ソフトウェア詳細設計レビュースキル\n・基本的なOA機器操作（Excel、Word、PowerPoint）\n・英語力：TOEIC600点以上（海外サプライヤが多数あるため）"
+   },
+   "overview": {
+    "reason_for_recruitment": "欠員募集",
+    "job_description": "【仕事内容】\n・車載ECUにおける開発業務（システム・仕様設計、制御設計、搭載設計）\n※対象ECU：エアバッグ、キーレスオペレーションシステム、パワーウィンド、パワースライドドア、電動テールゲート、タイヤ空気圧警告、パワーシート、ボデーコントローラー、ゲートウェイ）\n・要求仕様書の作成\n・ソフトウェア実装\n・VE活動業務\n\n「理念・ビジョン」に関すること\n【Mission】\n「エンジニアの幸せとは？」 \nそれを共に探求し共に成長・挑戦し続ける\n\nお客様の最も身近な寄り添える存在になり、お客様のお困りごとを聞き、目の前の課題を解決するお手伝いをしたい。\nそして長期視点で潜在的な課題を解決するために、共に明日（未来）にチャレンジしたい。 \n\nお客様にベストな人材・技術を提供し続けるために、失敗を恐れず常に新しい技術・課題にチャレンジし続ける精神と、\nそれをサポートする環境づくりを行い、人材サービスと技術サービスの革新へ積極的にチャンジしてまいります。\n\n「仕事・事業」に関すること\n私たちはお客様・エンジニアに寄り添い、\n共に未来を創造する企業を目指します\n\n当社はエンジニアの人材派遣サービスを通し、エンジニアの明日（未来）をエンジニアと共に創っていきます。\nモノづくりのフィールドで日々成長し、エンジニアリングの未来に責任を持ったエンジニアがお客様の事業の成長、\nひいてはモノづくり産業全体の発展に貢献致します。\n今後の成長していく当社にご期待ください。\n\n【メカニカルデザイン】\n＜機械設計＞\n車両設計、ユニット設計、ハイブリッド設計、内外装部品設計、開発・試作・実験と幅広いニーズにお応え致します。\n＜生産技術＞\n工業製品の量産ラインの設計・構築支援を行います。\n設計部署、設備メーカーと連携をとりながら、機能・品質・コスト面全てを満足した生産ラインの立上げや、\n既存ラインの工程改善をご支援致します。",
+    "job_description_detail": null,
+    "number_of_hires": "2",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "試用期間：3カ月\n労働条件の変更：無し",
+     "working_hours": "08:30~17:30\n所定労働時間：8時間\n休憩時間：60分\n残業：有",
+     "average_monthly": {
+      "overtime_hours": "残業10時間以下",
+      "overtime_hours_details": "10時間以下"
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知県岡崎市橋目町",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 500,
+      "max_year_salary": 800
+     },
+     "monthly_income": {
+      "min_month_salary": 41.6,
+      "max_month_salary": 66.6
+     },
+     "salary_detials": "年俸制\n5,000,000円～8,000,000円\n\n月給例\n416,666円～666,666円\n\n★前年の給与保証\n★日払い・週払い・即日払いOK"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "N",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": null,
+     "welfare_benefits": [
+      "産休/育休実績あり",
+      "外国籍採用実績あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "福利厚生・諸手当\n🔸社会保険（雇用保険、厚生年金、労災保険、健康保険）\n🔸資格取得支援・手当あり\n🔸定期健康診断"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "年間休日\n120日以上\n\n休日休暇\n🔸完全週休2日制（土日祝休み）\n🔸GW休暇\n🔸年末年始休暇\n🔸夏季休暇\n🔸年次有給休暇（入社半年経過時点10日付与）"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": "就業場所における屋内の受動喫煙対策の有無\n対策あり\n\n受動喫煙対策の詳細(野外に喫煙場所がある場合は禁煙としています)\n禁煙"
+    },
+    "others": null,
+    "selection_flow": "書類選考\n↓\n一次選考\n↓\n最終選考"
+   },
+   "selection_flow": "書類選考\n↓\n一次選考\n↓\n最終選考",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

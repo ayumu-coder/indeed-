@@ -1,0 +1,212 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 115681,
+  "vacancy_no": "00115680-de84a",
+  "title": "【太陽光設備のプロデューサー/課長クラス】完全週休二日制/賞与3.5ヶ月分｜SDGs戦略パートナー/成長市場の太陽光発電で活躍し持続可能な未来を築く",
+  "company_name": "株式会社FD",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 3,
+    "minimum_industry_experience": 3,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 36,
+      "category": "overtime",
+      "title": "残業30時間以下",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 36
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 30,
+      "category": "welfare",
+      "title": "社宅/家賃補助制度あり",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 30
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 10
+      }
+     },
+     {
+      "characteristic_id": 20,
+      "category": "welfare",
+      "title": "外国籍採用実績あり",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 20
+      }
+     },
+     {
+      "characteristic_id": 8,
+      "category": "selection",
+      "title": "急募",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 8
+      }
+     },
+     {
+      "characteristic_id": 11,
+      "category": "selection",
+      "title": "WEB面接OK",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 11
+      }
+     },
+     {
+      "characteristic_id": 12,
+      "category": "selection",
+      "title": "適性テストなし",
+      "pivot": {
+       "job_id": 115681,
+       "characteristic_id": 12
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社FD",
+   "estd_date": "2001年10月",
+   "capital": "87百万円",
+   "number_of_employees": "56",
+   "head_office_location": "今川町花池3番地1",
+   "sales_revenue": "3,700百万円",
+   "ipo": "未上場",
+   "industries": {
+    "industry": "エネルギー（電力・ガス・石油・新エネルギー）業界",
+    "sub_industry": "新エネルギー（太陽光・風力・地熱・バイオなど）"
+   },
+   "annual_salary": {
+    "min_year_salary": 600,
+    "max_year_salary": 800
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "建築・土木技術職",
+    "sub_job_type": "施工管理・工事監理者【設備・電気・空調】"
+   },
+   "update_date": "2025/10/09",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "以下いずれかのご経験をお持ちの方\n・電気設備の施工管理経験のある方\n※建築・土木工事に関わる施工管理のご経験でも可\n・電気工事業の業務経験のある方",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 3,
+     "industry": 3
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     "不問"
+    ],
+    "welcome_condition": "・監理技術者証をお持ちの方\n・部下マネジメント（3～5名程度）のご経験のある方\n・電気工事施工管理技士一級またはこれと同等の資格を有する方"
+   },
+   "overview": {
+    "reason_for_recruitment": "弊社は現在、日本市場においてトップランナー的存在ですが、\n\"10年後に市場の勝者\"となるために海外進出や日本初の特許技術を駆使した戦略を展開しています。\n今後更に戦略を進めていくためには市場の変化を見逃さない洞察力、ビジネスに繋げる発想力、そして一歩先をいく行動力が必要です。\nそんな力を持った優秀な人財を全国から募っており、会社の拡大や上場に向けて遺憾なく力を発揮していただきたいと考えています。",
+    "job_description": "°˖✧◝+---------------------------------------------+◜✧˖°\n盤石な経営基盤×社会貢献で未来を創る！\n10年後の市場の勝者を目指し、海外進出・上場を牽引する仲間を募集！\n貴社にご登録の優秀な人財に、ぜひご紹介ください！\n°˖✧◝+---------------------------------------------+◜✧˖°\n\n【業務詳細】\n・自社・お客様案件の施工管理全般\n・新規ビジネス・新スキームに対応した施工の検討・実行\n・上場に向けた施工管理体制の強化\n・施工対応エリア拡大に向けた取組み\n・人材育成・労務管理\n\n【詳細】\n1案件の長さ：3ヶ月〜6ヶ月程度\n年間1〜3件を担当します。\n工事の規模は数千万円〜1億円弱\nメガソーラー（工場/山）〜商業施設の屋根(GMS/ドラッグストア)まで様々。\n各現場の地元工事会社と協力しながら、基本的には事業所内で資材発注などの仕事メイン。\n現場調査、工事開始タイミング、顧客打合せ、完工検査のタイミングで、\n現地に足を運んで頂き、確認を行って頂きます。",
+    "job_description_detail": null,
+    "number_of_hires": "1",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "6ヶ月",
+     "working_hours": "8:00~17:00 \n休憩1時間",
+     "average_monthly": {
+      "overtime_hours": "残業30時間以下",
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知県 刈谷市今川町花池3-1\n最寄駅 名鉄名古屋本線／富士松駅\n受動喫煙対策：屋内全面禁煙",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 600,
+      "max_year_salary": 800
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与例】\n（担当クラス）450万円\n（主任クラス）600万円"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": "N",
+     "stock_options": "N",
+     "bonus_details": "■昇給：年1回\n■賞与：年2回（6月、12月）\n前年度実績　平均　3.5ヶ月",
+     "welfare_benefits": [
+      "社宅/家賃補助制度あり",
+      "産休/育休実績あり",
+      "外国籍採用実績あり"
+     ],
+     "various_allowances": "通勤手当：当社規定により支給\n家族手当：当社規定により支給（管理職を除く）\n住宅手当：当社規定により支給（35歳以下、単身など条件あり）\n社会保険：各種社会保険完備",
+     "welfare_benefits_detail": "■役職手当・資格手当・通勤手当\n■健康診断\n■社員旅行制度\n■資格取得支援及び資格取得褒章制度（会社規定による）\n■高級リゾートホテル招待・優待制度\n■ピアボーナス制度（FD賞）\n■BBQ大会などの社内レクリエーション活動\n■教育研修制度\n■慶弔見舞金\n■結婚/出産祝い金\n■パパ育休"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "週休2日制（土日祝　※祝日は当社カレンダーに従う）\n年間有給休暇10日～20日（下限日数は、入社半年経過後の付与日数となります）\n年間休日日数116日\n\n有給休暇（入社日に5日、6ヶ月経過後に5日付与、最高20日）\nGW、夏季、年末年始、慶弔休暇、特別休暇"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "smoking_room_available"
+     ],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考\n↓\n一次面接（リモート可）\n↓\n最終面接\n↓\n内定\n\n※最終面接のみ来社いただく必要あり。交通費支給はありません。"
+   },
+   "selection_flow": "書類選考\n↓\n一次面接（リモート可）\n↓\n最終面接\n↓\n内定\n\n※最終面接のみ来社いただく必要あり。交通費支給はありません。",
+   "industry": "エネルギー（電力・ガス・石油・新エネルギー）業界",
+   "sub_industry": "新エネルギー（太陽光・風力・地熱・バイオなど）"
+  },
+  "can_recommend": true
+ }
+}

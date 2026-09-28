@@ -1,0 +1,202 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 497041,
+  "vacancy_no": "00497040-867f9",
+  "title": "【岡崎/生産技術・樹脂】会社説明＆カジュアル選考",
+  "company_name": "株式会社エンジニアス",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 3,
+    "minimum_industry_experience": 3,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "NA",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 5,
+      "category": "overtime",
+      "title": "残業20時間以下",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 5
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 33,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件なし",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 33
+      }
+     },
+     {
+      "characteristic_id": 10,
+      "category": "welfare",
+      "title": "産休/育休実績あり",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 10
+      }
+     },
+     {
+      "characteristic_id": 20,
+      "category": "welfare",
+      "title": "外国籍採用実績あり",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 20
+      }
+     },
+     {
+      "characteristic_id": 11,
+      "category": "selection",
+      "title": "WEB面接OK",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 11
+      }
+     },
+     {
+      "characteristic_id": 12,
+      "category": "selection",
+      "title": "適性テストなし",
+      "pivot": {
+       "job_id": 497041,
+       "characteristic_id": 12
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社エンジニアス",
+   "estd_date": "2021年12月",
+   "capital": "20,000,000",
+   "number_of_employees": "27",
+   "head_office_location": "名駅2-38-2オーキッドビル7F",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 400,
+    "max_year_salary": 700
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "エンジニア【機械・電気・電子・半導体・制御】",
+    "sub_job_type": "自動車・輸送機器関連 生産技術・プロセス開発"
+   },
+   "update_date": "2026/09/22",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "■生産技術に関する業務経験のある方\n■外国籍の方の場合はJLPT　N2相当以上",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 3,
+     "industry": 3
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": "■CAD（CATIA V5、DELMIA）での実務経験がある方\n■関係部門や取引先と調整業務が可能な方\n■工学系の基礎知識をお持ちの方"
+   },
+   "overview": {
+    "reason_for_recruitment": "増員募集のため",
+    "job_description": "自動車メーカーにて樹脂技術計画業務をご担当いただきます。",
+    "job_description_detail": "■内製樹脂部品の品質改善計画立案、及び実行フォロー\n■年式変更に伴う型治具計画業務及びトライ業務",
+    "number_of_hires": "3",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "試用期間：3カ月\n労働条件の変更：無し",
+     "working_hours": "8：30～17：30\n所定労働時間：8時間\n休憩時間：60分",
+     "average_monthly": {
+      "overtime_hours": "残業20時間以下",
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "愛知県岡崎市",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 400,
+      "max_year_salary": 700
+     },
+     "monthly_income": {
+      "min_month_salary": 33.3,
+      "max_month_salary": 58.3
+     },
+     "salary_detials": "年俸制\n\n年収例\n4,000,000円～7,000,000円\n\n月給例：33万3千円～58万3千円\n\n※夜勤、残業時間は時給がUPします。\n※支払方法：年俸の1/12を毎月支給（月給：33万3000円～58万3000円）\n\n★前年の給与保証\n★日払い・週払い・即日払いOK\n\n「給与・待遇」に関すること\nボーナスがない代わりに月々の支給額を高く設定する年俸制を採用しており、月給は33万3000円〜58万3000円と高水準です。\n特筆すべきは、その高い月給をベースに算出される残業手当であり、他社と比較しても時間外労働に対する報酬の納得感が高いのが特徴です。\nまた、転勤がないため住宅ローンや家族の介護など、プライベートの基盤を崩さずに安定した高収入を得ることが可能です。"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "N",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": null,
+     "welfare_benefits": [
+      "産休/育休実績あり",
+      "外国籍採用実績あり"
+     ],
+     "various_allowances": null,
+     "welfare_benefits_detail": "社会保険完備, 資格手当, 資格取得制度, 健康診断"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "年間休日\n\n120日以上\n休日休暇\n🔸年間休日120日以上\n🔸完全週休2日制\n🔸有給休暇\n🔸年末年始休暇\n🔸夏季休暇\n🔸GW休暇"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考\n↓\n一次面談\n↓\n最終選考"
+   },
+   "selection_flow": "書類選考\n↓\n一次面談\n↓\n最終選考",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

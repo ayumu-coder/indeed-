@@ -1,0 +1,150 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 357978,
+  "vacancy_no": "00357976-31ec2",
+  "title": "【豊川市】コンサルから上流工程全般／ベンダーコントロール／在宅勤務併用可／平均残業15H程度◇",
+  "company_name": "株式会社アクセスネット",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 1,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトNG",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 357978,
+       "characteristic_id": 23
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社アクセスネット",
+   "estd_date": "1990年（平成2年）12月25日",
+   "capital": "3,900万円",
+   "number_of_employees": "110名（2023年6月現在）",
+   "head_office_location": "東京都千代田区神田練塀町3番地 富士ソフトビル11階",
+   "sales_revenue": "",
+   "ipo": "",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 500,
+    "max_year_salary": 700
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "ITエンジニア【システム開発・SE・インフラ】",
+    "sub_job_type": "社内システム開発、社内システム運用"
+   },
+   "update_date": "2026/04/03",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【応募条件】\n＜応募資格/応募条件＞\n■必須条件：\n・生産管理システム開発経験　実務1年以上",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 1,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": null
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "【仕事内容】\n■業務内容：【変更の範囲：会社の定める業務】\n製造メーカー向けシステム再構築のコンサルから携わっていただきます。\nお客様システムの再構築におけるベンダー選定～本稼働立会までの期間を情報システム部門の部員と同じ立場で推進し、再構築したシステムは2工場（時期を変えて展開）で稼働させる予定です。\n週単位にお客様責任者（グループ長）への進捗報告と課題報告なども実施しています。（※主な工程作業は以下の通り）\n・ベンダー選定作業（RFP作成、コンペとりまとめなど）\n・要件定義工程（ベンダー管理、利用部門への確認）\n・基本設計工程～本稼働（ベンダー管理、利用部門への調整作業）\n・次の工場への展開準備（開発がある場合、ベンター管理等も可能性あり）\n\n■職場環境：\nお客様先にてコンサルタント業務をメインに担当いただきます\n※開発業務は担当いたしません。\n組織構成としてはベテランから若手まで幅広く、10名前後の規模となります。\n\n■当社の魅力：\n◎正当な評価制度\n社歴や役職に関係なく、技術力を評価しています。職種や専門分野ごとに明確化された目標があるのでステップアップしやすいのが特長です。しっかり技術力を身につけながら高いキャリアを目指せます。\n◎万全のフォロー体制\nPM・PLなどのマネジメントを目指したい方に向けた研修のほか、新しい知識を獲得できる各種勉強会や資格取得支援などを完備しています。新たなスキルを獲得し、自分の可能性を広げられます。\n現在、同ポジションを担当している先輩社員より、業務を学んでいただき徐々に案件を引き継いで頂きます。\n◎安定性と働きやすさ\n社員定着率は90%以上で仕事もプライベートも充実させながら、長く安心して働ける環境が整っています。\n年間休日は125日で、残業は月15時間程度、賞与年2回のほか、各種福利厚生も整っており、働きやすい環境作りに注力しています。\n\n■入社後のフォロー：\n代表も経営陣もエンジニア出身だからこそ、キャリアサポートは充実させています。\n定期面談や随時相談、必要に応じた勉強会や研修、同じキャリアビジョンを持つエンジニア同士のコミュニティなどで、自分らしいキャリア構築を支援しています。将来的には部門長を目指すことも可能です。",
+    "job_description_detail": null,
+    "number_of_hires": "1",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "【試用期間（詳細）】\n3ヶ月（試用期間中の待遇変わりなし）",
+     "working_hours": "【勤務時間】\n9:00～17:30 （所定労働時間：7時間30分）\n休憩時間：60分（12:00～13:00）\n時間外労働有無：有\n＜その他就業時間補足＞\n月平均残業時間：15時間",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "【勤務地詳細】\nクライアント先\n住所：愛知県豊川市穂ノ原\n受動喫煙対策：敷地内全面禁煙\n変更の範囲：本文参照\n\n＜勤務地補足＞\n【変更の範囲：会社の定める事業所(リモートワークを含む)】\n\n＜転勤＞\n無\n■特記事項なし\n\n＜在宅勤務・リモートワーク＞\n相談可",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 500,
+      "max_year_salary": 700
+     },
+     "monthly_income": {
+      "min_month_salary": null,
+      "max_month_salary": null
+     },
+     "salary_detials": "【給与詳細】\n想定年収：500万円～700万円\n＜賃金形態＞\n月給制\n■特記事項なし\n\n＜賃金内訳＞\n月額（基本給）：300,000円～500,000円\n\n＜月給＞\n300,000円～500,000円\n\n＜昇給有無＞\n有\n\n＜残業手当＞\n有\n\n＜給与補足＞\n■能力・経験・前職給与等を考慮の上決定いたします。\n■昇給：年1回\n■賞与：年2回（7月、12月）業績により決算賞与の支給の場合あり\n【社員の年収例】\n・年収586万円（33歳／入社6年目／月給38万円＋賞与＋手当）\n・年収650万円（45歳／入社2年目／月給42万円＋賞与＋手当）\n\n\n\n賃金はあくまでも目安の金額であり、選考を通じて上下する可能性があります。\n月給(月額)は固定手当を含めた表記です。"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "N",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": null,
+     "welfare_benefits": [],
+     "various_allowances": null,
+     "welfare_benefits_detail": "【加入保険】\n各種社会保険完備\n\n【福利厚生詳細】\n＜各手当・制度補足＞\n通勤手当：上限5万円\n家族手当：扶養家族（被扶養配偶者を除く）一人につき5千円\n退職金制度：入社5年以降\n\n＜定年＞\n60歳\n再雇用制度あり(65歳まで)\n\n＜育休取得実績＞\n有（育休後復帰率100%）\n\n＜教育制度・資格補助補足＞\n■資格取得奨励金：IT系資格を6段階に分け、難易度に応じてお祝い金を支給。支給額は5000円～30万円です\n■資格取得費用補助（合格の場合のみ）\n\n＜その他補足＞\n慶弔見舞金､社員親睦会､保養所､リゾート施設利用会員、交通費全額支給、従業員紹介報奨金制度、役職手当、\n在籍手当、財形貯蓄制度、資格取得支援制度、勤続表彰（3年連続：3万円、5年連続：5万円、10年連続：10万円）"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "【休日詳細】\n完全週休2日制（休日は土日祝日）\n年間有給休暇5日～10日（下限日数は、入社直後の付与日数となります）\n年間休日日数125日\n\n■年末年始休暇\n■夏季休暇\n■慶弔休暇\n■有給休暇\n■産前・産後休暇(取得実績有)\n■育児休暇(取得実績有)\n■アニバーサリー休暇(年2日)\n有給：試用期間(3ヶ月)終了後5日、入社6ヶ月5日　計10日付与"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "no_smoking_allowed"
+     ],
+     "details_on_secondhand": "【受動喫煙対策詳細】\n敷地内全面禁煙"
+    },
+    "others": null,
+    "selection_flow": "【選考フロー】\n・書類選考\n・一次面接\n・最終面接\n・内定"
+   },
+   "selection_flow": "【選考フロー】\n・書類選考\n・一次面接\n・最終面接\n・内定",
+   "amount_of_sales": "",
+   "industry": null,
+   "sub_industry": null,
+   "postal_code": null,
+   "prefecture": null,
+   "city": null,
+   "street_address": "東京都千代田区神田練塀町3番地 富士ソフトビル11階"
+  },
+  "can_recommend": true
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 388472,
+  "vacancy_no": "00388471-dfd88",
+  "title": "【豊橋市】土木測量設計・技術士｜シニア世代大募集◉｜60代から「技術の継承」という主役へ｜土日祝完全週休二日制｜現場調整ではなく、監理・照査の頂点で。",
+  "company_name": "株式会社大地コンサルタント",
+  "details": {
+   "tags": {
+    "minimum_job_experience": null,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 4,
+      "category": "overtime",
+      "title": "残業10時間以下",
+      "pivot": {
+       "job_id": 388472,
+       "characteristic_id": 4
+      }
+     },
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 388472,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 7,
+      "category": "selection",
+      "title": "面接1回で終了",
+      "pivot": {
+       "job_id": 388472,
+       "characteristic_id": 7
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社大地コンサルタント",
+   "estd_date": "1990",
+   "capital": "",
+   "number_of_employees": "51",
+   "head_office_location": "多米西町一丁目5-5",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 600,
+    "max_year_salary": 800
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "建築・土木技術職",
+    "sub_job_type": "建設コンサルタント"
+   },
+   "update_date": "2026/03/25",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "【必須条件】\n◆ 技術士資格（建設部門：道路、河川・砂防、鋼構造等）の保有\n◆ 建設コンサルタント等における公共測量・土木設計の実務経験\n◆ 普通自動車運転免許（AT限定可）\n◆ Word、Excelによる報告書作成・計算処理の基本操作スキル\n◆ CADソフトを用いた設計図面作成およびデータ解析の実務能力",
+    "years_of_experience": {
+     "other": null,
+     "job_type": null,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     null
+    ],
+    "welcome_condition": "◆ 道路、河川・砂防、上下水道等における詳細設計および工法選定の深い知見\n◆ 官公庁発注業務における管理技術者、または照査技術者としての実務実績\n◆ ドローンや地上レーザースキャナーを用いた三次元計測・解析の経験\n◆ ICT施工支援（三次元設計データ作成・出来形管理指導）に関する実務経験\n◆ 補償業務管理士の資格、または工損調査における技術的判断の経験\n◆ 発注者（官公庁等）との円滑な協議・折衝および資料作成能力\n◆ 若手技術者への技術指導や、設計図書の品質管理等のマネジメント経験"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "「生涯現役。その熟練の知見を、次世代の指針に。」\n現場の第一線から、技術の「質」を支える監理・指導の役割へ。\nあなたの確かな経験が、地域の安全と若手の成長を支える柱となります。\n\n■ 大地コンサルタントの魅力\n✅ 「測量から一貫」が生む、精度の高い仕事\n基準点から深浅測量まで、すべての根拠データが自社で揃う環境です。\n外注調整に奔走することなく、技術士として「データの真実味」に向き合い、\n正しい判断を下すことに集中できます。\n\n✅ 最新技術との融合で広がる可能性\nドローンやレーザースキャナー、3D解析などの最新ICTを積極的に導入しています。\n培ってきた「工学的な勘」と「最新技術」を掛け合わせ、\nより安全で高度な設計指針を示していただけるフィールドです。\n\n■ 業務内容\n60代の技術者の方には、これまでの経験や専門科目に合わせ、\n高度な判断が求められる「監理・照査」を中心に担っていただきます。\n・技術的最高位としての設計監理・照査\n　工法の妥当性検討、設計図書の最終チェック、および技術提案の作成。\n・三次元計測の技術監理\n　ICTを用いた計測データの解析結果に対する評価や、技術的な指導。\n・知見の継承と品質管理\n　社内基準の整備、および若手技術者への専門知識・ノウハウの伝承。\n\n■ 職場環境・サポート\n・身体的負担の軽減：監理・照査が主軸のため、無理のないペースで技術を発揮いただけます。\n・使用ツール：ドローン（UAV）、三次元レーザースキャナー、3D点群処理ソフト等。\n・設備・備品：制服支給あり。業務での移動は社用車を使用します。\n・やりがい：測量から設計まで社内で完結するため、自分の判断が形になる手応えをダイレクトに実感できます。\n\n■ 技術と挑戦を支える制度\n長年培った技術をさらに磨きたい、あるいは後進のために学びを深めたい方を応援します。\n①資格取得費用の全額補助：新たな資格への挑戦を会社が全額バックアップ。\n②合格時の特別賞与（最大100万円）：これまでの、そしてこれからの努力を正当に評価します。\n③専門学校への就学支援：本人の希望により、更なる専門性向上のための通学も可能です。\n④奨学金返還支援制度：※豊橋市奨学金返還支援補助金によるサポート\n　　　　　　　　　　 （ご家族の支援等にも活用いただけます）。\n\n■ 応募者様へ\n技術士として歩んでこられたこれまでの道のりは、何物にも代えがたい財産です。\n「定年を機に、現場の慌ただしさからは一歩引きたい。けれど、積み上げた知見は社会に還元し続けたい」\n私たちは、そんな想いを持つベテラン技術者の方を求めています。\n\nあなたが設計図書に引く最後の一線が、若手の教科書となり、地域の安心へと繋がります。\nセカンドキャリアの舞台として、あなたの「技術の集大成」をぜひ当社で発揮してください。",
+    "job_description_detail": "変更なし",
+    "number_of_hires": "2",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月\n期間中同条件",
+     "working_hours": "8時30分〜17時30分\n休憩：60分",
+     "average_monthly": {
+      "overtime_hours": "残業10時間以下",
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "〒440-0026\n愛知県豊橋市多米西町一丁目５番地５\n市電赤岩口駅より徒歩5分\n※マイカー通勤可/無料駐車場有",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 600,
+      "max_year_salary": 800
+     },
+     "monthly_income": {
+      "min_month_salary": 45,
+      "max_month_salary": 60
+     },
+     "salary_detials": "昇給：月あたり10,000円〜15,000円（前年度実績）"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "年3回：4.50ヶ月（前年度実績）",
+     "welfare_benefits": [],
+     "various_allowances": "・家族手当：5,000円〜\n・職能手当：5,000円〜\n・資格手当：2,000円〜\n・通勤手当：実費支給（上限15,000円）",
+     "welfare_benefits_detail": "・各種保険（雇用・労災・健康・厚生年金）\n・退職金共済加入\n・退職金制度（勤続１年以上）\n・再雇用制度（上限70歳まで）\n・資格取得費用全額補助（会社認定資格）\n・資格試験合格者へ特別賞与支給（最大100万円）\n・専門学校への就学支援（本人希望）\n・豊橋市奨学金返還支援補助金による返還支援\n・社員旅行（5月）/泊まり忘年会（12月）"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "・年間休日：127日\n・完全週休二日制\n・夏季休暇：8/11〜8/15\n・ 年末年始休暇：12/30〜1/4\n・6ヶ月経過後の年次有給休暇日数：10日"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [
+      "none_smoking"
+     ],
+     "details_on_secondhand": "屋内禁煙"
+    },
+    "others": null,
+    "selection_flow": "面接予定1回"
+   },
+   "selection_flow": "面接予定1回",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

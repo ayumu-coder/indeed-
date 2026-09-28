@@ -1,0 +1,163 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 19205,
+  "vacancy_no": "00019206",
+  "title": "【未経験限定】電気設計/若手採用",
+  "company_name": "株式会社アドバン・テック",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 0,
+    "minimum_industry_experience": 0,
+    "overall_experience": "N",
+    "minimum_education_level": "高卒以上",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "N",
+    "characteristics": [
+     {
+      "characteristic_id": 23,
+      "category": "day_off",
+      "title": "土日休み",
+      "pivot": {
+       "job_id": 19205,
+       "characteristic_id": 23
+      }
+     },
+     {
+      "characteristic_id": 20,
+      "category": "welfare",
+      "title": "外国籍採用実績あり",
+      "pivot": {
+       "job_id": 19205,
+       "characteristic_id": 20
+      }
+     },
+     {
+      "characteristic_id": 19,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件あり",
+      "pivot": {
+       "job_id": 19205,
+       "characteristic_id": 19
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社アドバン・テック",
+   "estd_date": "1990年3月",
+   "capital": "30百万円",
+   "number_of_employees": "20",
+   "head_office_location": "横山町横山321",
+   "sales_revenue": "",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 300,
+    "max_year_salary": 400
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "エンジニア【機械・電気・電子・半導体・制御】",
+    "sub_job_type": "その他機械・機構設計"
+   },
+   "update_date": "2025/10/08",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "・普通自動車運転免許（AT限定可）",
+    "years_of_experience": {
+     "other": "N",
+     "job_type": 0,
+     "industry": 0
+    },
+    "preferred_qualifications": [
+     "高卒以上",
+     "大学院、大学、短期大学、専修・各種学校、高等専門学校、高等学校卒以上"
+    ],
+    "welcome_condition": "・電気系専攻の方（設計実務不問）（電気制御、シーケンス制御などの知識・経験お持ちの方は歓迎）"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "大手自動車部品メーカー向け各種専用機を中心に設計から製造までを自社で一貫して手掛ける当社にて、今回のポジションでは、お客様ごとのニーズに合わせた専用機の電気制御設計と制御プログラム作成・デバック調整エンジニアとしてご活躍いただける方を募集します。\n\n■業務詳細：\n同社の得意とする専用機（組付機、加工機、搬送機、ロボット省人化設備など）は、\nお客様のニーズ1つ1つに合わせた完全オーダーメイド品となります。\nその為、お客様との仕様打ち合わせから、CAD(AutoCAD,Vsio等)、PLCソフトによる電気回路設計・PLCプログラム・設備調整をご担当いただきます。\n\n■具体的な業務の流れ\n1.客先と仕様打合せ\n2.機械設計担当と機構の打合せ\n3.電気ハード回路図設計\n4.客先との承認打合せ\n5.BOX板金図等作成\n6.部品リスト作成\n7.PLCプログラム設計\n8.装置にPLCプログラムをインストール\n9.制御PLCプログラム調整（現場作業）\n10.客先へ装置搬入後の制御立上げ調整\n11.ロボットプログラム作成、ティーチング\n12.完成後のドキュメント作成\n13.設計フィードバック修正\n\n■未経験でも安心の教育体制\nまずは製造課にて業務全体の基本を学んで頂きます。\nその後制御課に配属となり、先輩と同行して業務を行います。\n一つ一つ着実に業務を経験しますので未経験からでも\n案件リーダーを目指せます。\n\n1.社内製造課にて、機械組付などを行い、まずは設備づくりの基本を学ぶ\n2.制御課に配属、電気配線・制御盤組付を学ぶ\n3.制御設計者に従事し、電気ハード回路図を作成\n4.制御設計者が設計したPLCソフトを現場で調整\n5.制御設計者に同行し、仕様打合せに参加\n6.制御設計者として、電気ハード回路図、PLCソフト、現地調整を1人で行う\n7.案件リーダーとして規模の大きな設備の制御プロデュースを行う\n（客先打合せ、制御設計～現地調整まで）\n\n■魅力：\n・受注生産体制により、お客様との打ち合わせを通して、自分のアイデアも反映可能なゼロからのモノづくりに携われます。\n・本社には製造拠点も併設。自身が設計を手掛けたものが、目の前で形作られていきますので、間近で完成品を確認しながら進めら\nれる魅力もあります。\n\n■主要納入先：\nトヨタ自動車株式会社、株式会社デンソー、日本ガイシ株式会社、株式会社豊田自動織機、トヨタ紡織株式会社 他\n\n■配属先組織構成：\n40代の方2名、30代の方1名、20代の方1名の計4名の組織になります。\n\n■働く環境：\n（1）スキルアップを応援しています。OJT（職場内訓練）の導入によって、入社後の指導体制が整っています。入社後からは、スキ\nルアップに必要な外部研修を随時行い、資格取得も応援しています。\n（2）新築社屋で快適に働けます。2018年にオフィスを新築し、お客様からも好評です。事務所や工場はもちろん、休憩室や食堂も\n美しく快適になり、毎日気持ち良い環境で仕事に取り組むことができます。\n（3）切磋琢磨できる仲間がいます。性別や年齢を気にすることなく、技術者として共感しあえる仲間がいます。女性エンジニアで\nも大いに活躍できる職場です。\n\n■どんな人が活躍しているのか\n完全オーダーメイドなので、客先の要求する仕様を低コストで満足できることが重要です。\n規模の大きな設備は複数人で設計を行うため、協調性・コミュニケーションが必要となります。\n客先とも打合せを行うので礼儀・マナーも最低限必要です。\n客先や製造現場への説明（プレゼン）能力も磨いていきます。\n物事を多方面から見て、常に最善と最悪のケースを考え、その中でベストな判断が出来ることを求められます。",
+    "job_description_detail": null,
+    "number_of_hires": "5",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月",
+     "working_hours": "＜標準的な勤務時間帯＞\n8:30～17:30\n＜その他就業時間補足＞\n上記就業時間は一例です。1年単位の変形労働時間制(1週間あたりの平均労働40時間以内)\n\n＜労働時間区分＞\n1年単位の変形労働時間制\n週平均労働時間：40時間00分\n休憩時間：60分\n時間外労働有無：有",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "本社\n住所：愛知県安城市横山町横山321\n受動喫煙対策：敷地内喫煙可能場所あり",
+     "scope_of_change": null,
+     "possibility_of_work": "N"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 300,
+      "max_year_salary": 400
+     },
+     "monthly_income": {
+      "min_month_salary": 19,
+      "max_month_salary": 29
+     },
+     "salary_detials": "月額（基本給）：180,000円～220,000円\nその他固定手当/月：10,000円～70,000円\n\n＜給与補足＞\n■昇給：あり※1月あたり2％～5％（過去実績）\n■賞与：年2回※計4ヶ月分（過去実績）\n■決算賞与：業績により支給あり※実績2～5ヶ月分\n■職能（能力）手当：0円～60,000円\n■皆勤手当：10,000円"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "実績：2~5ヶ月（業績によって異なる。）\n夏・冬　年二回\n決算賞与：臨時あり",
+     "welfare_benefits": [
+      "外国籍採用実績あり"
+     ],
+     "various_allowances": "通勤手当：実費支給※上限あり\n家族手当：配偶者月8,000円、子月5,000円\n社会保険：補足事項なし\n退職金制度：再雇用制度70歳まで",
+     "welfare_benefits_detail": "＜教育制度・資格補助補足＞\n■OJT（職場内訓練）\n■外部研修\n\n＜その他補足＞\n■退職金共済"
+    },
+    "holiday": {
+     "holiday": "土日休み",
+     "holiday_details": "週休2日制（休日は土日のみ）\n年間有給休暇10日～10日（下限日数は、入社半年経過後の付与日数となります）\n年間休日日数115日\n\n土曜（年に数回出勤あり）、日曜　※トヨタカレンダー\nGW・夏季・年末年始、有給休暇\n※休日出勤の場合は、振替休日取得"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考\n↓\n面接二回（二回目の面接時に簡単な適性検査あり）"
+   },
+   "selection_flow": "書類選考\n↓\n面接二回（二回目の面接時に簡単な適性検査あり）",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

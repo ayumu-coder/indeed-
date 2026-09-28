@@ -1,0 +1,170 @@
+{
+ "success": true,
+ "message": "成功",
+ "data": {
+  "job_id": 21489,
+  "vacancy_no": "00021490",
+  "title": "【静岡県浜松市・愛知県安城】整備士※残業月25h／WLB重視／キャリアアップ可能！",
+  "company_name": "株式会社バーデン",
+  "details": {
+   "tags": {
+    "minimum_job_experience": 1,
+    "minimum_industry_experience": null,
+    "overall_experience": null,
+    "minimum_education_level": "学歴不問",
+    "pref_nationality": "JP",
+    "media_publication": "媒体掲載OK（社名公開OK）",
+    "send_scout": "スカウトOK（社名公開OK）",
+    "relocation": "X",
+    "characteristics": [
+     {
+      "characteristic_id": 8,
+      "category": "selection",
+      "title": "急募",
+      "pivot": {
+       "job_id": 21489,
+       "characteristic_id": 8
+      }
+     },
+     {
+      "characteristic_id": 19,
+      "category": "interview_guaranteed",
+      "title": "面接確約条件あり",
+      "pivot": {
+       "job_id": 21489,
+       "characteristic_id": 19
+      }
+     },
+     {
+      "characteristic_id": 26,
+      "category": "day_off",
+      "title": "その他",
+      "pivot": {
+       "job_id": 21489,
+       "characteristic_id": 26
+      }
+     }
+    ]
+   },
+   "organization_name": "株式会社バーデン",
+   "estd_date": "2003年10月1日",
+   "capital": "5千万円",
+   "number_of_employees": "115",
+   "head_office_location": "尾崎町上大縄1",
+   "sales_revenue": "39億（2023年3月期）",
+   "ipo": "未上場",
+   "industries": {
+    "industry": null,
+    "sub_industry": null
+   },
+   "annual_salary": {
+    "min_year_salary": 320,
+    "max_year_salary": 480
+   },
+   "employment_status": "正社員（無期契約）",
+   "application_category": [
+    "mid_career"
+   ],
+   "work_location": [
+    {
+     "id": 22,
+     "name": "静岡県",
+     "name_kana": "ｼｽﾞｵｶｹﾝ"
+    },
+    {
+     "id": 23,
+     "name": "愛知県",
+     "name_kana": "ｱｲﾁｹﾝ"
+    }
+   ],
+   "job_classification": {
+    "job_type": "技能工・設備・交通・運輸",
+    "sub_job_type": "技能工【整備・メカニック関連】"
+   },
+   "update_date": "2025/10/08",
+   "post_date": null,
+   "application_requirements": {
+    "application_requirement_detail": "◎自動車整備士資格2級以上\n◎普通自動車運転免許（AT限定不可）\n\n＜求める人材＞\n◎笑顔が素敵な方\n◎コミュニケーションを積極的に取れる方\n◎周囲と協力して仕事に取り組める方",
+    "years_of_experience": {
+     "other": null,
+     "job_type": 1,
+     "industry": null
+    },
+    "preferred_qualifications": [
+     "学歴不問",
+     "大学院、大学、短期大学、専修・各種学校、高等専門学校、高等学校卒以上"
+    ],
+    "welcome_condition": "◎自動車検査員資格"
+   },
+   "overview": {
+    "reason_for_recruitment": null,
+    "job_description": "～週休2日・残業月25時間と働きやすさ◎／東証スタンダード上場企業の関連会社／スキルアップのためのサポート充実～\n\n＜お任せするお仕事＞\n（1）車検及び、それに伴う整備\n（2）オイル交換、タイヤ交換等のメンテナンス整備\n（3）各種サービスメニュー及び点検整備\n（4）自動車用品、部品の取り付け\nの4つの業務を中心に、技術・経験・慣れを見ながら分担、担当していただきます。\n\n※自動車用品の販売ノルマは一切ありません。\n・多くのお客様とコミュニケーションをとり、ご要望に合わせて整備業務をしていくため、自身の整備のスキルアップができたり、様々な車種の知識を増やしていくことができます。\n\n■WLBが整った環境\n・就業時間：週休2日制、残業は月15〜25時間程度です。「どんなにお給料がよくても、どんなに環境がよくても、体が壊れては意味がない」という会社の方針の元、プライベートも充実させながら、整備士としてご活躍いただけます。\n\n■当社の魅力\n・カーメンテナンスとカー用品のお店「ジェームス」を静岡県浜松市で3店舗、愛知県安城市で1店舗運営しております。\n・親会社の安定基盤：当社の親会社は、カスタムホイールの先駆者である株式会社ウェッズ(東証スタンダード)です。自動車以外にも複数の事業を持っており、安定した基盤です。",
+    "job_description_detail": null,
+    "number_of_hires": "4",
+    "employment_type": {
+     "employment_type": "正社員（無期契約）",
+     "application_category": [
+      "mid_career"
+     ],
+     "contract_period": null,
+     "probation_period": "Y",
+     "probation_period_detail": "3ヶ月\n条件に変更はありません",
+     "working_hours": "◇9:45～19:15（休憩90分）\n※実労働8時間\n\n◇残業時間:15〜25時間/月 程度 ※繁忙期は超過の可能性あり",
+     "average_monthly": {
+      "overtime_hours": null,
+      "overtime_hours_details": null
+     }
+    },
+    "work_location": {
+     "work_location": [
+      {
+       "name": "静岡県",
+       "name_kana": "ｼｽﾞｵｶｹﾝ"
+      },
+      {
+       "name": "愛知県",
+       "name_kana": "ｱｲﾁｹﾝ"
+      }
+     ],
+     "work_location_detail": "＜静岡県・愛知県のいずれかの店舗＞\n・ジェームス浜松天王店（静岡県浜松市東区中田町754番地2）\n・ジェームスサンストリート浜北店（静岡県浜松市浜北区平口5806番地）\n・ジェームス安城店（愛知県安城市尾崎町上大縄１）",
+     "scope_of_change": null,
+     "possibility_of_work": "X"
+    },
+    "salary": {
+     "annual_income": {
+      "min_year_salary": 320,
+      "max_year_salary": 480
+     },
+     "monthly_income": {
+      "min_month_salary": 22,
+      "max_month_salary": 30
+     },
+     "salary_detials": "＜予定年収＞\n320万円～480万円\n\n＜賃金形態＞\n月給制\n\n＜月給＞\n220,000円～300,000円 ※各種手当含む\n\n＜昇給有無＞\n有\n\n＜残業手当＞\n有\n\n＜給与補足＞\n※経験に応じて当社規定により優遇致します"
+    },
+    "benefits_and_welfare": {
+     "bonuses": "Y",
+     "incentives": null,
+     "stock_options": null,
+     "bonus_details": "■賞与：2回／年（6月・12月）※昨年度実績4ヶ月\n■昇給：1回／年（7月）",
+     "welfare_benefits": [],
+     "various_allowances": "■役職手当：5,000〜20,000円／月\n■資格手当：自動車検査員(5000円〜5万円/月),2級整備士(2000円〜5000円/月)\n■残業手当\n■休日出勤手当\n■通勤手当：社内規定による\n\n＜教育制度・資格補助＞\n■資格取得援助制度あり（全額負担）",
+     "welfare_benefits_detail": "入社祝い金最大10万円あり(当社規定による)\n交通費規定支給\n制服貸与\n各種保険完備\n従業員割引あり\n車通勤可\n昇給あり(年1回)\n経験者優遇\n賞与あり(年2回)\n残業手当あり\n決算賞与あり(業績による)"
+    },
+    "holiday": {
+     "holiday": "その他",
+     "holiday_details": "週休2日制(交替制)\n年間休日105日\n他有給休暇・慶弔休暇あり\n※定休日(火曜日)もしっかりあります。\n※冠婚葬祭、お子様の用事などは土日なども調整して休めます。"
+    },
+    "secondhand_smoke": {
+     "presence_of_secondhand": [],
+     "details_on_secondhand": null
+    },
+    "others": null,
+    "selection_flow": "書類選考⇨カジュアル面談⇨最終面接⇨内定\n選考内に適性検査(性格検査のみ)を含みます。"
+   },
+   "selection_flow": "書類選考⇨カジュアル面談⇨最終面接⇨内定\n選考内に適性検査(性格検査のみ)を含みます。",
+   "industry": null,
+   "sub_industry": null
+  },
+  "can_recommend": true
+ }
+}

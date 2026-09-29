@@ -1,0 +1,34 @@
+target: CLAUDE.md, 部/基盤部/CLAUDE.md, 部/数値更新部/CLAUDE.md, 部/業務部/CLAUDE.md, 部/業務部/作業記録.md, 部/基盤部/作業記録.md, メモリ/勝手にやらない.md, 予定表.md
+requested_by: 部長くん (session_011ka9AiqKz8z7uGm3J3x6Dy)
+summary: 「Mac」表記を Windows 11 に訂正、LINE自動応答くんを基盤部に追加、9/29 の指示台帳差分と予定を反映
+detail: |
+  1. 事実訂正 (ユーザー確認済み 9/29): ユーザーの PC は Mac ではなく Windows 11 のノートパソコン (Windows Terminal で claude を実行)。
+     - CLAUDE.md 「部の一覧」: 数値更新部・基盤部の「Mac 上」→「Windows PC 上」。基盤部の持ち物「Mac 常駐化」→「Windows 常駐化」。
+     - 部/基盤部/CLAUDE.md: 全ての「Mac」→「Windows PC」。「launchd」→「Windows 常駐化 (Task Scheduler + powercfg)」。
+       持ち物の行を差し替え: 「Windows 常駐化一式 (keepalive.ps1 / setup-power.ps1 / install-tasks.ps1 / uninstall-tasks.ps1 / README_常駐化手順_Windows.md) は 9/29 に部長がユーザーへ納品済み。repo には未収録。macOS 用 launchd 一式 (9/28 納品) は誤りだったため廃棄。」
+       現状の行: 「PC のスリープでセッションと公開 URL が落ちる (9/28 に 1033 エラー)。常駐化は未導入 (導入はユーザーが Windows 上で行う)。」
+     - 部/数値更新部/CLAUDE.md 3 行目・20 行目・27 行目: 「Mac」→「Windows PC」。
+     - 部/業務部/CLAUDE.md 16 行目: 「Mac 上 (bridge)」→「ユーザーの Windows PC 上 (bridge)」、「Mac オフライン」→「PC オフライン」。
+     - メモリ/勝手にやらない.md 9 行目: 「常駐化 (launchd 等の導入)」→「常駐化 (Task Scheduler 等の導入)」。
+  2. 基盤部に担当セッションを追加: LINE自動応答くん (session_01MWBCXuxUciuJANbsmG4zxF、クラウド、ブランチ claude/auto-forward-email-line-16l2qv)。
+     - CLAUDE.md 「部の一覧」基盤部の担当セッション欄に追記。持ち物の要約に「LINE 自動応答 (GAS)」を追加。
+     - 部/基盤部/CLAUDE.md 持ち物に 1 行: 「LINE 自動応答 (line-autoreply/、GAS ウェブアプリ + 会話ログ、commit cf31bb5)。秘密情報 (チャネルシークレット・アクセストークン・WEBHOOK_TOKEN・ウェブアプリ URL) はスクリプトプロパティのみに置き、チャット・シート・repo に書かない。」
+     - 部/基盤部/CLAUDE.md ルールに 1 行: 「LINE 自動応答は承認モードから開始する。第 1 歩 (受信ログ) が動くまで公式アカウントからグループへ送信しない。社内グループ (全体連絡用) は取引先台帳に区分=社内で登録し返信しない。」
+     - 部/基盤部/CLAUDE.md 現状に 1 行: 「LINE 自動応答 第 1 歩: コード・テスト (40 件) 完了。Windows PC 上でのデプロイは B-3 (Code.gs 貼り付け) まで完了、LINE Developers ログインと Google 承認 (A-1〜A-10、B-4〜B-14) はユーザー作業待ち。管理シート「LINE自動応答_管理」、報告シート「部長報告_LINE自動応答_20260929」。」
+  3. 部/業務部/CLAUDE.md 現状を差し替え:
+     - 「9/29: 部門ノート体系を初期構築中。」→「9/29: 部門ノート初期構築 完了 (監査役 105b3fb)。」
+     - 追加: 「9/29 12:30 JST 以降、部長から他セッションへの create_trigger / fire_trigger が『同じチャネルのセッションにのみ送信可』で拒否され続けている (原因不明)。当面は (a) ユーザーが指示文 .txt を対象セッションに貼り付ける、(b) 新規セッションを create_session で作って全文指示を渡す、の 2 方式で運用。恒久策 (部長セッションの作り直し) はユーザーと相談して決める。」
+  4. 部/業務部/作業記録.md に行を追加 (既存行「9/29 | indeed-update 9月 (9/26〜) | 実行中」は「完了 (9/26〜27 分、16 社一致)」に更新):
+     | 9/29 | 部門ノート初期構築 (監査役依頼) | 完了 |
+     | 9/29 | LINE 自動応答 第 1 歩 (コード) | 完了 (LINE自動応答くん cf31bb5) |
+     | 9/29 | LINE 自動応答 第 1 歩 (Windows デプロイ) | 途中 (B-3 まで、ユーザー作業待ち) |
+     | 9/29 | Windows 常駐化一式 | 納品 (macOS 版は廃棄) |
+     | 9/29 | 他セッションへの送信拒否 | 継続中 (貼り付け方式で運用) |
+  5. 部/基盤部/作業記録.md に行を追加:
+     | 9/28 | macOS launchd 一式 | 納品 → 9/29 廃棄 (PC は Windows) |
+     | 9/29 | Windows 常駐化一式 | 納品 (導入待ち) |
+     | 9/29 | LINE 自動応答 第 1 歩 | コード完了、デプロイ途中 |
+  6. 予定表.md に行を追加:
+     | 10/1 | indeed-update 9月 (9/29 分) | 数値更新部 |
+     | 10/3 まで | 10月タブ作成の可否 (ユーザー承認「10月タブ OK」待ち。未承認なら 10 月分の転記不可) | 業務部 |
+reason: 9/29 にユーザーから PC が Windows 11 であると訂正があり、初期構築の依頼文に含めた「Mac」が誤り。あわせて 9/29 の作業結果と運用上の制約 (送信拒否) をノートに残す。

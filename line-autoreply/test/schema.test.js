@@ -1,0 +1,64 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import {
+  ALL_SHEETS,
+  CONVERSATION_LOG,
+  DEFAULT_MODE,
+  LEDGER,
+  MODES,
+  OPS_LOG,
+  SETTINGS,
+  columnIndex,
+} from '../lib/schema.js';
+import { formatJst } from '../lib/time.js';
+
+test('シート名は仕様どおり 4 枚', () => {
+  assert.deepEqual(
+    ALL_SHEETS.map((s) => s.name),
+    ['会話ログ', '取引先台帳', '設定', '稼働ログ'],
+  );
+});
+
+test('会話ログの見出しに必須列がある', () => {
+  for (const h of ['受信日時', 'イベント種別', 'グループID', 'ユーザーID', 'メッセージ種別', '本文', 'replyToken', '状態']) {
+    assert.ok(CONVERSATION_LOG.headers.includes(h), h);
+  }
+});
+
+test('取引先台帳の見出しにグループID・会社名・共有先・区分がある', () => {
+  for (const h of ['グループID', '会社名', '区分', '共有スプレッドシートID', '共有フォルダID']) {
+    assert.ok(LEDGER.headers.includes(h), h);
+  }
+});
+
+test('設定シートの初期行は mode=approval', () => {
+  assert.deepEqual(SETTINGS.headers, ['キー', '値', '説明']);
+  assert.equal(SETTINGS.initialRows[0][0], 'mode');
+  assert.equal(SETTINGS.initialRows[0][1], 'approval');
+  assert.equal(DEFAULT_MODE, 'approval');
+  assert.deepEqual([...MODES], ['approval', 'auto']);
+});
+
+test('稼働ログの見出し', () => {
+  assert.deepEqual([...OPS_LOG.headers], ['日時', 'レベル', '処理', 'グループID', '内容']);
+});
+
+test('見出しに重複がない', () => {
+  for (const def of ALL_SHEETS) {
+    assert.equal(new Set(def.headers).size, def.headers.length, def.name);
+  }
+});
+
+test('columnIndex: 0 始まりで返し、無い見出しは例外', () => {
+  assert.equal(columnIndex(CONVERSATION_LOG, '受信日時'), 0);
+  assert.equal(columnIndex(CONVERSATION_LOG, '状態'), 8);
+  assert.throws(() => columnIndex(CONVERSATION_LOG, '存在しない'), /見出し/);
+});
+
+test('formatJst: UTC → JST 表記、日付跨ぎ、不正値は空', () => {
+  assert.equal(formatJst(new Date('2026-09-28T15:00:00Z')), '2026-09-29 00:00:00');
+  assert.equal(formatJst(Date.UTC(2026, 0, 1, 0, 5, 9)), '2026-01-01 09:05:09');
+  assert.equal(formatJst('2026-12-31T23:30:00Z'), '2027-01-01 08:30:00');
+  assert.equal(formatJst('not a date'), '');
+  assert.equal(formatJst(NaN), '');
+});

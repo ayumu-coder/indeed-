@@ -4,6 +4,9 @@ import {
   ALL_SHEETS,
   CONVERSATION_LOG,
   DEFAULT_MODE,
+  DRAFTS,
+  DRAFT_FILE_HEADERS,
+  IMPORTED,
   LEDGER,
   MODES,
   OPS_LOG,
@@ -12,11 +15,27 @@ import {
 } from '../lib/schema.js';
 import { formatJst } from '../lib/time.js';
 
-test('シート名は仕様どおり 4 枚', () => {
+test('シート名は仕様どおり 6 枚 (第 1 歩の 4 枚 + 返信案 + 取込済)', () => {
   assert.deepEqual(
     ALL_SHEETS.map((s) => s.name),
-    ['会話ログ', '取引先台帳', '設定', '稼働ログ'],
+    ['会話ログ', '取引先台帳', '設定', '稼働ログ', '返信案', '取込済'],
   );
+});
+
+test('会話ログの列の並びは第 1 歩から変えない (Windows 側の運用シートと整合させる)', () => {
+  assert.deepEqual(
+    [...CONVERSATION_LOG.headers],
+    ['受信日時', 'イベント種別', 'ソース種別', 'グループID', 'ユーザーID', 'メッセージ種別', '本文', 'replyToken', '状態', 'webhookEventId', '再送', 'LINEタイムスタンプ', '処理日時', '処理メモ', '生データ'],
+  );
+});
+
+test('返信案タブと返信案ファイルの見出し', () => {
+  assert.deepEqual(
+    [...DRAFTS.headers],
+    ['番号', 'webhookEventId', 'グループID', '会社名', '受信本文', '返信案', '判定', '理由', '状態', '作成日時', '承認日時', '送信結果', '取込元'],
+  );
+  assert.deepEqual([...DRAFT_FILE_HEADERS], ['webhookEventId', 'グループID', '会社名', '受信本文', '返信案', '判定', '理由']);
+  assert.deepEqual([...IMPORTED.headers].slice(0, 3), ['ファイルID', 'ファイル名', '取込日時']);
 });
 
 test('会話ログの見出しに必須列がある', () => {

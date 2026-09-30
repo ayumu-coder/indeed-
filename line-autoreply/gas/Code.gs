@@ -2,6 +2,167 @@
 // line-autoreply/ で `npm run build` を実行してください。
 // Apps Script エディタにはこのファイルの全文をそのまま貼り付けます。
 
+// ===== lib/approval.js =====
+// 管理者の承認コマンド解釈、送信前の安全確認、管理者向け本文の組み立て (純粋関数)。
+
+
+/**
+ * 全角英数・全角空白・記号の揺れを NFKC で吸収し、空白を 1 つにまとめる。
+ * @param {unknown} text
+ * @returns {string}
+ */
+function normalizeCommandText(text) {
+  return String(text ?? '')
+    .normalize('NFKC')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * @typedef {object} ApprovalCommand
+ * @property {'approve' | 'reject'} action
+ * @property {number} number 返信案の番号
+ */
+
+/**
+ * 「OK 12」「却下 12」「ＯＫ　１２」「ok#12」などを解釈する。該当しなければ null。
+ * @param {unknown} text
+ * @returns {ApprovalCommand | null}
+ */
+function parseApprovalCommand(text) {
+  const normalized = normalizeCommandText(text);
+  const m = /^(ok|却下)\s*#?\s*(\d{1,9})$/i.exec(normalized);
+  if (!m) return null;
+  return {
+    action: m[1].toLowerCase() === 'ok' ? 'approve' : 'reject',
+    number: Number(m[2]),
+  };
+}
+
+/** 返信案に含まれてはいけない金額表現 */
+const MONEY_MARKERS = Object.freeze(['万円', '円', '¥', '￥']);
+
+/**
+ * @typedef {object} SafetyResult
+ * @property {boolean} ok
+ * @property {string[]} reasons 引っかかった理由 (ok なら空)
+ */
+
+/**
+ * グループへ送る直前の安全確認。1 つでも引っかかれば送らない。
+ * - 本文に金額表現 (円 / ¥ / 万円) が無い
+ * - 取引先台帳の「他社」(区分=取引先 で会社名が送信先と異なる) の会社名を含まない
+ * - 送信先が台帳に登録され、区分=取引先 かつ 有効=TRUE である
+ * @param {{ text: string, groupId: string, ledger: Map<string, import('./ledger.js').LedgerEntry> }} input
+ * @returns {SafetyResult}
+ */
+function checkSendSafety(input) {
+  const text = String(input.text ?? '');
+  const reasons = [];
+
+  if (text.trim() === '') reasons.push('返信案が空');
+
+  for (const marker of MONEY_MARKERS) {
+    if (text.includes(marker)) {
+      reasons.push(`金額表現「${marker}」を含む`);
+      break;
+    }
+  }
+
+  const target = input.ledger.get(input.groupId);
+  if (!target) {
+    reasons.push('送信先グループが台帳に未登録');
+  } else if (target.kind !== LEDGER_KIND.CLIENT) {
+    reasons.push(`送信先の区分が取引先ではない (${target.kind || '空'})`);
+  } else if (!target.enabled) {
+    reasons.push('送信先グループが無効');
+  }
+
+  const targetCompany = target ? target.company : '';
+  const seen = new Set();
+  for (const entry of input.ledger.values()) {
+    if (entry.kind !== LEDGER_KIND.CLIENT) continue;
+    if (entry.company === '' || entry.company === targetCompany) continue;
+    if (seen.has(entry.company)) continue;
+    seen.add(entry.company);
+    if (text.includes(entry.company)) reasons.push(`他社名「${entry.company}」を含む`);
+  }
+
+  return { ok: reasons.length === 0, reasons };
+}
+
+/** 承認依頼に載せる受信本文の上限 */
+const RECEIVED_PREVIEW_CHARS = 100;
+
+/**
+ * @param {unknown} text
+ * @param {number} max
+ * @returns {string}
+ */
+function truncateText(text, max) {
+  const s = String(text ?? '');
+  const chars = Array.from(s);
+  return chars.length <= max ? s : `${chars.slice(0, max).join('')}…`;
+}
+
+/**
+ * @typedef {object} DraftSummary
+ * @property {number} number
+ * @property {string} company
+ * @property {string} received 受信本文
+ * @property {string} reply    返信案
+ * @property {string} reason   判定理由
+ */
+
+/**
+ * 承認依頼 (判定=返信) の本文。
+ * @param {DraftSummary} d
+ * @returns {string}
+ */
+function buildApprovalRequestText(d) {
+  return [
+    `案 #${d.number}【${d.company}】`,
+    `受信: ${truncateText(d.received, RECEIVED_PREVIEW_CHARS)}`,
+    `返信案: ${d.reply}`,
+    `→ 送るなら『OK ${d.number}』、送らないなら『却下 ${d.number}』`,
+  ].join('\n');
+}
+
+/**
+ * 人に回す (判定=人に回す) の通知本文。OK/却下 は受け付けない。
+ * @param {DraftSummary} d
+ * @returns {string}
+ */
+function buildHumanNoticeText(d) {
+  return [
+    `人に回す #${d.number}【${d.company}】`,
+    `受信: ${truncateText(d.received, RECEIVED_PREVIEW_CHARS)}`,
+    `理由: ${d.reason}`,
+  ].join('\n');
+}
+
+/**
+ * 安全確認で送信を保留したときの通知本文。
+ * @param {DraftSummary} d
+ * @param {readonly string[]} reasons
+ * @returns {string}
+ */
+function buildHoldNoticeText(d, reasons) {
+  return [`送信保留 #${d.number}【${d.company}】`, `理由: ${reasons.join(' / ')}`, '返信案は「返信案」タブで確認してください'].join('\n');
+}
+
+/**
+ * 番号が無い・状態が違うときの返答。
+ * @param {ApprovalCommand} cmd
+ * @param {string | null} currentStatus 見つかった案の状態。無ければ null
+ * @returns {string}
+ */
+function buildNoMatchText(cmd, currentStatus) {
+  const label = cmd.action === 'approve' ? 'OK' : '却下';
+  if (currentStatus === null) return `該当なし: #${cmd.number} の返信案はありません (${label})`;
+  return `該当なし: #${cmd.number} は「${currentStatus}」のため ${label} できません`;
+}
+
 // ===== lib/auth.js =====
 // Webhook リクエストの認証 (純粋関数)。
 //
@@ -97,6 +258,243 @@ function authenticateWebhookRequest(input) {
     return { ok: false, method: 'token', reason: 'destination_mismatch' };
   }
   return { ok: true, method: 'token', reason: 'token_ok' };
+}
+
+// ===== lib/drafts.js =====
+// 返信案ファイルの解釈、重複排除、取込時の扱いの決定、「返信案」タブの行変換 (純粋関数)。
+
+
+/**
+ * 返信案担当が作るファイル名か (「LINE返信案_YYYYMMDD-HHMM」で始まる)。
+ * @param {unknown} name
+ * @returns {boolean}
+ */
+function isDraftFileName(name) {
+  return typeof name === 'string' && DRAFT_FILE_NAME_PATTERN.test(name.trim());
+}
+
+/**
+ * @typedef {object} DraftInput 返信案ファイルの 1 行
+ * @property {string} eventId   webhookEventId
+ * @property {string} groupId
+ * @property {string} company
+ * @property {string} received  受信本文
+ * @property {string} reply     返信案
+ * @property {'返信' | '人に回す'} verdict
+ * @property {string} reason
+ */
+
+/**
+ * @typedef {object} ParsedDraftFile
+ * @property {DraftInput[]} drafts
+ * @property {string[]} errors 行単位の不備。ファイル全体が読めないときは drafts が空で errors に理由
+ */
+
+/**
+ * 返信案ファイルの全セル (1 行目は見出し) を解釈する。列は見出し名で引くので順序は問わない。
+ * @param {readonly (readonly unknown[])[]} values
+ * @returns {ParsedDraftFile}
+ */
+function parseDraftFile(values) {
+  if (!Array.isArray(values) || values.length === 0) {
+    return { drafts: [], errors: ['ファイルが空'] };
+  }
+  const header = values[0].map((h) => String(h ?? '').trim());
+  const index = {};
+  for (const name of DRAFT_FILE_HEADERS) {
+    const i = header.indexOf(name);
+    if (i < 0) return { drafts: [], errors: [`見出し「${name}」がありません (1 行目: ${header.join(', ')})`] };
+    index[name] = i;
+  }
+  const cell = (row, name) => String(row?.[index[name]] ?? '').trim();
+
+  /** @type {DraftInput[]} */
+  const drafts = [];
+  /** @type {string[]} */
+  const errors = [];
+  for (let r = 1; r < values.length; r += 1) {
+    const row = values[r];
+    const isBlank = !row || row.every((v) => String(v ?? '').trim() === '');
+    if (isBlank) continue;
+    const line = r + 1;
+    const eventId = cell(row, 'webhookEventId');
+    const groupId = cell(row, 'グループID');
+    const verdict = cell(row, '判定');
+    const reply = cell(row, '返信案');
+    if (eventId === '') {
+      errors.push(`${line} 行目: webhookEventId が空`);
+      continue;
+    }
+    if (groupId === '') {
+      errors.push(`${line} 行目: グループID が空`);
+      continue;
+    }
+    if (verdict !== VERDICT.REPLY && verdict !== VERDICT.HUMAN) {
+      errors.push(`${line} 行目: 判定「${verdict}」は不正 (${VERDICT.REPLY} | ${VERDICT.HUMAN})`);
+      continue;
+    }
+    if (verdict === VERDICT.REPLY && reply === '') {
+      errors.push(`${line} 行目: 判定=返信 なのに返信案が空`);
+      continue;
+    }
+    drafts.push({
+      eventId,
+      groupId,
+      company: cell(row, '会社名'),
+      received: cell(row, '受信本文'),
+      reply,
+      verdict: /** @type {'返信' | '人に回す'} */ (verdict),
+      reason: cell(row, '理由'),
+    });
+  }
+  return { drafts, errors };
+}
+
+/**
+ * 既に「返信案」タブにある webhookEventId と、同一ファイル内の重複を除く。
+ * @param {readonly DraftInput[]} drafts
+ * @param {Iterable<string>} existingEventIds
+ * @returns {{ fresh: DraftInput[], duplicates: DraftInput[] }}
+ */
+function dedupeDrafts(drafts, existingEventIds) {
+  const seen = new Set(existingEventIds);
+  const fresh = [];
+  const duplicates = [];
+  for (const d of drafts) {
+    if (seen.has(d.eventId)) {
+      duplicates.push(d);
+      continue;
+    }
+    seen.add(d.eventId);
+    fresh.push(d);
+  }
+  return { fresh, duplicates };
+}
+
+/**
+ * @typedef {'await_approval' | 'human' | 'send' | 'hold'} ImportAction
+ */
+
+/**
+ * 取込時に返信案をどう扱うか。
+ * - 判定=人に回す → human (管理者へ通知のみ)
+ * - mode=approval → await_approval (管理者へ承認依頼)
+ * - mode=auto → 安全確認を通れば send、通らなければ hold
+ * @param {{ verdict: string, mode: 'approval' | 'auto', safety: { ok: boolean } }} input
+ * @returns {ImportAction}
+ */
+function decideImportAction(input) {
+  if (input.verdict === VERDICT.HUMAN) return 'human';
+  if (input.mode !== 'auto') return 'await_approval';
+  return input.safety.ok ? 'send' : 'hold';
+}
+
+/**
+ * ImportAction に対応する「返信案」タブの初期状態。send は送信結果で確定するため承認待ちを経ずに一旦 送信保留 とし、
+ * 送信処理側が 送信済 / 送信失敗 に更新する。
+ * @param {ImportAction} action
+ * @returns {string}
+ */
+function initialDraftStatus(action) {
+  switch (action) {
+    case 'human':
+      return DRAFT_STATUS.HUMAN;
+    case 'await_approval':
+      return DRAFT_STATUS.WAITING_APPROVAL;
+    case 'send':
+    case 'hold':
+      return DRAFT_STATUS.HELD;
+    default:
+      throw new Error(`不明な取込アクション: ${action}`);
+  }
+}
+
+/**
+ * 「返信案」タブへ追記する 1 行を作る。列順は DRAFTS.headers と一致する。
+ * @param {{ number: number, draft: DraftInput, status: string, createdAt: string, source: string }} input
+ * @returns {(string | number)[]}
+ */
+function buildDraftRow(input) {
+  const row = new Array(DRAFTS.headers.length).fill('');
+  const set = (h, v) => {
+    row[columnIndex(DRAFTS, h)] = v;
+  };
+  set('番号', input.number);
+  set('webhookEventId', input.draft.eventId);
+  set('グループID', input.draft.groupId);
+  set('会社名', input.draft.company);
+  set('受信本文', input.draft.received);
+  set('返信案', input.draft.reply);
+  set('判定', input.draft.verdict);
+  set('理由', input.draft.reason);
+  set('状態', input.status);
+  set('作成日時', input.createdAt);
+  set('取込元', input.source);
+  return row;
+}
+
+/**
+ * @typedef {object} DraftRecord 「返信案」タブの 1 行
+ * @property {number} rowIndex  見出しを除いた 0 始まりの添字
+ * @property {number} number
+ * @property {string} eventId
+ * @property {string} groupId
+ * @property {string} company
+ * @property {string} received
+ * @property {string} reply
+ * @property {string} verdict
+ * @property {string} reason
+ * @property {string} status
+ */
+
+/**
+ * 「返信案」タブのデータ行 (見出し除く) を DraftRecord に変換する。番号が数値でない行は捨てる。
+ * @param {readonly (readonly unknown[])[]} rows
+ * @returns {DraftRecord[]}
+ */
+function parseDraftRecords(rows) {
+  const get = (row, h) => String(row?.[columnIndex(DRAFTS, h)] ?? '').trim();
+  const out = [];
+  rows.forEach((row, rowIndex) => {
+    const number = Number(row?.[columnIndex(DRAFTS, '番号')]);
+    if (!Number.isInteger(number) || number <= 0) return;
+    out.push({
+      rowIndex,
+      number,
+      eventId: get(row, 'webhookEventId'),
+      groupId: get(row, 'グループID'),
+      company: get(row, '会社名'),
+      received: get(row, '受信本文'),
+      reply: get(row, '返信案'),
+      verdict: get(row, '判定'),
+      reason: get(row, '理由'),
+      status: get(row, '状態'),
+    });
+  });
+  return out;
+}
+
+/**
+ * 次に採番する番号 (既存の最大 + 1、無ければ 1)。
+ * @param {readonly DraftRecord[]} records
+ * @returns {number}
+ */
+function nextDraftNumber(records) {
+  let max = 0;
+  for (const r of records) if (r.number > max) max = r.number;
+  return max + 1;
+}
+
+/**
+ * 番号で返信案を探す。同じ番号が複数あれば最後の行を返す。
+ * @param {readonly DraftRecord[]} records
+ * @param {number} number
+ * @returns {DraftRecord | null}
+ */
+function findDraftByNumber(records, number) {
+  let found = null;
+  for (const r of records) if (r.number === number) found = r;
+  return found;
 }
 
 // ===== lib/events.js =====
@@ -256,6 +654,149 @@ function eventToRow(event, receivedAt) {
   return row;
 }
 
+// ===== lib/ledger.js =====
+// 取引先台帳の解釈と、会話ログ 1 行の振り分け (純粋関数)。
+
+
+/**
+ * @typedef {object} LedgerEntry
+ * @property {string} groupId
+ * @property {string} company
+ * @property {string} groupName
+ * @property {string} kind        区分 (取引先 / 社内 / その他の文字列)
+ * @property {string} sheetId
+ * @property {string} folderId
+ * @property {string} contact     担当者
+ * @property {boolean} enabled    有効=TRUE
+ * @property {string} note
+ */
+
+/**
+ * 「有効」列の値を真偽に丸める。チェックボックス (boolean) と文字列 TRUE を受け付ける。
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+function isTruthyFlag(value) {
+  if (value === true) return true;
+  if (typeof value === 'string') return value.trim().toUpperCase() === 'TRUE';
+  return false;
+}
+
+/**
+ * 「取引先台帳」のデータ行 (見出し除く) を グループID → LedgerEntry に変換する。
+ * グループID が空の行は無視。同じ グループID は後勝ち。
+ * @param {readonly (readonly unknown[])[]} rows
+ * @returns {Map<string, LedgerEntry>}
+ */
+function parseLedger(rows) {
+  const col = (h) => columnIndex(LEDGER, h);
+  const str = (row, h) => String(row?.[col(h)] ?? '').trim();
+  /** @type {Map<string, LedgerEntry>} */
+  const out = new Map();
+  for (const row of rows) {
+    const groupId = str(row, 'グループID');
+    if (groupId === '') continue;
+    out.set(groupId, {
+      groupId,
+      company: str(row, '会社名'),
+      groupName: str(row, 'グループ名'),
+      kind: str(row, '区分'),
+      sheetId: str(row, '共有スプレッドシートID'),
+      folderId: str(row, '共有フォルダID'),
+      contact: str(row, '担当者'),
+      enabled: isTruthyFlag(row?.[col('有効')]),
+      note: str(row, '備考'),
+    });
+  }
+  return out;
+}
+
+/**
+ * 返信を送ってよい相手か (区分=取引先 かつ 有効=TRUE)。
+ * @param {LedgerEntry | undefined} entry
+ * @returns {boolean}
+ */
+function isSendableClient(entry) {
+  return !!entry && entry.kind === LEDGER_KIND.CLIENT && entry.enabled === true;
+}
+
+/**
+ * @typedef {object} EventInfo
+ * @property {string} eventType    message / join / ...
+ * @property {string} sourceType   user / group / room
+ * @property {string} groupId
+ * @property {string} userId
+ * @property {string} messageType  text / sticker / ...
+ * @property {string} text         本文
+ */
+
+/**
+ * 「会話ログ」の 1 行から振り分けに必要な値を取り出す。
+ * @param {readonly unknown[]} row 見出しを除いたデータ行
+ * @returns {EventInfo}
+ */
+function rowToEventInfo(row) {
+  const get = (h) => String(row?.[columnIndex(CONVERSATION_LOG, h)] ?? '').trim();
+  return {
+    eventType: get('イベント種別'),
+    sourceType: get('ソース種別'),
+    groupId: get('グループID'),
+    userId: get('ユーザーID'),
+    messageType: get('メッセージ種別'),
+    text: String(row?.[columnIndex(CONVERSATION_LOG, '本文')] ?? ''),
+  };
+}
+
+/** 処理メモに書く「対象外」の理由 */
+const SKIP_REASON = Object.freeze({
+  INTERNAL: '対象外 (社内)',
+  UNREGISTERED: '対象外 (未登録)',
+  DISABLED: '対象外 (無効)',
+  UNKNOWN_KIND: '対象外 (区分が取引先ではない)',
+  NOT_MESSAGE: '対象外 (メッセージ以外)',
+  NOT_TEXT: '対象外 (テキスト以外)',
+  EMPTY_TEXT: '対象外 (本文なし)',
+  DIRECT_NOT_ADMIN: '対象外 (管理者以外の 1 対 1)',
+  DIRECT_NOT_TEXT: '対象外 (1 対 1 のテキスト以外)',
+});
+
+/**
+ * @typedef {{ kind: 'skip', memo: string }
+ *   | { kind: 'await_draft', entry: LedgerEntry }
+ *   | { kind: 'admin_command', text: string }} Triage
+ */
+
+/**
+ * 会話ログ 1 行をどう扱うか決める。
+ * - 1 対 1 (user): 管理者からのテキストは承認コマンド、それ以外は対象外。
+ * - グループ: 台帳で 区分=取引先 かつ 有効=TRUE のテキストメッセージだけ返信案待ちにする。
+ * @param {EventInfo} info
+ * @param {Map<string, LedgerEntry>} ledger
+ * @param {string | null | undefined} adminUserId
+ * @returns {Triage}
+ */
+function triageEvent(info, ledger, adminUserId) {
+  const admin = String(adminUserId ?? '').trim();
+
+  if (info.sourceType === 'user') {
+    if (admin === '' || info.userId !== admin) return { kind: 'skip', memo: SKIP_REASON.DIRECT_NOT_ADMIN };
+    if (info.eventType !== 'message' || info.messageType !== 'text') {
+      return { kind: 'skip', memo: SKIP_REASON.DIRECT_NOT_TEXT };
+    }
+    return { kind: 'admin_command', text: info.text };
+  }
+
+  const entry = ledger.get(info.groupId);
+  if (!entry) return { kind: 'skip', memo: SKIP_REASON.UNREGISTERED };
+  if (entry.kind === LEDGER_KIND.INTERNAL) return { kind: 'skip', memo: SKIP_REASON.INTERNAL };
+  if (!entry.enabled) return { kind: 'skip', memo: SKIP_REASON.DISABLED };
+  if (entry.kind !== LEDGER_KIND.CLIENT) return { kind: 'skip', memo: SKIP_REASON.UNKNOWN_KIND };
+  if (info.eventType !== 'message') return { kind: 'skip', memo: SKIP_REASON.NOT_MESSAGE };
+  if (info.messageType !== 'text') return { kind: 'skip', memo: SKIP_REASON.NOT_TEXT };
+  if (info.text.trim() === '') return { kind: 'skip', memo: SKIP_REASON.EMPTY_TEXT };
+  return { kind: 'await_draft', entry };
+}
+
 // ===== lib/queue.js =====
 // 「設定」シートの解釈と「会話ログ」の未処理行の抽出 (純粋関数)。
 
@@ -327,6 +868,30 @@ const STATUS = Object.freeze({
   PENDING: '未処理',
   DONE: '処理済',
   ERROR: 'エラー',
+  /** 取引先グループの message。返信案担当が返信案を書くのを待っている */
+  WAITING_DRAFT: '返信案待ち',
+  /** 返信案を取り込み、管理者の OK/却下 を待っている */
+  WAITING_APPROVAL: '承認待ち',
+  /** 返信案担当が「人に回す」と判定した */
+  HUMAN: '人に回す',
+  /** グループへ返信を送った */
+  REPLIED: '返信済',
+});
+
+/** 「返信案」タブの状態 */
+const DRAFT_STATUS = Object.freeze({
+  WAITING_APPROVAL: '承認待ち',
+  HUMAN: '人に回す',
+  SENT: '送信済',
+  SEND_FAILED: '送信失敗',
+  HELD: '送信保留',
+  REJECTED: '却下',
+});
+
+/** 返信案担当が書く「判定」列の値 */
+const VERDICT = Object.freeze({
+  REPLY: '返信',
+  HUMAN: '人に回す',
 });
 
 const LEDGER_KIND = Object.freeze({
@@ -405,8 +970,52 @@ const OPS_LOG = Object.freeze({
   headers: Object.freeze(['日時', 'レベル', '処理', 'グループID', '内容']),
 });
 
+/** 取り込んだ返信案。1 行 = 1 案。番号は管理者が OK/却下 で指す ID */
+/** @type {SheetDefinition} */
+const DRAFTS = Object.freeze({
+  name: '返信案',
+  headers: Object.freeze([
+    '番号',
+    'webhookEventId',
+    'グループID',
+    '会社名',
+    '受信本文',
+    '返信案',
+    '判定',
+    '理由',
+    '状態',
+    '作成日時',
+    '承認日時',
+    '送信結果',
+    '取込元',
+  ]),
+});
+
+/** 取り込み済みの返信案ファイル (同じファイルを二度読まないための記録) */
+/** @type {SheetDefinition} */
+const IMPORTED = Object.freeze({
+  name: '取込済',
+  headers: Object.freeze(['ファイルID', 'ファイル名', '取込日時', '取込件数', '重複件数', '備考']),
+});
+
+/**
+ * 返信案担当が作るファイル (Google スプレッドシート or CSV) の 1 行目。
+ * ファイル名は「LINE返信案_YYYYMMDD-HHMM」。
+ */
+const DRAFT_FILE_HEADERS = Object.freeze([
+  'webhookEventId',
+  'グループID',
+  '会社名',
+  '受信本文',
+  '返信案',
+  '判定',
+  '理由',
+]);
+const DRAFT_FILE_NAME_PREFIX = 'LINE返信案_';
+const DRAFT_FILE_NAME_PATTERN = /^LINE返信案_\d{8}-\d{4}/;
+
 /** @type {readonly SheetDefinition[]} */
-const ALL_SHEETS = Object.freeze([CONVERSATION_LOG, LEDGER, SETTINGS, OPS_LOG]);
+const ALL_SHEETS = Object.freeze([CONVERSATION_LOG, LEDGER, SETTINGS, OPS_LOG, DRAFTS, IMPORTED]);
 
 /**
  * 見出し名から 0 始まりの列インデックスを返す。無ければ例外。
@@ -456,13 +1065,19 @@ const PROP = Object.freeze({
   ADMIN_USER_ID: 'ADMIN_USER_ID',
   WEBHOOK_TOKEN: 'WEBHOOK_TOKEN',
   BOT_USER_ID: 'LINE_BOT_USER_ID',
+  /** 返信案担当が返信案ファイルを置く Google Drive フォルダの ID */
+  DRAFT_FOLDER_ID: 'DRAFT_FOLDER_ID',
 });
 
 /** 1 分トリガー 1 回あたりに処理する最大件数 */
 const PROCESS_BATCH_SIZE = 50;
 
-/** トリガーが呼ぶ処理関数名 */
-const QUEUE_HANDLER_NAME = 'processQueue';
+/** 1 分トリガーが呼ぶ処理関数名 (会話ログの処理 / 返信案の取込) */
+const TRIGGER_HANDLERS = Object.freeze(['processQueue', 'importDrafts']);
+
+/** LINE Messaging API */
+const LINE_PUSH_URL = 'https://api.line.me/v2/bot/message/push';
+const LINE_TEXT_MAX_CHARS = 5000;
 
 // ---------- Webhook 受け口 ----------
 
@@ -554,7 +1169,7 @@ function hmacSha256Base64(value, key) {
 // ---------- 初期セットアップ ----------
 
 /**
- * シート 4 枚を見出し付きで作る。既存シートは壊さず、見出し行だけ上書きする。
+ * 管理用のシート (会話ログ / 取引先台帳 / 設定 / 稼働ログ / 返信案 / 取込済) を見出し付きで作る。既存シートは壊さず、見出し行だけ上書きする。
  * スプレッドシートに紐づいた Apps Script から手動で 1 回実行する。
  */
 function setup() {
@@ -594,10 +1209,25 @@ function generateWebhookToken() {
 /** スクリプトプロパティの設定漏れを実行ログに出す (値は出さない)。 */
 function checkConfig() {
   const props = PropertiesService.getScriptProperties();
-  const required = [PROP.CHANNEL_SECRET, PROP.CHANNEL_ACCESS_TOKEN, PROP.ADMIN_USER_ID, PROP.WEBHOOK_TOKEN];
+  const required = [
+    PROP.CHANNEL_SECRET,
+    PROP.CHANNEL_ACCESS_TOKEN,
+    PROP.ADMIN_USER_ID,
+    PROP.WEBHOOK_TOKEN,
+    PROP.DRAFT_FOLDER_ID,
+  ];
   const optional = [PROP.BOT_USER_ID];
   required.forEach((k) => Logger.log('%s: %s', k, props.getProperty(k) ? '設定済' : '未設定 (必須)'));
   optional.forEach((k) => Logger.log('%s: %s', k, props.getProperty(k) ? '設定済' : '未設定 (任意)'));
+  const folderId = props.getProperty(PROP.DRAFT_FOLDER_ID);
+  if (folderId) {
+    try {
+      const folder = DriveApp.getFolderById(folderId);
+      Logger.log('返信案フォルダ: アクセス可 (%s)', folder.getName());
+    } catch (err) {
+      Logger.log('返信案フォルダ: アクセス不可 (%s)', err);
+    }
+  }
   ALL_SHEETS.forEach((def) => {
     const exists = !!SpreadsheetApp.getActiveSpreadsheet().getSheetByName(def.name);
     Logger.log('シート「%s」: %s', def.name, exists ? 'あり' : 'なし (setup を実行)');
@@ -606,23 +1236,26 @@ function checkConfig() {
 
 // ---------- 1 分トリガー ----------
 
-/** 1 分ごとの時間トリガーを (重複なく) 登録する。 */
+/** processQueue と importDrafts の 1 分ごとの時間トリガーを (重複なく) 登録する。 */
 function installTrigger() {
   removeTriggers();
-  ScriptApp.newTrigger(QUEUE_HANDLER_NAME).timeBased().everyMinutes(1).create();
-  logOps('INFO', 'installTrigger', '', `${QUEUE_HANDLER_NAME} の 1 分トリガーを登録しました`);
+  TRIGGER_HANDLERS.forEach((name) => {
+    ScriptApp.newTrigger(name).timeBased().everyMinutes(1).create();
+  });
+  logOps('INFO', 'installTrigger', '', `${TRIGGER_HANDLERS.join(' / ')} の 1 分トリガーを登録しました`);
 }
 
 /** このスクリプトが持つ処理関数のトリガーを全部消す。 */
 function removeTriggers() {
   ScriptApp.getProjectTriggers()
-    .filter((t) => t.getHandlerFunction() === QUEUE_HANDLER_NAME)
+    .filter((t) => TRIGGER_HANDLERS.indexOf(t.getHandlerFunction()) >= 0)
     .forEach((t) => ScriptApp.deleteTrigger(t));
 }
 
 /**
- * 未処理行を順に処理する骨組み。第 1 歩では状態を「処理済」に変えるだけ。
- * 後の段階でここに台帳照合 → Claude 呼び出し → 返信/承認待ちを足す。
+ * 未処理行を順に振り分ける。
+ * - グループ発: 台帳で 区分=取引先 かつ 有効=TRUE のテキストだけ「返信案待ち」。社内/未登録/無効は「処理済 (対象外)」。
+ * - 1 対 1: 管理者からのテキストは承認コマンド (OK n / 却下 n) として処理。それ以外は「処理済 (対象外)」。
  */
 function processQueue() {
   const lock = LockService.getScriptLock();
@@ -644,23 +1277,301 @@ function processQueue() {
     const targets = findPendingRowIndexes(rows, statusCol, PROCESS_BATCH_SIZE);
     if (targets.length === 0) return;
 
-    const settings = parseSettings(getSheet(SETTINGS).getDataRange().getValues().slice(1));
-    const resolved = resolveMode(settings);
-    if (resolved.warning) logOps('WARN', 'processQueue', '', resolved.warning);
+    const ledger = readLedger();
+    const adminUserId = PropertiesService.getScriptProperties().getProperty(PROP.ADMIN_USER_ID);
+    const counts = { skip: 0, await_draft: 0, admin_command: 0 };
 
-    const now = formatJst(new Date());
     targets.forEach((i) => {
       const rowNumber = i + 2;
-      sheet.getRange(rowNumber, statusCol + 1).setValue(STATUS.DONE);
-      sheet.getRange(rowNumber, processedAtCol + 1).setValue(now);
-      sheet.getRange(rowNumber, memoCol + 1).setValue(`骨組み: mode=${resolved.mode} (返信は未実装)`);
+      const info = rowToEventInfo(rows[i]);
+      let status = STATUS.DONE;
+      let memo = '';
+      try {
+        const triage = triageEvent(info, ledger, adminUserId);
+        counts[triage.kind] += 1;
+        if (triage.kind === 'await_draft') {
+          status = STATUS.WAITING_DRAFT;
+          memo = `返信案待ち: ${triage.entry.company}`;
+        } else if (triage.kind === 'admin_command') {
+          memo = handleAdminCommand(triage.text, ledger);
+        } else {
+          memo = triage.memo;
+        }
+      } catch (err) {
+        status = STATUS.ERROR;
+        memo = `処理失敗: ${String((err && err.message) || err)}`;
+        logOps('ERROR', 'processQueue', info.groupId, String((err && err.stack) || err));
+      }
+      sheet.getRange(rowNumber, statusCol + 1).setValue(status);
+      sheet.getRange(rowNumber, processedAtCol + 1).setValue(formatJst(new Date()));
+      sheet.getRange(rowNumber, memoCol + 1).setValue(sanitizeCell(memo));
     });
-    logOps('INFO', 'processQueue', '', `${targets.length} 件を処理済にしました`);
+    logOps(
+      'INFO',
+      'processQueue',
+      '',
+      `${targets.length} 件を振り分け (返信案待ち ${counts.await_draft} / 承認コマンド ${counts.admin_command} / 対象外 ${counts.skip})`,
+    );
   } catch (err) {
     logOps('ERROR', 'processQueue', '', String((err && err.stack) || err));
   } finally {
     lock.releaseLock();
   }
+}
+
+// ---------- 承認コマンド (管理者 1 対 1) ----------
+
+/**
+ * 管理者からの 1 対 1 テキストを処理し、会話ログの処理メモに書く文字列を返す。
+ * @param {string} text
+ * @param {Map<string, LedgerEntry>} ledger
+ * @returns {string}
+ */
+function handleAdminCommand(text, ledger) {
+  const cmd = parseApprovalCommand(text);
+  if (!cmd) return '管理者メッセージ (承認コマンドではない)';
+
+  const drafts = readDraftRecords();
+  const record = findDraftByNumber(drafts.records, cmd.number);
+  const label = cmd.action === 'approve' ? 'OK' : '却下';
+
+  if (!record || record.status !== DRAFT_STATUS.WAITING_APPROVAL) {
+    const currentStatus = record ? record.status : null;
+    notifyAdmin(buildNoMatchText(cmd, currentStatus));
+    logOps('WARN', 'approval', record ? record.groupId : '', `${label} #${cmd.number}: 該当なし (状態=${currentStatus || '無し'})`);
+    return `${label} #${cmd.number}: 該当なし`;
+  }
+
+  const now = formatJst(new Date());
+  if (cmd.action === 'reject') {
+    updateDraftCells(drafts.sheet, record.rowIndex, { 状態: DRAFT_STATUS.REJECTED, 承認日時: now });
+    updateConversationByEventId(record.eventId, STATUS.DONE, `却下 #${record.number}`);
+    logOps('INFO', 'approval', record.groupId, `却下 #${record.number}【${record.company}】`);
+    notifyAdmin(`却下しました #${record.number}【${record.company}】`);
+    return `却下 #${record.number}`;
+  }
+
+  updateDraftCells(drafts.sheet, record.rowIndex, { 承認日時: now });
+  logOps('INFO', 'approval', record.groupId, `OK #${record.number}【${record.company}】`);
+  const result = sendDraft(drafts.sheet, record, ledger);
+  return `OK #${record.number}: ${result}`;
+}
+
+// ---------- 返信案の取込 (1 分トリガー) ----------
+
+/**
+ * 返信案の供給元 (差し替え可能な 1 か所)。
+ * 今は Google Drive のフォルダから「LINE返信案_YYYYMMDD-HHMM」のスプレッドシート / CSV を読む。
+ * 後日 API 方式に切り替えるときは、この関数だけを差し替えて同じ形の配列を返せばよい。
+ * @param {Set<string>} importedIds 取込済のファイル ID
+ * @returns {{ id: string, name: string, values: unknown[][] }[]} 1 要素 = 1 ファイル。values は見出し行を含む全セル
+ */
+function collectDraftBatches(importedIds) {
+  const folderId = PropertiesService.getScriptProperties().getProperty(PROP.DRAFT_FOLDER_ID);
+  if (!folderId) {
+    logOps('WARN', 'importDrafts', '', `スクリプトプロパティ ${PROP.DRAFT_FOLDER_ID} が未設定`);
+    return [];
+  }
+  const files = DriveApp.getFolderById(folderId).getFiles();
+  const candidates = [];
+  while (files.hasNext()) {
+    const file = files.next();
+    const id = file.getId();
+    const name = file.getName();
+    if (importedIds.has(id) || !isDraftFileName(name)) continue;
+    const mime = file.getMimeType();
+    if (mime !== MimeType.GOOGLE_SHEETS && mime !== MimeType.CSV) continue;
+    candidates.push({ id, name, mime, file });
+  }
+  candidates.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+  return candidates.map((c) => ({
+    id: c.id,
+    name: c.name,
+    values:
+      c.mime === MimeType.GOOGLE_SHEETS
+        ? SpreadsheetApp.openById(c.id).getSheets()[0].getDataRange().getValues()
+        : Utilities.parseCsv(c.file.getBlob().getDataAsString('UTF-8')),
+  }));
+}
+
+/**
+ * 返信案フォルダの未取込ファイルを「返信案」タブへ取り込み、管理者へ承認依頼 (mode=auto なら安全確認の上で送信) する。
+ */
+function importDrafts() {
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(30 * 1000)) {
+    logOps('WARN', 'importDrafts', '', 'ロック取得失敗 (前回の処理が継続中)');
+    return;
+  }
+  try {
+    const importedIds = readImportedIds();
+    const batches = collectDraftBatches(importedIds);
+    if (batches.length === 0) return;
+
+    const settings = parseSettings(getSheet(SETTINGS).getDataRange().getValues().slice(1));
+    const resolved = resolveMode(settings);
+    if (resolved.warning) logOps('WARN', 'importDrafts', '', resolved.warning);
+    const ledger = readLedger();
+
+    batches.forEach((batch) => {
+      try {
+        importBatch(batch, resolved.mode, ledger);
+      } catch (err) {
+        logOps('ERROR', 'importDrafts', '', `${batch.name}: ${String((err && err.stack) || err)}`);
+      }
+    });
+  } catch (err) {
+    logOps('ERROR', 'importDrafts', '', String((err && err.stack) || err));
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+/**
+ * 1 ファイル分を取り込む。
+ * @param {{ id: string, name: string, values: unknown[][] }} batch
+ * @param {'approval' | 'auto'} mode
+ * @param {Map<string, LedgerEntry>} ledger
+ */
+function importBatch(batch, mode, ledger) {
+  const parsed = parseDraftFile(batch.values);
+  const drafts = readDraftRecords();
+  const existingIds = drafts.records.map((r) => r.eventId);
+  const { fresh, duplicates } = dedupeDrafts(parsed.drafts, existingIds);
+  const now = formatJst(new Date());
+  let number = nextDraftNumber(drafts.records);
+
+  /** @type {{ record: DraftRecord, action: string, safety: SafetyResult }[]} */
+  const planned = [];
+  const rows = fresh.map((draft) => {
+    const safety = checkSendSafety({ text: draft.reply, groupId: draft.groupId, ledger });
+    const action = decideImportAction({ verdict: draft.verdict, mode, safety });
+    const status = initialDraftStatus(action);
+    const row = buildDraftRow({ number, draft, status, createdAt: now, source: batch.name });
+    planned.push({
+      record: { rowIndex: drafts.records.length + planned.length, number, eventId: draft.eventId, groupId: draft.groupId, company: draft.company, received: draft.received, reply: draft.reply, verdict: draft.verdict, reason: draft.reason, status },
+      action,
+      safety,
+    });
+    number += 1;
+    return row.map(sanitizeCell);
+  });
+
+  // 先に「返信案」と「取込済」へ書き、二重取込を防いでから通知・送信する。
+  if (rows.length > 0) {
+    const start = drafts.sheet.getLastRow() + 1;
+    drafts.sheet.getRange(start, 1, rows.length, DRAFTS.headers.length).setValues(rows);
+    // 行位置を実際の追記位置に合わせる (返信案タブに番号なし行が混ざっていた場合のずれを吸収)。
+    planned.forEach((p, i) => {
+      p.record.rowIndex = start - 2 + i;
+    });
+  }
+  const note = parsed.errors.length > 0 ? `不備 ${parsed.errors.length} 件: ${parsed.errors.join(' / ')}` : '';
+  getSheet(IMPORTED).appendRow([batch.id, batch.name, now, rows.length, duplicates.length, sanitizeCell(note)]);
+  logOps(
+    'INFO',
+    'importDrafts',
+    '',
+    `${batch.name}: 取込 ${rows.length} 件 / 重複 ${duplicates.length} 件 / 不備 ${parsed.errors.length} 件 (mode=${mode})`,
+  );
+  if (parsed.errors.length > 0) logOps('WARN', 'importDrafts', '', `${batch.name}: ${note}`);
+
+  planned.forEach((p) => {
+    const r = p.record;
+    if (p.action === 'human') {
+      updateConversationByEventId(r.eventId, STATUS.HUMAN, `人に回す #${r.number}`);
+      notifyAdmin(buildHumanNoticeText(r));
+      logOps('INFO', 'importDrafts', r.groupId, `人に回す #${r.number}【${r.company}】`);
+    } else if (p.action === 'await_approval') {
+      updateConversationByEventId(r.eventId, STATUS.WAITING_APPROVAL, `承認待ち #${r.number}`);
+      notifyAdmin(buildApprovalRequestText(r));
+      logOps('INFO', 'importDrafts', r.groupId, `承認依頼 #${r.number}【${r.company}】`);
+    } else if (p.action === 'send') {
+      updateConversationByEventId(r.eventId, STATUS.WAITING_APPROVAL, `自動送信 #${r.number}`);
+      sendDraft(drafts.sheet, r, ledger);
+    } else {
+      // 保留は管理者が手で扱う必要があるため、会話ログ上は「人に回す」にする。
+      updateConversationByEventId(r.eventId, STATUS.HUMAN, `送信保留 #${r.number}`);
+      updateDraftCells(drafts.sheet, r.rowIndex, { 送信結果: `保留: ${p.safety.reasons.join(' / ')}` });
+      notifyAdmin(buildHoldNoticeText(r, p.safety.reasons));
+      logOps('WARN', 'send', r.groupId, `送信保留 #${r.number}: ${p.safety.reasons.join(' / ')}`);
+    }
+  });
+}
+
+// ---------- グループへの送信 ----------
+
+/**
+ * 返信案をグループへ送る。送信直前に必ず安全確認を行い、引っかかれば「送信保留」にして管理者へ理由を送る。
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} draftSheet
+ * @param {DraftRecord} record
+ * @param {Map<string, LedgerEntry>} ledger
+ * @returns {string} 処理結果の短い説明
+ */
+function sendDraft(draftSheet, record, ledger) {
+  const safety = checkSendSafety({ text: record.reply, groupId: record.groupId, ledger });
+  if (!safety.ok) {
+    const reason = safety.reasons.join(' / ');
+    updateDraftCells(draftSheet, record.rowIndex, { 状態: DRAFT_STATUS.HELD, 送信結果: `保留: ${reason}` });
+    updateConversationByEventId(record.eventId, STATUS.HUMAN, `送信保留 #${record.number}`);
+    notifyAdmin(buildHoldNoticeText(record, safety.reasons));
+    logOps('WARN', 'send', record.groupId, `送信保留 #${record.number}: ${reason}`);
+    return `送信保留 (${reason})`;
+  }
+
+  const res = pushText(record.groupId, record.reply);
+  if (res.ok) {
+    updateDraftCells(draftSheet, record.rowIndex, { 状態: DRAFT_STATUS.SENT, 送信結果: res.detail });
+    updateConversationByEventId(record.eventId, STATUS.REPLIED, `返信済 #${record.number}`);
+    logOps('INFO', 'send', record.groupId, `送信済 #${record.number}【${record.company}】`);
+    notifyAdmin(`送信しました #${record.number}【${record.company}】`);
+    return '送信済';
+  }
+  updateDraftCells(draftSheet, record.rowIndex, { 状態: DRAFT_STATUS.SEND_FAILED, 送信結果: res.detail });
+  updateConversationByEventId(record.eventId, STATUS.ERROR, `送信失敗 #${record.number}`);
+  logOps('ERROR', 'send', record.groupId, `送信失敗 #${record.number}: ${res.detail}`);
+  notifyAdmin(`送信失敗 #${record.number}【${record.company}】\n${res.detail}`);
+  return `送信失敗 (${res.detail})`;
+}
+
+/**
+ * Messaging API の push でテキストを 1 通送る。トークンはログに出さない。
+ * @param {string} to ユーザー ID またはグループ ID
+ * @param {string} text
+ * @returns {{ ok: boolean, detail: string }}
+ */
+function pushText(to, text) {
+  const token = PropertiesService.getScriptProperties().getProperty(PROP.CHANNEL_ACCESS_TOKEN);
+  if (!token) return { ok: false, detail: `${PROP.CHANNEL_ACCESS_TOKEN} が未設定` };
+  if (!to) return { ok: false, detail: '送信先が空' };
+  try {
+    const res = UrlFetchApp.fetch(LINE_PUSH_URL, {
+      method: 'post',
+      contentType: 'application/json',
+      headers: { Authorization: `Bearer ${token}`, 'X-Line-Retry-Key': Utilities.getUuid() },
+      payload: JSON.stringify({ to, messages: [{ type: 'text', text: truncateText(text, LINE_TEXT_MAX_CHARS) }] }),
+      muteHttpExceptions: true,
+    });
+    const code = res.getResponseCode();
+    if (code >= 200 && code < 300) return { ok: true, detail: `HTTP ${code}` };
+    return { ok: false, detail: `HTTP ${code} ${truncateText(res.getContentText(), 300)}` };
+  } catch (err) {
+    return { ok: false, detail: `通信エラー: ${String((err && err.message) || err)}` };
+  }
+}
+
+/**
+ * 管理者へ 1 対 1 で通知する。失敗しても本処理は止めず稼働ログに残す。
+ * @param {string} text
+ */
+function notifyAdmin(text) {
+  const adminId = PropertiesService.getScriptProperties().getProperty(PROP.ADMIN_USER_ID);
+  if (!adminId) {
+    logOps('WARN', 'notifyAdmin', '', `${PROP.ADMIN_USER_ID} が未設定のため通知できません`);
+    return;
+  }
+  const res = pushText(adminId, text);
+  if (!res.ok) logOps('ERROR', 'notifyAdmin', '', `管理者への通知失敗: ${res.detail}`);
 }
 
 // ---------- シート入出力 ----------
@@ -691,6 +1602,76 @@ function appendRows(def, rows) {
   } finally {
     lock.releaseLock();
   }
+}
+
+/** 「取引先台帳」を読む。 */
+function readLedger() {
+  return parseLedger(getSheet(LEDGER).getDataRange().getValues().slice(1));
+}
+
+/** 「取込済」のファイル ID を読む。 */
+function readImportedIds() {
+  const sheet = getSheet(IMPORTED);
+  const col = columnIndex(IMPORTED, 'ファイルID');
+  return new Set(
+    sheet
+      .getDataRange()
+      .getValues()
+      .slice(1)
+      .map((row) => String(row[col] || '').trim())
+      .filter((id) => id !== ''),
+  );
+}
+
+/**
+ * 「返信案」タブを読む。
+ * @returns {{ sheet: GoogleAppsScript.Spreadsheet.Sheet, records: DraftRecord[] }}
+ */
+function readDraftRecords() {
+  const sheet = getSheet(DRAFTS);
+  const lastRow = sheet.getLastRow();
+  const rows = lastRow < 2 ? [] : sheet.getRange(2, 1, lastRow - 1, DRAFTS.headers.length).getValues();
+  return { sheet, records: parseDraftRecords(rows) };
+}
+
+/**
+ * 「返信案」タブの 1 行の一部の列を更新する。
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet
+ * @param {number} rowIndex 見出しを除いた 0 始まりの添字
+ * @param {Record<string, string>} values 見出し名 → 値
+ */
+function updateDraftCells(sheet, rowIndex, values) {
+  Object.keys(values).forEach((header) => {
+    sheet.getRange(rowIndex + 2, columnIndex(DRAFTS, header) + 1).setValue(sanitizeCell(values[header]));
+  });
+}
+
+/**
+ * 会話ログで webhookEventId が一致する行 (複数あれば最後) の状態・処理日時・処理メモを更新する。
+ * 見つからなければ何もしない (取込ファイルの ID が誤っている場合など)。
+ * @param {string} eventId
+ * @param {string} status
+ * @param {string} memo
+ */
+function updateConversationByEventId(eventId, status, memo) {
+  if (!eventId) return;
+  const sheet = getSheet(CONVERSATION_LOG);
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return;
+  const idCol = columnIndex(CONVERSATION_LOG, 'webhookEventId');
+  const ids = sheet.getRange(2, idCol + 1, lastRow - 1, 1).getValues();
+  let found = -1;
+  for (let i = 0; i < ids.length; i += 1) {
+    if (String(ids[i][0]) === eventId) found = i;
+  }
+  if (found < 0) {
+    logOps('WARN', 'updateConversation', '', `webhookEventId=${eventId} の行が会話ログにありません`);
+    return;
+  }
+  const rowNumber = found + 2;
+  sheet.getRange(rowNumber, columnIndex(CONVERSATION_LOG, '状態') + 1).setValue(status);
+  sheet.getRange(rowNumber, columnIndex(CONVERSATION_LOG, '処理日時') + 1).setValue(formatJst(new Date()));
+  sheet.getRange(rowNumber, columnIndex(CONVERSATION_LOG, '処理メモ') + 1).setValue(sanitizeCell(memo));
 }
 
 /**

@@ -5,6 +5,30 @@ export const STATUS = Object.freeze({
   PENDING: '未処理',
   DONE: '処理済',
   ERROR: 'エラー',
+  /** 取引先グループの message。返信案担当が返信案を書くのを待っている */
+  WAITING_DRAFT: '返信案待ち',
+  /** 返信案を取り込み、管理者の OK/却下 を待っている */
+  WAITING_APPROVAL: '承認待ち',
+  /** 返信案担当が「人に回す」と判定した */
+  HUMAN: '人に回す',
+  /** グループへ返信を送った */
+  REPLIED: '返信済',
+});
+
+/** 「返信案」タブの状態 */
+export const DRAFT_STATUS = Object.freeze({
+  WAITING_APPROVAL: '承認待ち',
+  HUMAN: '人に回す',
+  SENT: '送信済',
+  SEND_FAILED: '送信失敗',
+  HELD: '送信保留',
+  REJECTED: '却下',
+});
+
+/** 返信案担当が書く「判定」列の値 */
+export const VERDICT = Object.freeze({
+  REPLY: '返信',
+  HUMAN: '人に回す',
 });
 
 export const LEDGER_KIND = Object.freeze({
@@ -83,8 +107,52 @@ export const OPS_LOG = Object.freeze({
   headers: Object.freeze(['日時', 'レベル', '処理', 'グループID', '内容']),
 });
 
+/** 取り込んだ返信案。1 行 = 1 案。番号は管理者が OK/却下 で指す ID */
+/** @type {SheetDefinition} */
+export const DRAFTS = Object.freeze({
+  name: '返信案',
+  headers: Object.freeze([
+    '番号',
+    'webhookEventId',
+    'グループID',
+    '会社名',
+    '受信本文',
+    '返信案',
+    '判定',
+    '理由',
+    '状態',
+    '作成日時',
+    '承認日時',
+    '送信結果',
+    '取込元',
+  ]),
+});
+
+/** 取り込み済みの返信案ファイル (同じファイルを二度読まないための記録) */
+/** @type {SheetDefinition} */
+export const IMPORTED = Object.freeze({
+  name: '取込済',
+  headers: Object.freeze(['ファイルID', 'ファイル名', '取込日時', '取込件数', '重複件数', '備考']),
+});
+
+/**
+ * 返信案担当が作るファイル (Google スプレッドシート or CSV) の 1 行目。
+ * ファイル名は「LINE返信案_YYYYMMDD-HHMM」。
+ */
+export const DRAFT_FILE_HEADERS = Object.freeze([
+  'webhookEventId',
+  'グループID',
+  '会社名',
+  '受信本文',
+  '返信案',
+  '判定',
+  '理由',
+]);
+export const DRAFT_FILE_NAME_PREFIX = 'LINE返信案_';
+export const DRAFT_FILE_NAME_PATTERN = /^LINE返信案_\d{8}-\d{4}/;
+
 /** @type {readonly SheetDefinition[]} */
-export const ALL_SHEETS = Object.freeze([CONVERSATION_LOG, LEDGER, SETTINGS, OPS_LOG]);
+export const ALL_SHEETS = Object.freeze([CONVERSATION_LOG, LEDGER, SETTINGS, OPS_LOG, DRAFTS, IMPORTED]);
 
 /**
  * 見出し名から 0 始まりの列インデックスを返す。無ければ例外。

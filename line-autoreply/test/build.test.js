@@ -38,7 +38,7 @@ test('gas/Code.gs は単一スクリプトとして構文解析でき、期待�
   const code = readFileSync(OUTPUT_PATH, 'utf8');
   // GAS はスクリプト (非モジュール) として評価する。Script は構文チェックのみで実行しない。
   assert.doesNotThrow(() => new vm.Script(code, { filename: 'Code.gs' }));
-  for (const fn of ['doPost', 'doGet', 'setup', 'processQueue', 'installTrigger', 'generateWebhookToken', 'checkConfig']) {
+  for (const fn of ['doPost', 'doGet', 'setup', 'processQueue', 'importDrafts', 'collectDraftBatches', 'handleAdminCommand', 'sendDraft', 'installTrigger', 'generateWebhookToken', 'checkConfig']) {
     assert.match(code, new RegExp(`^function ${fn}\\(`, 'm'), fn);
   }
 });
@@ -61,4 +61,7 @@ test('gas/Code.gs の純粋部分は GAS のグローバルを使わずに動く
     context,
   );
   assert.equal(auth.ok, true);
+  const cmd = vm.runInContext('parseApprovalCommand("ＯＫ　１２")', context);
+  assert.equal(cmd.action, 'approve');
+  assert.equal(cmd.number, 12);
 });

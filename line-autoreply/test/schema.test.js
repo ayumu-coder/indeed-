@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   ALL_SHEETS,
   CONVERSATION_LOG,
+  DEFAULT_AUTO_REGISTER_EXCLUDE,
   DEFAULT_MODE,
   DRAFTS,
   DRAFT_FILE_HEADERS,
@@ -11,6 +12,7 @@ import {
   MODES,
   OPS_LOG,
   SETTINGS,
+  SETTING_KEYS,
   columnIndex,
 } from '../lib/schema.js';
 import { formatJst } from '../lib/time.js';
@@ -22,11 +24,19 @@ test('シート名は仕様どおり 6 枚 (第 1 歩の 4 枚 + 返信案 + 取
   );
 });
 
-test('会話ログの列の並びは第 1 歩から変えない (Windows 側の運用シートと整合させる)', () => {
+test('会話ログの列の並びは第 1 歩から変えず、第 3 歩の 送信者名 は末尾に足す (既存列の添字を壊さない)', () => {
   assert.deepEqual(
     [...CONVERSATION_LOG.headers],
-    ['受信日時', 'イベント種別', 'ソース種別', 'グループID', 'ユーザーID', 'メッセージ種別', '本文', 'replyToken', '状態', 'webhookEventId', '再送', 'LINEタイムスタンプ', '処理日時', '処理メモ', '生データ'],
+    ['受信日時', 'イベント種別', 'ソース種別', 'グループID', 'ユーザーID', 'メッセージ種別', '本文', 'replyToken', '状態', 'webhookEventId', '再送', 'LINEタイムスタンプ', '処理日時', '処理メモ', '生データ', '送信者名'],
   );
+  assert.equal(columnIndex(CONVERSATION_LOG, '生データ'), 14);
+  assert.equal(columnIndex(CONVERSATION_LOG, '送信者名'), 15);
+});
+
+test('自動登録の除外: 全体連絡用グループはコード側で常に除外、設定キーで追加できる', () => {
+  assert.deepEqual([...DEFAULT_AUTO_REGISTER_EXCLUDE], ['Cab4b7bb74101992bc1f9efc7d2fc7dde']);
+  assert.equal(SETTING_KEYS.AUTO_REGISTER_EXCLUDE, 'auto_register_exclude');
+  assert.equal(SETTINGS.initialRows[1][0], 'auto_register_exclude');
 });
 
 test('返信案タブと返信案ファイルの見出し', () => {

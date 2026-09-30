@@ -98,6 +98,13 @@ test('buildApprovalRequestText: 指定の型、受信本文は 100 字で切る'
   assert.equal(lines[3], '→ 送るなら『OK 5』、送らないなら『却下 5』');
 });
 
+test('buildApprovalRequestText / buildHumanNoticeText: 送信者名があれば「受信 (送信者名): …」にする', () => {
+  const approval = buildApprovalRequestText({ number: 5, company: 'X社', received: '納期は', reply: 'r', reason: '', sender: '山田 太郎' });
+  assert.equal(approval.split('\n')[1], '受信 (山田 太郎): 納期は');
+  const human = buildHumanNoticeText({ number: 6, company: 'X社', received: 'q', reply: '', reason: 'z', sender: ' ' });
+  assert.equal(human.split('\n')[1], '受信: q');
+});
+
 test('buildHumanNoticeText: OK/却下 の案内を含まない', () => {
   const text = buildHumanNoticeText({ number: 6, company: 'X社', received: '値引きできますか', reply: '', reason: '金額の話' });
   assert.equal(text, '人に回す #6【X社】\n受信: 値引きできますか\n理由: 金額の話');

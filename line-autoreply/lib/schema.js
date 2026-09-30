@@ -38,7 +38,16 @@ export const LEDGER_KIND = Object.freeze({
 
 export const SETTING_KEYS = Object.freeze({
   MODE: 'mode',
+  /** 自動登録の対象外にするグループ ID (カンマ区切り)。DEFAULT_AUTO_REGISTER_EXCLUDE に追加される */
+  AUTO_REGISTER_EXCLUDE: 'auto_register_exclude',
 });
+
+/**
+ * 台帳への自動登録 (join 時 / registerUnregisteredGroups) の対象外にするグループ ID。
+ * 【全体連絡用】株式会社Quad は取引先ではなく、台帳の区分に関係なく返信対象外のままにする。
+ * ID は秘密情報ではない (会話ログにそのまま記録される値)。
+ */
+export const DEFAULT_AUTO_REGISTER_EXCLUDE = Object.freeze(['Cab4b7bb74101992bc1f9efc7d2fc7dde']);
 
 export const MODES = Object.freeze(['approval', 'auto']);
 export const DEFAULT_MODE = 'approval';
@@ -69,6 +78,8 @@ export const CONVERSATION_LOG = Object.freeze({
     '処理日時',
     '処理メモ',
     '生データ',
+    /** 第 3 歩で末尾に追加。グループ発 message の送信者の表示名 (Messaging API から取得)。既存列の添字は変えない */
+    '送信者名',
   ]),
 });
 
@@ -97,6 +108,11 @@ export const SETTINGS = Object.freeze({
       SETTING_KEYS.MODE,
       DEFAULT_MODE,
       'approval=承認してから送る / auto=自動送信',
+    ]),
+    Object.freeze([
+      SETTING_KEYS.AUTO_REGISTER_EXCLUDE,
+      '',
+      '台帳へ自動登録しないグループID (カンマ区切り)。全体連絡用グループはコード側で常に除外',
     ]),
   ]),
 });

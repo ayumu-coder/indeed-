@@ -21,6 +21,7 @@ const TRIGGER_HANDLERS = Object.freeze(['processQueue', 'importDrafts']);
 
 /** LINE Messaging API */
 const LINE_PUSH_URL = 'https://api.line.me/v2/bot/message/push';
+const LINE_GROUP_URL = 'https://api.line.me/v2/bot/group';
 const LINE_TEXT_MAX_CHARS = 5000;
 
 // ---------- Webhook 受け口 ----------
@@ -199,6 +200,8 @@ function removeTriggers() {
 /**
  * 未処理行を順に振り分ける。
  * - グループ発: 台帳で 区分=取引先 かつ 有効=TRUE のテキストだけ「返信案待ち」。社内/未登録/無効は「処理済 (対象外)」。
+ * - グループ発の join で台帳に無ければ、グループ名を取得して台帳へ自動登録する (第 3 歩)。
+ * - グループ発の message は送信者名を取得して「送信者名」列に書く (第 3 歩)。振り分け結果には影響しない。
  * - 1 対 1: 管理者からのテキストは承認コマンド (OK n / 却下 n) として処理。それ以外は「処理済 (対象外)」。
  */
 function processQueue() {
@@ -215,6 +218,7 @@ function processQueue() {
     const statusCol = columnIndex(CONVERSATION_LOG, '状態');
     const processedAtCol = columnIndex(CONVERSATION_LOG, '処理日時');
     const memoCol = columnIndex(CONVERSATION_LOG, '処理メモ');
+    const senderCol = columnIndex(CONVERSATION_LOG, '送信者名');
     const width = CONVERSATION_LOG.headers.length;
 
     const rows = sheet.getRange(2, 1, lastRow - 1, width).getValues();
@@ -222,8 +226,9 @@ function processQueue() {
     if (targets.length === 0) return;
 
     const ledger = readLedger();
+    const exclude = resolveAutoRegisterExclude(readSettings());
     const adminUserId = PropertiesService.getScriptProperties().getProperty(PROP.ADMIN_USER_ID);
-    const counts = { skip: 0, await_draft: 0, admin_command: 0 };
+    const counts = { skip: 0, await_draft: 0, admin_command: 0, registered: 0 };
 
     targets.forEach((i) => {
       const rowNumber = i + 2;
@@ -231,15 +236,27 @@ function processQueue() {
       let status = STATUS.DONE;
       let memo = '';
       try {
-        const triage = triageEvent(info, ledger, adminUserId);
-        counts[triage.kind] += 1;
-        if (triage.kind === 'await_draft') {
-          status = STATUS.WAITING_DRAFT;
-          memo = `返信案待ち: ${triage.entry.company}`;
-        } else if (triage.kind === 'admin_command') {
-          memo = handleAdminCommand(triage.text, ledger);
+        if (shouldAutoRegisterOnJoin(info, ledger, exclude)) {
+          // 台帳に入れてから振り分けるので、同じバッチ内の後続メッセージは「返信案待ち」になる。
+          const entry = registerGroup(info.groupId, ledger, 'processQueue');
+          counts.registered += 1;
+          counts.skip += 1;
+          memo = `自動登録: ${entry.groupName || '(グループ名を取得できず)'}`;
         } else {
-          memo = triage.memo;
+          const triage = triageEvent(info, ledger, adminUserId);
+          counts[triage.kind] += 1;
+          if (triage.kind === 'await_draft') {
+            status = STATUS.WAITING_DRAFT;
+            memo = `返信案待ち: ${triage.entry.company}`;
+          } else if (triage.kind === 'admin_command') {
+            memo = handleAdminCommand(triage.text, ledger);
+          } else {
+            memo = triage.memo;
+          }
+        }
+        if (needsSenderName(info)) {
+          const senderName = fetchSenderName(info.groupId, info.userId);
+          if (senderName !== '') sheet.getRange(rowNumber, senderCol + 1).setValue(sanitizeCell(senderName));
         }
       } catch (err) {
         status = STATUS.ERROR;
@@ -254,13 +271,153 @@ function processQueue() {
       'INFO',
       'processQueue',
       '',
-      `${targets.length} 件を振り分け (返信案待ち ${counts.await_draft} / 承認コマンド ${counts.admin_command} / 対象外 ${counts.skip})`,
+      `${targets.length} 件を振り分け (返信案待ち ${counts.await_draft} / 承認コマンド ${counts.admin_command} / 対象外 ${counts.skip} / 自動登録 ${counts.registered})`,
     );
   } catch (err) {
     logOps('ERROR', 'processQueue', '', String((err && err.stack) || err));
   } finally {
     lock.releaseLock();
   }
+}
+
+// ---------- 取引先台帳への自動登録 (第 3 歩) ----------
+
+/**
+ * 会話ログにあって台帳に無いグループを、グループ名を取得して台帳へ一括登録する。手動で実行する。
+ * 最後のイベントが leave のグループと、除外リスト (全体連絡用など) のグループは登録しない。
+ * 既存の台帳行は書き換えない。
+ */
+function registerUnregisteredGroups() {
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(30 * 1000)) {
+    logOps('WARN', 'registerUnregisteredGroups', '', 'ロック取得失敗 (前回の処理が継続中)');
+    return;
+  }
+  try {
+    const sheet = getSheet(CONVERSATION_LOG);
+    const lastRow = sheet.getLastRow();
+    const rows = lastRow < 2 ? [] : sheet.getRange(2, 1, lastRow - 1, CONVERSATION_LOG.headers.length).getValues();
+    const ledger = readLedger();
+    const exclude = resolveAutoRegisterExclude(readSettings());
+    const groupIds = findUnregisteredGroupIds(rows, ledger, exclude);
+    if (groupIds.length === 0) {
+      logOps('INFO', 'registerUnregisteredGroups', '', '未登録のグループはありません');
+      Logger.log('未登録のグループはありません');
+      return;
+    }
+    let done = 0;
+    groupIds.forEach((groupId) => {
+      try {
+        registerGroup(groupId, ledger, 'registerUnregisteredGroups');
+        done += 1;
+      } catch (err) {
+        logOps('ERROR', 'registerUnregisteredGroups', groupId, String((err && err.stack) || err));
+      }
+    });
+    logOps('INFO', 'registerUnregisteredGroups', '', `${groupIds.length} 件中 ${done} 件を台帳へ登録しました`);
+    Logger.log('%s 件中 %s 件を台帳へ登録しました。取引先台帳と稼働ログを確認してください', groupIds.length, done);
+  } catch (err) {
+    logOps('ERROR', 'registerUnregisteredGroups', '', String((err && err.stack) || err));
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+/**
+ * グループ名を Messaging API で取得し、取引先台帳へ 1 行追記して ledger にも反映する。
+ * 呼び出し側で台帳に無いことを確認済みでも、追記直前にもう一度シートを読んで二重登録を防ぐ。
+ * API に失敗しても会社名を空で登録し、稼働ログに WARN を残す。
+ * @param {string} groupId
+ * @param {Map<string, LedgerEntry>} ledger 呼び出し側が保持する台帳 (登録後に更新される)
+ * @param {string} action 稼働ログの「処理」列
+ * @returns {LedgerEntry}
+ */
+function registerGroup(groupId, ledger, action) {
+  const existing = readLedger().get(groupId);
+  if (existing) {
+    ledger.set(groupId, existing);
+    logOps('INFO', action, groupId, '台帳に登録済みのため自動登録をスキップ');
+    return existing;
+  }
+  const summary = fetchGroupSummary(groupId);
+  if (summary.warning) logOps('WARN', action, groupId, `グループ名を取得できず会社名を空で登録: ${summary.warning}`);
+  const row = buildAutoLedgerRow({ groupId, groupName: summary.name, registeredAt: new Date() }).map(sanitizeCell);
+  getSheet(LEDGER).appendRow(row);
+  const entry = parseLedger([row]).get(groupId);
+  ledger.set(groupId, entry);
+  logOps('INFO', action, groupId, `台帳へ自動登録: グループ名「${entry.groupName}」`);
+  return entry;
+}
+
+// ---------- LINE Messaging API (取得系) ----------
+
+/**
+ * Messaging API に GET し、JSON を返す。トークンは Script Properties から読み、ログには出さない。
+ * @param {string} url
+ * @returns {{ ok: boolean, json: unknown, detail: string }}
+ */
+function lineApiGet(url) {
+  const token = PropertiesService.getScriptProperties().getProperty(PROP.CHANNEL_ACCESS_TOKEN);
+  if (!token) return { ok: false, json: null, detail: `${PROP.CHANNEL_ACCESS_TOKEN} が未設定` };
+  try {
+    const res = UrlFetchApp.fetch(url, {
+      method: 'get',
+      headers: { Authorization: `Bearer ${token}` },
+      muteHttpExceptions: true,
+    });
+    const code = res.getResponseCode();
+    const text = res.getContentText();
+    if (code < 200 || code >= 300) return { ok: false, json: null, detail: `HTTP ${code} ${truncateText(text, 300)}` };
+    try {
+      return { ok: true, json: JSON.parse(text), detail: `HTTP ${code}` };
+    } catch (err) {
+      return { ok: false, json: null, detail: `応答が JSON ではない (HTTP ${code})` };
+    }
+  } catch (err) {
+    return { ok: false, json: null, detail: `通信エラー: ${String((err && err.message) || err)}` };
+  }
+}
+
+/**
+ * グループ名を取得する。失敗しても例外にせず、warning に理由を入れる。
+ * @param {string} groupId
+ * @returns {{ name: string, warning: string | null }}
+ */
+function fetchGroupSummary(groupId) {
+  const res = lineApiGet(`${LINE_GROUP_URL}/${encodeURIComponent(groupId)}/summary`);
+  if (!res.ok) return { name: '', warning: res.detail };
+  const name = pickName(res.json, 'groupName');
+  return { name, warning: name === '' ? '応答に groupName がありません' : null };
+}
+
+/**
+ * グループ内の送信者の表示名を取得する。(groupId, userId) ごとに CacheService で 6 時間キャッシュし、
+ * 失敗は 10 分だけ覚えて連続呼び出しを抑える。取れなければ空文字。
+ * @param {string} groupId
+ * @param {string} userId
+ * @returns {string}
+ */
+function fetchSenderName(groupId, userId) {
+  const cache = CacheService.getScriptCache();
+  const key = senderCacheKey(groupId, userId);
+  const cached = cache.get(key);
+  if (cached !== null) {
+    try {
+      const value = JSON.parse(cached);
+      if (typeof value === 'string') return value;
+    } catch (err) {
+      // 壊れたキャッシュは無視して取り直す
+    }
+  }
+
+  const res = lineApiGet(`${LINE_GROUP_URL}/${encodeURIComponent(groupId)}/member/${encodeURIComponent(userId)}`);
+  const name = res.ok ? pickName(res.json, 'displayName') : '';
+  if (name === '') {
+    logOps('WARN', 'senderName', groupId, `送信者名を取得できず: ${res.ok ? '応答に displayName がありません' : res.detail}`);
+  }
+  // 空文字も値として保存できるよう JSON 文字列で入れる。
+  cache.put(key, JSON.stringify(name), name === '' ? SENDER_NAME_FAILURE_CACHE_SECONDS : SENDER_NAME_CACHE_SECONDS);
+  return name;
 }
 
 // ---------- 承認コマンド (管理者 1 対 1) ----------
@@ -352,8 +509,7 @@ function importDrafts() {
     const batches = collectDraftBatches(importedIds);
     if (batches.length === 0) return;
 
-    const settings = parseSettings(getSheet(SETTINGS).getDataRange().getValues().slice(1));
-    const resolved = resolveMode(settings);
+    const resolved = resolveMode(readSettings());
     if (resolved.warning) logOps('WARN', 'importDrafts', '', resolved.warning);
     const ledger = readLedger();
 
@@ -384,8 +540,9 @@ function importBatch(batch, mode, ledger) {
   const { fresh, duplicates } = dedupeDrafts(parsed.drafts, existingIds);
   const now = formatJst(new Date());
   let number = nextDraftNumber(drafts.records);
+  const senderNames = readSenderNamesByEventIds(fresh.map((d) => d.eventId));
 
-  /** @type {{ record: DraftRecord, action: string, safety: SafetyResult }[]} */
+  /** @type {{ record: DraftRecord & { sender: string }, action: string, safety: SafetyResult }[]} */
   const planned = [];
   const rows = fresh.map((draft) => {
     const safety = checkSendSafety({ text: draft.reply, groupId: draft.groupId, ledger });
@@ -393,7 +550,7 @@ function importBatch(batch, mode, ledger) {
     const status = initialDraftStatus(action);
     const row = buildDraftRow({ number, draft, status, createdAt: now, source: batch.name });
     planned.push({
-      record: { rowIndex: drafts.records.length + planned.length, number, eventId: draft.eventId, groupId: draft.groupId, company: draft.company, received: draft.received, reply: draft.reply, verdict: draft.verdict, reason: draft.reason, status },
+      record: { rowIndex: drafts.records.length + planned.length, number, eventId: draft.eventId, groupId: draft.groupId, company: draft.company, received: draft.received, reply: draft.reply, verdict: draft.verdict, reason: draft.reason, status, sender: senderNames.get(draft.eventId) || '' },
       action,
       safety,
     });
@@ -551,6 +708,34 @@ function appendRows(def, rows) {
 /** 「取引先台帳」を読む。 */
 function readLedger() {
   return parseLedger(getSheet(LEDGER).getDataRange().getValues().slice(1));
+}
+
+/** 「設定」を読む。 */
+function readSettings() {
+  return parseSettings(getSheet(SETTINGS).getDataRange().getValues().slice(1));
+}
+
+/**
+ * 会話ログから webhookEventId → 送信者名 を引く (同じ ID が複数あれば最後の行)。
+ * @param {readonly string[]} eventIds
+ * @returns {Map<string, string>}
+ */
+function readSenderNamesByEventIds(eventIds) {
+  /** @type {Map<string, string>} */
+  const out = new Map();
+  if (eventIds.length === 0) return out;
+  const sheet = getSheet(CONVERSATION_LOG);
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return out;
+  const wanted = new Set(eventIds);
+  const idCol = columnIndex(CONVERSATION_LOG, 'webhookEventId');
+  const senderCol = columnIndex(CONVERSATION_LOG, '送信者名');
+  const rows = sheet.getRange(2, 1, lastRow - 1, CONVERSATION_LOG.headers.length).getValues();
+  rows.forEach((row) => {
+    const id = String(row[idCol] ?? '');
+    if (wanted.has(id)) out.set(id, String(row[senderCol] ?? '').trim());
+  });
+  return out;
 }
 
 /** 「取込済」のファイル ID を読む。 */

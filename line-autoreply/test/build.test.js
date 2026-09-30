@@ -38,7 +38,7 @@ test('gas/Code.gs は単一スクリプトとして構文解析でき、期待�
   const code = readFileSync(OUTPUT_PATH, 'utf8');
   // GAS はスクリプト (非モジュール) として評価する。Script は構文チェックのみで実行しない。
   assert.doesNotThrow(() => new vm.Script(code, { filename: 'Code.gs' }));
-  for (const fn of ['doPost', 'doGet', 'setup', 'processQueue', 'importDrafts', 'collectDraftBatches', 'handleAdminCommand', 'sendDraft', 'installTrigger', 'generateWebhookToken', 'checkConfig']) {
+  for (const fn of ['doPost', 'doGet', 'setup', 'processQueue', 'importDrafts', 'collectDraftBatches', 'handleAdminCommand', 'sendDraft', 'installTrigger', 'generateWebhookToken', 'checkConfig', 'registerUnregisteredGroups', 'registerGroup', 'fetchGroupSummary', 'fetchSenderName']) {
     assert.match(code, new RegExp(`^function ${fn}\\(`, 'm'), fn);
   }
 });

@@ -148,6 +148,7 @@ export function eventToRow(event, receivedAt) {
     '',
     '',
     JSON.stringify(event),
+    '', // 送信者名は processQueue が Messaging API で埋める
   ].map(sanitizeCell);
 
   if (row.length !== CONVERSATION_LOG.headers.length) {

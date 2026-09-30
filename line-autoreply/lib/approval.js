@@ -108,7 +108,19 @@ export function truncateText(text, max) {
  * @property {string} received 受信本文
  * @property {string} reply    返信案
  * @property {string} reason   判定理由
+ * @property {string} [sender] 受信メッセージの送信者名 (会話ログの「送信者名」。無ければ空)
  */
+
+/**
+ * 「受信: …」の行。送信者名が分かっていれば「受信 (送信者名): …」にする。
+ * @param {DraftSummary} d
+ * @returns {string}
+ */
+function buildReceivedLine(d) {
+  const sender = String(d.sender ?? '').trim();
+  const label = sender === '' ? '受信' : `受信 (${sender})`;
+  return `${label}: ${truncateText(d.received, RECEIVED_PREVIEW_CHARS)}`;
+}
 
 /**
  * 承認依頼 (判定=返信) の本文。
@@ -118,7 +130,7 @@ export function truncateText(text, max) {
 export function buildApprovalRequestText(d) {
   return [
     `案 #${d.number}【${d.company}】`,
-    `受信: ${truncateText(d.received, RECEIVED_PREVIEW_CHARS)}`,
+    buildReceivedLine(d),
     `返信案: ${d.reply}`,
     `→ 送るなら『OK ${d.number}』、送らないなら『却下 ${d.number}』`,
   ].join('\n');
@@ -130,11 +142,7 @@ export function buildApprovalRequestText(d) {
  * @returns {string}
  */
 export function buildHumanNoticeText(d) {
-  return [
-    `人に回す #${d.number}【${d.company}】`,
-    `受信: ${truncateText(d.received, RECEIVED_PREVIEW_CHARS)}`,
-    `理由: ${d.reason}`,
-  ].join('\n');
+  return [`人に回す #${d.number}【${d.company}】`, buildReceivedLine(d), `理由: ${d.reason}`].join('\n');
 }
 
 /**

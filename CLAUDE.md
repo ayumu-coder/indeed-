@@ -13,8 +13,8 @@ Claude セッション群を「会社の部」として運用する。決まり�
 | --- | --- | --- | --- |
 | 業務部 | 部長くん (session_011ka9AiqKz8z7uGm3J3x6Dy) | `部/業務部/` | 全体の仕組み・部下の統括・ノート運用 |
 | 求人作成部 | 求人作成くん (session_01UY9p3ZLrVNSrQBBYfzr7Gd)、エンルーツ slack連携 (session_01DanMVAJwu6La2dcNy3u768) | `部/求人作成部/` | Indeed 求人原稿 (v14 形式 CSV) の作成 |
-| 数値更新部 | 数値更新くん (session_01DZFsJBeNUAFmoS2ewYTknw、Mac 上) | `部/数値更新部/` | Indeed 日次数値の転記 (indeed-update) |
-| 基盤部 | hr-platform・ユーザー登録とログイン確認 (Mac 上) | `部/基盤部/` | hr-platform アプリ・公開 URL・Mac 常駐化 |
+| 数値更新部 | 数値更新くん (session_01DZFsJBeNUAFmoS2ewYTknw、Windows PC 上) | `部/数値更新部/` | Indeed 日次数値の転記 (indeed-update) |
+| 基盤部 | hr-platform・ユーザー登録とログイン確認 (Windows PC 上)、LINE自動応答くん (session_01MWBCXuxUciuJANbsmG4zxF、クラウド、ブランチ `claude/auto-forward-email-line-16l2qv`) | `部/基盤部/` | hr-platform アプリ・公開 URL・Windows 常駐化・LINE 自動応答 (GAS) |
 | md 監査役 | 本セッション (`.claude/md-auditor.json` 参照) | `docs/` | md の整理係 (夜の整理係を兼務) |
 
 共通ノート: `メモリ/MEMORY.md` (目次) と `メモリ/*.md`、`予定表.md`。ノートは監査役ブランチ `claude/jolly-lovelace-zg4t4e` にあり、他ブランチのセッションは `git show` で読む (マージしない)。

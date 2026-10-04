@@ -18,10 +18,10 @@
 
 - hr-platform (Windows PC 上のアプリ、trycloudflare の公開 URL。クイックトンネルは再起動で URL が変わる)。
 - Windows 常駐化一式 (keepalive.ps1 / setup-power.ps1 / install-tasks.ps1 / uninstall-tasks.ps1 / README_常駐化手順_Windows.md) は 9/29 に部長がユーザーへ納品済み。repo には未収録。macOS 用 launchd 一式 (9/28 納品) は誤りだったため廃棄。
-- LINE 自動応答 (デフォルトブランチ `claude/auto-forward-email-line-16l2qv` の `line-autoreply/`、GAS ウェブアプリ + 会話ログ、commit cf31bb5)。秘密情報 (チャネルシークレット・アクセストークン・WEBHOOK_TOKEN・ウェブアプリ URL) はスクリプトプロパティのみに置き、チャット・シート・repo に書かない。
+- LINE 自動応答 (デフォルトブランチ `claude/auto-forward-email-line-16l2qv` の `line-autoreply/`、GAS ウェブアプリ + 会話ログ、commit cf31bb5〜496b6dd)。秘密情報 (チャネルシークレット・アクセストークン・WEBHOOK_TOKEN・ウェブアプリ URL) はスクリプトプロパティのみに置き、チャット・シート・repo に書かない。
 
 ## 現状
 
 - PC のスリープでセッションと公開 URL が落ちる (9/28 に 1033 エラー)。常駐化は未導入 (導入はユーザーが Windows 上で行う)。
 - ユーザー登録とログイン確認: ログイン試行待ち (ユーザー対応中)。
-- LINE 自動応答 第 1 歩: コード・テスト (40 件) 完了。Windows PC 上でのデプロイは B-3 (Code.gs 貼り付け) まで完了、LINE Developers ログインと Google 承認 (A-1〜A-10、B-4〜B-14) はユーザー作業待ち。管理シート「LINE自動応答_管理」、報告シート「部長報告_LINE自動応答_20260929」。
+- LINE 自動応答: コードは第 3 歩まで commit 済み (9/30、第 2 歩 6757b1c・第 3 歩 496b6dd)。デプロイは 9/29 時点の記録 (第 1 歩、B-3 Code.gs 貼り付けまで完了、LINE Developers ログインと Google 承認 A-1〜A-10・B-4〜B-14 はユーザー作業待ち) 以降、未報告。管理シート「LINE自動応答_管理」、報告シート「部長報告_LINE自動応答_20260929」。
